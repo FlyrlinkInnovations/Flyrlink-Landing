@@ -9,18 +9,15 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const getActiveTab = () => {
-    switch (location.pathname) {
-      case '/':
-        return 'home';
-      case '/find-experts':
-        return 'experts';
-      case '/about':
-        return 'about';
-      case '/contact':
-        return 'contact';
-      default:
-        return 'home';
-    }
+    const path = location.pathname;
+    
+    if (path === '/') return 'home';
+    if (path === '/find-experts') return 'experts';
+    if (path === '/about') return 'about';
+    if (path === '/contact') return 'contact';
+    if (path === '/blog' || path.startsWith('/blog/')) return 'blog';
+    
+    return 'home';
   };
 
   const toggleMobileMenu = () => {
@@ -38,9 +35,11 @@ const Navbar = () => {
           {/* Company Logo/Name */}
           <div className="flex items-center">
             <Link to="/" onClick={closeMobileMenu}>
-              <h1 className="text-2xl font-bold text-navy-900 cursor-pointer hover:text-sky-600 transition-colors">
-                Flyr<span className="text-sky-500">link</span>
-              </h1>
+              <img 
+                src="/Flyrlink logo blue-blank .png" 
+                alt="Flyrlink" 
+                className="h-10 w-auto cursor-pointer" 
+              />
             </Link>
           </div>
 
@@ -70,10 +69,17 @@ const Navbar = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="contact" 
-                className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
                 asChild
+                className="px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
               >
                 <Link to="/contact">Contact</Link>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="blog" 
+                asChild
+                className="px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
+              >
+                <Link to="/blog">Blog</Link>
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -134,13 +140,16 @@ const Navbar = () => {
               <Link 
                 to="/contact" 
                 onClick={closeMobileMenu}
-                className={`px-4 py-2 rounded-md text-center font-medium transition-colors ${
-                  getActiveTab() === 'contact' 
-                    ? 'bg-sky-500 text-white' 
-                    : 'text-navy-900 hover:bg-sky-50 hover:text-sky-600'
-                }`}
+                className={`block px-4 py-3 text-sm font-medium rounded-md ${location.pathname === '/contact' ? 'bg-sky-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50'}`}
               >
                 Contact
+              </Link>
+              <Link 
+                to="/blog" 
+                onClick={closeMobileMenu}
+                className={`block px-4 py-3 text-sm font-medium rounded-md ${location.pathname.startsWith('/blog') ? 'bg-sky-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50'}`}
+              >
+                Blog
               </Link>
             </div>
           </div>

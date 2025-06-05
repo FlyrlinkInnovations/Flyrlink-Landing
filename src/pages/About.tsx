@@ -72,21 +72,13 @@ const About = () => {
         <section className="py-16">
           <div className="max-w-4xl mx-auto px-6">
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-navy-900 mb-8 text-center">Our Story</h2>
+              <h2 className="text-3xl font-bold text-navy-900 mb-8 text-center">Get to know us</h2>
               <div className="prose prose-lg mx-auto text-gray-700">
                 <p className="mb-6">
-                  Flyrlink was born from a simple frustration: finding the right expert for your specific needs 
-                  was unnecessarily complicated. Whether you needed a nutritionist who understood your cultural 
-                  preferences, a career coach familiar with your industry, or a fitness trainer who could work 
-                  with your schedule — the process was always time-consuming and uncertain.
+                  Flyrlink was built to bridge the gap between professionals and users, offering a seamless platform for service bookings, expert content sharing, and trusted connections. We empower individual experts and small businesses to showcase their skills, host events, and collaborate while giving users a reliable space to find services and engage with professionals across diverse fields. With Flyrlink, every interaction is intuitive, trustworthy, and rewarding -transforming how professionals and users connect and grow together.
                 </p>
                 <p className="mb-6">
-                  We realized that in a country as diverse as India, people needed more than generic solutions. 
-                  They needed personalized expert connections that understood their context, goals, and constraints.
-                </p>
-                <p>
-                  Today, Flyrlink is that bridge — connecting millions of people with verified experts who can 
-                  provide the guidance, support, and knowledge they need to achieve their goals.
+                  Flyrlink goes beyond just connecting professionals and users — it builds a vibrant community where growth, learning, and collaboration thrive. From health consultations to creative services, educational sessions to wellness coaching, Flyrlink brings everything under one trusted platform. Our tools empower professionals to manage bookings, share updates, and monetize their expertise, while users enjoy access to reliable, high-quality services with ease. Flyrlink is where expertise meets opportunity, and every connection counts.
                 </p>
               </div>
             </div>
@@ -132,13 +124,17 @@ const About = () => {
 
         {/* Mission Statement */}
         <section className="py-16 bg-gradient-to-b from-sky-50 to-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
             <div className="bg-white rounded-2xl border border-sky-200 p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-navy-900 mb-6">Our Mission</h2>
               <p className="text-xl text-gray-700 leading-relaxed">
-                To democratize access to expert knowledge and create a world where anyone, 
-                anywhere can connect with the right professional to achieve their goals — 
-                making growth, healing, and success accessible to all.
+                At Flyrlink, our mission is to simplify connections between professionals and users by combining service bookings, content sharing, and event hosting on one platform. We aim to empower individuals and businesses while making every interaction seamless, trusted, and rewarding.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-sky-200 p-8 shadow-lg mt-8">
+              <h2 className="text-3xl font-bold text-navy-900 mb-6">Our Vision</h2>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                To create a world where finding and connecting with trusted professionals is effortless, empowering individuals and businesses to thrive. At Flyrlink, we envision a seamless platform that fosters collaboration, builds trust, and transforms the way services are accessed and delivered.
               </p>
             </div>
           </div>

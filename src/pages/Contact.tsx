@@ -33,22 +33,25 @@ const Contact = () => {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
       description: 'Send us an email anytime',
-      contact: 'hello@flyrlink.com',
-      color: 'bg-blue-50 text-blue-600'
+      contact: 'Contact@flyrlink.com',
+      color: 'bg-blue-50 text-blue-600',
+      link: 'mailto:Contact@flyrlink.com'
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Call Us',
       description: 'Mon-Fri 9AM-6PM IST',
-      contact: '+91-9876543210',
-      color: 'bg-green-50 text-green-600'
+      contact: '+91 8125150893',
+      color: 'bg-green-50 text-green-600',
+      link: 'tel:+918125150893'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Visit Us',
       description: 'Our headquarters',
-      contact: 'Bangalore, India',
-      color: 'bg-purple-50 text-purple-600'
+      contact: 'Unit 407, Jain Sadguru image capital park, Hyderabad - 500081',
+      color: 'bg-purple-50 text-purple-600',
+      link: 'https://maps.google.com/?q=Unit+407,+Jain+Sadguru+image+capital+park,+Hyderabad+-+500081'
     }
   ];
 
@@ -91,16 +94,24 @@ const Contact = () => {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-8 mb-16">
               {contactMethods.map((method, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className={`w-16 h-16 ${method.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                      {method.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-navy-900 mb-2">{method.title}</h3>
-                    <p className="text-gray-600 mb-3">{method.description}</p>
-                    <p className="font-medium text-sky-600">{method.contact}</p>
-                  </CardContent>
-                </Card>
+                <a 
+                  key={index} 
+                  href={method.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block hover:no-underline"
+                >
+                  <Card className="text-center hover:shadow-lg transition-shadow h-full">
+                    <CardContent className="p-8">
+                      <div className={`w-16 h-16 ${method.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                        {method.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-navy-900 mb-2">{method.title}</h3>
+                      <p className="text-gray-600 mb-3">{method.description}</p>
+                      <p className="font-medium text-sky-600 hover:underline">{method.contact}</p>
+                    </CardContent>
+                  </Card>
+                </a>
               ))}
             </div>
           </div>
