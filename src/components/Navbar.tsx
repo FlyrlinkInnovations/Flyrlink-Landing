@@ -15,6 +15,7 @@ const Navbar = () => {
     if (path === '/find-experts') return 'experts';
     if (path === '/about') return 'about';
     if (path === '/contact') return 'contact';
+    if (path === '/faq') return 'faq';
     if (path === '/blog' || path.startsWith('/blog/')) return 'blog';
     
     return 'home';
@@ -77,9 +78,16 @@ const Navbar = () => {
               <TabsTrigger 
                 value="blog" 
                 asChild
-                className="px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
+                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
               >
                 <Link to="/blog">Blog</Link>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="faq" 
+                asChild
+                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
+              >
+                <Link to="/faq">FAQ's</Link>
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -144,12 +152,19 @@ const Navbar = () => {
               >
                 Contact
               </Link>
-              <Link 
-                to="/blog" 
+              <Link
+                to="/blog"
+                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'blog' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
                 onClick={closeMobileMenu}
-                className={`block px-4 py-3 text-sm font-medium rounded-md ${location.pathname.startsWith('/blog') ? 'bg-sky-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50'}`}
               >
                 Blog
+              </Link>
+              <Link
+                to="/faq"
+                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'faq' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
+                onClick={closeMobileMenu}
+              >
+                FAQ's
               </Link>
             </div>
           </div>
