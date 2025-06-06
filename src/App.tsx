@@ -4,14 +4,14 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "@/pages/index.tsx";
-import FindExperts from "@/pages/findExperts.tsx";
-import About from "@/pages/about.tsx";
-import Contact from "@/pages/contact.tsx";
-import NotFound from "@/pages/notFound.tsx";
-import BlogPage from "@/pages/blog/blogPage.tsx";
-import BlogPost from "@/pages/blog/blogPost.tsx";
-import FaqPage from "@/pages/faqPage.tsx";
+import Index from "@/pages/index";
+import FindExperts from "@/pages/findExperts";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import NotFound from "@/pages/notFound";
+import BlogPage from "@/pages/blog/blogPage";
+import BlogPost from "@/pages/blog/blogPost";
+import FaqPage from "@/pages/faqPage";
 
 const queryClient = new QueryClient();
 
