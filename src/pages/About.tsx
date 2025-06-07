@@ -122,19 +122,87 @@ const About = () => {
           </div>
         </section>
 
-        {/* Mission Statement */}
+        {/* Mission Section */}
         <section className="py-16 bg-gradient-to-b from-sky-50 to-white">
-          <div className="max-w-4xl mx-auto px-6 text-center space-y-12">
-            <div className="bg-white rounded-2xl border border-sky-200 p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-navy-900 mb-6">Our Mission</h2>
-              <p className="text-xl text-gray-700 leading-relaxed">
-                At Flyrlink, our mission is to simplify connections between professionals and users by combining service bookings, content sharing, and event hosting on one platform. We aim to empower individuals and businesses while making every interaction seamless, trusted, and rewarding.
-              </p>
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-sky-100">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="p-12">
+                  <h2 className="text-4xl font-bold text-navy-900 mb-6">
+                    Our <span className="text-blue-600">Mission</span>
+                  </h2>
+                  <div className="prose prose-lg text-gray-700">
+                    <p className="mb-6">
+                      At Flyrlink, our mission is to simplify connections between professionals and users by combining service bookings, content sharing, and event hosting on one platform. We aim to empower individuals and businesses while making every interaction seamless, trusted, and rewarding.
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                        <div className="bg-blue-100 p-2 rounded-full text-blue-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <p className="text-gray-700">Empower professionals to showcase their expertise</p>
+                      </div>
+                      <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                        <div className="bg-blue-100 p-2 rounded-full text-blue-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <p className="text-gray-700">Create seamless connections between experts and users</p>
+                      </div>
+                      <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+                        <div className="bg-blue-100 p-2 rounded-full text-blue-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <p className="text-gray-700">Build a trusted platform for knowledge sharing</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-full min-h-[400px] bg-gradient-to-br from-blue-50 to-sky-100 relative">
+                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <div className="relative w-full h-full max-w-md mx-auto">
+                      <div className="absolute inset-0 bg-white/80 rounded-2xl transform rotate-3"></div>
+                      <div className="absolute inset-0 bg-white/80 rounded-2xl transform -rotate-3"></div>
+                      <div className="relative h-full bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div className="relative h-full w-full">
+                          <div className="absolute inset-0 flex items-center justify-center bg-blue-50 rounded-2xl">
+                            <div className="text-center p-4">
+                              <div className="text-4xl mb-2">📷</div>
+                              <p className="text-blue-600 font-medium">Mission Image</p>
+                              <p className="text-sm text-gray-500 mt-1">Should appear here</p>
+                            </div>
+                          </div>
+                          <img
+                            src={`${window.location.origin}/Mission.png`}
+                            alt="Our Mission - Connecting Experts with Users"
+                            className="w-full h-full object-cover rounded-2xl relative z-10 border-4 border-white shadow-lg"
+                            onError={(e) => {
+                              console.error('Failed to load image:', e);
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              target.previousElementSibling?.classList.remove('hidden');
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-2xl border border-sky-200 p-8 shadow-lg mt-8">
+          </div>
+
+          {/* Vision Section */}
+          <div className="max-w-4xl mx-auto px-6 mt-16">
+            <div className="bg-white rounded-2xl border border-sky-200 p-12 shadow-lg text-center">
               <h2 className="text-3xl font-bold text-navy-900 mb-6">Our Vision</h2>
               <p className="text-xl text-gray-700 leading-relaxed">
-                To create a world where finding and connecting with trusted professionals is effortless, empowering individuals and businesses to thrive. At Flyrlink, we envision a seamless platform that fosters collaboration, builds trust, and transforms the way services are accessed and delivered.
+                To create a world where finding and connecting with trusted professionals is effortless, empowering individuals and businesses to thrive. We envision a seamless platform that fosters collaboration, builds trust, and transforms the way services are accessed and delivered.
               </p>
             </div>
           </div>

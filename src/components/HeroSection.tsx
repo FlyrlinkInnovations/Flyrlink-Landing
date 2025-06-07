@@ -54,7 +54,8 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className={`relative z-10 max-w-6xl mx-auto px-6 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center">
         {/* AI Badge */}
         <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 border border-sky-200 rounded-full mb-8 animate-fade-in">
           <Brain className="w-5 h-5 text-sky-600 animate-pulse" />
@@ -129,6 +130,9 @@ const HeroSection = () => {
             ))}
           </div>
         </div>
+        
+        </div>
+        
       </div>
 
       {/* Enhanced Scroll Indicator */}
