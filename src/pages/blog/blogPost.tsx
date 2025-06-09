@@ -52,7 +52,7 @@ const blogPosts: BlogPostType[] = [
     category: 'Insights',
     author: {
       name: 'Sarah Williams',
-      role: 'Head of Product',
+      role: 'Co-founder',
       avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
     }
   },

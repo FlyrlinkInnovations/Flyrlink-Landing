@@ -12,14 +12,14 @@ const About = () => {
       avatar: '👨‍💼'
     },
     {
-      name: 'Sneha Gupta',
-      role: 'Head of Product',
+      name: 'Supriya Pudhari',
+      role: 'Co-founder',
       bio: 'Ex-Google product manager focused on user experience and platform growth.',
       avatar: '👩‍💻'
     },
     {
-      name: 'Rahul Singh',
-      role: 'CTO',
+      name: 'Rahul Poojari',
+      role: 'COO',
       bio: 'Tech veteran who believes technology should simplify, not complicate.',
       avatar: '👨‍💻'
     }

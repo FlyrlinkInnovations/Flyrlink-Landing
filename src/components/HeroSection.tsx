@@ -22,7 +22,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating AI Orbs */}
@@ -67,7 +67,7 @@ const HeroSection = () => {
         <div className="mb-8">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
             <span className="text-navy-900 animate-fade-in">Find the Right</span>
-            <span className="block bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x bg-300% animate-fade-in delay-300">
+            <span className="block bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x bg-300% delay-300">
               Expert, Instantly
             </span>
           </h1>
@@ -136,7 +136,7 @@ const HeroSection = () => {
       </div>
 
       {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm text-sky-600 font-medium">Explore More</span>
           <ArrowDown className="w-6 h-6 text-sky-500" />

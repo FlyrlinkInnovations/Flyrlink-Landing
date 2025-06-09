@@ -84,7 +84,7 @@ const ProblemSection = () => {
   ];
 
   return (
-    <section id="problem-section" className="py-20 bg-gradient-to-b from-white via-slate-50 to-sky-50 relative overflow-hidden">
+    <section id="problem-section" className="py-10 md:py-20 bg-gradient-to-b from-white via-slate-50 to-sky-50 relative overflow-hidden">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -234,11 +234,7 @@ const ProblemSection = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <p className="text-2xl font-semibold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">
-              ⚡ Your AI-powered breakthrough is just a tap away.
-            </p>
-          </div>
+
         </div>
       </div>
     </section>

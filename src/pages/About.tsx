@@ -12,14 +12,14 @@ const About = () => {
       avatar: '👨‍💼'
     },
     {
-      name: 'Sneha Gupta',
-      role: 'Head of Product',
+      name: 'Supriya Pudhari',
+      role: 'Co-founder',
       bio: 'Ex-Google product manager focused on user experience and platform growth.',
       avatar: '👩‍💻'
     },
     {
-      name: 'Rahul Singh',
-      role: 'CTO',
+      name: 'Rahul Poojari',
+      role: 'COO',
       bio: 'Tech veteran who believes technology should simplify, not complicate.',
       avatar: '👨‍💻'
     }
@@ -170,7 +170,7 @@ const About = () => {
                       <div className="absolute inset-0 bg-white/80 rounded-2xl transform -rotate-3"></div>
                       <div className="relative h-full bg-white rounded-2xl shadow-lg overflow-hidden">
                         <div className="relative h-full w-full">
-                          <div className="absolute inset-0 flex items-center justify-center bg-blue-50 rounded-2xl">
+                          <div className="absolute inset-0 items-center justify-center bg-blue-50 rounded-2xl hidden">
                             <div className="text-center p-4">
                               <div className="text-4xl mb-2">📷</div>
                               <p className="text-blue-600 font-medium">Mission Image</p>
@@ -178,7 +178,7 @@ const About = () => {
                             </div>
                           </div>
                           <img
-                            src={`${window.location.origin}/Mission.png`}
+                            src="/Mission.png"
                             alt="Our Mission - Connecting Experts with Users"
                             className="w-full h-full object-cover rounded-2xl relative z-10 border-4 border-white shadow-lg"
                             onError={(e) => {
