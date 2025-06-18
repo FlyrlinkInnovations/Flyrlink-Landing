@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer = () => {
@@ -30,7 +29,7 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Find Experts</a></li>
+              {/* <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Find Experts</a></li> */}
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">How It Works</a></li>
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Pricing</a></li>
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Success Stories</a></li>
@@ -52,7 +51,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 mb-4 md:mb-0">
-            © 2024 Flyrlink. All rights reserved.
+            &copy; 2024 Flyrlink. All rights reserved.
           </div>
           <div className="text-gray-400 text-sm">
             Made with ❤️ for India's growing expert economy

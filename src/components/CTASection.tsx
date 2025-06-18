@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CTASection = () => {
   return (
@@ -14,20 +14,17 @@ const CTASection = () => {
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
-            Download Flyrlink and connect with your next breakthrough today.
+            Join our waiting list to be the first to know when we launch and get early access.
           </p>
         </div>
 
-        {/* Primary CTA */}
-        <div className="mb-16">
-          <button className="group bg-sky-500 text-white px-12 py-6 text-xl font-semibold rounded-full hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-sky-400/25 mb-4">
-            Download Flyrlink
-            <span className="ml-3 group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-          </button>
-          <p className="text-sky-600 font-medium">
-            → Start connecting with verified experts today
-          </p>
-        </div>
+        {/* Join Waitlist Button */}
+        <Link 
+          to="/waiting-list"
+          className="group bg-sky-500 text-white px-12 py-6 text-xl font-semibold rounded-full hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-sky-400/25 mb-4"
+        >
+          Join Waitlist
+        </Link>
 
         {/* Trust Indicators Final */}
         <div className="border-t border-gray-200 pt-12">

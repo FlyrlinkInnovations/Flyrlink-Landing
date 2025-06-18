@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const features = [
@@ -22,9 +21,9 @@ const features = [
 const FeaturesSection = () => {
   const testimonials = [
     {
-      quote: "Found the perfect nutritionist for my health goals within minutes. The personalized advice has been life-changing!",
+      quote: "Found the perfect business mentor for my startup within minutes. The personalized advice has been game-changing!",
       author: "Priya S.",
-      role: "Working Parent",
+      role: "Entrepreneur",
       avatar: "🌟"
     },
     {

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
@@ -12,7 +11,7 @@ const Navbar = () => {
     const path = location.pathname;
     
     if (path === '/') return 'home';
-    if (path === '/find-experts') return 'experts';
+    // if (path === '/find-experts') return 'experts';
     if (path === '/about') return 'about';
     if (path === '/contact') return 'contact';
     if (path === '/faq') return 'faq';
@@ -54,13 +53,13 @@ const Navbar = () => {
               >
                 <Link to="/">Home</Link>
               </TabsTrigger>
-              <TabsTrigger 
+              {/* <TabsTrigger 
                 value="experts" 
                 className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
                 asChild
               >
                 <Link to="/find-experts">Find Experts</Link>
-              </TabsTrigger>
+              </TabsTrigger> */}
               <TabsTrigger 
                 value="about" 
                 className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
@@ -123,7 +122,7 @@ const Navbar = () => {
               >
                 Home
               </Link>
-              <Link 
+              {/* <Link 
                 to="/find-experts" 
                 onClick={closeMobileMenu}
                 className={`px-4 py-2 rounded-md text-center font-medium transition-colors ${
@@ -133,7 +132,7 @@ const Navbar = () => {
                 }`}
               >
                 Find Experts
-              </Link>
+              </Link> */}
               <Link 
                 to="/about" 
                 onClick={closeMobileMenu}

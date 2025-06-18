@@ -8,7 +8,7 @@ const About = () => {
     {
       name: 'Rajesh Poojari',
       role: 'Founder & CEO',
-      bio: 'Former healthcare consultant with a passion for democratizing expert access.',
+      bio: 'Former business consultant with a passion for democratizing expert access.',
       avatar: '👨‍💼'
     },
     {
@@ -78,7 +78,7 @@ const About = () => {
                   Flyrlink was built to bridge the gap between professionals and users, offering a seamless platform for service bookings, expert content sharing, and trusted connections. We empower individual experts and small businesses to showcase their skills, host events, and collaborate while giving users a reliable space to find services and engage with professionals across diverse fields. With Flyrlink, every interaction is intuitive, trustworthy, and rewarding -transforming how professionals and users connect and grow together.
                 </p>
                 <p className="mb-6">
-                  Flyrlink goes beyond just connecting professionals and users — it builds a vibrant community where growth, learning, and collaboration thrive. From health consultations to creative services, educational sessions to wellness coaching, Flyrlink brings everything under one trusted platform. Our tools empower professionals to manage bookings, share updates, and monetize their expertise, while users enjoy access to reliable, high-quality services with ease. Flyrlink is where expertise meets opportunity, and every connection counts.
+                  Flyrlink goes beyond just connecting professionals and users — it builds a vibrant community where growth, learning, and collaboration thrive. From business consultations to creative services, educational sessions to professional coaching, Flyrlink brings everything under one trusted platform. Our tools empower professionals to manage bookings, share updates, and monetize their expertise, while users enjoy access to reliable, high-quality services with ease. Flyrlink is where expertise meets opportunity, and every connection counts.
                 </p>
               </div>
             </div>

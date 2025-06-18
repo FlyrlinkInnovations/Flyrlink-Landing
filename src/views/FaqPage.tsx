@@ -256,7 +256,7 @@ const FaqPage = () => {
           answer: 'Experts can offer a variety of services, including:\n' +
                  '✅ Online consultations (video calls, chat-based advice).\n' +
                  '✅ In-person services (local meetups, office visits).\n' +
-                 '✅ Home visits (for medical, wellness, coaching, or personal consulting).'
+                 '✅ Home visits (for business, consulting, coaching, or personal services).'
         },
         {
           question: 'How can I offer services on FLYRLINK?',

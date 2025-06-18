@@ -1,6 +1,6 @@
-
 import React, { useEffect, useState } from 'react';
-import { ArrowDown, Sparkles, Zap, Brain } from 'lucide-react';
+import { Sparkles, Brain, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -80,15 +80,15 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Interactive CTA Button */}
+        {/* Join Waitlist Button */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in delay-1000">
-          <button className="group relative bg-gradient-to-r from-sky-500 to-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-full hover:from-sky-600 hover:to-blue-700 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-sky-400/40 overflow-hidden">
+          <Link 
+            to="/waiting-list"
+            className="group relative bg-gradient-to-r from-sky-500 to-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-full hover:from-sky-600 hover:to-blue-700 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-sky-400/40 overflow-hidden"
+          >
+            <span className="relative z-10">Join Waitlist</span>
             <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <span className="relative flex items-center gap-2">
-              Download Flyrlink
-              <Zap className="w-5 h-5 group-hover:animate-bounce" />
-            </span>
-          </button>
+          </Link>
         </div>
 
         {/* AI Features Showcase */}
@@ -105,7 +105,7 @@ const HeroSection = () => {
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className={`group flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-sky-200 hover:border-sky-400 hover:bg-white transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in ${feature.delay}`}
+                className={`group flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-sky-200 hover:border-sky-400 hover:bg-white transition-all duration-300 hover:scale-105 shadow-lg animate-fade-in ${feature.delay}`}
               >
                 <feature.icon className="w-5 h-5 text-sky-600 group-hover:text-sky-700 transition-colors" />
                 <span className="text-gray-700 group-hover:text-gray-900 font-medium">{feature.text}</span>
@@ -133,14 +133,6 @@ const HeroSection = () => {
         
         </div>
         
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm text-sky-600 font-medium">Explore More</span>
-          <ArrowDown className="w-6 h-6 text-sky-500" />
-        </div>
       </div>
     </section>
   );

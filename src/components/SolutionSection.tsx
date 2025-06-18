@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Brain, Zap, Users, Target, Shield } from 'lucide-react';
 import landingImage from '/Landing1.png';
@@ -32,34 +31,34 @@ const SolutionSection = () => {
 
   const expertTypes = [
     { 
-      name: "Health & Wellness AI", 
-      description: "AI-matched doctors & health professionals",
-      icon: "🏥",
-      color: "from-red-400 to-pink-500"
+      name: "Business Intelligence", 
+      description: "AI-powered financial & business consulting",
+      icon: "📈",
+      color: "from-blue-400 to-indigo-500"
     },
     { 
       name: "Career Intelligence", 
       description: "Smart career mentors & life coaches",
       icon: "💼",
-      color: "from-blue-400 to-indigo-500"
+      color: "from-green-400 to-emerald-500"
     },
     { 
       name: "Learning Accelerator", 
       description: "AI-curated tutors & educational advisors",
       icon: "📚",
-      color: "from-green-400 to-emerald-500"
+      color: "from-purple-400 to-pink-500"
     },
     { 
-      name: "Wellness Optimization", 
-      description: "Smart fitness & wellness coaching",
-      icon: "💪",
+      name: "Creative Solutions", 
+      description: "Smart design & creative professionals",
+      icon: "🎨",
       color: "from-orange-400 to-red-500"
     },
     { 
-      name: "Business Intelligence", 
-      description: "AI-powered financial & business consulting",
-      icon: "📈",
-      color: "from-purple-400 to-indigo-500"
+      name: "Technology Experts", 
+      description: "AI-powered tech & development consulting",
+      icon: "💻",
+      color: "from-cyan-400 to-blue-500"
     }
   ];
 
@@ -140,14 +139,14 @@ const SolutionSection = () => {
           </h2>
           
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12">
-            Find top professionals across business, career, beauty, creativity, and healthcare—all in one place. 
+            Find top professionals across business, career, beauty, creativity, and technology—all in one place. 
             <span className="block mt-3 font-medium text-blue-600">
               Book instant sessions or schedule appointments with local experts near you.
             </span>
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mt-10">
-            {['Business', 'Career', 'Beauty', 'Creativity', 'Healthcare'].map((category, index) => (
+            {['Business', 'Career', 'Beauty', 'Creativity', 'Technology'].map((category, index) => (
               <span 
                 key={index}
                 className="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 hover:shadow-sm transition-all duration-200 flex items-center"

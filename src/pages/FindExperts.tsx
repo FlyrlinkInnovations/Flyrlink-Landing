@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,23 +10,23 @@ const FindExperts = () => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const expertCategories = [
-    { name: 'Health & Wellness', count: 250, icon: '🏥' },
-    { name: 'Career & Business', count: 180, icon: '💼' },
-    { name: 'Fitness & Nutrition', count: 150, icon: '💪' },
-    { name: 'Mental Health', count: 120, icon: '🧠' },
+    { name: 'Business & Finance', count: 250, icon: '💼' },
+    { name: 'Career & Coaching', count: 180, icon: '🎯' },
+    { name: 'Creative & Design', count: 150, icon: '🎨' },
     { name: 'Education & Tutoring', count: 200, icon: '📚' },
-    { name: 'Technology', count: 90, icon: '💻' }
+    { name: 'Technology', count: 90, icon: '💻' },
+    { name: 'Legal & Consulting', count: 120, icon: '⚖️' }
   ];
 
   const featuredExperts = [
     {
-      name: 'Dr. Priya Sharma',
-      specialty: 'Nutritionist',
+      name: 'Priya Sharma',
+      specialty: 'Business Consultant',
       rating: 4.8,
       sessions: 500,
       price: '₹800/session',
       location: 'Mumbai',
-      avatar: '👩‍⚕️'
+      avatar: '👩‍💼'
     },
     {
       name: 'Amit Kumar',
