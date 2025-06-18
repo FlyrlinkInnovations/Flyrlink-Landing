@@ -4,7 +4,7 @@ import landingImage from '/Landing1.png';
 
 const SolutionSection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); 
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -13,7 +13,7 @@ const SolutionSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 } 
     );
 
     const section = document.getElementById('solution-section');
@@ -124,119 +124,92 @@ const SolutionSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Main Solution Statement */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-full mb-8">
-            <Zap className="w-5 h-5 text-blue-600 animate-pulse" />
-            <span className="text-blue-700 font-semibold">YOUR GATEWAY TO EXPERTISE</span>
-            <Users className="w-5 h-5 text-purple-500" />
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky-100 to-purple-100 border border-sky-200 rounded-full mb-6">
+            <Brain className="w-5 h-5 text-sky-600 animate-pulse" />
+            <span className="text-sky-700 font-semibold">AI-POWERED SOLUTIONS</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            <span className="block text-navy-900 mb-3">Discover and connect with</span>
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-navy-900 to-sky-700 bg-clip-text text-transparent">
+              Discover and connect with
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">
               Verified Experts
             </span>
           </h2>
-          
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-12">
-            Find top professionals across business, career, beauty, creativity, and technology—all in one place. 
-            <span className="block mt-3 font-medium text-blue-600">
-              Book instant sessions or schedule appointments with local experts near you.
-            </span>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Our intelligent platform connects you with the right professionals instantly, 
+            powered by advanced AI matching algorithms
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            {['Business', 'Career', 'Beauty', 'Creativity', 'Technology'].map((category, index) => (
-              <span 
-                key={index}
-                className="px-5 py-2.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 hover:shadow-sm transition-all duration-200 flex items-center"
-              >
-                <span className="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
-                {category}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* AI Features Showcase */}
-        <div className={`mb-16 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {aiFeatures.map((feature, index) => (
-              <div 
-                key={index}
-                className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer group
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {aiFeatures.map((feature, index) => (
+            <div 
+              key={index}
+              className={`relative p-8 rounded-2xl border-2 transition-all duration-500 cursor-pointer group overflow-hidden
+                ${activeFeature === index 
+                  ? 'border-sky-300 bg-gradient-to-br from-sky-50 to-purple-50 shadow-xl scale-105' 
+                  : 'border-gray-200 bg-white hover:border-sky-200 hover:shadow-lg'
+                }`}
+            >
+              {/* Animated Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br from-sky-400 to-purple-500 opacity-0 transition-opacity duration-500
+                ${activeFeature === index ? 'opacity-5' : 'group-hover:opacity-5'}
+              `} />
+              
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center text-white transition-all duration-500
                   ${activeFeature === index 
-                    ? 'bg-gradient-to-br from-sky-50 to-purple-50 border-sky-300 shadow-xl scale-105' 
-                    : 'bg-white border-gray-200 hover:border-sky-300 hover:shadow-lg'
-                  }`}
-                onClick={() => setActiveFeature(index)}
-              >
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-300
-                  ${activeFeature === index 
-                    ? 'bg-gradient-to-r from-sky-500 to-purple-600 text-white scale-110' 
-                    : 'bg-sky-100 text-sky-600 group-hover:bg-sky-200'
+                    ? 'bg-gradient-to-br from-sky-500 to-purple-600 shadow-lg scale-110' 
+                    : 'bg-gradient-to-br from-gray-400 to-gray-500 group-hover:from-sky-400 group-hover:to-purple-500'
                   }`}>
                   <feature.icon className="w-8 h-8" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-navy-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
-                
-                {activeFeature === index && (
-                  <div className="text-sm text-sky-700 font-medium animate-fade-in">
-                    {feature.details}
-                  </div>
-                )}
-
-                {/* Active Indicator */}
-                {activeFeature === index && (
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* App Showcase */}
-        <div className={`max-w-6xl mx-auto mb-16 px-6 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="p-12 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold text-navy-900 mb-6">
-                  Experience the Future of <span className="text-blue-600">Expert Connections</span>
+                {/* Content */}
+                <h3 className={`text-xl font-bold mb-3 text-center transition-colors duration-300
+                  ${activeFeature === index ? 'text-sky-700' : 'text-navy-900 group-hover:text-sky-600'}
+                `}>
+                  {feature.title}
                 </h3>
-                <p className="text-gray-700 mb-8 text-lg">
-                  Our intuitive platform makes it effortless to find and connect with the perfect expert for your needs, all in one place.
+                <p className="text-gray-600 text-center mb-4 group-hover:text-gray-700">
+                  {feature.description}
                 </p>
-                <div className="flex flex-wrap gap-3">
-                  {['AI-Powered', 'Instant Matching', 'Secure', '24/7 Support'].map((feature, i) => (
-                    <span key={i} className="px-4 py-2 bg-white rounded-full text-sm font-medium text-gray-700 shadow-sm border border-gray-200">
-                      {feature}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-sm text-gray-500 text-center leading-relaxed group-hover:text-gray-600">
+                  {feature.details}
+                </p>
               </div>
-              <div className="relative h-full min-h-[400px] md:min-h-0">
-                <img
-                  src={landingImage}
-                  alt="Flyrlink App Preview"
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-l from-blue-50/50 to-transparent" />
-              </div>
+
+              {/* Active Indicator */}
+              {activeFeature === index && (
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-sky-500 to-purple-600 rounded-full" />
+              )}
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Enhanced Expert Types */}
-        <div className={`max-w-5xl mx-auto mb-16 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-2xl font-bold text-center text-navy-900 mb-8">
-            AI-Powered <span className="text-sky-600">Expert Categories</span>
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Expert Categories */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+              Expert <span className="bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">Categories</span>
+            </h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Connect with verified professionals across diverse fields, all powered by intelligent matching
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {expertTypes.map((type, index) => (
-              <div key={index} className="group relative p-6 bg-white rounded-xl border border-gray-200 hover:border-transparent transition-all duration-300 hover:scale-105 hover:shadow-xl overflow-hidden">
+              <div
+                key={index}
+                className="group relative p-6 rounded-2xl border border-gray-200 hover:border-transparent hover:shadow-xl transition-all duration-500 cursor-pointer text-center overflow-hidden"
+              >
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${type.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 
@@ -272,7 +245,7 @@ const SolutionSection = () => {
         </div>
 
         {/* India Market Focus with AI Enhancement */}
-        <div className={`bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xl transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xl">
           <div className="bg-gradient-to-r from-sky-50 to-purple-50 px-6 py-4 border-b border-gray-200">
             <h3 className="text-2xl font-bold text-navy-900 text-center flex items-center justify-center gap-2">
               <Brain className="w-6 h-6 text-sky-600" />

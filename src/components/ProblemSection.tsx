@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Brain, Zap, Activity, User, Users, TrendingUp } from 'lucide-react';
 
 const ProblemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // Start as visible to prevent white space
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -13,7 +12,7 @@ const ProblemSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 } // Reduced threshold for earlier visibility
     );
 
     const section = document.getElementById('problem-section');
@@ -105,60 +104,57 @@ const ProblemSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-sky-100 border border-purple-200 rounded-full mb-6">
             <Brain className="w-5 h-5 text-purple-600 animate-pulse" />
             <span className="text-purple-700 font-semibold">AI PROBLEM SOLVING</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-navy-900">AI Solves What</span>
+            <span className="bg-gradient-to-r from-navy-900 via-sky-700 to-emerald-600 bg-clip-text text-transparent">
+              Traditional Problems,
+            </span>
             <br />
-            <span className="bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Humans Struggle With
+            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              AI Solutions
             </span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Traditional expert-finding is broken. Our <span className="font-semibold text-sky-600">AI-powered platform</span> eliminates 
-            delays, uncertainty, and generic solutions with intelligent automation.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Experience the future of expert connections with our intelligent platform that eliminates traditional barriers
           </p>
         </div>
 
-        {/* Enhanced Challenges Grid */}
+        {/* Problem Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {challenges.map((challenge, index) => (
-            <div 
+            <div
               key={index}
-              className={`group relative p-8 bg-white rounded-2xl border border-gray-200 hover:border-transparent transition-all duration-500 hover:transform hover:-translate-y-3 shadow-sm hover:shadow-2xl text-center overflow-hidden cursor-pointer
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-              `}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              className="relative group bg-white p-6 rounded-2xl border border-gray-200 hover:border-transparent hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Gradient Background on Hover */}
+              {/* Gradient Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${challenge.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
               
-              {/* Animated Icon */}
-              <div className={`text-4xl mb-4 transition-all duration-300 ${hoveredCard === index ? 'scale-125 animate-bounce' : ''}`}>
-                {challenge.icon}
-              </div>
-              
-              <h3 className="text-xl font-semibold text-navy-900 mb-3 group-hover:text-gray-800">
-                {challenge.title}
-              </h3>
-              
-              <p className="text-gray-600 leading-relaxed mb-4 group-hover:text-gray-700">
-                {challenge.description}
-              </p>
-
-              {/* AI Solution Badge */}
-              <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 
-                ${hoveredCard === index 
-                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white scale-105' 
-                  : 'bg-sky-100 text-sky-700'
-                }`}>
-                {challenge.solution}
+              <div className="relative z-10">
+                {/* Icon */}
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {challenge.icon}
+                </div>
+                
+                {/* Content */}
+                <h3 className="text-lg font-bold text-navy-900 mb-3 group-hover:text-gray-800">
+                  {challenge.title}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4 group-hover:text-gray-700">
+                  {challenge.description}
+                </p>
+                
+                {/* Solution Badge */}
+                <div className={`inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r ${challenge.gradient} text-white text-xs font-medium rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                  <Zap className="w-3 h-3" />
+                  {challenge.solution}
+                </div>
               </div>
 
               {/* Hover Particles Effect */}
@@ -182,7 +178,7 @@ const ProblemSection = () => {
         </div>
 
         {/* How It Works Section */}
-        <div className={`transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div>
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h3 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
               How <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">It Works</span>
