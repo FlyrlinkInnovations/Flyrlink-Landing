@@ -33,114 +33,71 @@ const WaitingListPage = () => {
       <Navbar />
       
       <div className="relative z-10 pt-20">
-        <section className="min-h-screen py-20 px-6 flex items-center">
-          <div className="max-w-7xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              
-              {/* Left side - Enhanced Image */}
-              <div className="relative order-2 lg:order-1">
-                <div className="relative z-10">
-                  {/* Background decorative elements */}
-                  <div className="absolute -inset-4 bg-gradient-to-r from-sky-400/20 via-blue-400/20 to-purple-400/20 rounded-3xl blur-xl animate-pulse"></div>
-                  <div className="absolute -inset-2 bg-gradient-to-r from-sky-300/30 via-blue-300/30 to-purple-300/30 rounded-3xl blur-lg"></div>
-                  
-                  {/* Main image container */}
-                  <div className="relative transform hover:scale-[1.02] transition-all duration-700 hover:rotate-1">
-                    <div className="relative w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 backdrop-blur-sm">
-                      {/* Image with enhanced styling */}
-                      <img 
-                        src="/wait.avif" 
-                        alt="Join our waiting list - People celebrating" 
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                      />
-                      
-                      {/* Multi-layer overlays for depth */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-sky-900/20 via-transparent to-white/10"></div>
-                      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-600/10"></div>
-                      
-                      {/* Animated border effect */}
-                      <div className="absolute inset-0 rounded-3xl border-2 border-gradient-to-r from-sky-400/50 via-blue-400/50 to-purple-400/50 animate-pulse"></div>
-                      
-                      {/* Corner accent elements */}
-                      <div className="absolute top-4 left-4 w-8 h-8 border-l-4 border-t-4 border-white/60 rounded-tl-lg"></div>
-                      <div className="absolute top-4 right-4 w-8 h-8 border-r-4 border-t-4 border-white/60 rounded-tr-lg"></div>
-                      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-4 border-b-4 border-white/60 rounded-bl-lg"></div>
-                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-4 border-b-4 border-white/60 rounded-br-lg"></div>
-                    </div>
-                    
-                    {/* Floating decorative elements with better positioning */}
-                    <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 transform rotate-45 animate-spin-slow shadow-2xl opacity-90 rounded-lg"></div>
-                    <div className="absolute -top-4 -right-8 w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full animate-bounce shadow-2xl opacity-90"></div>
-                    <div className="absolute -bottom-6 -left-8 w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 transform rotate-45 animate-pulse shadow-2xl opacity-90 rounded-lg"></div>
-                    <div className="absolute -bottom-4 -right-6 w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full animate-bounce animation-delay-1000 shadow-2xl opacity-90"></div>
-                    
-                    {/* Enhanced sparkle effects */}
-                    <div className="absolute top-16 left-16 animate-ping">
-                      <div className="w-6 h-6 bg-yellow-400 transform rotate-45 opacity-75 shadow-lg"></div>
-                    </div>
-                    <div className="absolute top-24 right-20 animate-ping animation-delay-1000">
-                      <div className="w-4 h-4 bg-pink-400 rounded-full opacity-75 shadow-lg"></div>
-                    </div>
-                    <div className="absolute bottom-20 left-20 animate-ping animation-delay-2000">
-                      <div className="w-8 h-8 bg-green-400 transform rotate-45 opacity-75 shadow-lg"></div>
-                    </div>
-                    <div className="absolute bottom-32 right-16 animate-ping animation-delay-1500">
-                      <div className="w-5 h-5 bg-blue-400 rounded-full opacity-75 shadow-lg"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Additional glow effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-sky-400/10 via-blue-400/10 to-purple-400/10 blur-2xl animate-pulse -z-10"></div>
-                </div>
+        <section className="min-h-screen py-20 px-6 flex items-center justify-center">
+          <div className="max-w-2xl mx-auto w-full">
+            
+            {/* Centered Form Section */}
+            <div className="text-center mb-12 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 border border-sky-200 rounded-full mb-8">
+                <span className="text-2xl animate-bounce">🚀</span>
+                <span className="text-sky-700 font-semibold">JOIN THE REVOLUTION</span>
               </div>
               
-              {/* Right side - Sticky Form */}
-              <div className="space-y-8 order-1 lg:order-2 lg:sticky lg:top-24">
-                <div className="text-center lg:text-left">
-                  <div className="inline-block px-4 py-2 bg-gradient-to-r from-sky-500/20 to-blue-500/20 rounded-full border border-sky-500/30 mb-6 animate-fade-in">
-                    <span className="text-sky-700 text-sm font-medium">🚀 Early Access</span>
-                  </div>
-                  
-                  <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-sky-800 to-blue-800 bg-clip-text text-transparent mb-6 animate-fade-in-up">
-                    Join Our Early Access List
-                  </h1>
-                  
-                  <div className="space-y-4 text-lg text-gray-600 animate-fade-in-up animation-delay-300">
-                    <p className="flex items-start gap-3">
-                      <span className="text-yellow-500 text-2xl animate-pulse">✨</span>
-                      <span><strong className="text-gray-900">Be the First to Experience Flyrlink!</strong></span>
-                    </p>
-                    <p className="text-gray-600">
-                      Register now to get early access, launch updates, and exclusive insider opportunities.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Enhanced Form Container */}
-                <div className="bg-white/80 backdrop-blur-xl rounded-3xl border border-sky-200 shadow-2xl p-8 transform hover:scale-105 transition-all duration-500 animate-fade-in-up animation-delay-600">
-                  <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-blue-500/5 rounded-3xl"></div>
-                  <div className="relative z-10">
-                    <EnhancedWaitingListForm />
-                  </div>
-                </div>
-                
-                {/* Enhanced Trust indicators */}
-                <div className="grid grid-cols-3 gap-4 text-center animate-fade-in-up animation-delay-900">
-                  <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
-                    <div className="text-3xl mb-3 animate-bounce">🔒</div>
-                    <div className="text-sm font-medium text-gray-700">100% Secure</div>
-                  </div>
-                  <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
-                    <div className="text-3xl mb-3 animate-bounce animation-delay-300">⚡</div>
-                    <div className="text-sm font-medium text-gray-700">Lightning Fast</div>
-                  </div>
-                  <div className="p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
-                    <div className="text-3xl mb-3 animate-bounce animation-delay-600">🎯</div>
-                    <div className="text-sm font-medium text-gray-700">Personalized</div>
-                  </div>
-                </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-navy-900 to-sky-700 bg-clip-text text-transparent">
+                  Be Among the First
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">
+                  to Experience Flyrlink
+                </span>
+              </h1>
+              
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+                Join thousands of early adopters who are revolutionizing how they connect with experts. 
+                Get exclusive early access and special launch benefits.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-4 mb-12">
+                {['🎯 Personalized Matching', '⚡ Instant Access', '🔒 100% Secure', '🎁 Launch Bonuses'].map((feature, index) => (
+                  <span 
+                    key={index}
+                    className="px-6 py-3 bg-white/80 backdrop-blur-sm border border-sky-200 rounded-full text-sm font-medium text-gray-700 hover:bg-white hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {feature}
+                  </span>
+                ))}
               </div>
             </div>
+            
+            {/* Enhanced Form Container */}
+            <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-sky-200 shadow-2xl p-8 mb-12 transform hover:scale-[1.02] transition-all duration-500 animate-fade-in-up animation-delay-600">
+              <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-blue-500/5 rounded-3xl"></div>
+              <div className="relative z-10">
+                <EnhancedWaitingListForm />
+              </div>
+            </div>
+            
+            {/* Enhanced Trust indicators */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center animate-fade-in-up animation-delay-900">
+              <div className="p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-3 animate-bounce">🔒</div>
+                <div className="font-semibold text-gray-800 mb-2">100% Secure</div>
+                <div className="text-sm text-gray-600">Your data is protected with enterprise-grade security</div>
+              </div>
+              <div className="p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-3 animate-bounce animation-delay-300">⚡</div>
+                <div className="font-semibold text-gray-800 mb-2">Lightning Fast</div>
+                <div className="text-sm text-gray-600">Get instant access when we launch</div>
+              </div>
+              <div className="p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-sky-200 hover:bg-white/90 transition-all duration-300 transform hover:scale-105">
+                <div className="text-4xl mb-3 animate-bounce animation-delay-600">🎯</div>
+                <div className="font-semibold text-gray-800 mb-2">Personalized</div>
+                <div className="text-sm text-gray-600">Tailored experience just for you</div>
+              </div>
+            </div>
+            
           </div>
         </section>
       </div>
