@@ -1,11 +1,8 @@
-// Production API endpoint for waiting list submissions
-export const PRODUCTION_API_URL = 'https://www.flyrlink.com/api/foundershubai/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/';
+// Direct API endpoint for waiting list submissions (using HTTPS for security)
+export const API_URL = 'https://api.foundershubai.com/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/';
 
-// Original API endpoint (not directly accessible due to CORS)
-export const ORIGINAL_API_URL = 'http://api.foundershubai.com/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/';
-
-// API URL to use in the application
-export const PROXIED_API_URL = 'https://www.flyrlink.com/api/foundershubai/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/';
+// CORS-friendly API URL to use in the application
+export const PROXIED_API_URL = 'https://api.foundershubai.com/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/';
 
 // Legacy Google Apps Script URL (deprecated)
 export const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
