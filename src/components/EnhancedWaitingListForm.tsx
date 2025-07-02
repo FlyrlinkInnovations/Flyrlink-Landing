@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { GOOGLE_SCRIPT_URL } from '../config';
+import { useNavigate } from 'react-router-dom';
+import { PROXIED_API_URL } from '../config';
 
 export const EnhancedWaitingListForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,9 @@ export const EnhancedWaitingListForm = () => {
     role: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [countdown, setCountdown] = useState(15);
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,33 +42,53 @@ export const EnhancedWaitingListForm = () => {
       // Show loading state
       toast.info('Submitting your information...');
       
-      // Send data to Google Apps Script
-      if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
-        throw new Error('Google Script URL not configured');
-      }
+      // Prepare payload according to the exact format required
+      const payload = {
+        values: {
+          "Full Name": formData.name,
+          "Email": formData.email,
+          "Role or Interest": formData.role
+        }
+      };
       
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      console.log('Sending payload:', JSON.stringify(payload));
+      
+      const response = await fetch(PROXIED_API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          role: formData.role
-        }),
+        body: JSON.stringify(payload),
       });
       
-      // Parse the response
-      const data = await response.json();
-      
-      if (data.result === 'success') {
-        toast.success('🎉 Thanks for joining our waiting list!');
-        // Clear form on success
-        setFormData({ name: '', email: '', role: '' });
-      } else {
-        throw new Error(data.message || 'Failed to submit');
+      // Detailed error handling
+      if (!response.ok) {
+        let errorMessage = `Error: ${response.status} ${response.statusText}`;
+        try {
+          const errorData = await response.json();
+          console.error('API Error Response:', errorData);
+          errorMessage = errorData.message || errorMessage;
+        } catch (parseError) {
+          console.error('Error parsing API response:', parseError);
+          const textResponse = await response.text().catch(() => 'Unable to get response text');
+          console.error('Raw response:', textResponse);
+        }
+        throw new Error(errorMessage);
       }
+      
+      // Log successful response
+      try {
+        const responseData = await response.json();
+        console.log('API Success Response:', responseData);
+      } catch (parseError) {
+        console.log('Success response received but could not parse JSON');
+      }
+      
+      // Clear form on success
+      setFormData({ name: '', email: '', role: '' });
+      // Set submitted state to true to show thank you message
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Submission error:', error);
       toast.error('❌ Something went wrong. Please try again later.');
@@ -72,6 +96,42 @@ export const EnhancedWaitingListForm = () => {
       setIsLoading(false);
     }
   };
+
+  // Effect to handle countdown and redirect
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            navigate('/');
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [isSubmitted, navigate]);
+
+  // Show thank you message if submitted
+  if (isSubmitted) {
+    return (
+      <div className="text-center py-10 space-y-6">
+        <div className="text-5xl mb-4">🎉</div>
+        <h2 className="text-2xl font-bold text-blue-600">Thank you for joining our waiting list!</h2>
+        <p className="text-gray-600 text-lg">We're excited to have you on board. We'll be in touch soon!</p>
+        <p className="text-gray-500">Redirecting to home page in <span className="font-bold">{countdown}</span> seconds...</p>
+        <button 
+          onClick={() => navigate('/')} 
+          className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+        >
+          Go to Home Page Now
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">

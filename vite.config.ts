@@ -8,6 +8,14 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      '/api/foundershubai': {
+        target: 'https://api.foundershubai.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/foundershubai/, ''),
+        secure: false
+      }
+    },
   },
   plugins: [
     react(),
