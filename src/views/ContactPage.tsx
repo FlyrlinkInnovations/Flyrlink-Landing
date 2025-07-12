@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -72,6 +73,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Flyrlink. Contact our support team for questions about expert consultations, platform features, or partnership opportunities. We're here to help."
+        keywords="contact flyrlink, customer support, expert network support, business inquiries, contact information, help center, support team, get in touch"
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}

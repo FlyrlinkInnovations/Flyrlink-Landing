@@ -153,7 +153,9 @@ const FeaturesSection = () => {
                   src="/1.png"
                   alt="Flyrlink Platform Preview"
                   className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105"
-                  loading="eager"
+                  loading="lazy"
+                  width="1200"
+                  height="800"
                   style={{
                     imageRendering: 'crisp-edges',
                     transform: 'translateZ(0)',

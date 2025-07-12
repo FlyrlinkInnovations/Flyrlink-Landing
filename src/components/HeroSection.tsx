@@ -22,7 +22,14 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden">
+    <section 
+      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden"
+      aria-label="Hero section"
+      data-section-type="hero"
+      data-ai-content="primary"
+      itemScope 
+      itemType="https://schema.org/WebPage"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {/* Floating AI Orbs */}
@@ -65,13 +72,21 @@ const HeroSection = () => {
 
         {/* Main Headline with Gradient Animation */}
         <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+          <h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+            itemProp="headline"
+            data-ai-headline="true"
+          >
             <span className="text-navy-900 animate-fade-in">Find the Right</span>
             <span className="block bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x bg-300% delay-300">
               Expert, Instantly
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 animate-fade-in delay-500">
+          <p 
+            className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 animate-fade-in delay-500"
+            itemProp="description"
+            data-ai-description="true"
+          >
             Connect with verified professionals using our <span className="font-semibold text-sky-600">AI-powered matching</span> technology. 
             Get trusted, personalized help without the delays or uncertainty.
           </p>

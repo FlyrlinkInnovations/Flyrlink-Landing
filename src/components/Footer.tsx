@@ -1,8 +1,31 @@
 import React from 'react';
+import { AIStructuredData } from './AIOptimizedContent';
 
 const Footer = () => {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Flyrlink',
+    description: 'AI-powered expert network connecting professionals with verified consultants for real-time knowledge sharing and business solutions.',
+    url: 'https://flyrlink.com',
+    logo: 'https://flyrlink.com/logo.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      availableLanguage: ['English']
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/flyrlink-innovations/',
+      'https://twitter.com/flyrlink'
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'US'
+    }
+  };
+
   return (
-    <footer className="bg-navy-900 border-t border-gray-200 py-12">
+    <footer className="bg-navy-900 border-t border-gray-200 py-12" role="contentinfo" aria-label="Site footer">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
@@ -54,6 +77,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <AIStructuredData data={organizationSchema} />
     </footer>
   );
 };

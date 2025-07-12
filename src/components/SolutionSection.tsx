@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Brain, Zap, Users, Target, Shield } from 'lucide-react';
-import landingImage from '/Landing1.png';
 
 const SolutionSection = () => {
   const [activeFeature, setActiveFeature] = useState(0);

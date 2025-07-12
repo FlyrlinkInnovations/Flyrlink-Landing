@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, User, Eye, Heart } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { SEO } from '@/components/SEO';
 import Layout from '../../components/Layout';
 
 // Blog post interface based on API response
@@ -120,6 +121,11 @@ const BlogPage = () => {
 
   return (
     <Layout>
+      <SEO 
+        title="Expert Insights Blog"
+        description="Discover industry insights, expert advice, and professional tips from verified consultants and thought leaders. Read the latest articles on business, technology, career growth, and more."
+        keywords="expert blog, industry insights, professional advice, business articles, technology insights, career tips, expert knowledge, consultant blog, thought leadership"
+      />
       <div className="min-h-screen bg-gradient-to-br from-white via-sky-50 to-blue-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Blog Header */}
@@ -148,6 +154,9 @@ const BlogPage = () => {
                       src={blogPosts[0].banner_image} 
                       alt={blogPosts[0].title}
                       className="w-full h-64 md:h-full object-cover"
+                      loading="eager"
+                      width="800"
+                      height="400"
                     />
                   </div>
                   <div className="md:w-1/2 p-8">
@@ -207,6 +216,9 @@ const BlogPage = () => {
                     src={post.banner_image} 
                     alt={post.title}
                     className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy"
+                    width="400"
+                    height="200"
                   />
                   <div className="absolute top-4 left-4">
                     <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700">

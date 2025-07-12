@@ -1,7 +1,9 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Layout from '@/components/Layout';
+import { SEO } from '@/components/SEO';
 
 // Define the blog post type
 interface BlogPostType {
@@ -95,8 +97,45 @@ const BlogPost: React.FC = () => {
     );
   }
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    author: {
+      '@type': 'Person',
+      name: post.author.name,
+      jobTitle: post.author.role
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Flyrlink',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://flyrlink.com/logo.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://flyrlink.com/blog/${post.id}`
+    }
+  };
+
   return (
-    <Layout>
+    <>
+      <SEO 
+        title={post.title}
+        description={post.excerpt}
+        type="article"
+        url={`https://flyrlink.com/blog/${post.id}`}
+        publishedTime={post.date}
+        author={post.author.name}
+        section={post.category}
+        jsonLd={articleJsonLd}
+      />
+      <Layout>
       <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <Button variant="ghost" asChild className="mb-8 -ml-4">
@@ -149,6 +188,9 @@ const BlogPost: React.FC = () => {
                   src={post.author.avatar} 
                   alt={post.author.name}
                   className="w-16 h-16 rounded-full mr-4"
+                  loading="lazy"
+                  width="64"
+                  height="64"
                 />
                 <div>
                   <h3 className="font-semibold text-lg">{post.author.name}</h3>
@@ -189,7 +231,8 @@ const BlogPost: React.FC = () => {
         </div>
         </div>
       </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 

@@ -9,22 +9,26 @@ import StatsSection from '@/components/StatsSection';
 import DownloadAppsSection from '@/components/DownloadAppsSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
-      <Navbar />
-      <div className="pt-20">
-        <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
-        <FeaturesSection />
-        <StatsSection />
-        <DownloadAppsSection />
-        <CTASection />
-        <Footer />
+    <>
+      <SEO />
+      <div className="min-h-screen bg-white text-gray-900 overflow-x-hidden">
+        <Navbar />
+        <div className="pt-20">
+          <HeroSection />
+          <ProblemSection />
+          <SolutionSection />
+          <FeaturesSection />
+          <StatsSection />
+          <DownloadAppsSection />
+          <CTASection />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

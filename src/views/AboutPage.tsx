@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { SEO } from '../components/SEO';
 import { Card, CardContent } from '../components/ui/card';
 
 const About = () => {
@@ -50,6 +51,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO 
+        title="About Flyrlink"
+        description="Learn about Flyrlink's mission to make expert knowledge accessible to everyone. We bridge the gap between professionals and users through seamless connections and trusted expertise."
+        keywords="about flyrlink, expert network platform, professional networking, knowledge marketplace, company mission, expert consultations, business networking, trusted professionals"
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}

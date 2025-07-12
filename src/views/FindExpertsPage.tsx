@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -50,6 +51,11 @@ const FindExpertsPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO 
+        title="Find Expert Consultants"
+        description="Connect with verified professionals and expert consultants across business, technology, creative, education, and more. Find the perfect expert match for your needs on Flyrlink."
+        keywords="find experts, expert consultants, professional services, business consultants, career coaching, technology experts, creative professionals, education tutors, expert network, consultant finder"
+      />
       <Navbar />
       <div className="pt-20">
         {/* Hero Section */}

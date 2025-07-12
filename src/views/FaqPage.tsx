@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { ChevronDown, ChevronUp, HelpCircle, User, Shield, Briefcase, Star, ClipboardList, CreditCard, UserCircle } from 'lucide-react';
@@ -393,6 +394,11 @@ const FaqPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO 
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about Flyrlink. Learn about expert consultations, platform features, pricing, security, and how to connect with verified professionals."
+        keywords="flyrlink faq, frequently asked questions, help center, expert platform questions, user guide, platform support, common questions, how to use flyrlink"
+      />
       <Navbar />
       
       <main className="flex-1 bg-gray-50">

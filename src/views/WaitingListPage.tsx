@@ -1,11 +1,17 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { SEO } from '@/components/SEO';
 import { EnhancedWaitingListForm } from '@/components/EnhancedWaitingListForm';
 
 const WaitingListPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-sky-50 to-blue-50 relative overflow-hidden">
+      <SEO 
+        title="Join Waiting List"
+        description="Be among the first to experience Flyrlink. Join our waiting list for early access to connect with verified experts and get exclusive launch benefits."
+        keywords="join waiting list, early access, flyrlink launch, exclusive benefits, expert platform waitlist, pre-launch signup, early bird access, beta access"
+      />
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>

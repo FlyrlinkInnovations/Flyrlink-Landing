@@ -181,6 +181,9 @@ const About = () => {
                             src="/Mission.png"
                             alt="Our Mission - Connecting Experts with Users"
                             className="w-full h-full object-cover rounded-2xl relative z-10 border-4 border-white shadow-lg"
+                            loading="lazy"
+                            width="600"
+                            height="400"
                             onError={(e) => {
                               console.error('Failed to load image:', e);
                               const target = e.target as HTMLImageElement;
