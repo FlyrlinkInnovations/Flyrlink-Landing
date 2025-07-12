@@ -1,20 +1,22 @@
 import React from 'react';
 
+import { Brain, Zap, CheckCircle } from 'lucide-react';
+
 const features = [
   {
     title: 'AI-Powered Matching',
     description: 'Our advanced algorithms connect you with the perfect experts based on your specific needs and preferences.',
-    icon: '🤖'
+    icon: Brain
   },
   {
     title: 'Instant Connections',
     description: 'Get matched and start your session in minutes, not days. No more waiting for callbacks.',
-    icon: '⚡'
+    icon: Zap
   },
   {
     title: 'Verified Experts',
     description: 'Every professional on our platform is thoroughly vetted to ensure quality and expertise.',
-    icon: '✅'
+    icon: CheckCircle
   }
 ];
 
@@ -24,13 +26,13 @@ const FeaturesSection = () => {
       quote: "Found the perfect business mentor for my startup within minutes. The personalized advice has been game-changing!",
       author: "Priya S.",
       role: "Entrepreneur",
-      avatar: "🌟"
+      initials: "PS"
     },
     {
       quote: "As a college student, having instant access to career mentors has helped me make better decisions about my future.",
       author: "Rahul K.",
       role: "Student", 
-      avatar: "💼"
+      initials: "RK"
     }
   ];
 
@@ -58,7 +60,7 @@ const FeaturesSection = () => {
               key={index}
               className="bg-white p-8 rounded-2xl border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="text-4xl mb-4 text-center">{testimonial.avatar}</div>
+              <div className="w-16 h-16 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">{testimonial.initials}</div>
               <blockquote className="text-lg text-gray-700 mb-6 italic leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
@@ -77,17 +79,34 @@ const FeaturesSection = () => {
           </h3>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="p-6">
-              <div className="text-3xl mb-3">👥</div>
+              <div className="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-600">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
               <div className="font-semibold text-navy-900 mb-2">Find Peers</div>
               <div className="text-gray-600">Connect with like-minded individuals</div>
             </div>
             <div className="p-6">
-              <div className="text-3xl mb-3">📝</div>
+              <div className="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-600">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </div>
               <div className="font-semibold text-navy-900 mb-2">Share Content</div>
               <div className="text-gray-600">Post insights and earn recognition</div>
             </div>
             <div className="p-6">
-              <div className="text-3xl mb-3">💡</div>
+              <div className="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-600">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
               <div className="font-semibold text-navy-900 mb-2">Get Inspired</div>
               <div className="text-gray-600">Learn from people just like you</div>
             </div>
@@ -115,8 +134,8 @@ const FeaturesSection = () => {
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm border border-gray-100">
-                      {feature.icon}
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm border border-gray-100">
+                      {React.createElement(feature.icon, { size: 24, className: "text-blue-600" })}
                     </div>
                     <div>
                       <h4 className="font-semibold text-navy-900">{feature.title}</h4>

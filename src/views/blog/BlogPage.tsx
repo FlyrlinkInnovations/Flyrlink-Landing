@@ -41,7 +41,7 @@ const BlogPage = () => {
     const fetchBlogPosts = async () => {
       try {
         const response = await fetch(
-          'https://api.foundershubai.com/api/blog/blogs/user_blogs/?page=1&page_size=100&user_uid=7e2e8b8dbcd98eac'
+          'https://api.foundershub.ai/api/blog/blogs/user_blogs/?page=1&page_size=100&user_uid=7e2e8b8dbcd98eac'
         );
         
         if (!response.ok) {
@@ -183,7 +183,7 @@ const BlogPage = () => {
                       </div>
                       <Button variant="default" className="bg-blue-600 hover:bg-blue-700" asChild>
                         <a 
-                          href={`https://app.foundershubai.com/user/blogs/${blogPosts[0].uid}`}
+                          href={`https://app.foundershub.ai/user/blogs/${blogPosts[0].uid}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2"
@@ -244,7 +244,7 @@ const BlogPage = () => {
                   </div>
                   <Button variant="ghost" size="sm" asChild>
                     <a 
-                      href={`https://app.foundershubai.com/user/blogs/${post.uid}`}
+                      href={`https://app.foundershub.ai/user/blogs/${post.uid}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 text-blue-600 hover:text-blue-700"

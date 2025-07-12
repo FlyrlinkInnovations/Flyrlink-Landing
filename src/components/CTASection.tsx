@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Shield, Zap, Target } from 'lucide-react';
 
 const CTASection = () => {
   return (
@@ -30,15 +31,24 @@ const CTASection = () => {
         <div className="border-t border-gray-200 pt-12">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-2xl font-bold text-sky-600 mb-2">🔒 Secure</div>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Shield className="w-5 h-5 text-sky-600" />
+                <span className="text-2xl font-bold text-sky-600">Secure</span>
+              </div>
               <div className="text-gray-600">Verified experts & safe platform</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-sky-600 mb-2">⚡ Instant</div>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-sky-600" />
+                <span className="text-2xl font-bold text-sky-600">Instant</span>
+              </div>
               <div className="text-gray-600">Connect with experts immediately</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-sky-600 mb-2">🎯 Personal</div>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Target className="w-5 h-5 text-sky-600" />
+                <span className="text-2xl font-bold text-sky-600">Personal</span>
+              </div>
               <div className="text-gray-600">Tailored solutions for your goals</div>
             </div>
           </div>
@@ -46,8 +56,15 @@ const CTASection = () => {
 
         {/* Movement Message */}
         <div className="mt-12 p-6 bg-sky-50 rounded-xl border border-sky-200">
-          <p className="text-sky-700 font-medium">
-            💥 Join the movement - Your direct line to knowledge, support, and transformation
+          <p className="text-sky-700 font-medium flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-700">
+              <path d="M12 2v8"></path>
+              <path d="m16 6-4 4-4-4"></path>
+              <path d="M8 16H6a2 2 0 0 0-2 2v2"></path>
+              <path d="M16 16h2a2 2 0 0 1 2 2v2"></path>
+              <path d="M12 10v10"></path>
+            </svg>
+            Join the movement - Your direct line to knowledge, support, and transformation
           </p>
         </div>
       </div>

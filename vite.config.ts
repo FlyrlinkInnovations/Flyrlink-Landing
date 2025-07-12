@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     proxy: {
       '/api/foundershubai': {
-        target: 'https://api.foundershubai.com',
+        target: 'https://api.foundershub.ai',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/foundershubai/, ''),
         secure: false

@@ -76,7 +76,7 @@ const HeroSection = () => {
             Get trusted, personalized help without the delays or uncertainty.
           </p>
           <p className="text-lg text-sky-600 font-semibold mb-8 animate-fade-in delay-700">
-            🚀 Perfect for students, working parents, and creators seeking growth.
+            Ideal for students, working parents, and creators seeking professional growth.
           </p>
         </div>
 
@@ -123,7 +123,9 @@ const HeroSection = () => {
             ].map((feature, index) => (
               <div key={index} className="group flex items-center gap-3 p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-sky-200 hover:border-sky-400 hover:bg-white/80 transition-all duration-300 hover:scale-102 hover:shadow-lg">
                 <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform">
-                  ✓
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
                 </div>
                 <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{feature}</span>
               </div>
