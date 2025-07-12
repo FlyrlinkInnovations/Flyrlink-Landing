@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Brain, Zap, CheckCircle } from 'lucide-react';
 
@@ -187,4 +187,4 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection;
+export default memo(FeaturesSection);

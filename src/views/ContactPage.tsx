@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { SEO } from '../components/SEO';
@@ -25,7 +25,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     // Handle form submission here
   };
 
@@ -254,4 +253,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default memo(Contact);

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Clock, User, Eye, Heart } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { SEO } from '@/components/SEO';
 import Layout from '../../components/Layout';
+import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { formatDate, extractExcerpt, calculateReadTime } from '@/utils/blog';
+import { API_CONFIG } from '@/config/constants';
 
 // Blog post interface based on API response
 interface BlogPost {
@@ -42,7 +45,7 @@ const BlogPage = () => {
     const fetchBlogPosts = async () => {
       try {
         const response = await fetch(
-          'https://api.foundershub.ai/api/blog/blogs/user_blogs/?page=1&page_size=100&user_uid=7e2e8b8dbcd98eac'
+          `${API_CONFIG.BLOG_API_URL}?page=1&page_size=100&user_uid=${API_CONFIG.BLOG_USER_ID}`
         );
         
         if (!response.ok) {
@@ -61,40 +64,10 @@ const BlogPage = () => {
     fetchBlogPosts();
   }, []);
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  const extractExcerpt = (description: string, maxLength: number = 150) => {
-    // Remove HTML tags and get plain text
-    const plainText = description.replace(/<[^>]*>/g, '');
-    return plainText.length > maxLength 
-      ? plainText.substring(0, maxLength) + '...'
-      : plainText;
-  };
-
-  const calculateReadTime = (description: string) => {
-    const wordsPerMinute = 200;
-    const wordCount = description.split(' ').length;
-    const readTime = Math.ceil(wordCount / wordsPerMinute);
-    return `${readTime} min read`;
-  };
-
   if (loading) {
     return (
       <Layout>
-        <div className="min-h-screen bg-gradient-to-br from-white via-sky-50 to-blue-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading blog posts...</p>
-            </div>
-          </div>
-        </div>
+        <LoadingSpinner fullScreen text="Loading blog posts..." />
       </Layout>
     );
   }
@@ -297,4 +270,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default memo(BlogPage);

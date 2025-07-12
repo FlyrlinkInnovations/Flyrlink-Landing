@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { AIStructuredData } from './AIOptimizedContent';
 
 const Footer = () => {
@@ -82,4 +82,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

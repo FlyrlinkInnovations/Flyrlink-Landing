@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { useToast } from '@/components/ui/use-toast';
 import { useNavigate } from 'react-router-dom';
 import { PROXIED_API_URL } from '../config';
 
 export const EnhancedWaitingListForm = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,13 +27,21 @@ export const EnhancedWaitingListForm = () => {
     e.preventDefault();
     
     if (!formData.email || !formData.name || !formData.role) {
-      toast.error('Please fill in all required fields');
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive",
+      });
       return;
     }
 
     // Simple email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast.error('Please enter a valid email address');
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address",
+        variant: "destructive",
+      });
       return;
     }
 
@@ -40,7 +49,10 @@ export const EnhancedWaitingListForm = () => {
     
     try {
       // Show loading state
-      toast.info('Submitting your information...');
+      toast({
+        title: "Submitting",
+        description: "Submitting your information...",
+      });
       
       // Prepare payload according to the exact format required
       const payload = {
@@ -51,7 +63,6 @@ export const EnhancedWaitingListForm = () => {
         }
       };
       
-      console.log('Sending payload:', JSON.stringify(payload));
       
       const response = await fetch(PROXIED_API_URL, {
         method: 'POST',
@@ -68,26 +79,21 @@ export const EnhancedWaitingListForm = () => {
       let responseText = '';
       try {
         responseText = await response.text();
-        console.log('API Response Text:', responseText);
         
         // Try to parse as JSON if possible
         if (responseText && responseText.trim()) {
           try {
             const jsonData = JSON.parse(responseText);
-            console.log('API Response JSON:', jsonData);
           } catch (jsonError) {
-            console.log('Response is not valid JSON, but that might be expected');
           }
         }
         
         // Check if response status indicates an error
         if (!response.ok) {
-          console.warn(`API returned status code ${response.status}: ${response.statusText}`);
           // Continue anyway since we want to handle the form submission as successful
           // even if the API returns an error status
         }
       } catch (error) {
-        console.error('Error reading API response:', error);
         // Continue anyway - we'll treat this as a successful submission
       }
       
@@ -96,8 +102,11 @@ export const EnhancedWaitingListForm = () => {
       // Set submitted state to true to show thank you message
       setIsSubmitted(true);
     } catch (error) {
-      console.error('Submission error:', error);
-      toast.error('❌ Something went wrong. Please try again later.');
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
