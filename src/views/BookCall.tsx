@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Globe, Video, Users, Sparkles, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import SEO from '../components/SEO';
+import { SEO } from '../components/SEO';
 import CalendarView from '../components/Calendar/CalendarView';
 import TimeSlotPicker from '../components/Calendar/TimeSlotPicker';
 import BookingForm from '../components/Calendar/BookingForm';
