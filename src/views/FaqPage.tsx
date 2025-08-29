@@ -392,12 +392,29 @@ const FaqPage = () => {
     }))
     .filter(category => category.items.length > 0);
 
+  // Generate FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqCategories.flatMap(category => 
+      category.items.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    )
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <SEO 
         title="Frequently Asked Questions"
         description="Find answers to common questions about Flyrlink. Learn about expert consultations, platform features, pricing, security, and how to connect with verified professionals."
         keywords="flyrlink faq, frequently asked questions, help center, expert platform questions, user guide, platform support, common questions, how to use flyrlink"
+        jsonLd={faqSchema}
       />
       <Navbar />
       

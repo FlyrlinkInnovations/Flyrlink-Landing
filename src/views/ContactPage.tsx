@@ -70,12 +70,49 @@ const Contact = () => {
     }
   ];
 
+  // Local Business Schema
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Flyrlink",
+    "description": "AI-powered expert network platform connecting professionals with verified industry experts",
+    "url": "https://flyrlink.com",
+    "logo": "https://flyrlink.com/Flyrlink logo blue-blank .png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 407, Jain Sadguru image capital park",
+      "addressLocality": "Hyderabad",
+      "addressRegion": "Telangana",
+      "postalCode": "500081",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "17.4435",
+      "longitude": "78.3772"
+    },
+    "telephone": "+918125150893",
+    "email": "Contact@flyrlink.com",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$",
+    "sameAs": [
+      "https://twitter.com/flyrlink",
+      "https://linkedin.com/company/flyrlink"
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <SEO 
         title="Contact Us"
         description="Get in touch with Flyrlink. Contact our support team for questions about expert consultations, platform features, or partnership opportunities. We're here to help."
         keywords="contact flyrlink, customer support, expert network support, business inquiries, contact information, help center, support team, get in touch"
+        jsonLd={localBusinessSchema}
       />
       <Navbar />
       <div className="pt-20">

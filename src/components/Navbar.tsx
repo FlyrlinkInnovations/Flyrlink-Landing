@@ -16,6 +16,7 @@ const Navbar = () => {
     if (path === '/contact') return 'contact';
     if (path === '/faq') return 'faq';
     if (path === '/blog' || path.startsWith('/blog/')) return 'blog';
+    if (path === '/book-call') return 'book-call';
     
     return 'home';
   };
@@ -87,6 +88,13 @@ const Navbar = () => {
                 className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
               >
                 <Link to="/faq">FAQ's</Link>
+              </TabsTrigger>
+              <TabsTrigger 
+                value="book-call" 
+                asChild
+                className="px-4 py-2 text-sm font-medium bg-sky-500 text-white hover:bg-sky-600 data-[state=active]:bg-sky-600 data-[state=active]:text-white ml-2"
+              >
+                <Link to="/book-call">Book a Call</Link>
               </TabsTrigger>
             </TabsList>
           </Tabs>
@@ -164,6 +172,13 @@ const Navbar = () => {
                 onClick={closeMobileMenu}
               >
                 FAQ's
+              </Link>
+              <Link
+                to="/book-call"
+                className="block mx-4 mt-2 px-4 py-2 text-base font-medium text-center rounded-md bg-sky-500 text-white hover:bg-sky-600"
+                onClick={closeMobileMenu}
+              >
+                Book a Call
               </Link>
             </div>
           </div>
