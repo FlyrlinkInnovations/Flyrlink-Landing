@@ -44,8 +44,7 @@ const WaitingListPage = () => {
             
             {/* Centered Form Section */}
             <div className="text-center mb-12 animate-fade-in">
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 border border-sky-200 rounded-full mb-8">
-                <span className="text-2xl animate-bounce">🚀</span>
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-sky-100 border border-sky-200 rounded-full mb-8">
                 <span className="text-sky-700 font-semibold">JOIN THE REVOLUTION</span>
               </div>
               

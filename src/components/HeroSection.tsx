@@ -1,155 +1,283 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Sparkles, Brain, Zap } from 'lucide-react';
+import { Sparkles, Brain, Zap, ArrowRight, Check, Star, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [currentExpertIndex, setCurrentExpertIndex] = useState(0);
+
+  const experts = [
+    {
+      initials: 'RK',
+      name: 'Rajesh Kumar',
+      title: 'Business Strategy',
+      rating: 5,
+      reviews: 350,
+      sessions: 800,
+      gradient: 'from-sky-400 to-sky-600'
+    },
+    {
+      initials: 'PS',
+      name: 'Priya Sharma',
+      title: 'Tech Expert',
+      rating: 5,
+      reviews: 420,
+      sessions: 950,
+      gradient: 'from-purple-400 to-purple-600'
+    },
+    {
+      initials: 'AK',
+      name: 'Amit Kapoor',
+      title: 'Finance Advisor',
+      rating: 5,
+      reviews: 280,
+      sessions: 650,
+      gradient: 'from-green-400 to-green-600'
+    },
+    {
+      initials: 'NK',
+      name: 'Neha Kapoor',
+      title: 'Marketing Guru',
+      rating: 5,
+      reviews: 310,
+      sessions: 720,
+      gradient: 'from-pink-400 to-pink-600'
+    },
+    {
+      initials: 'VG',
+      name: 'Vikram Gupta',
+      title: 'Tech Leadership',
+      rating: 5,
+      reviews: 390,
+      sessions: 870,
+      gradient: 'from-orange-400 to-orange-600'
+    }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const features = [
-    { icon: Brain, text: "AI-Powered Expert Matching", delay: "delay-100" },
-    { icon: Zap, text: "Instant Connect Technology", delay: "delay-200" },
-    { icon: Sparkles, text: "Smart Recommendations", delay: "delay-300" },
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentExpertIndex((prev) => (prev + 1) % experts.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [experts.length]);
 
   return (
-    <section 
-      className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-sky-50 to-blue-50 overflow-hidden"
+    <section
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-sky-50 overflow-hidden"
       aria-label="Hero section"
-      data-section-type="hero"
-      data-ai-content="primary"
-      itemScope 
-      itemType="https://schema.org/WebPage"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Floating AI Orbs */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-30 animate-bounce" style={{ animationDuration: '3s' }}></div>
-        <div className="absolute top-1/2 left-1/3 w-20 h-20 bg-gradient-to-r from-sky-300 to-cyan-400 rounded-full blur-2xl opacity-25 animate-ping" style={{ animationDuration: '2s' }}></div>
-        
-        {/* Neural Network Lines */}
-        <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="url(#gradient)" strokeWidth="1"/>
+            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#0ea5e9" strokeWidth="0.5"/>
             </pattern>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.3"/>
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.1"/>
-            </linearGradient>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
-
-        {/* Dynamic Mouse Follow Effect */}
-        <div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-sky-400/10 to-blue-500/10 rounded-full blur-3xl transition-all duration-1000 ease-out pointer-events-none"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-          }}
-        />
       </div>
 
-      <div className={`relative z-10 max-w-4xl mx-auto px-6 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="text-center">
-        {/* AI Badge */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky-100 to-blue-100 border border-sky-200 rounded-full mb-8 animate-fade-in">
-          <Brain className="w-5 h-5 text-sky-600 animate-pulse" />
-          <span className="text-sky-700 font-semibold">AI-POWERED EXPERT NETWORK</span>
-          <Sparkles className="w-4 h-4 text-sky-500 animate-spin" style={{ animationDuration: '3s' }} />
-        </div>
+      <div className={`relative z-10 max-w-7xl mx-auto px-6 py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        {/* Main Headline with Gradient Animation */}
-        <div className="mb-8">
-          <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
-            itemProp="headline"
-            data-ai-headline="true"
-          >
-            <span className="text-navy-900 animate-fade-in">Find the Right</span>
-            <span className="block bg-gradient-to-r from-sky-500 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-x bg-300% delay-300">
-              Expert, Instantly
-            </span>
-          </h1>
-          <p 
-            className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6 animate-fade-in delay-500"
-            itemProp="description"
-            data-ai-description="true"
-          >
-            Connect with verified professionals using our <span className="font-semibold text-sky-600">AI-powered matching</span> technology. 
-            Get trusted, personalized help without the delays or uncertainty.
-          </p>
-          <p className="text-lg text-sky-600 font-semibold mb-8 animate-fade-in delay-700">
-            Ideal for students, working parents, and creators seeking professional growth.
-          </p>
-        </div>
+          {/* Left Content */}
+          <div className="text-left">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 border border-sky-200 rounded-full mb-6">
+              <Brain className="w-4 h-4 text-sky-600" />
+              <span className="text-sky-700 font-semibold text-sm">AI-Powered Expert Network</span>
+            </div>
 
-        {/* Join Waitlist Button */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fade-in delay-1000">
-          <Link 
-            to="/waiting-list"
-            className="group relative bg-gradient-to-r from-sky-500 to-blue-600 text-white px-8 py-4 text-lg font-semibold rounded-full hover:from-sky-600 hover:to-blue-700 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-sky-400/40 overflow-hidden"
-          >
-            <span className="relative z-10">Join Waitlist</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </Link>
-        </div>
+            {/* Main Headline */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="text-navy-900">Connect with the</span>
+              <span className="block text-sky-600 mt-2">Perfect Expert</span>
+              <span className="block text-navy-900">Instantly</span>
+            </h1>
 
-        {/* AI Features Showcase */}
-        <div className="max-w-4xl mx-auto mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy-900 mb-6 animate-fade-in delay-1200">
-            This Is More Than an App. 
-            <span className="block bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">
-              It's AI-Powered Transformation.
-            </span>
-          </h2>
-          
-          {/* Interactive Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className={`group flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-sky-200 hover:border-sky-400 hover:bg-white transition-all duration-300 hover:scale-105 shadow-lg animate-fade-in ${feature.delay}`}
-              >
-                <feature.icon className="w-5 h-5 text-sky-600 group-hover:text-sky-700 transition-colors" />
-                <span className="text-gray-700 group-hover:text-gray-900 font-medium">{feature.text}</span>
-              </div>
-            ))}
-          </div>
-          
-          {/* Enhanced Features Grid */}
-          <div className="grid md:grid-cols-2 gap-6 text-left animate-fade-in delay-1500">
-            {[
-              "AI matches you with perfect experts instantly",
-              "Smart scheduling with real-time availability",
-              "Personalized content recommendations",
-              "Intelligent local & virtual connections"
-            ].map((feature, index) => (
-              <div key={index} className="group flex items-center gap-3 p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-sky-200 hover:border-sky-400 hover:bg-white/80 transition-all duration-300 hover:scale-102 hover:shadow-lg">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
+            {/* Subheadline */}
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
+              AI-powered matching connects you with verified professionals in seconds.
+              Get expert guidance for business, career, learning, and life.
+            </p>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center gap-6 mb-8 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-sky-100 border-2 border-white flex items-center justify-center text-sky-600 font-semibold text-xs">J</div>
+                  <div className="w-8 h-8 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center text-purple-600 font-semibold text-xs">S</div>
+                  <div className="w-8 h-8 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-green-600 font-semibold text-xs">M</div>
                 </div>
-                <span className="text-gray-700 group-hover:text-gray-900 transition-colors">{feature}</span>
+                <span className="font-semibold text-gray-700">10,000+ users</span>
               </div>
+
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+                <span className="ml-1 font-semibold text-gray-700">4.9/5</span>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Link
+                to="/waiting-list"
+                className="group inline-flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Get Started Free
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                to="/book-call"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-navy-900 px-8 py-4 text-lg font-semibold rounded-lg border-2 border-gray-200 hover:border-sky-600 transition-all duration-300"
+              >
+                Book a Demo
+              </Link>
+            </div>
+
+            {/* Key Features */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                'AI matches perfect experts',
+                'Verified professionals only',
+                'Instant connections',
+                'Secure & trusted platform'
+              ].map((feature, index) => (
+                <div key={index} className="flex items-center gap-2 text-gray-600">
+                  <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Visual */}
+          <div className="relative lg:block hidden">
+            <div className="relative w-full max-w-lg mx-auto">
+              {/* Background Decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-purple-400/20 rounded-3xl blur-3xl"></div>
+
+              {/* Main Expert Cards Stack */}
+              <div className="relative space-y-4">
+                {/* Card 1 - Primary (Current Expert) */}
+                <div className="relative z-30 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100 transform hover:scale-105 transition-all duration-500">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${experts[currentExpertIndex].gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg transition-all duration-500`}>
+                        {experts[currentExpertIndex].initials}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-navy-900 text-lg transition-all duration-500">{experts[currentExpertIndex].name}</h3>
+                        <p className="text-sm text-gray-600 transition-all duration-500">{experts[currentExpertIndex].title}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 bg-green-50 px-3 py-1.5 rounded-full">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-green-700">Online</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(experts[currentExpertIndex].rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                    <span className="text-sm text-gray-600 ml-2">5.0 ({experts[currentExpertIndex].reviews}+ reviews)</span>
+                  </div>
+
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <Users className="w-4 h-4" />
+                      <span>{experts[currentExpertIndex].sessions}+ sessions</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Zap className="w-4 h-4 text-sky-600" />
+                      <span>2 min response</span>
+                    </div>
+                  </div>
+
+                  <button className="w-full bg-sky-600 hover:bg-sky-700 text-white py-2.5 rounded-lg font-semibold transition-colors shadow-md">
+                    Connect Now
+                  </button>
+                </div>
+
+                {/* Card 2 - Secondary (Next Expert) */}
+                <div className="absolute top-8 left-4 right-4 z-20 bg-white rounded-2xl shadow-xl p-6 border border-gray-100 opacity-80 transform -rotate-2 transition-all duration-500">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${experts[(currentExpertIndex + 1) % experts.length].gradient} flex items-center justify-center text-white font-bold shadow-lg`}>
+                      {experts[(currentExpertIndex + 1) % experts.length].initials}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 1) % experts.length].name}</h3>
+                      <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 1) % experts.length].title}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card 3 - Tertiary (Expert after next) */}
+                <div className="absolute top-16 left-8 right-8 z-10 bg-white rounded-2xl shadow-lg p-6 border border-gray-100 opacity-60 transform rotate-2 transition-all duration-500">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${experts[(currentExpertIndex + 2) % experts.length].gradient} flex items-center justify-center text-white font-bold shadow-lg`}>
+                      {experts[(currentExpertIndex + 2) % experts.length].initials}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 2) % experts.length].name}</h3>
+                      <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 2) % experts.length].title}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Stats Badges */}
+              <div className="absolute -top-4 -right-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Check className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-medium">Match Rate</p>
+                    <p className="font-bold text-navy-900 text-lg">98%</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-4 -left-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float" style={{ animationDelay: '1s' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 font-medium">AI Powered</p>
+                    <p className="font-bold text-navy-900 text-sm">Smart Match</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Social Proof */}
+        <div className="mt-16 pt-8 border-t border-gray-200">
+          <p className="text-center text-sm text-gray-500 mb-6">Trusted by leading professionals and organizations</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div key={i} className="text-gray-400 font-bold text-lg">BRAND {i}</div>
             ))}
           </div>
         </div>
-        
-        </div>
-        
       </div>
     </section>
   );

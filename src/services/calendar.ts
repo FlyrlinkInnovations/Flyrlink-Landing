@@ -25,6 +25,13 @@ export interface BookingData {
   timezone: string;
 }
 
+export interface BookingResponse {
+  success: boolean;
+  message: string;
+  bookingId?: string;
+  confirmationEmail?: string;
+}
+
 export const calendarService = {
   async getAvailability(date: string, timezone: string = 'America/Chicago'): Promise<AvailabilityResponse> {
     try {
@@ -48,7 +55,7 @@ export const calendarService = {
     }
   },
 
-  async bookAppointment(bookingData: BookingData): Promise<any> {
+  async bookAppointment(bookingData: BookingData): Promise<BookingResponse> {
     try {
       const response = await axios.post(
         `${CALENDAR_API_BASE}/public/flyrlink/book/`,

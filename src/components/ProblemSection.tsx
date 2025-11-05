@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Zap, Activity, User, Users, TrendingUp } from 'lucide-react';
+import { Brain, Zap, Activity, User, Users, TrendingUp, Clock, Crosshair, Shield } from 'lucide-react';
 
 const ProblemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -25,28 +25,28 @@ const ProblemSection = () => {
     {
       title: "Delays & Uncertainty",
       description: "AI instantly matches you with available experts",
-      icon: "⏰",
+      icon: Clock,
       gradient: "from-red-400 to-pink-500",
       solution: "Real-time AI matching"
     },
     {
-      title: "One-Size-Fits-All", 
+      title: "One-Size-Fits-All",
       description: "Machine learning creates personalized solutions",
-      icon: "🎯",
+      icon: Crosshair,
       gradient: "from-orange-400 to-red-500",
       solution: "AI personalization"
     },
     {
       title: "Trust Issues",
       description: "AI-verified professionals with smart ratings",
-      icon: "🛡️",
+      icon: Shield,
       gradient: "from-blue-400 to-indigo-500",
       solution: "AI verification system"
     },
     {
       title: "Complicated Process",
       description: "One-click AI-powered expert connections",
-      icon: "⚡",
+      icon: Zap,
       gradient: "from-green-400 to-blue-500",
       solution: "Smart automation"
     }
@@ -138,8 +138,8 @@ const ProblemSection = () => {
               
               <div className="relative z-10">
                 {/* Icon */}
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {challenge.icon}
+                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <challenge.icon className="w-12 h-12 mx-auto text-gray-700" />
                 </div>
                 
                 {/* Content */}

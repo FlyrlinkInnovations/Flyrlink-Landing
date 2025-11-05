@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Zap, Users, Target, Shield } from 'lucide-react';
+import { Brain, Zap, Users, Target, Shield, TrendingUp, Briefcase, BookOpen, Palette, Laptop, MapPin, DollarSign, Bolt } from 'lucide-react';
 
 const SolutionSection = () => {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -29,34 +29,34 @@ const SolutionSection = () => {
   }, []);
 
   const expertTypes = [
-    { 
-      name: "Business Intelligence", 
+    {
+      name: "Business Intelligence",
       description: "AI-powered financial & business consulting",
-      icon: "📈",
+      icon: TrendingUp,
       color: "from-blue-400 to-indigo-500"
     },
-    { 
-      name: "Career Intelligence", 
+    {
+      name: "Career Intelligence",
       description: "Smart career mentors & life coaches",
-      icon: "💼",
+      icon: Briefcase,
       color: "from-green-400 to-emerald-500"
     },
-    { 
-      name: "Learning Accelerator", 
+    {
+      name: "Learning Accelerator",
       description: "AI-curated tutors & educational advisors",
-      icon: "📚",
+      icon: BookOpen,
       color: "from-purple-400 to-pink-500"
     },
-    { 
-      name: "Creative Solutions", 
+    {
+      name: "Creative Solutions",
       description: "Smart design & creative professionals",
-      icon: "🎨",
+      icon: Palette,
       color: "from-orange-400 to-red-500"
     },
-    { 
-      name: "Technology Experts", 
+    {
+      name: "Technology Experts",
       description: "AI-powered tech & development consulting",
-      icon: "💻",
+      icon: Laptop,
       color: "from-cyan-400 to-blue-500"
     }
   ];
@@ -130,16 +130,13 @@ const SolutionSection = () => {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 to-sky-700 bg-clip-text text-transparent">
-              Discover and connect with
-            </span>
-            <br />
+            <span className="text-navy-900">AI-Powered </span>
             <span className="bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent">
-              Verified Experts
+              Expert Matching
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our intelligent platform connects you with the right professionals instantly, 
+            Our intelligent platform connects you with the right professionals instantly,
             powered by advanced AI matching algorithms
           </p>
         </div>
@@ -213,8 +210,8 @@ const SolutionSection = () => {
                 <div className={`absolute inset-0 bg-gradient-to-br ${type.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 
                 <div className="relative z-10">
-                  <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {type.icon}
+                  <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <type.icon className="w-8 h-8 mx-auto text-gray-700" />
                   </div>
                   <h4 className="font-semibold text-navy-900 mb-2 group-hover:text-gray-800">
                     {type.name}
@@ -258,14 +255,16 @@ const SolutionSection = () => {
             </p>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { icon: "🇮🇳", title: "Local AI Matching", desc: "Smart algorithms find experts in your area", gradient: "from-orange-400 to-green-400" },
-                { icon: "💰", title: "Intelligent Pricing", desc: "AI optimizes costs for maximum value", gradient: "from-blue-400 to-purple-400" },
-                { icon: "⚡", title: "Neural Networks", desc: "Lightning-fast AI-powered connections", gradient: "from-sky-400 to-cyan-400" }
+                { icon: MapPin, title: "Local AI Matching", desc: "Smart algorithms find experts in your area", gradient: "from-orange-400 to-green-400" },
+                { icon: DollarSign, title: "Intelligent Pricing", desc: "AI optimizes costs for maximum value", gradient: "from-blue-400 to-purple-400" },
+                { icon: Bolt, title: "Neural Networks", desc: "Lightning-fast AI-powered connections", gradient: "from-sky-400 to-cyan-400" }
               ].map((item, index) => (
                 <div key={index} className="group relative p-6 rounded-xl border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300">
                   <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl`} />
                   <div className="relative z-10">
-                    <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                    <div className="mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <item.icon className="w-8 h-8 mx-auto text-gray-700" />
+                    </div>
                     <div className="font-semibold text-navy-900 mb-2 group-hover:text-gray-800">{item.title}</div>
                     <div className="text-gray-600 group-hover:text-gray-700 text-sm">{item.desc}</div>
                   </div>

@@ -3,7 +3,11 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
+import HowFlyrLinkHelps from '@/components/HowFlyrLinkHelps';
 import SolutionSection from '@/components/SolutionSection';
+import CategoriesSection from '@/components/CategoriesSection';
+import FeedFeatures from '@/components/FeedFeatures';
+import EventsSection from '@/components/EventsSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import StatsSection from '@/components/StatsSection';
 import DownloadAppsSection from '@/components/DownloadAppsSection';
@@ -20,7 +24,11 @@ const HomePage = () => {
         <div className="pt-20">
           <HeroSection />
           <ProblemSection />
+          <HowFlyrLinkHelps />
           <SolutionSection />
+          <CategoriesSection />
+          <FeedFeatures />
+          <EventsSection />
           <FeaturesSection />
           <StatsSection />
           <DownloadAppsSection />

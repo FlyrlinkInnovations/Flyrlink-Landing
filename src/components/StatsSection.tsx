@@ -1,90 +1,114 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Users, TrendingUp, Globe, Award, Star, ArrowRight } from 'lucide-react';
 
 const StatsSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-sky-50 via-white to-sky-50">
+    <section className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Urgency Section */}
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block px-6 py-3 bg-red-100 border border-red-300 rounded-full mb-8">
-            <span className="text-red-700 font-semibold">⏳ LIMITED TIME</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-navy-900">Don't Miss This Month's</span>
-            <br />
-            <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-              Launch Window
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-navy-900">
+            Trusted by Thousands of Professionals
           </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Join a growing community of experts and clients transforming how they work
+          </p>
         </div>
 
-        {/* Scarcity Indicators */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl border border-sky-200 p-8 shadow-lg">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">12</div>
-                <div className="text-gray-700">Spots left for May onboarding</div>
-                <div className="w-full bg-gray-200 rounded-full h-3 mt-3">
-                  <div className="bg-red-500 h-3 rounded-full" style={{width: '20%'}}></div>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="text-3xl mb-3">🎯</div>
-                <div className="font-semibold text-navy-900 mb-2">Free 1:1 Session</div>
-                <div className="text-gray-600">Funnel strategy session included</div>
-              </div>
-              <div className="p-6">
-                <div className="text-3xl mb-3">🛡️</div>
-                <div className="font-semibold text-navy-900 mb-2">Risk-Free</div>
-                <div className="text-gray-600">Cancel anytime</div>
-              </div>
+        {/* Stats Grid */}
+        <div className="grid md:grid-cols-4 gap-6 mb-16">
+          <div className="bg-gradient-to-br from-sky-50 to-white rounded-2xl p-8 border border-sky-100 text-center">
+            <div className="w-14 h-14 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-sky-600" />
             </div>
+            <div className="text-4xl font-bold text-navy-900 mb-2">10,000+</div>
+            <div className="text-gray-600">Active Users</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border border-green-100 text-center">
+            <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <TrendingUp className="w-8 h-8 text-green-600" />
+            </div>
+            <div className="text-4xl font-bold text-navy-900 mb-2">5,000+</div>
+            <div className="text-gray-600">Expert Sessions</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 border border-purple-100 text-center">
+            <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <Award className="w-8 h-8 text-purple-600" />
+            </div>
+            <div className="text-4xl font-bold text-navy-900 mb-2">98%</div>
+            <div className="text-gray-600">Satisfaction Rate</div>
+          </div>
+
+          <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 text-center">
+            <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <Globe className="w-8 h-8 text-orange-600" />
+            </div>
+            <div className="text-4xl font-bold text-navy-900 mb-2">50+</div>
+            <div className="text-gray-600">Countries</div>
           </div>
         </div>
 
-        {/* Main CTA */}
-        <div className="text-center">
-          <h3 className="text-3xl md:text-4xl font-bold text-navy-900 mb-8">
-            Start Getting Booked —
-            <span className="block text-sky-600">Without the Burnout</span>
+        {/* Testimonials */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {[
+            {
+              name: 'Priya Sharma',
+              role: 'Business Consultant',
+              content: 'Flyrlink has transformed how I connect with clients. The AI matching is incredibly accurate.',
+              rating: 5
+            },
+            {
+              name: 'Rajesh Kumar',
+              role: 'Tech Entrepreneur',
+              content: 'Found the perfect mentor in under 5 minutes. The platform is intuitive and efficient.',
+              rating: 5
+            },
+            {
+              name: 'Ananya Patel',
+              role: 'Fitness Coach',
+              content: 'My client base has grown 3x since joining. Best decision for my consulting practice.',
+              rating: 5
+            }
+          ].map((testimonial, index) => (
+            <div key={index} className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4 leading-relaxed">"{testimonial.content}"</p>
+              <div>
+                <div className="font-semibold text-navy-900">{testimonial.name}</div>
+                <div className="text-sm text-gray-600">{testimonial.role}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Box */}
+        <div className="bg-gradient-to-r from-sky-50 to-purple-50 rounded-2xl p-12 text-center border border-sky-100">
+          <h3 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+            Ready to Join the Community?
           </h3>
-          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-            Ready to skip the setup headaches and focus on what you do best?
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Start connecting with verified experts or grow your practice today
           </p>
-          
-          <button className="group bg-sky-500 text-white px-12 py-6 text-xl font-semibold rounded-full hover:bg-sky-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-sky-400/25 mb-4">
-            Reserve My Spot Now
-            <span className="ml-3 group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
-          </button>
-          
-          <p className="text-sky-600 font-medium">
-            Includes free custom funnel review
-          </p>
-        </div>
 
-        {/* Social Proof */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-gray-600">
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 bg-sky-400 rounded-full border-2 border-white"></div>
-                <div className="w-8 h-8 bg-green-400 rounded-full border-2 border-white"></div>
-                <div className="w-8 h-8 bg-blue-400 rounded-full border-2 border-white"></div>
-                <div className="w-8 h-8 bg-purple-400 rounded-full border-2 border-white"></div>
-              </div>
-              <span className="ml-3">200+ professionals served</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sky-500">★★★★★</span>
-              <span>5.0/5 Client satisfaction</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <span>Setup in under 48 hours</span>
-            </div>
-          </div>
+          <Link
+            to="/waiting-list"
+            className="group inline-flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            Get Started Free
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
+          <p className="text-gray-600 mt-6">
+            No credit card required • Setup in minutes
+          </p>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { AIStructuredData } from './AIOptimizedContent';
 
 const Footer = () => {
@@ -46,11 +47,11 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-300">
-              {/* <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Find Experts</a></li> */}
-              <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">How It Works</a></li>
-              <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Pricing</a></li>
+              <li><Link to="/about" className="hover:text-sky-400 transition-colors duration-300">About Us</Link></li>
+              <li><Link to="/careers" className="hover:text-sky-400 transition-colors duration-300">Careers</Link></li>
+              <li><Link to="/blog" className="hover:text-sky-400 transition-colors duration-300">Blog</Link></li>
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Success Stories</a></li>
             </ul>
           </div>
@@ -59,8 +60,8 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Help Center</a></li>
-              <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Contact Us</a></li>
+              <li><Link to="/faq" className="hover:text-sky-400 transition-colors duration-300">FAQ</Link></li>
+              <li><Link to="/contact" className="hover:text-sky-400 transition-colors duration-300">Contact Us</Link></li>
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-sky-400 transition-colors duration-300">Terms of Service</a></li>
             </ul>

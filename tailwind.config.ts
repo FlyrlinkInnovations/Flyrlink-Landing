@@ -129,6 +129,17 @@ export default {
 				'glow': {
 					'0%, 100%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.3)' },
 					'50%': { boxShadow: '0 0 40px rgba(14, 165, 233, 0.6)' }
+				},
+				'blob': {
+					'0%, 100%': {
+						transform: 'translate(0, 0) scale(1)'
+					},
+					'33%': {
+						transform: 'translate(30px, -50px) scale(1.1)'
+					},
+					'66%': {
+						transform: 'translate(-20px, 20px) scale(0.9)'
+					}
 				}
 			},
 			animation: {
@@ -137,7 +148,13 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'gradient-x': 'gradient-x 3s ease infinite',
 				'float': 'float 3s ease-in-out infinite',
-				'glow': 'glow 2s ease-in-out infinite alternate'
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'blob': 'blob 7s ease-in-out infinite'
+			},
+			animationDelay: {
+				'0': '0s',
+				'2000': '2s',
+				'4000': '4s'
 			}
 		}
 	},

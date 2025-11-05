@@ -9,15 +9,16 @@ const Navbar = () => {
   
   const getActiveTab = () => {
     const path = location.pathname;
-    
+
     if (path === '/') return 'home';
     // if (path === '/find-experts') return 'experts';
     if (path === '/about') return 'about';
     if (path === '/contact') return 'contact';
+    if (path === '/careers') return 'careers';
     if (path === '/faq') return 'faq';
     if (path === '/blog' || path.startsWith('/blog/')) return 'blog';
     if (path === '/book-call') return 'book-call';
-    
+
     return 'home';
   };
 
@@ -68,15 +69,22 @@ const Navbar = () => {
               >
                 <Link to="/about">About</Link>
               </TabsTrigger>
-              <TabsTrigger 
-                value="contact" 
+              <TabsTrigger
+                value="contact"
                 asChild
                 className="px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
               >
                 <Link to="/contact">Contact</Link>
               </TabsTrigger>
-              <TabsTrigger 
-                value="blog" 
+              <TabsTrigger
+                value="careers"
+                asChild
+                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
+              >
+                <Link to="/careers">Careers</Link>
+              </TabsTrigger>
+              <TabsTrigger
+                value="blog"
                 asChild
                 className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
               >
@@ -152,12 +160,19 @@ const Navbar = () => {
               >
                 About
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={closeMobileMenu}
                 className={`block px-4 py-3 text-sm font-medium rounded-md ${location.pathname === '/contact' ? 'bg-sky-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50'}`}
               >
                 Contact
+              </Link>
+              <Link
+                to="/careers"
+                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'careers' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
+                onClick={closeMobileMenu}
+              >
+                Careers
               </Link>
               <Link
                 to="/blog"

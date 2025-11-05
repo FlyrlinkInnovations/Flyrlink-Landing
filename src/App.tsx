@@ -18,6 +18,7 @@ const BlogPost = lazy(() => import("@/views/blog/BlogPost"));
 const FaqPage = lazy(() => import("@/views/FaqPage"));
 const WaitingListPage = lazy(() => import("@/views/WaitingListPage"));
 const BookCall = lazy(() => import("@/views/BookCall"));
+const CareersPage = lazy(() => import("@/views/CareersPage"));
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
                 <Route path="/find-experts" element={<FindExperts />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/careers" element={<CareersPage />} />
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/faq" element={<FaqPage />} />

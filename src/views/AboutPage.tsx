@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { SEO } from '../components/SEO';
 import { Card, CardContent } from '../components/ui/card';
+import { Globe, Users as UsersIcon, Lightbulb, Shield } from 'lucide-react';
 
 const About = () => {
   const teamMembers = [
@@ -30,22 +31,22 @@ const About = () => {
     {
       title: 'Trust & Verification',
       description: 'Every expert is thoroughly vetted to ensure quality and credibility.',
-      icon: '🔒'
+      icon: Shield
     },
     {
       title: 'Accessibility',
       description: 'Making expert knowledge affordable and available to everyone.',
-      icon: '🌍'
+      icon: Globe
     },
     {
       title: 'Community',
       description: 'Building connections that go beyond transactions.',
-      icon: '🤝'
+      icon: UsersIcon
     },
     {
       title: 'Innovation',
       description: 'Continuously improving how people find and connect with experts.',
-      icon: '💡'
+      icon: Lightbulb
     }
   ];
 
@@ -99,7 +100,9 @@ const About = () => {
               {values.map((value, index) => (
                 <Card key={index} className="bg-white hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
-                    <div className="text-4xl mb-4">{value.icon}</div>
+                    <div className="mb-4 w-12 h-12 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
+                      {React.createElement(value.icon, { className: 'w-6 h-6' })}
+                    </div>
                     <h3 className="text-xl font-semibold text-navy-900 mb-4">{value.title}</h3>
                     <p className="text-gray-700">{value.description}</p>
                   </CardContent>

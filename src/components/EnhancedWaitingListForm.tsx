@@ -83,8 +83,9 @@ export const EnhancedWaitingListForm = () => {
         // Try to parse as JSON if possible
         if (responseText && responseText.trim()) {
           try {
-            const jsonData = JSON.parse(responseText);
+            JSON.parse(responseText);
           } catch (jsonError) {
+            // Ignore JSON parsing errors
           }
         }
         

@@ -18,12 +18,12 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'Flyrlink - AI-Powered Expert Network',
-  description: 'Connect with verified professionals using AI-powered matching technology. Find the right expert instantly.',
+  title: 'Flyrlink - AI-Powered Expert Network | Connect with Verified Professionals',
+  description: 'Flyrlink is an AI-powered expert network connecting you with verified professionals across diverse fields. Get instant expert advice for business, career, learning, and more. Join our intelligent platform for personalized expert matching.',
   image: 'https://flyrlink.com/og-image.jpg',
   url: 'https://flyrlink.com',
   type: 'website',
-  keywords: 'expert network, AI matching, professional consulting, expert marketplace, knowledge sharing, business expertise, consultant finder, expert advice',
+  keywords: 'AI expert network, verified professionals, expert marketplace, business consulting, career mentorship, AI matching, professional advice, expert consultation, knowledge sharing, online learning, startup mentorship, business expertise, consultant finder, expert advice, professional network India',
   author: 'Flyrlink',
 };
 
@@ -52,23 +52,116 @@ export function SEO({
 
   const structuredData = jsonLd || {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Flyrlink',
-    description: defaultSEO.description,
-    url: defaultSEO.url,
-    logo: seoImage,
-    sameAs: [
-      'https://twitter.com/flyrlink',
-      'https://linkedin.com/company/flyrlink',
-    ],
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://flyrlink.com/find-experts?q={search_term_string}'
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://flyrlink.com/#organization',
+        name: 'Flyrlink',
+        description: defaultSEO.description,
+        url: defaultSEO.url,
+        logo: {
+          '@type': 'ImageObject',
+          url: seoImage,
+          width: 1200,
+          height: 630
+        },
+        sameAs: [
+          'https://twitter.com/flyrlink',
+          'https://linkedin.com/company/flyrlink',
+        ],
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://flyrlink.com/find-experts?q={search_term_string}'
+          },
+          'query-input': 'required name=search_term_string'
+        }
       },
-      'query-input': 'required name=search_term_string'
-    }
+      {
+        '@type': 'WebSite',
+        '@id': 'https://flyrlink.com/#website',
+        url: 'https://flyrlink.com',
+        name: 'Flyrlink - AI-Powered Expert Network',
+        description: defaultSEO.description,
+        publisher: {
+          '@id': 'https://flyrlink.com/#organization'
+        },
+        inLanguage: 'en-US'
+      },
+      {
+        '@type': 'WebPage',
+        '@id': seoUrl + '#webpage',
+        url: seoUrl,
+        name: seoTitle,
+        description: seoDescription,
+        isPartOf: {
+          '@id': 'https://flyrlink.com/#website'
+        },
+        about: {
+          '@id': 'https://flyrlink.com/#organization'
+        },
+        inLanguage: 'en-US'
+      },
+      {
+        '@type': 'Service',
+        '@id': 'https://flyrlink.com/#service',
+        name: 'AI-Powered Expert Matching Service',
+        description: 'Connect with verified professionals using advanced AI matching algorithms',
+        provider: {
+          '@id': 'https://flyrlink.com/#organization'
+        },
+        serviceType: 'Professional Consultation & Expert Network',
+        areaServed: {
+          '@type': 'Country',
+          name: 'India'
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Expert Services',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Business Consulting'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Career Mentorship'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Educational Tutoring'
+              }
+            }
+          ]
+        }
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id': 'https://flyrlink.com/#application',
+        name: 'Flyrlink Platform',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web, iOS, Android',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'INR'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          ratingCount: '1250'
+        }
+      }
+    ]
   };
 
   return (
