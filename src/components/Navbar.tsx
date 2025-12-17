@@ -1,17 +1,25 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const getActiveTab = () => {
     const path = location.pathname;
 
     if (path === '/') return 'home';
-    // if (path === '/find-experts') return 'experts';
     if (path === '/about') return 'about';
     if (path === '/contact') return 'contact';
     if (path === '/careers') return 'careers';
@@ -31,8 +39,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 py-4">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled
+        ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-gray-200/50 border-b border-gray-100'
+        : 'bg-white/95 backdrop-blur-sm border-b border-gray-200'
+    }`}>
+      <div className="max-w-6xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           {/* Company Logo/Name */}
           <div className="flex items-center">
@@ -97,12 +109,15 @@ const Navbar = () => {
               >
                 <Link to="/faq">FAQ's</Link>
               </TabsTrigger>
-              <TabsTrigger 
-                value="book-call" 
+              <TabsTrigger
+                value="book-call"
                 asChild
-                className="px-4 py-2 text-sm font-medium bg-sky-500 text-white hover:bg-sky-600 data-[state=active]:bg-sky-600 data-[state=active]:text-white ml-2"
+                className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-sky-500 to-blue-600 text-white hover:from-sky-600 hover:to-blue-700 data-[state=active]:from-sky-600 data-[state=active]:to-blue-700 data-[state=active]:text-white ml-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
               >
-                <Link to="/book-call">Book a Call</Link>
+                <Link to="/book-call" className="flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4" />
+                  Book a Call
+                </Link>
               </TabsTrigger>
             </TabsList>
           </Tabs>

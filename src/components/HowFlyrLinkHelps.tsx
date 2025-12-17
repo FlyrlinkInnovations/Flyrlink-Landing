@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Users, Award, Building2, Rocket } from 'lucide-react';
+import { Users, Award, Building2, Rocket, ArrowRight } from 'lucide-react';
 
 const HowFlyrLinkHelps = () => {
   const services = [
@@ -31,7 +31,7 @@ const HowFlyrLinkHelps = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -49,27 +49,28 @@ const HowFlyrLinkHelps = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white border border-gray-200 rounded-xl p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-300"
+              className="group bg-white border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-sky-200 hover:-translate-y-1"
             >
               {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-6 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600 transform group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-8 h-8" />
+              <div className="w-14 h-14 bg-sky-50 border border-sky-100 rounded-xl flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-all duration-300">
+                <service.icon className="w-7 h-7" />
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-navy-900 mb-4 text-center">
+              <h3 className="text-xl font-bold text-navy-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-center mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-8 leading-relaxed">
                 {service.description}
               </p>
 
               {/* Button */}
               <Link
                 to="/waiting-list"
-                className="block w-full bg-navy-900 hover:bg-navy-800 text-white text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300"
+                className="group/btn inline-flex items-center gap-2 w-full justify-center bg-navy-900 hover:bg-sky-600 text-white text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300"
               >
                 {service.buttonText}
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>
           ))}
@@ -81,10 +82,11 @@ const HowFlyrLinkHelps = () => {
             Not sure which option is right for you?
           </p>
           <Link
-            to="/waiting-list"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
+            to="/book-call"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Book a Call with Us
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

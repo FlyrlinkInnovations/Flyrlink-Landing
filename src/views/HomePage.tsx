@@ -9,9 +9,7 @@ import CategoriesSection from '@/components/CategoriesSection';
 import FeedFeatures from '@/components/FeedFeatures';
 import EventsSection from '@/components/EventsSection';
 import FeaturesSection from '@/components/FeaturesSection';
-import StatsSection from '@/components/StatsSection';
 import DownloadAppsSection from '@/components/DownloadAppsSection';
-import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import { SEO } from '@/components/SEO';
 
@@ -30,9 +28,7 @@ const HomePage = () => {
           <FeedFeatures />
           <EventsSection />
           <FeaturesSection />
-          <StatsSection />
           <DownloadAppsSection />
-          <CTASection />
           <Footer />
         </div>
       </div>

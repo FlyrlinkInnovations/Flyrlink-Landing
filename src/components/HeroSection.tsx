@@ -270,12 +270,25 @@ const HeroSection = () => {
         </div>
 
         {/* Bottom Social Proof */}
-        <div className="mt-16 pt-8 border-t border-gray-200">
-          <p className="text-center text-sm text-gray-500 mb-6">Trusted by leading professionals and organizations</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="text-gray-400 font-bold text-lg">BRAND {i}</div>
-            ))}
+        <div className="mt-16 pt-10 border-t border-gray-200">
+          <p className="text-center text-sm text-gray-500 mb-8">
+            Trusted by leading professionals and organizations
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="bg-white rounded-xl p-5 border border-gray-200 hover:border-sky-200 hover:shadow-md transition-all duration-300">
+              <img
+                src="/leo-main.png"
+                alt="LEORIX"
+                className="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+            <div className="bg-white rounded-xl p-5 border border-gray-200 hover:border-sky-200 hover:shadow-md transition-all duration-300">
+              <img
+                src="/th.png"
+                alt="Traders Hub"
+                className="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
           </div>
         </div>
       </div>
