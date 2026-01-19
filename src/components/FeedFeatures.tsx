@@ -60,9 +60,11 @@ const FeedFeatures = () => {
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
               {/* Feed Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-bold">
-                  ES
-                </div>
+                <img
+                  src="https://randomuser.me/api/portraits/women/55.jpg"
+                  alt="Expert Sarah"
+                  className="w-12 h-12 rounded-full object-cover"
+                />
                 <div className="flex-1">
                   <h4 className="font-bold text-navy-900">Expert Sarah</h4>
                   <p className="text-sm text-gray-500">Business Coach • 2h ago</p>
@@ -79,13 +81,12 @@ const FeedFeatures = () => {
                   Here are my top strategies that have helped hundreds of founders...
                 </p>
 
-                {/* Sample Image Placeholder */}
-                <div className="w-full h-40 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <TrendingUp className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-500 font-medium">Featured Content</p>
-                  </div>
-                </div>
+                {/* Featured Image */}
+                <img
+                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=300&fit=crop"
+                  alt="Startup Success Tips"
+                  className="w-full h-40 object-cover rounded-lg"
+                />
               </div>
 
               {/* Feed Actions */}

@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GraduationCap, Dumbbell, Briefcase, Heart, Camera, Code, Music, Palette, Star, ArrowRight } from 'lucide-react';
+import { Star, ArrowRight } from 'lucide-react';
 
 const CategoriesSection = () => {
   const categories = [
-    { name: 'Education', description: 'Browse skilled experts', icon: GraduationCap },
-    { name: 'Fitness', description: 'Browse verified experts', icon: Dumbbell },
-    { name: 'Business', description: 'Browse verified experts', icon: Briefcase },
-    { name: 'Connect', description: 'Schedule meeting easily', icon: Heart },
-    { name: 'Beauty', description: 'Achieve your goals', icon: Camera },
-    { name: 'Technology', description: 'Expert tech guidance', icon: Code },
-    { name: 'Music', description: 'Learn from masters', icon: Music },
-    { name: 'Design', description: 'Creative professionals', icon: Palette }
+    { name: 'Education', description: 'Browse skilled experts', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=100&h=100&fit=crop' },
+    { name: 'Fitness', description: 'Browse verified experts', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop' },
+    { name: 'Business', description: 'Browse verified experts', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop' },
+    { name: 'Connect', description: 'Schedule meeting easily', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=100&h=100&fit=crop' },
+    { name: 'Beauty', description: 'Achieve your goals', image: 'https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=100&h=100&fit=crop' },
+    { name: 'Technology', description: 'Expert tech guidance', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&h=100&fit=crop' },
+    { name: 'Music', description: 'Learn from masters', image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=100&h=100&fit=crop' },
+    { name: 'Design', description: 'Creative professionals', image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=100&h=100&fit=crop' }
   ];
 
   const featuredExperts = [
-    { name: 'Dr. Arya Sharma', role: 'Business Consultant', rating: 4.9, initials: 'AS' },
-    { name: 'Coach Ben Carter', role: 'Fitness Expert', rating: 4.8, initials: 'BC' },
-    { name: 'Sophie Chen', role: 'Design Strategist', rating: 5.0, initials: 'SC' }
+    { name: 'Girish Kotte', role: 'AI GTM Advisor', rating: 5.0, initials: 'GK', link: 'https://gkotte.com', image: '/gk.jpeg' },
+    { name: 'Coach Ben Carter', role: 'Fitness Expert', rating: 4.8, initials: 'BC', image: 'https://randomuser.me/api/portraits/men/32.jpg' },
+    { name: 'Sophie Chen', role: 'Design Strategist', rating: 5.0, initials: 'SC', image: 'https://randomuser.me/api/portraits/women/44.jpg' }
   ];
 
   return (
@@ -41,9 +41,13 @@ const CategoriesSection = () => {
               className="group bg-gray-50 hover:bg-sky-600 rounded-xl p-6 transition-all duration-300 cursor-pointer hover:shadow-lg"
             >
               <div className="text-center">
-                {/* Icon */}
-                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-sky-600 group-hover:bg-sky-500 group-hover:text-white group-hover:border-sky-500 transition-all duration-300">
-                  <category.icon className="w-7 h-7" />
+                {/* Image */}
+                <div className="w-14 h-14 mx-auto mb-4 rounded-xl overflow-hidden border border-gray-200 group-hover:border-sky-500 transition-all duration-300">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Category Name */}
@@ -77,9 +81,17 @@ const CategoriesSection = () => {
               >
                 <div className="flex flex-col items-center text-center">
                   {/* Avatar */}
-                  <div className="w-20 h-20 rounded-full bg-sky-100 flex items-center justify-center text-xl font-bold text-sky-700 mb-5">
-                    {expert.initials}
-                  </div>
+                  {'image' in expert && expert.image ? (
+                    <img
+                      src={expert.image}
+                      alt={expert.name}
+                      className="w-20 h-20 rounded-full object-cover mb-5"
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-sky-100 flex items-center justify-center text-xl font-bold text-sky-700 mb-5">
+                      {expert.initials}
+                    </div>
+                  )}
 
                   {/* Name & Role */}
                   <h4 className="text-lg font-bold text-navy-900 mb-1">{expert.name}</h4>
@@ -97,9 +109,20 @@ const CategoriesSection = () => {
                   </div>
 
                   {/* Book Button */}
-                  <button className="w-full bg-navy-900 hover:bg-sky-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
-                    Book Now
-                  </button>
+                  {'link' in expert && expert.link ? (
+                    <a
+                      href={expert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-navy-900 hover:bg-sky-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors text-center"
+                    >
+                      Book Now
+                    </a>
+                  ) : (
+                    <button className="w-full bg-navy-900 hover:bg-sky-600 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+                      Book Now
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

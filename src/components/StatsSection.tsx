@@ -11,9 +11,9 @@ const StatsSection = () => {
   ];
 
   const testimonials = [
-    { name: 'Priya Sharma', role: 'Business Consultant', content: 'Flyrlink has transformed how I connect with clients. The AI matching is incredibly accurate.', rating: 5 },
-    { name: 'Rajesh Kumar', role: 'Tech Entrepreneur', content: 'Found the perfect mentor in under 5 minutes. The platform is intuitive and efficient.', rating: 5 },
-    { name: 'Ananya Patel', role: 'Fitness Coach', content: 'My client base has grown 3x since joining. Best decision for my consulting practice.', rating: 5 }
+    { name: 'Priya Sharma', role: 'Business Consultant', content: 'Flyrlink has transformed how I connect with clients. The AI matching is incredibly accurate.', rating: 5, image: 'https://randomuser.me/api/portraits/women/79.jpg' },
+    { name: 'Rajesh Kumar', role: 'Tech Entrepreneur', content: 'Found the perfect mentor in under 5 minutes. The platform is intuitive and efficient.', rating: 5, image: 'https://randomuser.me/api/portraits/men/32.jpg' },
+    { name: 'Ananya Patel', role: 'Fitness Coach', content: 'My client base has grown 3x since joining. Best decision for my consulting practice.', rating: 5, image: 'https://randomuser.me/api/portraits/women/63.jpg' }
   ];
 
   return (
@@ -69,9 +69,11 @@ const StatsSection = () => {
 
                 {/* Author */}
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-bold text-sm">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </div>
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
                   <div>
                     <div className="font-semibold text-navy-900">{testimonial.name}</div>
                     <div className="text-sm text-gray-600">{testimonial.role}</div>

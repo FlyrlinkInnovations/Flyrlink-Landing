@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from 'react';
-import { Sparkles, Brain, Zap, ArrowRight, Check, Star, Users } from 'lucide-react';
+import { Brain, Zap, ArrowRight, Check, Star, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
@@ -14,7 +14,8 @@ const HeroSection = () => {
       rating: 5,
       reviews: 350,
       sessions: 800,
-      gradient: 'from-sky-400 to-sky-600'
+      gradient: 'from-sky-400 to-sky-600',
+      image: 'https://randomuser.me/api/portraits/men/75.jpg'
     },
     {
       initials: 'PS',
@@ -23,7 +24,8 @@ const HeroSection = () => {
       rating: 5,
       reviews: 420,
       sessions: 950,
-      gradient: 'from-purple-400 to-purple-600'
+      gradient: 'from-purple-400 to-purple-600',
+      image: 'https://randomuser.me/api/portraits/women/68.jpg'
     },
     {
       initials: 'AK',
@@ -32,7 +34,8 @@ const HeroSection = () => {
       rating: 5,
       reviews: 280,
       sessions: 650,
-      gradient: 'from-green-400 to-green-600'
+      gradient: 'from-green-400 to-green-600',
+      image: 'https://randomuser.me/api/portraits/men/52.jpg'
     },
     {
       initials: 'NK',
@@ -41,7 +44,8 @@ const HeroSection = () => {
       rating: 5,
       reviews: 310,
       sessions: 720,
-      gradient: 'from-pink-400 to-pink-600'
+      gradient: 'from-pink-400 to-pink-600',
+      image: 'https://randomuser.me/api/portraits/women/47.jpg'
     },
     {
       initials: 'VG',
@@ -50,7 +54,8 @@ const HeroSection = () => {
       rating: 5,
       reviews: 390,
       sessions: 870,
-      gradient: 'from-orange-400 to-orange-600'
+      gradient: 'from-orange-400 to-orange-600',
+      image: 'https://randomuser.me/api/portraits/men/36.jpg'
     }
   ];
 
@@ -141,9 +146,9 @@ const HeroSection = () => {
             <div className="flex flex-wrap items-center gap-6 mb-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-sky-100 border-2 border-white flex items-center justify-center text-sky-600 font-semibold text-xs">J</div>
-                  <div className="w-8 h-8 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center text-purple-600 font-semibold text-xs">S</div>
-                  <div className="w-8 h-8 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-green-600 font-semibold text-xs">M</div>
+                  <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
+                  <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
+                  <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
                 </div>
                 <span className="font-semibold text-gray-700">10,000+ users</span>
               </div>
@@ -202,9 +207,11 @@ const HeroSection = () => {
                 <div className="relative z-30 bg-white rounded-2xl shadow-xl p-6 border border-gray-100 transform hover:scale-105 transition-all duration-500">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${experts[currentExpertIndex].gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg transition-all duration-500`}>
-                        {experts[currentExpertIndex].initials}
-                      </div>
+                      <img
+                        src={experts[currentExpertIndex].image}
+                        alt={experts[currentExpertIndex].name}
+                        className="w-14 h-14 rounded-full object-cover shadow-lg transition-all duration-500"
+                      />
                       <div>
                         <h3 className="font-bold text-navy-900 text-lg transition-all duration-500">{experts[currentExpertIndex].name}</h3>
                         <p className="text-sm text-gray-600 transition-all duration-500">{experts[currentExpertIndex].title}</p>
@@ -242,9 +249,11 @@ const HeroSection = () => {
                 {/* Card 2 - Secondary (Next Expert) */}
                 <div className="absolute top-8 left-4 right-4 z-20 bg-white rounded-2xl shadow-lg p-6 border border-gray-100 opacity-80 transform -rotate-2 transition-all duration-500">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${experts[(currentExpertIndex + 1) % experts.length].gradient} flex items-center justify-center text-white font-bold shadow-lg`}>
-                      {experts[(currentExpertIndex + 1) % experts.length].initials}
-                    </div>
+                    <img
+                      src={experts[(currentExpertIndex + 1) % experts.length].image}
+                      alt={experts[(currentExpertIndex + 1) % experts.length].name}
+                      className="w-12 h-12 rounded-full object-cover shadow-lg"
+                    />
                     <div>
                       <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 1) % experts.length].name}</h3>
                       <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 1) % experts.length].title}</p>
@@ -260,9 +269,11 @@ const HeroSection = () => {
                 {/* Card 3 - Tertiary (Expert after next) */}
                 <div className="absolute top-16 left-8 right-8 z-10 bg-white rounded-2xl shadow-md p-6 border border-gray-100 opacity-60 transform rotate-2 transition-all duration-500">
                   <div className="flex items-center gap-3">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${experts[(currentExpertIndex + 2) % experts.length].gradient} flex items-center justify-center text-white font-bold shadow-lg`}>
-                      {experts[(currentExpertIndex + 2) % experts.length].initials}
-                    </div>
+                    <img
+                      src={experts[(currentExpertIndex + 2) % experts.length].image}
+                      alt={experts[(currentExpertIndex + 2) % experts.length].name}
+                      className="w-12 h-12 rounded-full object-cover shadow-lg"
+                    />
                     <div>
                       <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 2) % experts.length].name}</h3>
                       <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 2) % experts.length].title}</p>
@@ -271,8 +282,8 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Floating Stats Badges */}
-              <div className="absolute -top-4 -right-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float">
+              {/* Stats Badges */}
+              <div className="absolute -top-4 -right-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
                     <Check className="w-5 h-5 text-green-600" />
@@ -284,14 +295,14 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float" style={{ animationDelay: '1s' }}>
+              <div className="absolute -bottom-4 -left-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-sky-600" />
+                    <Users className="w-5 h-5 text-sky-600" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-medium">AI Powered</p>
-                    <p className="font-bold text-navy-900 text-sm">Smart Match</p>
+                    <p className="text-xs text-gray-500 font-medium">Active Experts</p>
+                    <p className="font-bold text-navy-900 text-sm">500+</p>
                   </div>
                 </div>
               </div>

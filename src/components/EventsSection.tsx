@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, Users, Clock, Dumbbell, Laptop, Palette, DollarSign, UtensilsCrossed, Camera, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, Users, Clock, ArrowRight } from 'lucide-react';
 
 const EventsSection = () => {
   const events = [
-    { title: 'Wellness & Fitness', host: 'Dr. Kavya Narayan', location: 'Chennai, India', type: 'Online', date: 'Jan 15, 2025', time: '10:00 AM IST', icon: Dumbbell, attendees: 45 },
-    { title: 'Tech/Next Startup', host: 'Ankit Verma', location: 'Online', type: 'Virtual', date: 'Jan 18, 2025', time: '3:00 PM IST', icon: Laptop, attendees: 78 },
-    { title: 'Artistry & Design', host: 'Maya Chen', location: 'Bangalore, India', type: 'Hybrid', date: 'Jan 20, 2025', time: '2:00 PM IST', icon: Palette, attendees: 32 },
-    { title: 'Finance 101', host: 'Rohit Mehta', location: 'Mumbai, India', type: 'In-Person', date: 'Jan 22, 2025', time: '11:00 AM IST', icon: DollarSign, attendees: 56 },
-    { title: 'Culinary Skills', host: 'Neha Rao', location: 'Delhi, India', type: 'Workshop', date: 'Jan 25, 2025', time: '4:00 PM IST', icon: UtensilsCrossed, attendees: 24 },
-    { title: 'Photography Basics', host: 'Lara Singh', location: 'Kolkata, India', type: 'Online', date: 'Jan 28, 2025', time: '6:00 PM IST', icon: Camera, attendees: 67 }
+    { title: 'Wellness & Fitness', host: 'Dr. Kavya Narayan', location: 'Chennai, India', type: 'Online', date: 'Jan 15, 2025', time: '10:00 AM IST', attendees: 45, image: 'https://randomuser.me/api/portraits/women/65.jpg', coverImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=200&fit=crop' },
+    { title: 'Tech/Next Startup', host: 'Ankit Verma', location: 'Online', type: 'Virtual', date: 'Jan 18, 2025', time: '3:00 PM IST', attendees: 78, image: 'https://randomuser.me/api/portraits/men/45.jpg', coverImage: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=200&fit=crop' },
+    { title: 'Artistry & Design', host: 'Maya Chen', location: 'Bangalore, India', type: 'Hybrid', date: 'Jan 20, 2025', time: '2:00 PM IST', attendees: 32, image: 'https://randomuser.me/api/portraits/women/33.jpg', coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop' },
+    { title: 'Finance 101', host: 'Rohit Mehta', location: 'Mumbai, India', type: 'In-Person', date: 'Jan 22, 2025', time: '11:00 AM IST', attendees: 56, image: 'https://randomuser.me/api/portraits/men/22.jpg', coverImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=200&fit=crop' },
+    { title: 'Culinary Skills', host: 'Neha Rao', location: 'Delhi, India', type: 'Workshop', date: 'Jan 25, 2025', time: '4:00 PM IST', attendees: 24, image: 'https://randomuser.me/api/portraits/women/28.jpg', coverImage: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=200&fit=crop' },
+    { title: 'Photography Basics', host: 'Lara Singh', location: 'Kolkata, India', type: 'Online', date: 'Jan 28, 2025', time: '6:00 PM IST', attendees: 67, image: 'https://randomuser.me/api/portraits/women/17.jpg', coverImage: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=400&h=200&fit=crop' }
   ];
 
   return (
@@ -34,10 +34,13 @@ const EventsSection = () => {
               className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-sky-200 hover:shadow-lg transition-all duration-300"
             >
               {/* Event Header */}
-              <div className="relative h-40 bg-gray-50 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition-all duration-300">
-                  <event.icon className="w-8 h-8" />
-                </div>
+              <div className="relative h-40 overflow-hidden">
+                <img
+                  src={event.coverImage}
+                  alt={event.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
                 {/* Event Type Badge */}
                 <span className="absolute top-4 right-4 px-3 py-1 bg-white rounded-full text-xs font-semibold text-gray-700 border border-gray-200">
@@ -57,9 +60,11 @@ const EventsSection = () => {
 
                 {/* Host Info */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 text-xs font-bold">
-                    {event.host.split(' ').map(n => n[0]).join('')}
-                  </div>
+                  <img
+                    src={event.image}
+                    alt={event.host}
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
                   <p className="text-sm font-medium text-gray-700">{event.host}</p>
                 </div>
 

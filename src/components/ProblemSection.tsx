@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Brain, Zap, Activity, User, Users, TrendingUp, Clock, Crosshair, Shield } from 'lucide-react';
+import { Zap, User, Users, TrendingUp, Clock, Crosshair, Shield } from 'lucide-react';
 
 const ProblemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -84,43 +84,15 @@ const ProblemSection = () => {
 
   return (
     <section id="problem-section" className="py-10 md:py-20 bg-gradient-to-b from-white via-slate-50 to-sky-50 relative overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-sky-500 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-100 to-sky-100 border border-purple-200 rounded-full mb-6">
-            <Brain className="w-5 h-5 text-purple-600 animate-pulse" />
-            <span className="text-purple-700 font-semibold">AI PROBLEM SOLVING</span>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-sky-700 to-emerald-600 bg-clip-text text-transparent">
-              Traditional Problems,
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              AI Solutions
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-navy-900">
+            We Solve Real Problems
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Experience the future of expert connections with our intelligent platform that eliminates traditional barriers
+            Traditional expert networks have challenges. Our platform eliminates them with smart technology.
           </p>
         </div>
 
@@ -157,22 +129,6 @@ const ProblemSection = () => {
                 </div>
               </div>
 
-              {/* Hover Particles Effect */}
-              {hoveredCard === index && (
-                <div className="absolute inset-0 pointer-events-none">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 bg-sky-400 rounded-full animate-ping"
-                      style={{
-                        left: `${20 + Math.random() * 60}%`,
-                        top: `${20 + Math.random() * 60}%`,
-                        animationDelay: `${i * 0.2}s`
-                      }}
-                    />
-                  ))}
-                </div>
-              )}
             </div>
           ))}
         </div>
@@ -181,7 +137,7 @@ const ProblemSection = () => {
         <div>
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h3 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
-              How <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">It Works</span>
+              How It Works
             </h3>
             <p className="text-gray-600 text-lg">Get started in three simple steps to unlock your full potential</p>
           </div>

@@ -1,0 +1,12 @@
+# Flyrlink Security Contact Information
+
+Contact: mailto:security@flyrlink.com
+Expires: 2027-01-18T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://flyrlink.com/.well-known/security.txt
+
+# Our security policy
+Policy: https://flyrlink.com/security-policy
+
+# We appreciate responsible disclosure
+Acknowledgments: https://flyrlink.com/security-thanks

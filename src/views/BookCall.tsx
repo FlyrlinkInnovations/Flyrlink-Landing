@@ -55,9 +55,9 @@ const BookCall: React.FC = () => {
   ];
 
   const steps = [
-    { id: 'date', label: 'Date', icon: '📅' },
-    { id: 'time', label: 'Time', icon: '⏰' },
-    { id: 'form', label: 'Details', icon: '✍️' },
+    { id: 'date', label: 'Date', step: 1 },
+    { id: 'time', label: 'Time', step: 2 },
+    { id: 'form', label: 'Details', step: 3 },
   ];
 
   const currentStepIndex = steps.findIndex(s => s.id === currentStep);
@@ -137,7 +137,9 @@ const BookCall: React.FC = () => {
                       <div className={`flex items-center gap-2 ${
                         index <= currentStepIndex ? 'text-gray-900' : 'text-gray-400'
                       }`}>
-                        <span className="text-lg">{step.icon}</span>
+                        <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${
+                          index <= currentStepIndex ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+                        }`}>{step.step}</span>
                         <span className="text-sm font-medium hidden sm:inline">{step.label}</span>
                       </div>
                       {index < steps.length - 1 && (

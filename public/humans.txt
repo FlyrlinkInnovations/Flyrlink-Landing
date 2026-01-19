@@ -1,0 +1,28 @@
+/* TEAM */
+
+Founder & CEO
+Girish Kotte
+Site: https://gkotte.com
+Twitter: @girishkotte
+Location: India
+
+/* THANKS */
+
+Our amazing beta testers and early adopters
+The open source community
+All the experts who joined our platform
+
+/* SITE */
+
+Last update: 2026-01-18
+Language: English
+Standards: HTML5, CSS3, ES6+
+Framework: React 18, TypeScript, Vite
+Styling: TailwindCSS
+Components: shadcn/ui, Lucide Icons
+Hosting: Cloud Infrastructure
+
+/* NOTE */
+
+Built with passion for connecting people with knowledge.
+We believe everyone deserves access to expert guidance.
