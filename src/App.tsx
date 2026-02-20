@@ -19,6 +19,7 @@ const FaqPage = lazy(() => import("@/views/FaqPage"));
 const WaitingListPage = lazy(() => import("@/views/WaitingListPage"));
 const BookCall = lazy(() => import("@/views/BookCall"));
 const CareersPage = lazy(() => import("@/views/CareersPage"));
+const PrivacyPolicyPage = lazy(() => import("@/views/PrivacyPolicyPage"));
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
                 <Route path="/faq" element={<FaqPage />} />
                 <Route path="/waiting-list" element={<WaitingListPage />} />
                 <Route path="/book-call" element={<BookCall />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

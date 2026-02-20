@@ -122,7 +122,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li><Link to="/faq" className="text-gray-400 hover:text-sky-400 transition-colors">FAQ</Link></li>
               <li><Link to="/contact" className="text-gray-400 hover:text-sky-400 transition-colors">Contact Us</Link></li>
-              <li><a href="#" className="text-gray-400 hover:text-sky-400 transition-colors">Privacy Policy</a></li>
+              <li><Link to="/privacy-policy" className="text-gray-400 hover:text-sky-400 transition-colors">Privacy Policy</Link></li>
               <li><a href="#" className="text-gray-400 hover:text-sky-400 transition-colors">Terms of Service</a></li>
             </ul>
           </div>
