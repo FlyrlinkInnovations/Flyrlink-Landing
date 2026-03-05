@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { API_CONFIG } from '@/config/constants';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://flyrlink.com';
 

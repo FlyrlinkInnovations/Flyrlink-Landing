@@ -1,7 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -20,15 +22,6 @@ const nextConfig: NextConfig = {
         hostname: 'foundershub-bucket.s3.amazonaws.com',
       },
     ],
-  },
-  async redirects() {
-    return [
-      {
-        source: '/privacy-policy',
-        destination: '/privacy',
-        permanent: true,
-      },
-    ];
   },
 };
 
