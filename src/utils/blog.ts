@@ -16,24 +16,24 @@ export function formatDate(dateString: string): string {
   }
 }
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 export function extractExcerpt(htmlContent: string, maxLength: number = READING_CONFIG.EXCERPT_LENGTH): string {
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = htmlContent;
-  const textContent = tempDiv.textContent || tempDiv.innerText || '';
-  
+  const textContent = stripHtml(htmlContent);
+
   if (textContent.length <= maxLength) {
     return textContent;
   }
-  
+
   return textContent.substring(0, maxLength).trim() + '...';
 }
 
 export function calculateReadTime(content: string): string {
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = content;
-  const text = tempDiv.textContent || tempDiv.innerText || '';
+  const text = stripHtml(content);
   const words = text.trim().split(/\s+/).length;
   const readTime = Math.max(READING_CONFIG.MIN_READ_TIME, Math.ceil(words / READING_CONFIG.WORDS_PER_MINUTE));
-  
+
   return `${readTime} min read`;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect, memo } from 'react';
 import { Clock, AlertCircle } from 'lucide-react';
 import { calendarService, TimeSlot } from '../../services/calendar';

@@ -1,195 +1,102 @@
-import React, { useEffect, useState, memo } from 'react';
-import { Brain, Zap, ArrowRight, Check, Star, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+'use client';
 
-const HeroSection = () => {
+import { useEffect, useState } from 'react';
+import { ArrowRight, Check, Star, Users, Zap, Shield, Lock } from 'lucide-react';
+import Image from 'next/image';
+
+const experts = [
+  { name: 'Rajesh Kumar', title: 'Business Strategy', rating: 5, reviews: 350, sessions: 800, image: 'https://randomuser.me/api/portraits/men/75.jpg' },
+  { name: 'Priya Sharma', title: 'Tech Expert', rating: 5, reviews: 420, sessions: 950, image: 'https://randomuser.me/api/portraits/women/68.jpg' },
+  { name: 'Amit Kapoor', title: 'Finance Advisor', rating: 5, reviews: 280, sessions: 650, image: 'https://randomuser.me/api/portraits/men/52.jpg' },
+  { name: 'Neha Kapoor', title: 'Marketing Guru', rating: 5, reviews: 310, sessions: 720, image: 'https://randomuser.me/api/portraits/women/47.jpg' },
+  { name: 'Vikram Gupta', title: 'Tech Leadership', rating: 5, reviews: 390, sessions: 870, image: 'https://randomuser.me/api/portraits/men/36.jpg' },
+];
+
+export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentExpertIndex, setCurrentExpertIndex] = useState(0);
 
-  const experts = [
-    {
-      initials: 'RK',
-      name: 'Rajesh Kumar',
-      title: 'Business Strategy',
-      rating: 5,
-      reviews: 350,
-      sessions: 800,
-      gradient: 'from-sky-400 to-sky-600',
-      image: 'https://randomuser.me/api/portraits/men/75.jpg'
-    },
-    {
-      initials: 'PS',
-      name: 'Priya Sharma',
-      title: 'Tech Expert',
-      rating: 5,
-      reviews: 420,
-      sessions: 950,
-      gradient: 'from-purple-400 to-purple-600',
-      image: 'https://randomuser.me/api/portraits/women/68.jpg'
-    },
-    {
-      initials: 'AK',
-      name: 'Amit Kapoor',
-      title: 'Finance Advisor',
-      rating: 5,
-      reviews: 280,
-      sessions: 650,
-      gradient: 'from-green-400 to-green-600',
-      image: 'https://randomuser.me/api/portraits/men/52.jpg'
-    },
-    {
-      initials: 'NK',
-      name: 'Neha Kapoor',
-      title: 'Marketing Guru',
-      rating: 5,
-      reviews: 310,
-      sessions: 720,
-      gradient: 'from-pink-400 to-pink-600',
-      image: 'https://randomuser.me/api/portraits/women/47.jpg'
-    },
-    {
-      initials: 'VG',
-      name: 'Vikram Gupta',
-      title: 'Tech Leadership',
-      rating: 5,
-      reviews: 390,
-      sessions: 870,
-      gradient: 'from-orange-400 to-orange-600',
-      image: 'https://randomuser.me/api/portraits/men/36.jpg'
-    }
-  ];
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  useEffect(() => { setIsVisible(true); }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentExpertIndex((prev) => (prev + 1) % experts.length);
-    }, 3000); // Change every 3 seconds
-
+    }, 3000);
     return () => clearInterval(interval);
-  }, [experts.length]);
+  }, []);
+
+  const current = experts[currentExpertIndex];
+  const next = experts[(currentExpertIndex + 1) % experts.length];
+  const third = experts[(currentExpertIndex + 2) % experts.length];
 
   return (
-    <section
-      className="relative min-h-screen flex items-center justify-center bg-white overflow-hidden"
-      aria-label="Hero section"
-    >
-      {/* Light Background with Network Pattern */}
+    <section className="relative min-h-screen flex items-center justify-center bg-navy-950 overflow-hidden -mt-20" aria-label="Hero section">
+      {/* Background */}
       <div className="absolute inset-0">
-        {/* Base Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-sky-50/30"></div>
-
-        {/* Network Pattern SVG */}
-        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
-          {/* Network Lines */}
-          <g strokeWidth="1" opacity="0.5">
-            <line x1="10%" y1="20%" x2="25%" y2="35%" stroke="#0ea5e9"/>
-            <line x1="25%" y1="35%" x2="15%" y2="55%" stroke="#0ea5e9"/>
-            <line x1="15%" y1="55%" x2="30%" y2="70%" stroke="#0ea5e9"/>
-            <line x1="30%" y1="70%" x2="20%" y2="85%" stroke="#0ea5e9"/>
-            <line x1="25%" y1="35%" x2="40%" y2="25%" stroke="#0ea5e9"/>
-            <line x1="40%" y1="25%" x2="55%" y2="40%" stroke="#0ea5e9"/>
-            <line x1="15%" y1="55%" x2="35%" y2="50%" stroke="#0ea5e9"/>
-            <line x1="5%" y1="40%" x2="25%" y2="35%" stroke="#0ea5e9"/>
-            <line x1="5%" y1="40%" x2="15%" y2="55%" stroke="#0ea5e9"/>
-            <line x1="20%" y1="15%" x2="10%" y2="20%" stroke="#0ea5e9"/>
-            <line x1="20%" y1="15%" x2="40%" y2="25%" stroke="#0ea5e9"/>
-            <line x1="35%" y1="50%" x2="30%" y2="70%" stroke="#0ea5e9"/>
-          </g>
-          {/* Network Nodes */}
-          <g>
-            <circle cx="10%" cy="20%" r="4" fill="#0ea5e9" opacity="0.6"/>
-            <circle cx="25%" cy="35%" r="5" fill="#0ea5e9" opacity="0.7"/>
-            <circle cx="15%" cy="55%" r="4" fill="#0ea5e9" opacity="0.5"/>
-            <circle cx="30%" cy="70%" r="4" fill="#0ea5e9" opacity="0.6"/>
-            <circle cx="20%" cy="85%" r="3" fill="#0ea5e9" opacity="0.4"/>
-            <circle cx="40%" cy="25%" r="4" fill="#0ea5e9" opacity="0.6"/>
-            <circle cx="5%" cy="40%" r="3" fill="#0ea5e9" opacity="0.5"/>
-            <circle cx="20%" cy="15%" r="3" fill="#0ea5e9" opacity="0.4"/>
-            <circle cx="35%" cy="50%" r="4" fill="#0ea5e9" opacity="0.6"/>
-            <circle cx="55%" cy="40%" r="3" fill="#0ea5e9" opacity="0.4"/>
-          </g>
-        </svg>
-
-        {/* Soft Gradient Orbs */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-100/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-100/50 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-grid-pattern" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-navy-800/50 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand/5 rounded-full blur-[80px]" />
       </div>
 
-      <div className={`relative z-10 max-w-7xl mx-auto px-6 py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-
           {/* Left Content */}
           <div className="text-left">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-50 border border-sky-200 rounded-full mb-6">
-              <Brain className="w-4 h-4 text-sky-600" />
-              <span className="text-sky-700 font-semibold text-sm">AI-Powered Expert Network</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8">
+              <div className="w-2 h-2 bg-brand rounded-full animate-pulse" />
+              <span className="text-gray-300 font-medium text-sm">AI-Powered Expert Network</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="text-navy-900">Connect with the</span>
-              <span className="block text-sky-600 mt-2">Perfect Expert</span>
-              <span className="block text-navy-900">Instantly</span>
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight">
+              <span className="text-white">Find the Right Expert.</span>
+              <span className="block text-gradient mt-2">Instantly.</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
-              AI-powered matching connects you with verified professionals in seconds.
-              Get expert guidance for business, career, learning, and life.
+            <p className="text-lg text-gray-400 mb-8 leading-relaxed max-w-xl">
+              Flyrlink uses AI to match you with verified professionals across 12+ categories.
+              Book 1:1 sessions, attend live events, and get expert guidance -- all in one platform.
             </p>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-6 mb-8 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
-                  <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
-                  <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
-                </div>
-                <span className="font-semibold text-gray-700">10,000+ users</span>
-              </div>
-
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-                <span className="ml-1 font-semibold text-gray-700">4.9/5</span>
-              </div>
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">
+                <Shield className="w-3.5 h-3.5 text-brand-300" />
+                DPDP Compliant
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">
+                <Lock className="w-3.5 h-3.5 text-brand-300" />
+                256-bit Encryption
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-full">
+                <Star className="w-3.5 h-3.5 text-yellow-400" />
+                4.9/5 Rating
+              </span>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link
-                to="/waiting-list"
-                className="group inline-flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <a
+                href="https://app.flyrlink.com/"
+                className="group inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-navy-950 px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-white/10"
               >
                 Get Started Free
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              <Link
-                to="/book-call"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-navy-900 px-8 py-4 text-lg font-semibold rounded-lg border-2 border-gray-200 hover:border-sky-300 transition-all duration-300"
+              </a>
+              <a
+                href="/book-call"
+                className="inline-flex items-center justify-center gap-2 text-white px-8 py-4 text-lg font-semibold rounded-lg border border-white/20 hover:bg-white/5 transition-all duration-300"
               >
-                Book a Demo
-              </Link>
+                Book a Call with Us
+              </a>
             </div>
 
             {/* Key Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                'AI matches perfect experts',
-                'Verified professionals only',
-                'Instant connections',
-                'Secure & trusted platform'
-              ].map((feature, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-600">
-                  <Check className="w-5 h-5 text-sky-600 flex-shrink-0" />
-                  <span>{feature}</span>
+              {['AI matches perfect experts', 'Verified professionals only', 'Instant connections', 'Secure & trusted platform'].map((feature, i) => (
+                <div key={i} className="flex items-center gap-2 text-gray-400">
+                  <Check className="w-4 h-4 text-brand-300 flex-shrink-0" />
+                  <span className="text-sm">{feature}</span>
                 </div>
               ))}
             </div>
@@ -197,112 +104,91 @@ const HeroSection = () => {
 
           {/* Right Visual */}
           <div className="relative lg:block hidden">
-            <div className="relative w-full max-w-lg mx-auto">
-              {/* Background Decoration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-100/50 to-purple-100/50 rounded-3xl blur-3xl"></div>
+            <div className="relative w-full max-w-md mx-auto pt-6 pb-16">
+              {/* Glow behind cards */}
+              <div className="absolute inset-0 bg-brand/8 rounded-3xl blur-3xl" />
 
-              {/* Main Expert Cards Stack */}
-              <div className="relative space-y-4">
-                {/* Card 1 - Primary (Current Expert) */}
-                <div className="relative z-30 bg-white rounded-2xl shadow-xl p-6 border border-gray-100 transform hover:scale-105 transition-all duration-500">
+              {/* Card deck — back cards peek from behind below */}
+              <div className="relative">
+                {/* Tertiary Card (bottom of deck) */}
+                <div className="absolute top-6 left-6 right-6 h-full z-10">
+                  <div className="glass-dark rounded-2xl p-5 opacity-30 h-16" />
+                </div>
+
+                {/* Secondary Card (middle of deck) */}
+                <div className="absolute top-3 left-3 right-3 h-full z-20">
+                  <div className="glass-dark rounded-2xl p-5 opacity-50 h-16" />
+                </div>
+
+                {/* Primary Card (top of deck) */}
+                <div className="relative z-30 glass-dark rounded-2xl p-6 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <img
-                        src={experts[currentExpertIndex].image}
-                        alt={experts[currentExpertIndex].name}
-                        className="w-14 h-14 rounded-full object-cover shadow-lg transition-all duration-500"
-                      />
+                      <Image src={current.image} alt={current.name} width={56} height={56} className="w-14 h-14 rounded-full object-cover ring-2 ring-white/10 transition-all duration-500" />
                       <div>
-                        <h3 className="font-bold text-navy-900 text-lg transition-all duration-500">{experts[currentExpertIndex].name}</h3>
-                        <p className="text-sm text-gray-600 transition-all duration-500">{experts[currentExpertIndex].title}</p>
+                        <h3 className="font-bold text-white text-lg">{current.name}</h3>
+                        <p className="text-sm text-gray-400">{current.title}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1 bg-green-50 px-3 py-1.5 rounded-full">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-green-700">Online</span>
+                    <div className="flex items-center gap-1.5 bg-green-500/10 px-3 py-1.5 rounded-full border border-green-500/20">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      <span className="text-xs font-semibold text-green-400">Online</span>
                     </div>
                   </div>
-
                   <div className="flex gap-1 mb-3">
-                    {[...Array(experts[currentExpertIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    <span className="text-sm text-gray-600 ml-2">5.0 ({experts[currentExpertIndex].reviews}+ reviews)</span>
+                    {[...Array(current.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                    <span className="text-sm text-gray-400 ml-2">5.0 ({current.reviews}+ reviews)</span>
                   </div>
-
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span>{experts[currentExpertIndex].sessions}+ sessions</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Zap className="w-4 h-4 text-sky-600" />
-                      <span>2 min response</span>
-                    </div>
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-400">
+                    <div className="flex items-center gap-1"><Users className="w-4 h-4" /><span>{current.sessions}+ sessions</span></div>
+                    <div className="flex items-center gap-1"><Zap className="w-4 h-4 text-brand-300" /><span>2 min response</span></div>
                   </div>
-
-                  <button className="w-full bg-sky-600 hover:bg-sky-700 text-white py-2.5 rounded-lg font-semibold transition-colors">
-                    Connect Now
-                  </button>
+                  <button className="w-full bg-brand hover:bg-brand-600 text-white py-2.5 rounded-lg font-semibold transition-colors">Connect Now</button>
                 </div>
+              </div>
 
-                {/* Card 2 - Secondary (Next Expert) */}
-                <div className="absolute top-8 left-4 right-4 z-20 bg-white rounded-2xl shadow-lg p-6 border border-gray-100 opacity-80 transform -rotate-2 transition-all duration-500">
-                  <div className="flex items-center gap-3 mb-3">
-                    <img
-                      src={experts[(currentExpertIndex + 1) % experts.length].image}
-                      alt={experts[(currentExpertIndex + 1) % experts.length].name}
-                      className="w-12 h-12 rounded-full object-cover shadow-lg"
-                    />
-                    <div>
-                      <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 1) % experts.length].name}</h3>
-                      <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 1) % experts.length].title}</p>
-                    </div>
+              {/* Floating stat badges */}
+              <div className="absolute -top-2 -right-6 z-40 glass-dark rounded-xl py-2.5 px-3.5 shadow-lg">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-green-500/10 rounded-lg flex items-center justify-center border border-green-500/20">
+                    <Check className="w-4 h-4 text-green-400" />
                   </div>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Card 3 - Tertiary (Expert after next) */}
-                <div className="absolute top-16 left-8 right-8 z-10 bg-white rounded-2xl shadow-md p-6 border border-gray-100 opacity-60 transform rotate-2 transition-all duration-500">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={experts[(currentExpertIndex + 2) % experts.length].image}
-                      alt={experts[(currentExpertIndex + 2) % experts.length].name}
-                      className="w-12 h-12 rounded-full object-cover shadow-lg"
-                    />
-                    <div>
-                      <h3 className="font-bold text-navy-900">{experts[(currentExpertIndex + 2) % experts.length].name}</h3>
-                      <p className="text-sm text-gray-600">{experts[(currentExpertIndex + 2) % experts.length].title}</p>
-                    </div>
+                  <div>
+                    <p className="text-[10px] text-gray-500 font-medium leading-none mb-0.5">Match Rate</p>
+                    <p className="font-bold text-white text-base leading-none">98%</p>
                   </div>
                 </div>
               </div>
 
-              {/* Stats Badges */}
-              <div className="absolute -top-4 -right-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                    <Check className="w-5 h-5 text-green-600" />
+              <div className="absolute -bottom-2 -left-6 z-40 glass-dark rounded-xl py-2.5 px-3.5 shadow-lg">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center border border-brand/20">
+                    <Users className="w-4 h-4 text-brand-300" />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 font-medium">Match Rate</p>
-                    <p className="font-bold text-navy-900 text-lg">98%</p>
+                    <p className="text-[10px] text-gray-500 font-medium leading-none mb-0.5">Active Experts</p>
+                    <p className="font-bold text-white text-base leading-none">500+</p>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 z-40 bg-white rounded-xl shadow-lg p-3 border border-gray-100">
+              {/* Up-next mini cards — flanking right side */}
+              <div className="absolute -right-4 top-1/3 z-40 glass-dark rounded-xl p-3 shadow-lg max-w-[160px]">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center">
-                    <Users className="w-5 h-5 text-sky-600" />
+                  <Image src={next.image} alt={next.name} width={36} height={36} className="w-9 h-9 rounded-full object-cover ring-2 ring-white/10 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-white truncate">{next.name}</p>
+                    <p className="text-[10px] text-gray-400 truncate">{next.title}</p>
                   </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium">Active Experts</p>
-                    <p className="font-bold text-navy-900 text-sm">500+</p>
+                </div>
+              </div>
+
+              <div className="absolute -right-2 top-1/3 mt-16 z-40 glass-dark rounded-xl p-3 shadow-lg max-w-[150px] opacity-60">
+                <div className="flex items-center gap-2">
+                  <Image src={third.image} alt={third.name} width={32} height={32} className="w-8 h-8 rounded-full object-cover ring-2 ring-white/10 flex-shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold text-white truncate">{third.name}</p>
+                    <p className="text-[10px] text-gray-400 truncate">{third.title}</p>
                   </div>
                 </div>
               </div>
@@ -310,31 +196,18 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Bottom Social Proof */}
-        <div className="mt-16 pt-10 border-t border-gray-200">
-          <p className="text-center text-sm text-gray-500 mb-8">
-            Trusted by leading professionals and organizations
-          </p>
+        {/* Trusted By */}
+        <div className="mt-16 pt-10 border-t border-white/10">
+          <p className="text-center text-sm text-gray-500 mb-8">Trusted by leading professionals and organizations</p>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <div className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-300 shadow-sm">
-              <img
-                src="/leo-main.png"
-                alt="LEORIX"
-                className="h-10 md:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-              />
-            </div>
-            <div className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:border-sky-300 hover:bg-sky-50/50 transition-all duration-300 shadow-sm">
-              <img
-                src="/th.png"
-                alt="Traders Hub"
-                className="h-10 md:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-all duration-300"
-              />
-            </div>
+            {['/leo-main.png', '/th.png'].map((src, i) => (
+              <div key={i} className="bg-white/5 rounded-xl p-5 border border-white/10 hover:border-brand/30 hover:bg-white/10 transition-all duration-300">
+                <Image src={src} alt="Partner" width={120} height={48} className="h-10 md:h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-all duration-300 brightness-0 invert" />
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default memo(HeroSection);
+}

@@ -1,221 +1,159 @@
-import React, { useState, useEffect, memo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
-import { Menu, X, Sparkles } from 'lucide-react';
+'use client';
 
-const Navbar = () => {
-  const location = useLocation();
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ArrowRight } from 'lucide-react';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/faq', label: "FAQ's" },
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const getActiveTab = () => {
-    const path = location.pathname;
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-    if (path === '/') return 'home';
-    if (path === '/about') return 'about';
-    if (path === '/contact') return 'contact';
-    if (path === '/careers') return 'careers';
-    if (path === '/faq') return 'faq';
-    if (path === '/blog' || path.startsWith('/blog/')) return 'blog';
-    if (path === '/book-call') return 'book-call';
-
-    return 'home';
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    if (href.startsWith('/#')) return pathname === '/';
+    return pathname.startsWith(href);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled
-        ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-gray-200/50 border-b border-gray-100'
-        : 'bg-white/95 backdrop-blur-sm border-b border-gray-200'
-    }`}>
-      <div className="max-w-6xl mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
-          {/* Company Logo/Name */}
-          <div className="flex items-center">
-            <Link to="/" onClick={closeMobileMenu}>
-              <img 
-                src="/Flyrlink logo blue-blank .png" 
-                alt="Flyrlink" 
-                className="h-10 w-auto cursor-pointer" 
-              />
-            </Link>
-          </div>
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      {/* Dark navy background bar */}
+      <div
+        className={`transition-all duration-500 ${
+          scrolled
+            ? 'bg-navy-950 shadow-lg shadow-navy-950/20'
+            : 'bg-navy-950'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* White pill container */}
+          <div className="relative my-2.5">
+            <div className="bg-white rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-sm">
+              {/* Logo */}
+              <Link href="/" onClick={closeMobileMenu} className="flex-shrink-0">
+                <Image
+                  src="/Flyrlink logo blue-blank .png"
+                  alt="Flyrlink"
+                  width={120}
+                  height={40}
+                  className="h-9 w-auto"
+                  priority
+                />
+              </Link>
 
-          {/* Desktop Navigation Tabs */}
-          <Tabs value={getActiveTab()} className="hidden md:block">
-            <TabsList className="bg-sky-50 border border-sky-200">
-              <TabsTrigger 
-                value="home" 
-                className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
-                asChild
-              >
-                <Link to="/">Home</Link>
-              </TabsTrigger>
-              {/* <TabsTrigger 
-                value="experts" 
-                className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
-                asChild
-              >
-                <Link to="/find-experts">Find Experts</Link>
-              </TabsTrigger> */}
-              <TabsTrigger 
-                value="about" 
-                className="data-[state=active]:bg-sky-500 data-[state=active]:text-white"
-                asChild
-              >
-                <Link to="/about">About</Link>
-              </TabsTrigger>
-              <TabsTrigger
-                value="contact"
-                asChild
-                className="px-6 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
-              >
-                <Link to="/contact">Contact</Link>
-              </TabsTrigger>
-              <TabsTrigger
-                value="careers"
-                asChild
-                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
-              >
-                <Link to="/careers">Careers</Link>
-              </TabsTrigger>
-              <TabsTrigger
-                value="blog"
-                asChild
-                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
-              >
-                <Link to="/blog">Blog</Link>
-              </TabsTrigger>
-              <TabsTrigger 
-                value="faq" 
-                asChild
-                className="px-4 py-2 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-sky-600 data-[state=active]:shadow-sm"
-              >
-                <Link to="/faq">FAQ's</Link>
-              </TabsTrigger>
-              <TabsTrigger
-                value="book-call"
-                asChild
-                className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-sky-500 to-blue-600 text-white hover:from-sky-600 hover:to-blue-700 data-[state=active]:from-sky-600 data-[state=active]:to-blue-700 data-[state=active]:text-white ml-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <Link to="/book-call" className="flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4" />
-                  Book a Call
+              {/* Desktop Nav Links - Centered */}
+              <div className="hidden lg:flex items-center gap-1">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                      isActive(link.href)
+                        ? 'text-brand'
+                        : 'text-gray-600 hover:text-navy-900'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Desktop CTAs */}
+              <div className="hidden lg:flex items-center gap-3">
+                <Link
+                  href="/contact"
+                  className="px-5 py-2 text-sm font-semibold text-navy-900 border border-gray-300 rounded-full hover:border-navy-900 transition-colors"
+                >
+                  Contact Us
                 </Link>
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
+                <Link
+                  href="/book-call"
+                  className="group px-5 py-2 text-sm font-semibold bg-brand text-white rounded-full hover:bg-brand-600 transition-colors flex items-center gap-1.5"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button 
-              onClick={toggleMobileMenu}
-              className="p-2 text-navy-900 hover:text-sky-600 transition-colors"
-              aria-label="Toggle mobile menu"
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-gray-600 hover:text-navy-900 transition-colors -mr-2"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+
+            {/* Mobile Menu - drops below the pill */}
+            <div
+              className={`lg:hidden absolute top-full left-0 right-0 mt-2 transition-all duration-300 ease-in-out ${
+                isMobileMenuOpen
+                  ? 'opacity-100 translate-y-0 pointer-events-auto'
+                  : 'opacity-0 -translate-y-2 pointer-events-none'
+              }`}
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-2 pt-4">
-              <Link 
-                to="/" 
-                onClick={closeMobileMenu}
-                className={`px-4 py-2 rounded-md text-center font-medium transition-colors ${
-                  getActiveTab() === 'home' 
-                    ? 'bg-sky-500 text-white' 
-                    : 'text-navy-900 hover:bg-sky-50 hover:text-sky-600'
-                }`}
-              >
-                Home
-              </Link>
-              {/* <Link 
-                to="/find-experts" 
-                onClick={closeMobileMenu}
-                className={`px-4 py-2 rounded-md text-center font-medium transition-colors ${
-                  getActiveTab() === 'experts' 
-                    ? 'bg-sky-500 text-white' 
-                    : 'text-navy-900 hover:bg-sky-50 hover:text-sky-600'
-                }`}
-              >
-                Find Experts
-              </Link> */}
-              <Link 
-                to="/about" 
-                onClick={closeMobileMenu}
-                className={`px-4 py-2 rounded-md text-center font-medium transition-colors ${
-                  getActiveTab() === 'about' 
-                    ? 'bg-sky-500 text-white' 
-                    : 'text-navy-900 hover:bg-sky-50 hover:text-sky-600'
-                }`}
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                onClick={closeMobileMenu}
-                className={`block px-4 py-3 text-sm font-medium rounded-md ${location.pathname === '/contact' ? 'bg-sky-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50'}`}
-              >
-                Contact
-              </Link>
-              <Link
-                to="/careers"
-                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'careers' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
-                onClick={closeMobileMenu}
-              >
-                Careers
-              </Link>
-              <Link
-                to="/blog"
-                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'blog' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
-                onClick={closeMobileMenu}
-              >
-                Blog
-              </Link>
-              <Link
-                to="/faq"
-                className={`block px-4 py-2 text-base font-medium ${getActiveTab() === 'faq' ? 'text-sky-600' : 'text-gray-700 hover:text-sky-600'}`}
-                onClick={closeMobileMenu}
-              >
-                FAQ's
-              </Link>
-              <Link
-                to="/book-call"
-                className="block mx-4 mt-2 px-4 py-2 text-base font-medium text-center rounded-md bg-sky-500 text-white hover:bg-sky-600"
-                onClick={closeMobileMenu}
-              >
-                Book a Call
-              </Link>
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4 mx-1">
+                <div className="flex flex-col space-y-1">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMobileMenu}
+                      className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                        isActive(link.href)
+                          ? 'text-brand bg-brand/5'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-navy-900'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
+                  <Link
+                    href="/contact"
+                    className="block px-4 py-2.5 text-sm font-semibold text-center text-navy-900 border border-gray-300 rounded-lg hover:border-navy-900"
+                    onClick={closeMobileMenu}
+                  >
+                    Contact Us
+                  </Link>
+                  <Link
+                    href="/book-call"
+                    className="flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-center rounded-lg bg-brand text-white hover:bg-brand-600"
+                    onClick={closeMobileMenu}
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Bottom accent line - gradient from navy to brand */}
+      <div className="h-0.5 bg-gradient-to-r from-navy-800 via-brand to-navy-800" />
     </nav>
   );
-};
-
-export default memo(Navbar);
+}

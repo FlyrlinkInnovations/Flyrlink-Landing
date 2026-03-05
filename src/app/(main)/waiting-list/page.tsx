@@ -1,0 +1,76 @@
+import type { Metadata } from 'next';
+import { EnhancedWaitingListForm } from '@/components/EnhancedWaitingListForm';
+
+export const metadata: Metadata = {
+  title: 'Join Waiting List',
+  description: 'Be among the first to experience Flyrlink. Join our waiting list for early access to connect with verified experts and get exclusive launch benefits.',
+  keywords: 'join waiting list, early access, flyrlink launch, exclusive benefits, expert platform waitlist',
+};
+
+export default function WaitingListPage() {
+  return (
+    <div className="relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-brand-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
+        <div className="absolute top-40 right-10 w-72 h-72 bg-brand-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
+      </div>
+
+      <section className="relative z-10 min-h-screen py-20 px-6 flex items-center justify-center">
+        <div className="max-w-2xl mx-auto w-full">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 text-brand text-xs font-semibold uppercase tracking-wider mb-8">
+              <span className="w-6 h-px bg-brand/40" />
+              Join the Revolution
+              <span className="w-6 h-px bg-brand/40" />
+            </span>
+
+            <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <span className="text-navy-900">
+                Be Among the First
+              </span>
+              <br />
+              <span className="text-gradient">
+                to Experience Flyrlink
+              </span>
+            </h1>
+
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+              Join thousands of early adopters who are revolutionizing how they connect with experts.
+              Get exclusive early access and special launch benefits.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {['Personalized Matching', 'Instant Access', '100% Secure', 'Launch Bonuses'].map((feature, index) => (
+                <span key={index} className="px-6 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full text-sm font-medium text-gray-700">
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Form Container */}
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-gray-200/80 shadow-2xl p-8 mb-12">
+            <EnhancedWaitingListForm />
+          </div>
+
+          {/* Trust indicators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            {[
+              { emoji: '🔒', title: '100% Secure', desc: 'Your data is protected with enterprise-grade security' },
+              { emoji: '⚡', title: 'Lightning Fast', desc: 'Get instant access when we launch' },
+              { emoji: '🎯', title: 'Personalized', desc: 'Tailored experience just for you' },
+            ].map((item, i) => (
+              <div key={i} className="p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-200/80 hover:bg-white/90 transition-all duration-300">
+                <div className="text-4xl mb-3">{item.emoji}</div>
+                <div className="font-semibold text-navy-900 mb-2">{item.title}</div>
+                <div className="text-sm text-gray-600">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

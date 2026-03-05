@@ -1,72 +1,82 @@
 # Flyrlink Landing Page - Development Notes
 
 ## Project Overview
-This is the landing page for Flyrlink, an AI-powered expert network platform built with:
+Landing page for Flyrlink, an AI-powered expert network platform built with:
+- Next.js 16 (App Router, Turbopack)
 - React 18 + TypeScript
-- Vite for bundling
-- TailwindCSS for styling
-- React Router for navigation
+- Tailwind CSS v4
 - React Query for data fetching
-- React Helmet Async for SEO
+- shadcn/ui components
 
 ## Key Commands
 ```bash
-npm run dev      # Start development server
+npm run dev      # Start development server (Turbopack)
 npm run build    # Build for production
+npm run start    # Start production server
 npm run lint     # Run ESLint
-npm run preview  # Preview production build
 ```
 
 ## Project Structure
 ```
 src/
-├── components/      # Reusable UI components
-├── config/         # Configuration files and constants
-├── services/       # API services
-├── utils/          # Utility functions
-├── views/          # Page components (routes)
-└── App.tsx         # Main app component with routing
+├── app/
+│   ├── layout.tsx          # Root layout (fonts, metadata, providers)
+│   ├── globals.css         # Global styles + Tailwind v4 config
+│   ├── error.tsx           # Error boundary
+│   ├── loading.tsx         # Loading state
+│   ├── not-found.tsx       # 404 page
+│   ├── sitemap.ts          # Dynamic sitemap
+│   ├── robots.ts           # robots.txt
+│   ├── (main)/             # Route group with Navbar + Footer
+│   │   ├── layout.tsx      # Navbar + Footer wrapper
+│   │   ├── page.tsx        # Homepage (11 sections)
+│   │   ├── about/
+│   │   ├── blog/
+│   │   ├── blog/[id]/
+│   │   ├── careers/
+│   │   ├── contact/
+│   │   ├── faq/
+│   │   ├── find-experts/
+│   │   ├── waiting-list/
+│   │   ├── privacy/
+│   │   ├── terms/
+│   │   └── affiliate/
+│   └── book-call/          # Standalone page (no navbar/footer)
+├── components/
+│   ├── homepage/           # Homepage-specific sections
+│   ├── Calendar/           # Booking calendar components
+│   └── ui/                 # shadcn/ui components
+├── config/                 # Configuration and constants
+├── services/               # API services
+├── hooks/                  # Custom React hooks
+├── lib/                    # Utility library (cn, etc.)
+└── utils/                  # Utility functions
 ```
 
-## Recent Optimizations
-1. **Technical Debt Removal**
-   - Removed duplicate `/src/pages` directory (using `/src/views` for routes)
-   - Consolidated 3 toast libraries into single shadcn toast
-   - Removed unused dependencies (react-toastify, sonner, googleapis, next)
-   - Fixed all TypeScript linting errors
-
-2. **Performance Improvements**
-   - Implemented React.lazy() for route-based code splitting
-   - Added React.memo() to major components
-   - Created reusable LoadingSpinner component
-   - Moved constants to centralized config
-
-3. **Error Handling**
-   - Added global ErrorBoundary component
-   - Improved API error handling
-   - Removed all console.log statements
-
-4. **SEO Enhancements**
-   - Dynamic meta tags with React Helmet
-   - Structured data (Schema.org)
-   - Sitemap.xml generation
-   - Image optimization with lazy loading
+## Architecture Notes
+- **Server Components** by default; use `'use client'` only when needed (forms, interactivity, hooks)
+- **Metadata API** for SEO (export `metadata` or `generateMetadata` per page)
+- **Route groups** `(main)` wraps pages with Navbar + Footer
+- **JSON-LD** structured data in root layout (Organization, WebSite, WebApplication)
+- **ISR** for blog pages (revalidate: 3600)
+- **Tailwind v4** with `@config` directive in globals.css pointing to tailwind.config.ts
 
 ## Environment Variables
 Copy `.env.example` to `.env` and configure:
-- `VITE_BLOG_API_URL` - Blog API endpoint
-- `VITE_BLOG_USER_ID` - User ID for blog posts
-- `VITE_SITE_URL` - Production site URL
+- `NEXT_PUBLIC_BLOG_API_URL` - Blog API endpoint
+- `NEXT_PUBLIC_BLOG_USER_ID` - User ID for blog posts
+- `NEXT_PUBLIC_SITE_URL` - Production site URL
 
 ## API Endpoints
 - Blog Posts: `https://api.foundershub.ai/api/blog/blogs/user_blogs/`
 - Waiting List: `https://api.foundershub.ai/api/v2/templates/ingest/cavzfgZsRTKyHnPgkb3uyYYOfCctKebx3KM11pLS/`
 
-## Known Issues
-- Blog API returns external image URLs that can't be optimized
-- Some UI components export non-component values (causes React Fast Refresh warnings)
+## Key External Links
+- App: `https://app.flyrlink.com/`
+- Contact: `Contact@flyrlink.com`
+- Support: `support@flyrlink.com`
 
 ## Deployment Notes
-- Ensure all environment variables are set in production
-- Build outputs to `/dist` directory
-- Static hosting compatible (Netlify, Vercel, etc.)
+- Build outputs to `.next/` directory
+- Ensure all `NEXT_PUBLIC_*` env vars are set in production
+- Compatible with Vercel, Netlify (with Next.js plugin), or any Node.js hosting

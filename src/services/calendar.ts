@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CALENDAR_API_BASE = 'https://api.foundershub.ai/api/v2/calendars';
+const CALENDAR_API_BASE = 'https://api.leorix.com/api/v2/calendars';
 
 export interface TimeSlot {
   start: string;
@@ -34,43 +34,30 @@ export interface BookingResponse {
 
 export const calendarService = {
   async getAvailability(date: string, timezone: string = 'America/Chicago'): Promise<AvailabilityResponse> {
-    try {
-      const response = await axios.get(
-        `${CALENDAR_API_BASE}/public/flyrlink/availability/`,
-        {
-          params: {
-            date,
-            timezone: encodeURIComponent(timezone)
-          },
-          headers: {
-            'Accept': '*/*',
-            'Origin': window.location.origin,
-          }
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching availability:', error);
-      throw error;
-    }
+    const response = await axios.get(
+      `${CALENDAR_API_BASE}/public/flyrlink/availability/`,
+      {
+        params: { date, timezone: encodeURIComponent(timezone) },
+        headers: {
+          Accept: '*/*',
+          Origin: typeof window !== 'undefined' ? window.location.origin : 'https://flyrlink.com',
+        },
+      }
+    );
+    return response.data;
   },
 
   async bookAppointment(bookingData: BookingData): Promise<BookingResponse> {
-    try {
-      const response = await axios.post(
-        `${CALENDAR_API_BASE}/public/flyrlink/book/`,
-        bookingData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          }
-        }
-      );
-      return response.data;
-    } catch (error) {
-      console.error('Error booking appointment:', error);
-      throw error;
-    }
-  }
+    const response = await axios.post(
+      `${CALENDAR_API_BASE}/public/flyrlink/book/`,
+      bookingData,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    );
+    return response.data;
+  },
 };

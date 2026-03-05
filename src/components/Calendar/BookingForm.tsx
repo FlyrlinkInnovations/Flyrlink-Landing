@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, memo } from 'react';
 import { User, Mail, Phone, Building, MessageSquare, Calendar, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 import { calendarService, BookingData } from '../../services/calendar';
