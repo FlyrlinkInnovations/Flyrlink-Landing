@@ -1,102 +1,343 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { Check, ArrowRight } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Briefcase,
+  Building2,
+  Check,
+  User,
+} from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+
+type Plan = {
+  name: string;
+  kicker: string;
+  description: string;
+  features: string[];
+  cta: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  tone: 'light' | 'featured';
+  badge?: string;
+  price?: string;
+  priceSuffix?: string;
+};
+
+const plans: Plan[] = [
+  {
+    name: 'For Clients',
+    kicker: 'BROWSE & BOOK',
+    description:
+      'Browse and book verified experts with transparent, upfront pricing.',
+    features: [
+      'Free to sign up and browse',
+      'Pay per session - from INR 500',
+      'No subscriptions or hidden fees',
+      'Secure payments · refund protection',
+      '1:1 sessions, events & more',
+    ],
+    cta: 'Get Started Free',
+    href: 'https://app.flyrlink.com/',
+    icon: User,
+    tone: 'light',
+    price: 'Free',
+    priceSuffix: 'to browse',
+  },
+  {
+    name: 'For Experts',
+    kicker: 'GROW YOUR PRACTICE',
+    description:
+      'Monetize your expertise with flexible pricing and powerful growth tools.',
+    features: [
+      'Free expert profile',
+      'Set your own session pricing',
+      'Keep the majority of earnings',
+      'Host events and group sessions',
+      'Analytics and growth tools included',
+    ],
+    cta: 'Become an Expert',
+    href: 'https://app.flyrlink.com/',
+    icon: Briefcase,
+    tone: 'featured',
+    badge: 'MOST POPULAR',
+    price: '0%',
+    priceSuffix: 'upfront · rev-share on sessions',
+  },
+  {
+    name: 'For Teams',
+    kicker: 'SCALE YOUR ORG',
+    description:
+      'Bring expert access to your whole team with centralized billing and admin controls.',
+    features: [
+      'Unlimited expert bookings',
+      'Centralized team billing',
+      'SSO + admin controls',
+      'Private expert bench',
+      'Dedicated success manager',
+    ],
+    cta: 'Contact Sales',
+    href: '/book-call',
+    icon: Building2,
+    tone: 'light',
+    price: 'Custom',
+    priceSuffix: 'tailored to your org',
+  },
+];
 
 export default function PricingSection() {
   const { ref, isVisible } = useScrollReveal();
+  const [active, setActive] = useState(1);
+
+  const next = () => setActive((a) => (a + 1) % plans.length);
+  const prev = () => setActive((a) => (a - 1 + plans.length) % plans.length);
 
   return (
-    <section id="pricing" className="py-28 bg-gray-50">
-      <div ref={ref} className={`max-w-7xl mx-auto px-6 reveal ${isVisible ? 'revealed' : ''}`}>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-brand text-xs font-semibold uppercase tracking-wider mb-4">
-            Pricing
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-navy-900 tracking-tight mb-6">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Experts set their own pricing. You only pay for the sessions you book.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-          {/* For Clients */}
-          <div className="bg-white p-8 rounded-xl border border-gray-200/80 card-premium hover:border-brand/30">
-            <h3 className="font-display text-2xl font-bold text-navy-900 mb-4">For Clients</h3>
-            <p className="text-gray-600 mb-6">
-              Browse and book experts with transparent, upfront pricing.
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                'Free to sign up and browse',
-                'Pay per session (starting from INR 500)',
-                'No hidden fees or subscriptions',
-                'Secure payment with refund protection',
-                'Book 1:1 sessions, events, and more',
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="https://app.flyrlink.com/"
-              className="block w-full bg-brand hover:bg-brand-600 text-white py-3 rounded-lg font-semibold transition-colors text-center"
-            >
-              Get Started Free
-            </a>
-          </div>
-
-          {/* For Experts */}
-          <div className="bg-navy-900 p-8 rounded-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-grid-pattern opacity-50" />
-            <div className="relative">
-              <span className="inline-block bg-brand text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                POPULAR
-              </span>
-              <h3 className="font-display text-2xl font-bold text-white mb-4">For Experts</h3>
-              <p className="text-gray-400 mb-6">
-                Monetize your expertise with flexible pricing and powerful tools.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Free to create your expert profile',
-                  'Set your own session pricing',
-                  'Keep the majority of your earnings',
-                  'Host events and group sessions',
-                  'Analytics and growth tools included',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-brand-300 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="https://app.flyrlink.com/"
-                className="block w-full bg-white hover:bg-gray-100 text-navy-900 py-3 rounded-lg font-semibold transition-colors text-center"
-              >
-                Become an Expert
-              </a>
+    <section id="pricing" className="bg-gray-50 py-28">
+      <div
+        ref={ref}
+        className={`mx-auto max-w-7xl px-6 reveal ${isVisible ? 'revealed' : ''}`}
+      >
+        {/* Header */}
+        <div className="mb-12 grid items-end gap-6 md:mb-14 md:grid-cols-2 md:gap-10">
+          <div>
+            <div className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+              PRICING
             </div>
+            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-5xl lg:text-6xl">
+              Simple, transparent
+              <span className="mt-1 block font-serif italic font-medium text-brand">
+                pricing.
+              </span>
+            </h2>
+          </div>
+          <div className="md:text-right">
+            <p className="max-w-md text-gray-600 md:ml-auto">
+              Experts set their own pricing. You only pay for the sessions you
+              book. No fine print, no surprises.
+            </p>
+            <Link
+              href="/book-call"
+              className="group mt-5 inline-flex items-center gap-2 rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-xl shadow-navy-900/20 transition-all duration-300 hover:bg-navy-800 hover:shadow-brand/20"
+            >
+              Talk to sales
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-navy-900 transition-transform group-hover:translate-x-0.5">
+                <ArrowRight className="h-3 w-3" />
+              </span>
+            </Link>
           </div>
         </div>
 
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">Need a custom solution or have questions?</p>
+        {/* Carousel */}
+        <div className="relative">
+          <div className="flex items-center gap-3 md:gap-5">
+            <button
+              onClick={prev}
+              aria-label="Previous plan"
+              className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-navy-900 shadow-sm transition-all duration-300 hover:border-brand/40 hover:bg-brand/5 hover:text-brand"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+
+            <div className="grid flex-1 gap-6 md:grid-cols-3 md:gap-6">
+              {plans.map((plan, i) => (
+                <PlanCard
+                  key={plan.name}
+                  plan={plan}
+                  featured={i === active}
+                  onClick={() => setActive(i)}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={next}
+              aria-label="Next plan"
+              className="z-10 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-gray-200 bg-white text-navy-900 shadow-sm transition-all duration-300 hover:border-brand/40 hover:bg-brand/5 hover:text-brand"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Dots */}
+          <div className="mt-8 flex justify-center gap-1.5">
+            {plans.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                aria-label={`View plan ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === active
+                    ? 'w-8 bg-brand'
+                    : 'w-1.5 bg-gray-300 hover:bg-gray-400'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom note */}
+        <div className="mt-14 text-center">
+          <p className="mb-3 text-sm text-gray-500">
+            Need something custom or have questions?
+          </p>
           <Link
             href="/book-call"
-            className="group inline-flex items-center gap-2 text-brand hover:text-brand-600 font-semibold"
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand decoration-brand/40 decoration-2 underline-offset-4 hover:underline"
           >
-            Book a Call with Us
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Book a call with the team
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>
     </section>
+  );
+}
+
+function PlanCard({
+  plan,
+  featured,
+  onClick,
+}: {
+  plan: Plan;
+  featured: boolean;
+  onClick: () => void;
+}) {
+  const Icon = plan.icon;
+  const featuredTone = plan.tone === 'featured';
+
+  return (
+    <button
+      onClick={onClick}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl p-6 text-left transition-all duration-500 md:p-8 ${
+        featured
+          ? featuredTone
+            ? 'md:-translate-y-3 bg-navy-900 text-white shadow-2xl shadow-navy-900/30'
+            : 'md:-translate-y-3 bg-white border border-brand/30 shadow-2xl shadow-brand/10'
+          : 'bg-white border border-gray-200/80 opacity-60 hover:opacity-100'
+      }`}
+    >
+      {/* Featured navy card decor */}
+      {featured && featuredTone && (
+        <>
+          <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-50" />
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-brand/10 blur-3xl" />
+        </>
+      )}
+
+      <div className="relative flex flex-1 flex-col">
+        {/* Top row */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span
+              className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                featuredTone && featured
+                  ? 'bg-white/10 text-brand-300'
+                  : 'bg-brand/10 text-brand'
+              }`}
+            >
+              <Icon className="h-4 w-4" />
+            </span>
+            <span
+              className={`text-[10px] font-semibold tracking-[0.24em] ${
+                featuredTone && featured ? 'text-brand-300' : 'text-brand'
+              }`}
+            >
+              {plan.kicker}
+            </span>
+          </div>
+          {plan.badge && featured && (
+            <span className="rounded-full bg-brand px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+              {plan.badge}
+            </span>
+          )}
+        </div>
+
+        {/* Name */}
+        <h3
+          className={`mt-5 font-display text-2xl font-bold ${
+            featuredTone && featured ? 'text-white' : 'text-navy-900'
+          }`}
+        >
+          {plan.name}
+        </h3>
+
+        {/* Price */}
+        {plan.price && (
+          <div className="mt-3 flex items-baseline gap-2">
+            <span
+              className={`font-serif text-4xl italic font-medium leading-none ${
+                featuredTone && featured ? 'text-white' : 'text-navy-900'
+              }`}
+            >
+              {plan.price}
+            </span>
+            {plan.priceSuffix && (
+              <span
+                className={`text-xs ${
+                  featuredTone && featured ? 'text-white/60' : 'text-gray-500'
+                }`}
+              >
+                {plan.priceSuffix}
+              </span>
+            )}
+          </div>
+        )}
+
+        <p
+          className={`mt-4 text-sm ${
+            featuredTone && featured ? 'text-white/70' : 'text-gray-600'
+          }`}
+        >
+          {plan.description}
+        </p>
+
+        {/* Features */}
+        <ul className="mt-6 space-y-2.5">
+          {plan.features.map((f) => (
+            <li key={f} className="flex items-start gap-3">
+              <Check
+                className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
+                  featuredTone && featured ? 'text-brand-300' : 'text-brand'
+                }`}
+              />
+              <span
+                className={`text-sm ${
+                  featuredTone && featured ? 'text-white/85' : 'text-gray-700'
+                }`}
+              >
+                {f}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <div className="mt-7">
+          {featured ? (
+            <a
+              href={plan.href}
+              className={`inline-flex w-full items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold shadow-lg transition-all duration-300 ${
+                featuredTone
+                  ? 'bg-white text-navy-900 hover:bg-gray-100'
+                  : 'bg-navy-900 text-white hover:bg-navy-800'
+              }`}
+            >
+              {plan.cta}
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-400">
+              Tap to view plan
+              <ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          )}
+        </div>
+      </div>
+    </button>
   );
 }

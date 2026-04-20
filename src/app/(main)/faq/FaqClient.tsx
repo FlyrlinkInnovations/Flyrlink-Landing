@@ -1,22 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import {
-  HelpCircle,
-  User,
-  Shield,
+  ArrowRight,
+  ArrowUpRight,
   Briefcase,
-  Star,
   ClipboardList,
   CreditCard,
+  HelpCircle,
+  Search,
+  Shield,
+  Star,
+  User,
   UserCircle,
-  ChevronDown,
-  ChevronUp,
 } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 type FaqItem = {
   question: string;
@@ -26,17 +24,17 @@ type FaqItem = {
 type FaqCategory = {
   id: string;
   title: string;
-  icon: React.ReactNode;
+  short: string;
+  icon: React.ComponentType<{ className?: string }>;
   items: FaqItem[];
 };
-
-// ─── Static FAQ Data ──────────────────────────────────────────────────────────
 
 const faqCategories: FaqCategory[] = [
   {
     id: 'general',
     title: 'General Questions',
-    icon: <HelpCircle className="w-5 h-5" />,
+    short: 'General',
+    icon: HelpCircle,
     items: [
       {
         question: 'What is FLYRLINK, and how does it work?',
@@ -81,7 +79,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'users',
     title: 'User Role & Usage',
-    icon: <User className="w-5 h-5" />,
+    short: 'Users',
+    icon: User,
     items: [
       {
         question: 'How do I create an account on FLYRLINK?',
@@ -113,7 +112,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'experts',
     title: 'Expert Roles & Monetization',
-    icon: <Star className="w-5 h-5" />,
+    short: 'Experts',
+    icon: Star,
     items: [
       { question: 'How do I create an expert account on FLYRLINK?', answer: 'Sign up using your email or social account, then select "Expert Profile" during setup. Complete your profile with skills, experience, and services offered. You can also apply for verification to increase trust and visibility.' },
       { question: 'How can I list my services on FLYRLINK?', answer: 'Go to your profile settings, select "Create a Service", and fill in details such as service title, description, pricing, and availability (online, in-person, home visit). Once listed, users can book your services directly.' },
@@ -130,7 +130,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'business',
     title: 'Startup & Business Growth',
-    icon: <Briefcase className="w-5 h-5" />,
+    short: 'Business',
+    icon: Briefcase,
     items: [
       { question: 'How can startups and small businesses use FLYRLINK to grow?', answer: 'Startups and small businesses can list their services, connect with verified experts, promote their brand through posts and videos, and engage with potential customers. They can also participate in Startup Saturday for extra visibility.' },
       { question: 'Can startups collaborate with experts on FLYRLINK?', answer: 'Yes! Startups can hire experts for business consulting, mentorship, and marketing strategies. Verified experts can provide growth advice, funding guidance, and operational insights.' },
@@ -142,7 +143,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'services',
     title: 'Service Types & Offerings',
-    icon: <ClipboardList className="w-5 h-5" />,
+    short: 'Services',
+    icon: ClipboardList,
     items: [
       { question: 'What types of services can experts offer on FLYRLINK?', answer: 'Experts can offer a variety of services, including: Online consultations (video calls, chat-based advice), In-person services (local meetups, office visits), Home visits (for business, consulting, coaching, or personal services).' },
       { question: 'How can I offer services on FLYRLINK?', answer: 'Verified experts can create a service listing by going to their profile settings, selecting "Create a Service", and adding details such as service type, description, pricing, and availability (online, in-person, or home visit).' },
@@ -155,7 +157,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'payments',
     title: 'Payments & Support',
-    icon: <CreditCard className="w-5 h-5" />,
+    short: 'Payments',
+    icon: CreditCard,
     items: [
       { question: 'How do experts receive payments for services?', answer: 'Payments are processed directly through the FLYRLINK platform to ensure secure transactions between experts and clients.' },
       { question: 'How do users pay for expert services?', answer: 'Users can book expert services and pay securely through the in-app payment system and cash payment to the service provider.' },
@@ -165,7 +168,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'account',
     title: 'Account & Suspension',
-    icon: <UserCircle className="w-5 h-5" />,
+    short: 'Account',
+    icon: UserCircle,
     items: [
       { question: 'How can I update my profile details on FLYRLINK?', answer: 'You can update your name, profile picture, bio, and other details by going to Settings > Edit Profile in the app. Changes will be saved instantly.' },
       { question: 'Can I switch from a user account to an expert account?', answer: 'Yes! If you want to become an expert, go to Settings > Upgrade to Expert, fill in your expertise details, and submit a verification request. Once approved, your account will be upgraded.' },
@@ -176,7 +180,8 @@ const faqCategories: FaqCategory[] = [
   {
     id: 'security',
     title: 'Security & Privacy',
-    icon: <Shield className="w-5 h-5" />,
+    short: 'Security',
+    icon: Shield,
     items: [
       { question: 'How does FLYRLINK protect my personal information?', answer: 'FLYRLINK uses end-to-end encryption, secure payment gateways, and strict data privacy policies to protect user information. Your personal details are never shared without your consent.' },
       { question: 'How can I enable two-factor authentication (2FA) for my account?', answer: 'Currently, FLYRLINK does not support two-factor authentication (2FA) but recommends using a strong password and enabling device-level security like fingerprint or face ID for additional protection.' },
@@ -188,253 +193,393 @@ const faqCategories: FaqCategory[] = [
   },
 ];
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
-
-function AccordionItem({
-  faq,
-  isOpen,
-  onClick,
-}: {
-  faq: FaqItem;
-  isOpen: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <Card className="overflow-hidden mb-3 rounded-xl border-gray-200/80 hover:border-brand/30 transition-colors">
-      <button
-        onClick={onClick}
-        className="w-full px-5 py-4 text-left focus:outline-none flex justify-between items-start"
-        aria-expanded={isOpen}
-      >
-        <h3 className="text-base font-medium text-navy-900 pr-4">{faq.question}</h3>
-        {isOpen ? (
-          <ChevronUp className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
-        ) : (
-          <ChevronDown className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
-        )}
-      </button>
-      <div
-        className={`px-5 pb-4 pt-0 transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}
-        aria-hidden={!isOpen}
-      >
-        <p className="text-gray-600 text-sm whitespace-pre-line">{faq.answer}</p>
-      </div>
-    </Card>
-  );
-}
-
-function CategoryAccordion({
-  category,
-  openIndex,
-  onToggle,
-}: {
-  category: FaqCategory;
-  openIndex: number | null;
-  onToggle: (index: number) => void;
-}) {
-  return (
-    <div className="space-y-4">
-      {category.items.map((faq, index) => (
-        <AccordionItem
-          key={`${category.id}-${index}`}
-          faq={faq}
-          isOpen={openIndex === index}
-          onClick={() => onToggle(openIndex === index ? -1 : index)}
-        />
-      ))}
-    </div>
-  );
-}
-
-// ─── Main Client Component ────────────────────────────────────────────────────
+const totalQuestions = faqCategories.reduce(
+  (sum, c) => sum + c.items.length,
+  0
+);
 
 export default function FaqClient() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [openIndices, setOpenIndices] = useState<Record<string, number | null>>({});
+  const [activeCategory, setActiveCategory] = useState<string>('general');
+  const [openKey, setOpenKey] = useState<string | null>(null);
 
-  const toggleFaq = (categoryId: string, index: number) => {
-    setOpenIndices((prev) => ({
-      ...prev,
-      [categoryId]: prev[categoryId] === index ? -1 : index,
-    }));
-  };
+  const searching = searchQuery.trim().length > 0;
 
-  const filteredCategories = faqCategories
-    .map((category) => ({
-      ...category,
-      items: searchQuery
-        ? category.items.filter(
-            (item) =>
-              item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              item.answer.toLowerCase().includes(searchQuery.toLowerCase()),
-          )
-        : category.items,
-    }))
-    .filter((category) => category.items.length > 0);
+  const filteredCategories = searching
+    ? faqCategories
+        .map((c) => ({
+          ...c,
+          items: c.items.filter(
+            (i) =>
+              i.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              i.answer.toLowerCase().includes(searchQuery.toLowerCase())
+          ),
+        }))
+        .filter((c) => c.items.length > 0)
+    : [];
+
+  const current =
+    faqCategories.find((c) => c.id === activeCategory) ?? faqCategories[0];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero / Search Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 text-brand text-xs font-semibold uppercase tracking-wider mb-6">
-              <span className="w-6 h-px bg-brand/40" />
-              We&apos;re here to help
-              <span className="w-6 h-px bg-brand/40" />
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-navy-900 mb-4 leading-tight tracking-tight">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              Find quick answers to common questions about FLYRLINK. Can&apos;t find what
-              you&apos;re looking for?{' '}
-              <a href="/contact" className="text-brand hover:underline font-medium">
-                Contact our support team
-              </a>
-              .
-            </p>
+    <div className="bg-white">
+      {/* --- HERO --- */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-white py-20 md:py-28">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none font-serif italic font-medium leading-none text-brand/[0.05]"
+          style={{ fontSize: 'clamp(140px, 20vw, 280px)' }}
+        >
+          answers
+        </span>
 
-            {/* Search Bar */}
-            <div className="relative max-w-2xl mx-auto">
-              <input
-                type="text"
-                placeholder="Search questions..."
-                className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent text-gray-700 placeholder-gray-400 text-base shadow-sm transition-all duration-200"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+        <div className="relative mx-auto max-w-6xl px-6">
+          {/* Meta bar */}
+          <div className="mb-10 flex items-center justify-between text-[10px] font-semibold tracking-[0.28em] text-gray-400">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+                HELP CENTER
+              </span>
+              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
+              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
+            </div>
+            <span>{totalQuestions} QUESTIONS</span>
+          </div>
+
+          <div className="mb-10 grid items-end gap-8 md:grid-cols-[1.4fr_1fr] md:gap-14">
+            <div>
+              <div className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+                FREQUENTLY ASKED
+              </div>
+              <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-6xl lg:text-7xl">
+                Questions?{' '}
+                <span className="font-serif italic font-medium text-brand">
+                  Answers.
+                </span>
+              </h1>
+            </div>
+            <div>
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
+                Quick answers to the questions we hear most. Can&apos;t find
+                yours?{' '}
+                <Link
+                  href="/contact"
+                  className="font-semibold text-brand hover:underline"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
+                  Contact support
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+
+          {/* Search */}
+          <div className="relative mx-auto max-w-2xl">
+            <Search className="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search questions..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full rounded-full border border-gray-200 bg-white py-4 pl-12 pr-32 text-sm text-navy-900 placeholder:text-gray-400 shadow-sm transition-all focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10"
+            />
+            {searching && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-gray-100 px-3 py-1.5 text-[10px] font-semibold tracking-wider text-gray-500 hover:bg-gray-200"
+              >
+                CLEAR
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* --- CONTENT --- */}
+      <section className="pb-20 md:pb-24">
+        <div className="mx-auto max-w-6xl px-6">
+          {searching ? (
+            <SearchResults
+              results={filteredCategories}
+              query={searchQuery}
+              openKey={openKey}
+              setOpenKey={setOpenKey}
+            />
+          ) : (
+            <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:gap-14">
+              {/* Sidebar */}
+              <aside className="lg:sticky lg:top-24 lg:h-fit">
+                <div className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+                  CATEGORIES
+                </div>
+                <nav className="space-y-1">
+                  {faqCategories.map((c) => {
+                    const Icon = c.icon;
+                    const isActive = c.id === activeCategory;
+                    return (
+                      <button
+                        key={c.id}
+                        onClick={() => {
+                          setActiveCategory(c.id);
+                          setOpenKey(null);
+                        }}
+                        className={`group flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left text-sm font-medium transition-all ${
+                          isActive
+                            ? 'border-brand/30 bg-brand/5 text-navy-900'
+                            : 'border-transparent text-gray-600 hover:bg-gray-50 hover:text-navy-900'
+                        }`}
+                      >
+                        <Icon
+                          className={`h-4 w-4 flex-shrink-0 ${
+                            isActive ? 'text-brand' : 'text-gray-400'
+                          }`}
+                        />
+                        <span className="flex-1 truncate">{c.title}</span>
+                        <span
+                          className={`text-[10px] font-semibold tracking-wider ${
+                            isActive ? 'text-brand' : 'text-gray-400'
+                          }`}
+                        >
+                          {c.items.length}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </nav>
+              </aside>
+
+              {/* Questions */}
+              <main>
+                <div className="mb-8 flex items-end justify-between gap-4 border-b border-gray-100 pb-6">
+                  <div>
+                    <div className="mb-2 flex items-center gap-2 text-[10px] font-semibold tracking-[0.28em] text-brand">
+                      <current.icon className="h-3.5 w-3.5" />
+                      {current.title.toUpperCase()}
+                    </div>
+                    <h2 className="font-display text-2xl font-bold leading-tight tracking-tight text-navy-900 md:text-3xl">
+                      {current.items.length} question
+                      {current.items.length !== 1 ? 's' : ''}{' '}
+                      <span className="font-serif italic font-medium text-gray-400">
+                        to help.
+                      </span>
+                    </h2>
+                  </div>
+                </div>
+
+                <CategoryAccordion
+                  category={current}
+                  openKey={openKey}
+                  setOpenKey={setOpenKey}
+                />
+              </main>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* --- BOTTOM CTA --- */}
+      <section className="pb-20 md:pb-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-10 md:p-16">
+            <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
+            <div className="pointer-events-none absolute -top-20 right-0 h-[320px] w-[320px] rounded-full bg-brand/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 left-0 h-[320px] w-[320px] rounded-full bg-brand/10 blur-3xl" />
+
+            <div className="relative grid items-center gap-8 md:grid-cols-[1.3fr_1fr]">
+              <div>
+                <div className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-brand-300">
+                  STILL STUCK
+                </div>
+                <h3 className="font-display text-3xl font-bold leading-[1.05] text-white md:text-4xl lg:text-5xl">
+                  We&apos;ve got{' '}
+                  <span className="font-serif italic font-medium text-brand-300">
+                    your back.
+                  </span>
+                </h3>
+                <p className="mt-5 max-w-lg text-gray-400">
+                  Real humans on support, replies within 24 hours. Drop a line
+                  or shoot us an email - no chatbots, we promise.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-950 shadow-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-brand/30"
+                >
+                  Contact support
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-navy-950 text-white transition-transform group-hover:translate-x-0.5">
+                    <ArrowRight className="h-3 w-3" />
+                  </span>
+                </Link>
+                <a
+                  href="mailto:support@flyrlink.com"
+                  className="group inline-flex items-center gap-1.5 px-5 py-3 text-sm font-semibold text-white/90 hover:text-white"
+                >
+                  Email us
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
 
-      {/* FAQ Content Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {searchQuery ? (
-            <div className="space-y-8">
-              <h2 className="font-display text-2xl font-bold text-navy-900">
-                Search Results for &ldquo;{searchQuery}&rdquo;
-              </h2>
-              {filteredCategories.length > 0 ? (
-                filteredCategories.map((category) => (
-                  <div key={category.id} className="mb-8">
-                    <h3 className="text-lg font-semibold text-navy-900 mb-4 flex items-center gap-2">
-                      <span className="text-brand">{category.icon}</span>
-                      {category.title}
-                    </h3>
-                    <CategoryAccordion
-                      category={category}
-                      openIndex={openIndices[category.id] ?? -1}
-                      onToggle={(index) => toggleFaq(category.id, index)}
-                    />
-                  </div>
-                ))
-              ) : (
-                <div className="text-center py-16 px-6 bg-gray-50 rounded-2xl">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand/10 flex items-center justify-center">
-                    <HelpCircle className="w-8 h-8 text-brand" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-navy-900 mb-2">No results found</h3>
-                  <p className="text-gray-500 max-w-md mx-auto">
-                    We couldn&apos;t find any questions matching your search. Try different keywords
-                    or{' '}
-                    <a href="/contact" className="text-brand hover:underline font-medium">
-                      contact support
-                    </a>
-                    .
+function SearchResults({
+  results,
+  query,
+  openKey,
+  setOpenKey,
+}: {
+  results: FaqCategory[];
+  query: string;
+  openKey: string | null;
+  setOpenKey: (k: string | null) => void;
+}) {
+  const totalMatches = results.reduce((sum, c) => sum + c.items.length, 0);
+
+  if (results.length === 0) {
+    return (
+      <div className="relative overflow-hidden rounded-2xl border border-gray-200/70 bg-white p-12 text-center md:p-16">
+        <div className="pointer-events-none absolute -top-16 left-1/2 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl" />
+        <div className="relative">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-brand-700 text-white shadow-xl shadow-brand/30">
+            <HelpCircle className="h-6 w-6" />
+          </div>
+          <div className="mt-6 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+            NO MATCHES
+          </div>
+          <h3 className="mt-3 font-display text-2xl font-bold text-navy-900 md:text-3xl">
+            Nothing found for{' '}
+            <span className="font-serif italic font-medium text-brand">
+              &ldquo;{query}&rdquo;
+            </span>
+          </h3>
+          <p className="mx-auto mt-3 max-w-md text-gray-600">
+            Try different keywords, or talk to a human on our support team.
+          </p>
+          <Link
+            href="/contact"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy-900 px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-navy-900/20 transition-all duration-300 hover:bg-navy-800 hover:shadow-brand/20"
+          >
+            Contact support
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-navy-900 transition-transform group-hover:translate-x-0.5">
+              <ArrowRight className="h-3 w-3" />
+            </span>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="mb-8 border-b border-gray-100 pb-6">
+        <div className="mb-2 text-[10px] font-semibold tracking-[0.28em] text-brand">
+          SEARCH RESULTS
+        </div>
+        <h2 className="font-display text-2xl font-bold leading-tight tracking-tight text-navy-900 md:text-3xl">
+          {totalMatches} match{totalMatches !== 1 ? 'es' : ''}{' '}
+          <span className="font-serif italic font-medium text-gray-400">
+            for &ldquo;{query}&rdquo;
+          </span>
+        </h2>
+      </div>
+
+      <div className="space-y-10">
+        {results.map((category) => {
+          const Icon = category.icon;
+          return (
+            <div key={category.id}>
+              <div className="mb-4 flex items-center gap-2 text-[10px] font-semibold tracking-[0.28em] text-brand">
+                <Icon className="h-3.5 w-3.5" />
+                {category.title.toUpperCase()}
+              </div>
+              <CategoryAccordion
+                category={category}
+                openKey={openKey}
+                setOpenKey={setOpenKey}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function CategoryAccordion({
+  category,
+  openKey,
+  setOpenKey,
+}: {
+  category: FaqCategory;
+  openKey: string | null;
+  setOpenKey: (k: string | null) => void;
+}) {
+  return (
+    <div className="space-y-3">
+      {category.items.map((item, i) => {
+        const key = `${category.id}-${i}`;
+        const isOpen = openKey === key;
+        return (
+          <div
+            key={key}
+            className={`group rounded-2xl border transition-all duration-300 ${
+              isOpen
+                ? 'border-brand/30 bg-white shadow-md shadow-brand/5'
+                : 'border-gray-200/70 bg-white hover:border-brand/30'
+            }`}
+          >
+            <button
+              onClick={() => setOpenKey(isOpen ? null : key)}
+              aria-expanded={isOpen}
+              className="flex w-full items-start gap-4 p-5 text-left md:p-6"
+            >
+              <span
+                className={`font-serif text-xl italic font-medium leading-none transition-colors md:text-2xl ${
+                  isOpen ? 'text-brand' : 'text-gray-300 group-hover:text-brand/50'
+                }`}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+
+              <div className="flex-1">
+                <h3 className="font-display text-base font-bold text-navy-900 md:text-lg">
+                  {item.question}
+                </h3>
+              </div>
+
+              <span
+                className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-all ${
+                  isOpen
+                    ? 'border-brand bg-brand text-white rotate-45'
+                    : 'border-gray-200 text-gray-400 group-hover:border-brand/40 group-hover:text-brand'
+                }`}
+              >
+                <span className="text-lg font-semibold">+</span>
+              </span>
+            </button>
+
+            <div
+              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="border-t border-gray-100 px-5 pb-6 pl-14 pt-4 md:px-6 md:pl-16">
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600 md:text-base">
+                    {item.answer}
                   </p>
                 </div>
-              )}
-            </div>
-          ) : (
-            <Tabs defaultValue="general" className="w-full">
-              <TabsList className="flex flex-wrap h-auto gap-1 bg-gray-100 p-1 rounded-xl mb-8">
-                {faqCategories.map((category) => (
-                  <TabsTrigger
-                    key={category.id}
-                    value={category.id}
-                    className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg data-[state=active]:bg-white data-[state=active]:text-brand data-[state=active]:shadow-sm transition-all"
-                  >
-                    <span className="text-brand">{category.icon}</span>
-                    <span className="hidden sm:inline">{category.title}</span>
-                    <span className="sm:hidden">
-                      {category.title.split(' ')[0]}
-                    </span>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-
-              {faqCategories.map((category) => (
-                <TabsContent key={category.id} value={category.id} className="mt-0">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand">
-                      {category.icon}
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-semibold text-navy-900">{category.title}</h2>
-                      <p className="text-sm text-gray-500">
-                        {category.items.length} question{category.items.length !== 1 ? 's' : ''}
-                      </p>
-                    </div>
-                  </div>
-
-                  <CategoryAccordion
-                    category={category}
-                    openIndex={openIndices[category.id] ?? -1}
-                    onToggle={(index) => toggleFaq(category.id, index)}
-                  />
-                </TabsContent>
-              ))}
-            </Tabs>
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="bg-navy-900 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-              Still have questions?
-            </h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Our support team is here to help you with any questions or concerns you might have.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-white text-base font-semibold rounded-xl text-white bg-transparent hover:bg-white/10 transition-all duration-200"
-              >
-                Contact Support
-              </a>
-              <a
-                href="mailto:support@flyrlink.com"
-                className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-transparent text-base font-semibold rounded-xl text-navy-900 bg-white hover:bg-gray-100 transition-all duration-200"
-              >
-                Email Us
-              </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        );
+      })}
     </div>
   );
 }

@@ -4,10 +4,33 @@ import { Star, Brain, ShieldCheck, Layers, Lock } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
 
-const testimonials = [
-  { name: 'Ananya Reddy', role: 'Startup Founder', quote: 'Flyrlink connected me with a business strategist who completely transformed my go-to-market approach. The AI matching was spot-on.', rating: 5 },
-  { name: 'Vikash Singh', role: 'Software Engineer', quote: 'I found a career coach within minutes. The session was incredibly valuable and the platform made booking seamless.', rating: 5 },
-  { name: 'Meera Joshi', role: 'Marketing Manager', quote: 'The quality of experts on Flyrlink is exceptional. I use it regularly for digital marketing strategy sessions.', rating: 5 },
+const featured = {
+  name: 'Girish Kotte',
+  role: 'AI GTM ADVISOR · FLYRLINK PARTNER',
+  quote:
+    'Flyrlink turned cold outreach chaos into warm intros in days. I helped 40+ founders go from pre-PMF to their first paying room - most of them in ',
+  accent: 'under two weeks.',
+  link: 'https://gkotte.com',
+  image: '/gk.jpeg',
+};
+
+const secondary = [
+  {
+    name: 'Ananya Reddy',
+    role: 'STARTUP FOUNDER',
+    quote:
+      'The AI matching was spot-on - connected me with a strategist who completely transformed my go-to-market. ',
+    accent: 'Serious game-changer.',
+    rating: 5,
+  },
+  {
+    name: 'Vikash Singh',
+    role: 'SOFTWARE ENGINEER',
+    quote:
+      'Found a career coach in minutes. Booking was seamless and the session was ',
+    accent: 'incredibly valuable.',
+    rating: 5,
+  },
 ];
 
 const stats = [
@@ -15,9 +38,16 @@ const stats = [
   { icon: Star, value: 12, suffix: '+', label: 'Categories' },
   { icon: Brain, displayValue: 'AI-Powered', label: 'Matching' },
   { icon: Lock, displayValue: 'Secure', label: 'Platform' },
+  { icon: ShieldCheck, displayValue: 'Verified', label: 'Experts' },
 ];
 
-function StatItem({ stat, isVisible }: { stat: typeof stats[0]; isVisible: boolean }) {
+function StatItem({
+  stat,
+  isVisible,
+}: {
+  stat: (typeof stats)[0];
+  isVisible: boolean;
+}) {
   const Icon = stat.icon;
   const count = useCountUp(stat.value || 0, 2000, isVisible);
 
@@ -37,40 +67,146 @@ export default function Testimonials() {
 
   return (
     <section className="py-28 bg-white">
-      <div ref={ref} className={`max-w-7xl mx-auto px-6 reveal ${isVisible ? 'revealed' : ''}`}>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-brand text-xs font-semibold uppercase tracking-wider mb-4">
-            Testimonials
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-navy-900 tracking-tight mb-6">
-            What Our Users Say
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Real stories from real users who found the right experts on Flyrlink.
-          </p>
+      <div
+        ref={ref}
+        className={`max-w-7xl mx-auto px-6 reveal ${isVisible ? 'revealed' : ''}`}
+      >
+        {/* Top bar */}
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="h-4 w-4 fill-amber-400 text-amber-400"
+                />
+              ))}
+            </div>
+            <span className="text-sm font-semibold text-navy-900">4.9</span>
+            <span className="text-gray-300">·</span>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+              120 reviews
+            </span>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-navy-900">500+</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                EXPERTS
+              </span>
+            </div>
+            <span className="h-5 w-px bg-gray-200" />
+            <div className="flex items-baseline gap-2">
+              <span className="text-lg font-bold text-navy-900">10k+</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                SESSIONS
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {testimonials.map((t, index) => (
-            <div key={index} className="bg-gray-50 p-8 rounded-xl border border-gray-200/80 card-premium hover:border-brand/30">
-              <div className="text-brand/20 text-5xl font-serif leading-none mb-4">&ldquo;</div>
-              <div className="flex gap-1 mb-4">
+        {/* Headline with ghost watermark */}
+        <div className="relative">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-8 right-0 select-none font-serif italic font-medium leading-none text-brand-50 md:text-[12rem]"
+            style={{ fontSize: 'clamp(96px, 14vw, 180px)' }}
+          >
+            loved
+          </span>
+          <div className="relative">
+            <div className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+              TESTIMONIALS
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-navy-900">
+              Loved by{' '}
+              <span className="font-serif italic font-medium text-brand">
+                the people who ship.
+              </span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Featured pull-quote */}
+        <div className="relative mx-auto mt-14 max-w-3xl text-center">
+          <div className="mb-2 font-serif text-6xl leading-none text-brand/20 md:text-7xl">
+            &ldquo;
+          </div>
+          <p className="text-2xl font-medium leading-snug text-navy-900 md:text-3xl">
+            {featured.quote}
+            <span className="font-serif italic font-medium text-brand">
+              {featured.accent}
+            </span>
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={featured.image}
+              alt={featured.name}
+              loading="lazy"
+              className="h-10 w-10 rounded-full object-cover shadow-md"
+            />
+            <div className="text-left">
+              <a
+                href={featured.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-navy-900 hover:text-brand"
+              >
+                {featured.name}
+              </a>
+              <div className="text-[10px] font-semibold tracking-[0.22em] text-gray-400">
+                {featured.role}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Secondary quotes */}
+        <div className="mt-16 grid gap-10 border-t border-gray-100 pt-10 md:grid-cols-2 md:gap-16">
+          {secondary.map((t) => (
+            <div key={t.name} className="relative">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -top-2 right-0 font-serif text-4xl text-brand/10"
+              >
+                &rdquo;
+              </span>
+              <div className="mb-3 flex items-center gap-0.5">
                 {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star
+                    key={i}
+                    className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
+                  />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">{t.quote}</p>
-              <div>
-                <p className="font-semibold text-navy-900">{t.name}</p>
-                <p className="text-sm text-gray-600">{t.role}</p>
+              <p className="text-base leading-relaxed text-navy-900 md:text-lg">
+                {t.quote}
+                <span className="font-serif italic font-medium text-brand">
+                  {t.accent}
+                </span>
+              </p>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-700 text-xs font-bold text-white">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-navy-900">
+                    {t.name}
+                  </div>
+                  <div className="text-[10px] font-semibold tracking-[0.22em] text-gray-400">
+                    {t.role}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Stats Bar */}
-        <div className="bg-navy-900 rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        <div className="mt-20 bg-navy-900 rounded-2xl p-8 md:p-12">
+          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-white/10">
             {stats.map((stat, index) => (
               <StatItem key={index} stat={stat} isVisible={isVisible} />
             ))}

@@ -1,19 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Clock, Briefcase, ChevronRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Banknote,
+  Briefcase,
+  Globe,
+  HeartPulse,
+  Laptop,
+  MapPin,
+  Sparkles,
+  Star,
+  TrendingUp,
+} from 'lucide-react';
 
-type Department = 'All' | 'Engineering' | 'Design' | 'Marketing' | 'Customer Success';
-
-interface Requirement {
-  text: string;
-}
-
-interface Responsibility {
-  text: string;
-}
+type Department =
+  | 'All'
+  | 'Engineering'
+  | 'Design'
+  | 'Marketing'
+  | 'Customer Success';
 
 interface Job {
   id: string;
@@ -22,8 +30,8 @@ interface Job {
   location: string;
   type: string;
   description: string;
-  requirements: Requirement[];
-  responsibilities: Responsibility[];
+  requirements: { text: string }[];
+  responsibilities: { text: string }[];
 }
 
 const jobs: Job[] = [
@@ -33,7 +41,8 @@ const jobs: Job[] = [
     department: 'Engineering',
     location: 'Hyderabad, India',
     type: 'Full-time',
-    description: 'Build scalable infrastructure for our AI-powered expert network platform. You\'ll work with modern technologies and mentor junior engineers.',
+    description:
+      "Build scalable infrastructure for our AI-powered expert network platform. You'll work with modern technologies and mentor junior engineers.",
     requirements: [
       { text: '5+ years of full-stack development experience' },
       { text: 'Proficiency in React, Node.js, and TypeScript' },
@@ -44,7 +53,7 @@ const jobs: Job[] = [
     responsibilities: [
       { text: 'Design and implement new features for our platform' },
       { text: 'Lead code reviews and maintain code quality standards' },
-      { text: 'Collaborate with product and design teams on requirements' },
+      { text: 'Collaborate with product and design teams' },
       { text: 'Mentor junior developers and contribute to their growth' },
       { text: 'Optimize application performance and security' },
     ],
@@ -55,7 +64,8 @@ const jobs: Job[] = [
     department: 'Design',
     location: 'Hyderabad, India',
     type: 'Full-time',
-    description: 'Lead the visual and user experience design for Flyrlink. Shape how millions of professionals interact with our platform.',
+    description:
+      'Lead the visual and user experience design for Flyrlink. Shape how millions of professionals interact with our platform.',
     requirements: [
       { text: '4+ years of product design experience' },
       { text: 'Proficiency in Figma, Adobe XD, or similar tools' },
@@ -77,11 +87,12 @@ const jobs: Job[] = [
     department: 'Engineering',
     location: 'Hyderabad, India',
     type: 'Full-time',
-    description: 'Develop and optimize machine learning models that power Flyrlink\'s intelligent matching and recommendation engine.',
+    description:
+      "Develop and optimize machine learning models that power Flyrlink's intelligent matching and recommendation engine.",
     requirements: [
       { text: '3+ years of experience with ML/AI development' },
       { text: 'Proficiency in Python and ML frameworks (TensorFlow, PyTorch)' },
-      { text: 'Understanding of NLP, recommendation systems, or similar domains' },
+      { text: 'Understanding of NLP, recommendation systems, or similar' },
       { text: 'Experience with data processing and feature engineering' },
       { text: 'Knowledge of MLOps and model deployment practices' },
     ],
@@ -99,7 +110,8 @@ const jobs: Job[] = [
     department: 'Marketing',
     location: 'Hyderabad, India',
     type: 'Full-time',
-    description: 'Drive growth and brand awareness for Flyrlink. Develop and execute marketing strategies that engage professionals worldwide.',
+    description:
+      'Drive growth and brand awareness for Flyrlink. Develop and execute marketing strategies that engage professionals worldwide.',
     requirements: [
       { text: '3+ years of digital marketing experience' },
       { text: 'Expertise in content marketing and SEO' },
@@ -121,7 +133,8 @@ const jobs: Job[] = [
     department: 'Customer Success',
     location: 'Hyderabad, India',
     type: 'Full-time',
-    description: 'Be the voice of our customers. Help professionals succeed on Flyrlink and drive retention and expansion.',
+    description:
+      'Be the voice of our customers. Help professionals succeed on Flyrlink and drive retention and expansion.',
     requirements: [
       { text: '2+ years in customer success or account management' },
       { text: 'Strong communication and interpersonal skills' },
@@ -143,12 +156,13 @@ const jobs: Job[] = [
     department: 'Marketing',
     location: 'Remote',
     type: 'Full-time',
-    description: 'Create compelling content that educates and engages our professional community. Tell the story of Flyrlink to the world.',
+    description:
+      'Create compelling content that educates and engages our professional community. Tell the story of Flyrlink to the world.',
     requirements: [
       { text: '2+ years of professional writing experience' },
       { text: 'Strong research and fact-checking abilities' },
       { text: 'SEO writing knowledge and content optimization' },
-      { text: 'Experience with various content formats (blog, social, email)' },
+      { text: 'Experience with various content formats' },
       { text: 'Excellent grammar and attention to detail' },
     ],
     responsibilities: [
@@ -163,181 +177,379 @@ const jobs: Job[] = [
 
 const benefits = [
   {
-    icon: 'Impact at Scale',
+    icon: Globe,
+    tag: 'BENEFIT 01',
     title: 'Impact at Scale',
-    description: 'Work on a platform that connects millions of professionals and transforms careers globally.',
+    description:
+      'Work on a platform that connects millions of professionals and transforms careers globally.',
   },
   {
-    icon: 'Growth & Learning',
+    icon: TrendingUp,
+    tag: 'BENEFIT 02',
     title: 'Growth & Learning',
-    description: 'Continuous learning opportunities, mentorship programs, and career development paths.',
+    description:
+      'Continuous learning, mentorship, and career development paths that actually move your needle.',
   },
   {
-    icon: 'Flexible Work',
+    icon: Laptop,
+    tag: 'BENEFIT 03',
     title: 'Flexible Work',
-    description: 'Work from anywhere with flexible schedules. We believe in trust and results, not hours.',
+    description:
+      'Work from anywhere with flexible schedules. We believe in trust and results, not hours.',
   },
   {
-    icon: 'Competitive Compensation',
-    title: 'Competitive Compensation',
-    description: 'Competitive salaries, equity options, and comprehensive benefits packages.',
+    icon: Banknote,
+    tag: 'BENEFIT 04',
+    title: 'Competitive Pay',
+    description:
+      'Competitive salaries, equity options, and comprehensive benefits packages.',
   },
   {
-    icon: 'Innovative Culture',
+    icon: Sparkles,
+    tag: 'BENEFIT 05',
     title: 'Innovative Culture',
-    description: 'Collaborate with talented, innovative minds in a fast-paced, creative environment.',
+    description:
+      'Collaborate with talented, innovative minds in a fast-paced, creative environment.',
   },
   {
-    icon: 'Health & Wellness',
+    icon: HeartPulse,
+    tag: 'BENEFIT 06',
     title: 'Health & Wellness',
-    description: 'Comprehensive health insurance, wellness programs, and paid time off.',
+    description:
+      'Comprehensive health insurance, wellness programs, and paid time off that actually gets taken.',
   },
+];
+
+const stats = [
+  { value: String(jobs.length), label: 'OPEN ROLES' },
+  { value: '5', label: 'DEPARTMENTS' },
+  { value: 'IN', label: 'HYDERABAD · REMOTE' },
+  { value: '4.9', label: 'GLASSDOOR' },
 ];
 
 export default function CareersClient() {
   const [selectedDepartment, setSelectedDepartment] = useState<Department>('All');
+  const [expanded, setExpanded] = useState<string | null>(null);
 
-  const departments: Department[] = ['All', 'Engineering', 'Design', 'Marketing', 'Customer Success'];
+  const departments: Department[] = [
+    'All',
+    'Engineering',
+    'Design',
+    'Marketing',
+    'Customer Success',
+  ];
 
-  const filteredJobs = selectedDepartment === 'All'
-    ? jobs
-    : jobs.filter((job) => job.department === selectedDepartment);
+  const filteredJobs =
+    selectedDepartment === 'All'
+      ? jobs
+      : jobs.filter((job) => job.department === selectedDepartment);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <span className="inline-flex items-center gap-2 text-brand text-xs font-semibold uppercase tracking-wider mb-4">
-            <span className="w-6 h-px bg-brand/40" />
-            Careers
-            <span className="w-6 h-px bg-brand/40" />
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            <span className="text-navy-900">Join Our Team</span>
-            <span className="block text-gradient">
-              Shape the Future of Professional Networking
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Be part of a mission to connect the world&apos;s best professionals. At Flyrlink, we&apos;re building the future of expert networking with AI-powered matching and seamless collaboration.
-          </p>
-        </div>
-      </section>
+    <div className="bg-white">
+      {/* --- HERO --- */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-white py-20 md:py-28">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 select-none font-serif italic font-medium leading-none text-brand/[0.05]"
+          style={{ fontSize: 'clamp(140px, 20vw, 280px)' }}
+        >
+          careers
+        </span>
 
-      {/* Why Join Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-display text-3xl font-bold text-navy-900 text-center mb-12 tracking-tight">Why Join Flyrlink?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-white card-premium rounded-xl border-gray-200/80 hover:border-brand/30">
-                <CardContent className="p-8">
-                  <div className="mb-4 w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center text-brand font-semibold text-sm">
-                    {benefit.icon.split(' ')[0].charAt(0)}
-                  </div>
-                  <h3 className="text-lg font-semibold text-navy-900 mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="mb-10 flex items-center justify-between text-[10px] font-semibold tracking-[0.28em] text-gray-400">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
+                WE&apos;RE HIRING
+              </span>
+              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
+              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
+            </div>
+            <span>{jobs.length} OPEN ROLES</span>
           </div>
-        </div>
-      </section>
 
-      {/* Job Listings Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-display text-3xl font-bold text-navy-900 text-center mb-12 tracking-tight">Open Positions</h2>
+          <div className="grid items-end gap-8 md:grid-cols-[1.4fr_1fr] md:gap-14">
+            <div>
+              <div className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+                CAREERS AT FLYRLINK
+              </div>
+              <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-6xl lg:text-7xl">
+                Build what&apos;s{' '}
+                <span className="font-serif italic font-medium text-brand">
+                  next.
+                </span>
+              </h1>
+            </div>
+            <div>
+              <p className="text-base leading-relaxed text-gray-600 md:text-lg">
+                Join the mission to connect the world&apos;s best professionals.
+                We&apos;re building AI-powered matching, seamless collaboration,
+                and tools that move careers forward.
+              </p>
+              <div className="mt-5 flex items-center gap-2 text-sm">
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
+                    />
+                  ))}
+                </div>
+                <span className="font-semibold text-navy-900">4.9</span>
+                <span className="text-[10px] tracking-[0.22em] text-gray-400">
+                  · TEAM RATING
+                </span>
+              </div>
+            </div>
+          </div>
 
-          {/* Department Filter */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {departments.map((dept) => (
-              <button
-                key={dept}
-                onClick={() => setSelectedDepartment(dept)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                  selectedDepartment === dept
-                    ? 'bg-brand text-white shadow-md shadow-brand/20'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+          {/* Stats bar */}
+          <div className="mt-14 grid gap-6 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm md:grid-cols-4 md:gap-0 md:p-8">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`px-2 md:px-6 ${
+                  i > 0 ? 'md:border-l md:border-gray-100' : ''
                 }`}
               >
-                {dept}
-              </button>
+                <div className="font-serif text-3xl italic font-medium text-brand md:text-4xl">
+                  {s.value}
+                </div>
+                <div className="mt-1 text-[10px] font-semibold tracking-[0.24em] text-gray-400">
+                  {s.label}
+                </div>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Job Cards */}
-          <div className="space-y-6">
+      {/* --- BENEFITS (bento) --- */}
+      <section className="relative overflow-hidden bg-gray-50 py-20 md:py-28">
+        <div className="pointer-events-none absolute -right-20 top-20 h-[400px] w-[400px] rounded-full bg-brand/5 blur-3xl" />
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="mb-12 text-center md:mb-14">
+            <div className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+              WHY FLYRLINK
+            </div>
+            <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-navy-900 md:text-4xl lg:text-5xl">
+              Six reasons to{' '}
+              <span className="font-serif italic font-medium text-brand">
+                join us.
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
+            {benefits.map((b, i) => {
+              const Icon = b.icon;
+              // Bento sizing: 7-5, 5-7, 6-6
+              const span =
+                i === 0 || i === 3
+                  ? 'md:col-span-7'
+                  : i === 1 || i === 2
+                    ? 'md:col-span-5'
+                    : 'md:col-span-6';
+
+              return (
+                <div
+                  key={b.title}
+                  className={`group relative overflow-hidden rounded-2xl border border-gray-200/70 bg-white p-6 transition-all duration-500 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/10 md:p-7 ${span}`}
+                >
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-brand/5 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <div className="relative">
+                    <div className="flex items-center justify-between">
+                      <span className="rounded-full bg-navy-900 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+                        {b.tag}
+                      </span>
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand/20 bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-white">
+                        <Icon className="h-5 w-5" />
+                      </span>
+                    </div>
+                    <h3 className="mt-5 font-display text-xl font-bold text-navy-900 md:text-2xl">
+                      {b.title}
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-600 md:text-base">
+                      {b.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* --- OPEN ROLES --- */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 text-center md:mb-12">
+            <div className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+              OPEN ROLES
+            </div>
+            <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-navy-900 md:text-4xl lg:text-5xl">
+              Find your{' '}
+              <span className="font-serif italic font-medium text-brand">
+                next chapter.
+              </span>
+            </h2>
+          </div>
+
+          {/* Department filter */}
+          <div className="mb-10 flex justify-center md:mb-12">
+            <div className="inline-flex flex-wrap justify-center rounded-full bg-gray-100 p-1">
+              {departments.map((dept) => (
+                <button
+                  key={dept}
+                  onClick={() => setSelectedDepartment(dept)}
+                  className={`rounded-full px-5 py-2 text-xs font-semibold transition-all duration-300 md:text-sm ${
+                    selectedDepartment === dept
+                      ? 'bg-brand text-white shadow-md shadow-brand/20'
+                      : 'text-gray-600 hover:text-navy-900'
+                  }`}
+                >
+                  {dept}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Job list */}
+          <div className="space-y-3">
             {filteredJobs.length > 0 ? (
-              filteredJobs.map((job) => (
-                <Card key={job.id} className="bg-white card-premium rounded-xl border-gray-200/80 hover:border-brand/30">
-                  <CardContent className="p-8">
-                    {/* Job Header */}
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                      <div className="flex-1">
-                        <h3 className="font-display text-2xl font-bold text-navy-900 mb-2">{job.title}</h3>
-                        <div className="flex flex-wrap gap-4 text-sm">
-                          <span className="inline-flex items-center gap-2 text-gray-600">
-                            <Briefcase className="w-4 h-4" />
-                            {job.department}
+              filteredJobs.map((job, i) => {
+                const isOpen = expanded === job.id;
+                return (
+                  <div
+                    key={job.id}
+                    className={`group relative overflow-hidden rounded-2xl border transition-all duration-500 ${
+                      isOpen
+                        ? 'border-brand/30 bg-white shadow-lg shadow-brand/10'
+                        : 'border-gray-200/70 bg-white hover:border-brand/30 hover:shadow-md'
+                    }`}
+                  >
+                    <button
+                      onClick={() => setExpanded(isOpen ? null : job.id)}
+                      className="flex w-full items-start gap-5 p-6 text-left md:items-center md:p-7"
+                    >
+                      <span className="font-serif text-3xl italic font-medium leading-none text-gray-200 group-hover:text-brand/40 md:text-4xl">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold tracking-[0.22em] text-gray-400">
+                          <span className="rounded-full bg-brand/10 px-2 py-0.5 text-brand">
+                            {job.department.toUpperCase()}
                           </span>
-                          <span className="inline-flex items-center gap-2 text-gray-600">
-                            <MapPin className="w-4 h-4" />
-                            {job.location}
+                          <span className="flex items-center gap-1.5">
+                            <MapPin className="h-3 w-3" />
+                            {job.location.toUpperCase()}
                           </span>
-                          <span className="inline-flex items-center gap-2 text-gray-600">
-                            <Clock className="w-4 h-4" />
-                            {job.type}
+                          <span className="flex items-center gap-1.5">
+                            <Briefcase className="h-3 w-3" />
+                            {job.type.toUpperCase()}
                           </span>
+                        </div>
+                        <h3 className="mt-2 font-display text-xl font-bold text-navy-900 md:text-2xl">
+                          {job.title}
+                        </h3>
+                        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600">
+                          {job.description}
+                        </p>
+                      </div>
+
+                      <span
+                        className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                          isOpen
+                            ? 'border-brand bg-brand text-white rotate-45'
+                            : 'border-gray-200 text-gray-400 group-hover:border-brand/40 group-hover:text-brand'
+                        }`}
+                      >
+                        <span className="text-xl font-semibold">+</span>
+                      </span>
+                    </button>
+
+                    {/* Expanded details */}
+                    <div
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                        isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="border-t border-gray-100 px-6 pb-7 pt-6 md:px-7">
+                          <div className="grid gap-6 md:grid-cols-2 md:gap-10">
+                            <div>
+                              <div className="mb-3 text-[10px] font-semibold tracking-[0.24em] text-brand">
+                                WHAT WE LOOK FOR
+                              </div>
+                              <ul className="space-y-2">
+                                {job.requirements.map((r, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="flex gap-3 text-sm text-gray-600"
+                                  >
+                                    <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-brand" />
+                                    {r.text}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <div className="mb-3 text-[10px] font-semibold tracking-[0.24em] text-brand">
+                                WHAT YOU&apos;LL DO
+                              </div>
+                              <ul className="space-y-2">
+                                {job.responsibilities.map((r, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="flex gap-3 text-sm text-gray-600"
+                                  >
+                                    <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-brand" />
+                                    {r.text}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="mt-7 flex flex-wrap items-center justify-between gap-3">
+                            <p className="text-[11px] text-gray-500">
+                              Questions about this role?{' '}
+                              <Link
+                                href="/contact"
+                                className="text-brand hover:underline"
+                              >
+                                Reach out
+                              </Link>
+                              .
+                            </p>
+                            <a
+                              href="mailto:careers@flyrlink.com?subject=Application: {job.title}"
+                              className="group/btn inline-flex items-center gap-2 rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-xl shadow-navy-900/20 transition-all duration-300 hover:bg-navy-800 hover:shadow-brand/20"
+                            >
+                              Apply for this role
+                              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-navy-900 transition-transform group-hover/btn:translate-x-0.5">
+                                <ArrowRight className="h-3 w-3" />
+                              </span>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    {/* Description */}
-                    <p className="text-gray-600 mb-6">{job.description}</p>
-
-                    {/* Requirements and Responsibilities Grid */}
-                    <div className="grid md:grid-cols-2 gap-8 mb-8">
-                      {/* Requirements */}
-                      <div>
-                        <h4 className="font-semibold text-navy-900 mb-4">What We&apos;re Looking For</h4>
-                        <ul className="space-y-2">
-                          {job.requirements.map((req, index) => (
-                            <li key={index} className="flex gap-3 text-gray-600">
-                              <span className="text-brand font-bold mt-1">•</span>
-                              <span>{req.text}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Responsibilities */}
-                      <div>
-                        <h4 className="font-semibold text-navy-900 mb-4">What You&apos;ll Do</h4>
-                        <ul className="space-y-2">
-                          {job.responsibilities.map((resp, index) => (
-                            <li key={index} className="flex gap-3 text-gray-600">
-                              <span className="text-brand font-bold mt-1">•</span>
-                              <span>{resp.text}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <Button className="bg-brand hover:bg-brand-600 text-white font-medium inline-flex items-center gap-2">
-                      Apply Now
-                      <ChevronRight className="w-4 h-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))
+                  </div>
+                );
+              })
             ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-600 text-lg">
-                  No positions available in the {selectedDepartment} department right now. Check back soon!
+              <div className="rounded-2xl border border-gray-200/70 bg-white p-12 text-center">
+                <p className="text-gray-600">
+                  No roles open in the{' '}
+                  <span className="font-semibold text-navy-900">
+                    {selectedDepartment}
+                  </span>{' '}
+                  department right now. Check back soon.
                 </p>
               </div>
             )}
@@ -345,17 +557,49 @@ export default function CareersClient() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-navy-900 rounded-2xl p-12 text-center text-white">
-            <h2 className="font-display text-3xl font-bold mb-4 tracking-tight">Don&apos;t See the Right Role?</h2>
-            <p className="text-lg text-gray-300 mb-8">
-              We&apos;re always looking for talented individuals to join our team. Send us your resume and let us know how you&apos;d like to contribute to Flyrlink&apos;s mission.
-            </p>
-            <Button className="bg-white text-navy-900 hover:bg-gray-100 font-semibold px-8 py-3">
-              Get in Touch
-            </Button>
+      {/* --- DON'T SEE YOUR ROLE CTA --- */}
+      <section className="py-20 md:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="relative overflow-hidden rounded-[2rem] bg-navy-950 p-10 md:p-16">
+            <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
+            <div className="pointer-events-none absolute -top-20 right-0 h-[320px] w-[320px] rounded-full bg-brand/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 left-0 h-[320px] w-[320px] rounded-full bg-brand/10 blur-3xl" />
+
+            <div className="relative grid items-center gap-8 md:grid-cols-[1.3fr_1fr]">
+              <div>
+                <div className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-brand-300">
+                  GENERAL APPLICATION
+                </div>
+                <h3 className="font-display text-3xl font-bold leading-[1.05] text-white md:text-4xl lg:text-5xl">
+                  Don&apos;t see the{' '}
+                  <span className="font-serif italic font-medium text-brand-300">
+                    right role?
+                  </span>
+                </h3>
+                <p className="mt-5 max-w-lg text-gray-400">
+                  We&apos;re always meeting great people. Send us your story and
+                  how you&apos;d like to contribute - we read every message.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+                <a
+                  href="mailto:careers@flyrlink.com"
+                  className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-950 shadow-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-brand/30"
+                >
+                  Get in touch
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-navy-950 text-white transition-transform group-hover:translate-x-0.5">
+                    <ArrowRight className="h-3 w-3" />
+                  </span>
+                </a>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-1.5 px-5 py-3 text-sm font-semibold text-white/90 hover:text-white"
+                >
+                  Contact us
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
