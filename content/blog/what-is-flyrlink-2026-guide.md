@@ -3,7 +3,7 @@ slug: what-is-flyrlink-2026-guide
 title: "What Is Flyrlink? The 2026 Guide to AI-Powered Expert Consultations in India"
 meta_title: "What Is Flyrlink? AI-Powered Expert Consultations (2026)"
 meta_description: "Flyrlink is an AI-powered expert marketplace in India. Find verified consultants across 12+ categories, book 1:1 sessions from INR 500, and get outcomes fast."
-banner_image: "/1.png"
+banner_image: "/blog/banner-what-is-flyrlink.svg"
 author: "Flyrlink Team"
 published_at: "2026-04-21"
 ---

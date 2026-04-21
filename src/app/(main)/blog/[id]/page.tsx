@@ -209,7 +209,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
               alt={post.title}
               fill
               priority
-              className="object-cover"
+              className="object-cover object-top"
               sizes="100vw"
               unoptimized
             />
@@ -284,7 +284,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
                     src={post.user.profile_image}
                     alt={post.user.username}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     sizes="44px"
                     unoptimized
                   />
@@ -378,7 +378,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
                     src={post.user.profile_image}
                     alt={post.user.username}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     sizes="64px"
                     unoptimized
                   />
@@ -429,7 +429,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ id: s
                             src={related.banner_image}
                             alt={related.title}
                             fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                             sizes="(max-width: 768px) 100vw, 33vw"
                             unoptimized
                           />

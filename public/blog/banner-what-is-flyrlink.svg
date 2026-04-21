@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1128"/>
+      <stop offset="55%" stop-color="#163399"/>
+      <stop offset="100%" stop-color="#1e4de8"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.85" cy="0.2" r="0.6">
+      <stop offset="0%" stop-color="#1e4de8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1e4de8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.1" cy="0.85" r="0.6">
+      <stop offset="0%" stop-color="#93abff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#93abff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Ghost "f" watermark -->
+  <text x="1100" y="560" text-anchor="end"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic" font-weight="700"
+        font-size="520" fill="#ffffff" fill-opacity="0.08">f</text>
+
+  <!-- Kicker -->
+  <text x="80" y="140"
+        font-family="'Plus Jakarta Sans', Inter, system-ui, sans-serif"
+        font-weight="700" font-size="20"
+        letter-spacing="5"
+        fill="#93abff">FLYRLINK · GUIDE</text>
+
+  <!-- Small brand line -->
+  <rect x="80" y="155" width="80" height="2" fill="#93abff" opacity="0.6"/>
+
+  <!-- Title -->
+  <text x="80" y="300"
+        font-family="'Plus Jakarta Sans', Inter, system-ui, sans-serif"
+        font-weight="800" font-size="78"
+        fill="#ffffff">What is Flyrlink?</text>
+
+  <text x="80" y="380"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-style="italic" font-weight="500" font-size="68"
+        fill="#93abff">The 2026 guide.</text>
+
+  <!-- Bottom meta -->
+  <text x="80" y="560"
+        font-family="'Plus Jakarta Sans', Inter, system-ui, sans-serif"
+        font-weight="600" font-size="18"
+        letter-spacing="4"
+        fill="#ffffff" fill-opacity="0.5">AI-POWERED EXPERT CONSULTATIONS · INDIA</text>
+</svg>

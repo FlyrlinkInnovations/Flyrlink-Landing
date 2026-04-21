@@ -3,7 +3,7 @@ slug: flyrlink-features-and-benefits
 title: "Flyrlink, Explained: Every Feature, Every Benefit, in One Place"
 meta_title: "Flyrlink Features and Benefits: A Complete Guide"
 meta_description: "Every Flyrlink feature and benefit in one guide - AI matching, verified experts, 12+ categories, live events, secure payments, and the affiliate program."
-banner_image: "/Landing1.png"
+banner_image: "/blog/banner-features-and-benefits.svg"
 author: "Flyrlink Team"
 published_at: "2026-04-20"
 ---

@@ -192,7 +192,7 @@ export default async function BlogPage() {
                     alt={featuredPost.title}
                     fill
                     priority
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     unoptimized
                   />
@@ -273,7 +273,7 @@ export default async function BlogPage() {
                       src={post.banner_image}
                       alt={post.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       loading="lazy"
                       unoptimized
