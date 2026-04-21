@@ -129,13 +129,13 @@ export default function Navbar() {
               >
                 Contact Us
               </Link>
-              <Link
-                href="/book-call"
+              <a
+                href="https://app.flyrlink.com/"
                 className="group px-5 py-2 text-sm font-semibold bg-brand text-white rounded-full hover:bg-brand-600 transition-colors flex items-center gap-1.5 shadow-md shadow-brand/20"
               >
                 Get Started
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -206,14 +206,14 @@ export default function Navbar() {
                 >
                   Contact Us
                 </Link>
-                <Link
-                  href="/book-call"
+                <a
+                  href="https://app.flyrlink.com/"
                   className="flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-center rounded-lg bg-brand text-white hover:bg-brand-600"
                   onClick={closeMobileMenu}
                 >
                   Get Started
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
