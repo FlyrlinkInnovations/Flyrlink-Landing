@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { API_CONFIG } from '@/config/constants';
+import { getLocalPosts } from '@/utils/localBlog';
 
 export const dynamic = 'force-static';
 
@@ -42,5 +43,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // If blog fetch fails, proceed without blog routes
   }
 
-  return [...staticRoutes, ...blogRoutes];
+  // Local markdown blog posts
+  const localBlogRoutes: MetadataRoute.Sitemap = getLocalPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.uid}`,
+    lastModified: new Date(post.created_at),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...localBlogRoutes, ...blogRoutes];
 }

@@ -11,6 +11,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { formatDate, extractExcerpt, calculateReadTime } from '@/utils/blog';
+import { getLocalPosts } from '@/utils/localBlog';
 import { API_CONFIG } from '@/config/constants';
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ interface BlogPost {
   comment_count: number;
   created_at: string;
   user: BlogPostUser;
+  isLocal?: boolean;
 }
 
 interface BlogResponse {
@@ -49,7 +51,7 @@ interface BlogResponse {
   results: BlogPost[];
 }
 
-async function getBlogPosts(): Promise<BlogPost[]> {
+async function getRemotePosts(): Promise<BlogPost[]> {
   try {
     const res = await fetch(
       `${API_CONFIG.BLOG_API_URL}?page=1&page_size=100&user_uid=${API_CONFIG.BLOG_USER_ID}`,
@@ -65,8 +67,20 @@ async function getBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+async function getAllPosts(): Promise<BlogPost[]> {
+  const [remote, local] = await Promise.all([
+    getRemotePosts(),
+    Promise.resolve(getLocalPosts()),
+  ]);
+
+  // Merge, newest first. Local posts are already sorted.
+  return [...local, ...remote].sort(
+    (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  );
+}
+
 export default async function BlogPage() {
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await getAllPosts();
   const featuredPost = blogPosts[0] ?? null;
   const remainingPosts = blogPosts.slice(1);
 
