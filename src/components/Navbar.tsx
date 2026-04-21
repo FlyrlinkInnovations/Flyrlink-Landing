@@ -119,16 +119,16 @@ export default function Navbar() {
 
             {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
-              <Link
-                href="/contact"
+              <a
+                href="https://app.flyrlink.com/login"
                 className={`px-5 py-2 text-sm font-semibold rounded-full border transition-colors ${
                   darkMode
                     ? 'text-white border-white/25 hover:border-white/60 hover:bg-white/5'
                     : 'text-navy-900 border-gray-300 hover:border-navy-900'
                 }`}
               >
-                Contact Us
-              </Link>
+                Login
+              </a>
               <a
                 href="https://app.flyrlink.com/"
                 className="group px-5 py-2 text-sm font-semibold bg-brand text-white rounded-full hover:bg-brand-600 transition-colors flex items-center gap-1.5 shadow-md shadow-brand/20"
@@ -195,8 +195,8 @@ export default function Navbar() {
                   darkMode ? 'border-white/10' : 'border-gray-100'
                 }`}
               >
-                <Link
-                  href="/contact"
+                <a
+                  href="https://app.flyrlink.com/login"
                   className={`block px-4 py-2.5 text-sm font-semibold text-center rounded-lg border ${
                     darkMode
                       ? 'text-white border-white/20 hover:border-white/50'
@@ -204,8 +204,8 @@ export default function Navbar() {
                   }`}
                   onClick={closeMobileMenu}
                 >
-                  Contact Us
-                </Link>
+                  Login
+                </a>
                 <a
                   href="https://app.flyrlink.com/"
                   className="flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-center rounded-lg bg-brand text-white hover:bg-brand-600"
