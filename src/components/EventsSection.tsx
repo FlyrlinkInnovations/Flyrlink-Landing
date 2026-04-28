@@ -33,7 +33,7 @@ const events: EventItem[] = [
     host: 'Dr. Kavya Narayan',
     hostRole: 'SPORTS NUTRITIONIST · 15+ YEARS',
     watermark: 'well',
-    tagline: 'A live workshop for people tired of diet fads - ',
+    tagline: 'A live workshop for people tired of diet fads, ',
     accent: 'habits that actually stick.',
     image: 'https://randomuser.me/api/portraits/women/65.jpg',
     stats: [
@@ -46,34 +46,34 @@ const events: EventItem[] = [
     location: 'Chennai, India',
   },
   {
-    title: 'Tech / Next Startup',
-    host: 'Ankit Verma',
-    hostRole: 'AI FOUNDER · EX-STRIPE',
-    watermark: 'next',
-    tagline: 'For operators going from demo to design-partner - ',
-    accent: 'shipping that earns revenue.',
+    title: 'Study Abroad Q&A',
+    host: 'Aarav Kapoor',
+    hostRole: 'STUDY ABROAD CONSULTANT · 12+ YEARS',
+    watermark: 'study',
+    tagline: 'A live Q&A for students applying overseas, ',
+    accent: 'pick a country, plan your offer.',
     image: 'https://randomuser.me/api/portraits/men/45.jpg',
     stats: [
-      { value: '3', label: 'EXITS' },
-      { value: '200+', label: 'STARTUPS' },
-      { value: '78', label: 'JOINING' },
+      { value: '12+', label: 'YRS EXP' },
+      { value: '800+', label: 'STUDENTS' },
+      { value: '94', label: 'JOINING' },
     ],
     type: 'Virtual',
     date: 'Mar 18, 2026',
     location: 'Online',
   },
   {
-    title: 'Artistry & Design',
+    title: 'Photography Bootcamp',
     host: 'Maya Chen',
-    hostRole: 'DESIGN LEAD · 10+ YEARS',
-    watermark: 'art',
-    tagline: 'A hands-on session on visual language for founders who want ',
-    accent: 'brand that compounds.',
+    hostRole: 'PRODUCT PHOTOGRAPHER · 10+ YEARS',
+    watermark: 'photo',
+    tagline: 'A hands-on workshop for hobbyists ready to ',
+    accent: 'shoot like a pro.',
     image: 'https://randomuser.me/api/portraits/women/33.jpg',
     stats: [
       { value: '10+', label: 'YRS EXP' },
-      { value: '60+', label: 'BRANDS' },
-      { value: '32', label: 'JOINING' },
+      { value: '300+', label: 'STUDENTS' },
+      { value: '46', label: 'JOINING' },
     ],
     type: 'Hybrid',
     date: 'Mar 20, 2026',
@@ -123,8 +123,8 @@ export default function EventsSection() {
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-gray-600 md:text-lg">
-            Live sessions, workshops and networking with verified experts - one
-            at a time, so the good stuff never gets lost.
+            Live workshops, classes and Q&amp;As with verified experts, from
+            wellness to photography, all in one place.
           </p>
         </div>
 
@@ -313,8 +313,8 @@ export default function EventsSection() {
                 </span>
               </h3>
               <p className="mt-3 max-w-lg text-gray-600">
-                Share your expertise. Run workshops, webinars or networking
-                nights - and get matched with people who want to learn from you.
+                Share your skill. Run workshops, classes or Q&amp;A sessions,
+                and reach the people who actually want to learn from you.
               </p>
             </div>
             <div className="flex md:justify-end">

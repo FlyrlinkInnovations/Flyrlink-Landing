@@ -4,13 +4,13 @@ import {
   ArrowRight,
   Check,
   Sparkles,
-  Brain,
+  Search,
   CalendarDays,
   MessagesSquare,
-  Bot,
-  Send,
+  Video,
+  Star,
+  ShieldCheck,
   Zap,
-  Target,
 } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -28,9 +28,9 @@ type StackCard = {
 
 const backCards: StackCard[] = [
   {
-    key: 'match',
-    label: 'MATCH',
-    icon: Brain,
+    key: 'search',
+    label: '01 · SEARCH',
+    icon: Search,
     bg: 'bg-white',
     text: 'text-brand-700',
     border: 'border-brand-100',
@@ -40,7 +40,7 @@ const backCards: StackCard[] = [
   },
   {
     key: 'chat',
-    label: 'CHAT',
+    label: '02 · CHAT',
     icon: MessagesSquare,
     bg: 'bg-brand-50',
     text: 'text-brand-700',
@@ -50,8 +50,8 @@ const backCards: StackCard[] = [
     z: 20,
   },
   {
-    key: 'calendar',
-    label: 'CALENDAR',
+    key: 'book',
+    label: '03 · BOOK',
     icon: CalendarDays,
     bg: 'bg-brand-100',
     text: 'text-brand-800',
@@ -61,9 +61,9 @@ const backCards: StackCard[] = [
     z: 30,
   },
   {
-    key: 'ai',
-    label: 'AI ASSIST',
-    icon: Bot,
+    key: 'meet',
+    label: '04 · MEET',
+    icon: Video,
     bg: 'bg-brand-400',
     text: 'text-white',
     border: 'border-brand-300',
@@ -72,9 +72,9 @@ const backCards: StackCard[] = [
     z: 40,
   },
   {
-    key: 'publish',
-    label: 'CONNECT',
-    icon: Send,
+    key: 'review',
+    label: '05 · REVIEW',
+    icon: Star,
     bg: 'bg-brand-600',
     text: 'text-white',
     border: 'border-brand-500',
@@ -86,22 +86,22 @@ const backCards: StackCard[] = [
 
 const aiFeatures = [
   {
-    title: 'Smart Matching',
+    title: 'AI-matched, not random',
     description:
-      'AI analyses your goals and context so the first intro feels tailor-made.',
-    icon: Brain,
-  },
-  {
-    title: 'Instant Connect',
-    description:
-      'Real-time availability and scheduling - go from need to call in minutes.',
+      'Tell us what you need. We surface 3 verified experts that fit your goals, budget, and timezone.',
     icon: Zap,
   },
   {
-    title: 'Personalised Outcomes',
+    title: 'Verified & rated',
     description:
-      'Continuous learning adapts to your preferences, pace, and success patterns.',
-    icon: Target,
+      'Every expert is ID-checked. See real ratings and reviews from past clients before you book.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Book in minutes',
+    description:
+      'Live availability, secure payments, in-app video calls - go from search to session without the back-and-forth.',
+    icon: CalendarDays,
   },
 ];
 
@@ -119,25 +119,25 @@ export default function AIExpertMatching() {
           {/* Left copy */}
           <div>
             <div className="mb-6 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
-              THE FLYRLINK STACK
+              HOW IT WORKS
             </div>
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-5xl lg:text-6xl">
-              Your expert
+              Find your expert
               <span className="mt-1 block font-serif italic font-medium text-brand">
-                journey.
+                in 5 simple steps.
               </span>
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-gray-700">
-              Match, chat, calendar, AI assist and live collaboration - all
-              stacked into a single surface that takes you from need to outcome.
+              Whether you need a yoga trainer or a tax consultant, going from
+              search to session takes minutes, not weeks.
             </p>
 
             <ul className="mt-8 space-y-3">
               {[
-                'Get matched in seconds, not weeks.',
-                'Chat, book, and meet verified pros instantly.',
-                'Schedule across timezones without the back-and-forth.',
-                'See what actually moved your needle.',
+                'Search 80+ services across 12 categories.',
+                'Chat free with experts before you book.',
+                'See real ratings and prices upfront.',
+                'Pay securely and meet on Flyrlink.',
               ].map((line) => (
                 <li
                   key={line}
@@ -155,7 +155,7 @@ export default function AIExpertMatching() {
               href="https://app.flyrlink.com/"
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy-900 px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-navy-900/20 transition-all duration-300 hover:bg-navy-800 hover:shadow-brand/20"
             >
-              Explore the stack
+              Find an expert
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-navy-900 transition-transform group-hover:translate-x-0.5">
                 <ArrowRight className="h-3 w-3" />
               </span>
@@ -202,7 +202,7 @@ export default function AIExpertMatching() {
                     <Sparkles className="h-4 w-4" />
                   </span>
                   <span className="text-[10px] font-semibold tracking-[0.28em] opacity-80">
-                    WORKSPACE
+                    MARKETPLACE
                   </span>
                 </div>
 
@@ -211,8 +211,8 @@ export default function AIExpertMatching() {
                     Flyrlink
                   </div>
                   <div className="mt-3 text-xs leading-relaxed opacity-80">
-                    One surface for match, chat, calendar and AI - so every
-                    expert session turns into an outcome.
+                    One place to find, book, and meet 500+ verified experts,
+                    from yoga trainers to tax consultants.
                   </div>
                 </div>
               </div>

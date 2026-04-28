@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Flyrlink. Reach out via email, phone, or our contact form. We're here to help connect you with expert professionals.",
   keywords:
-    'contact us, reach out, customer support, business inquiry, flyrlink contact, expert network contact, professional networking support',
+    'contact us, reach out, customer support, flyrlink contact, expert booking help',
 };
 
 const contactMethods = [
@@ -60,20 +60,20 @@ const infoCards = [
   {
     icon: Users,
     title: 'Community',
-    description: 'Join founders, teams and experts already growing on Flyrlink.',
+    description: 'Join thousands of clients booking the right expert in minutes.',
   },
 ];
 
 const faqItems = [
   {
-    question: 'How do I get started with Flyrlink?',
+    question: 'How do I get started?',
     answer:
-      'Sign up on the platform, complete your profile, and explore our expert directory or list your services. Our support team is ready to walk you through every step.',
+      'Sign up free, tell us what you need, and we surface 3 verified experts that fit your goal, budget, and timezone. You can chat with any of them before booking.',
   },
   {
     question: 'What payment methods do you accept?',
     answer:
-      'All major credit cards, digital wallets and bank transfers. Every transaction is secure and encrypted.',
+      'UPI, all major credit/debit cards, wallets, and net banking. Every transaction is secure.',
   },
   {
     question: 'How long does it take to get a response?',
@@ -81,19 +81,19 @@ const faqItems = [
       'We aim to reply within 24 hours, most within 4. For anything urgent, call us at +91 8125150893.',
   },
   {
-    question: 'Can I cancel my subscription anytime?',
+    question: 'Do I need a subscription?',
     answer:
-      'Yes, anytime, no penalties. We want you to stay because you love it, not because you are stuck.',
+      'No. Sign up and browsing is free. You only pay for the session you book. No subscriptions, no hidden fees.',
   },
   {
-    question: 'Is my data secure on Flyrlink?',
+    question: 'Is my data safe on Flyrlink?',
     answer:
-      'Absolutely. DPDP-compliant, 256-bit SSL, encrypted at rest and in transit. Your data is yours.',
+      'Yes. Conversations are encrypted, payments go through trusted gateways, and we comply with India\'s DPDP Act. We never sell your data.',
   },
   {
     question: 'How can I become a verified expert?',
     answer:
-      'Fill out your profile with credentials and experience. Our verification team reviews and confirms within 3 to 5 business days.',
+      'Fill out your profile with credentials and experience. Our team reviews and confirms within 3 to 5 business days.',
   },
 ];
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
             '@type': 'LocalBusiness',
             name: 'Flyrlink',
             description:
-              'AI-powered expert network platform connecting professionals with users for seamless service bookings and expertise sharing',
+              'Marketplace to find and book verified experts across 12 categories. From yoga trainers to tax consultants, all in one app.',
             url: 'https://flyrlink.com',
             telephone: '+918125150893',
             email: 'Contact@flyrlink.com',
@@ -152,8 +152,6 @@ export default function ContactPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
                 CONTACT
               </span>
-              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
-              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
             </div>
             <span>WE REPLY IN &lt; 24H</span>
           </div>
@@ -378,8 +376,8 @@ export default function ContactPage() {
                   </span>
                 </h3>
                 <p className="mt-5 max-w-lg text-gray-400">
-                  Join founders, teams and learners already growing with
-                  Flyrlink. No contracts, no noise, just outcomes.
+                  Join thousands of clients finding the right expert in minutes,
+                  not weeks. From yoga trainers to tax consultants.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row md:justify-end">

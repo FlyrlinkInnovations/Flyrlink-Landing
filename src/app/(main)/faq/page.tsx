@@ -4,13 +4,13 @@ import FaqClient from './FaqClient';
 export const metadata: Metadata = {
   title: 'FAQ',
   description:
-    'Find answers to common questions about Flyrlink. Learn about expert consultations, platform features, pricing, security, and how to connect with verified professionals.',
+    'Common questions about Flyrlink: how to find an expert, pricing, payments, refunds, becoming an expert, and more.',
   keywords:
-    'flyrlink faq, frequently asked questions, help center, expert platform questions, user guide, platform support, common questions, how to use flyrlink',
+    'flyrlink faq, how to book an expert, pricing, payments, refund policy, become an expert, common questions',
   openGraph: {
     title: 'Frequently Asked Questions | Flyrlink',
     description:
-      'Find answers to common questions about Flyrlink. Learn about expert consultations, platform features, pricing, security, and how to connect with verified professionals.',
+      'Common questions about Flyrlink: how to find an expert, pricing, payments, refunds, becoming an expert, and more.',
     url: 'https://flyrlink.com/faq',
     type: 'website',
     images: [
@@ -34,15 +34,15 @@ const faqSchema = {
       name: 'What is FLYRLINK, and how does it work?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'FLYRLINK is a professional networking and talent discovery platform where General Users, Experts, Startups, and Businesses can connect, collaborate, and grow. Experts can offer services, monetize content, and provide consultations, while startups and businesses can promote their services and gain expert support.',
+        text: 'Flyrlink is a marketplace for finding verified experts: coaches, tutors, designers, trainers, consultants, and creators across 12 categories. Tell us what you need, chat free with matched experts, book a 1:1 session, and meet on secure in-app video.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Who can use FLYRLINK? Is it for individuals, businesses, or both?',
+      name: 'Who can use FLYRLINK?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'FLYRLINK is designed for both individuals and businesses.\n\n• General Users can engage with expert content and seek professional guidance.\n• Experts & Freelancers can offer services, share knowledge, and monetize content.\n• Startups & Small Businesses can promote their services, connect with experts, and gain visibility.',
+        text: 'Anyone looking to book an expert (clients), and anyone with a skill people pay for (experts). Whether you need a yoga trainer, a tax consultant, or a UGC creator, you can find one in minutes. Or list your own services and earn on the side.',
       },
     },
     {

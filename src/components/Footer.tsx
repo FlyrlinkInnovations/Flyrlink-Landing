@@ -2,10 +2,11 @@ import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
-  Lock,
   Mail,
   MapPin,
-  Shield,
+  ShieldCheck,
+  Star,
+  Users,
 } from 'lucide-react';
 
 const platformLinks = [
@@ -92,8 +93,8 @@ export default function Footer() {
                 </span>
               </h3>
               <p className="mt-5 max-w-lg text-gray-400">
-                Join founders, teams and learners already growing with Flyrlink.
-                No contracts, no noise, just outcomes.
+                Join thousands of clients finding the right expert in minutes,
+                not weeks. From yoga trainers to tax consultants.
               </p>
             </div>
 
@@ -131,8 +132,8 @@ export default function Footer() {
               Flyrlink
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
-              Your direct line to knowledge, support and transformation.
-              Connecting you with verified experts for real-life outcomes.
+              Find a coach, tutor, designer, or expert. Book in minutes.
+              Verified pros across 12 categories, all in one app.
             </p>
 
             <div className="mt-6 space-y-2.5">
@@ -192,7 +193,7 @@ export default function Footer() {
           <div className="flex w-full gap-2 md:w-auto">
             <input
               type="email"
-              placeholder="you@company.com"
+              placeholder="you@email.com"
               className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-gray-500 focus:border-brand focus:outline-none md:w-80"
             />
             <button
@@ -211,25 +212,23 @@ export default function Footer() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-5 text-[10px] font-semibold tracking-[0.28em] text-gray-500">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <span className="flex items-center gap-1.5">
-              <Shield className="h-3 w-3 text-brand-300" />
-              DPDP COMPLIANT
+              <ShieldCheck className="h-3 w-3 text-brand-300" />
+              VERIFIED PROS
             </span>
             <span className="flex items-center gap-1.5">
-              <Lock className="h-3 w-3 text-brand-300" />
-              256-BIT SSL
+              <Users className="h-3 w-3 text-brand-300" />
+              500+ EXPERTS
             </span>
             <span className="flex items-center gap-1.5">
-              <Shield className="h-3 w-3 text-brand-300" />
-              SECURE PAYMENTS
+              <Star className="h-3 w-3 fill-brand-300 text-brand-300" />
+              4.9★ AVG RATING
             </span>
           </div>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
-              ALL SYSTEMS OPERATIONAL
+              SECURE PAYMENTS · REFUND PROTECTED
             </span>
-            <span className="hidden h-3 w-px bg-white/10 md:inline-block" />
-            <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
           </div>
         </div>
       </div>

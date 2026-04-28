@@ -44,14 +44,14 @@ export default function AffiliateHighlights() {
             AFFILIATE PROGRAM
           </div>
           <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-5xl lg:text-6xl">
-            Built for people who{' '}
+            Bring your audience.{' '}
             <span className="font-serif italic font-medium text-brand">
-              actually ship.
+              Earn for a year.
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-gray-600 md:text-lg">
-            The five stages your affiliate flywheel runs every week, all in one
-            workspace.
+            Five steps to start earning: share your link, refer clients,
+            collect commission. No cap, no chasing.
           </p>
 
           {/* Audience pill row */}

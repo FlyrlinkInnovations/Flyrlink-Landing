@@ -14,9 +14,9 @@ import {
 export const metadata: Metadata = {
   title: 'About Flyrlink',
   description:
-    "Learn about Flyrlink's mission to make expert knowledge accessible to everyone. We bridge the gap between professionals and users through seamless connections and trusted expertise.",
+    "Flyrlink's mission is to make booking the right expert as easy as ordering a cab. From yoga trainers to tax consultants, find verified pros in minutes.",
   keywords:
-    'about flyrlink, expert network platform, professional networking, knowledge marketplace, company mission, expert consultations, business networking, trusted professionals',
+    'about flyrlink, expert marketplace, find an expert, book a coach, hire a tutor, company mission, verified experts',
 };
 
 const teamMembers = [
@@ -47,28 +47,28 @@ const values = [
   {
     title: 'Trust & Verification',
     description:
-      'Every expert is thoroughly vetted - KYC, reviews and outcome history before they meet a client.',
+      'Every expert is ID-verified, background-checked, and rated by real clients before they meet you.',
     icon: Shield,
     tag: 'VALUE 01',
   },
   {
     title: 'Accessibility',
     description:
-      'Expert knowledge shouldn\'t be gated by geography or network. We make it affordable and reachable.',
+      'Finding the right expert shouldn\'t depend on who you know. We make it affordable, reachable, and fast.',
     icon: Globe,
     tag: 'VALUE 02',
   },
   {
-    title: 'Community',
+    title: 'Honest pricing',
     description:
-      'Connections that go beyond transactions - we build rooms where growth compounds.',
+      'No subscriptions. No hidden fees. You pay only for the session you book, and you see the price upfront.',
     icon: UsersIcon,
     tag: 'VALUE 03',
   },
   {
-    title: 'Innovation',
+    title: 'Real ratings, real pros',
     description:
-      'We ship continuously - smarter matching, cleaner workflows, better outcomes every release.',
+      'Reviews come from clients who actually booked. No bots, no buying ratings, no gig-economy roulette.',
     icon: Lightbulb,
     tag: 'VALUE 04',
   },
@@ -103,8 +103,6 @@ export default function AboutPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
                 FOUNDED 2025
               </span>
-              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
-              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
             </div>
             <span>BANGALORE · INDIA</span>
           </div>
@@ -123,9 +121,9 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="text-base leading-relaxed text-gray-600 md:text-lg">
-                We&apos;re on a mission to make expert knowledge accessible to
-                everyone - anywhere, anytime. Because growth shouldn&apos;t be
-                limited by geography, connections or calendars.
+                We&apos;re on a mission to make booking the right expert as
+                easy as ordering a cab. From yoga trainers to tax consultants,
+                anyone, anywhere, in minutes.
               </p>
               <div className="mt-5 flex items-center gap-2 text-sm">
                 <div className="flex items-center gap-0.5">

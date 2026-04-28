@@ -1,44 +1,44 @@
 'use client';
 
-import { Star, Brain, ShieldCheck, Layers, Lock } from 'lucide-react';
+import { Star, Sparkles, ShieldCheck, Layers, Users } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
 
 const featured = {
   name: 'Girish Kotte',
-  role: 'AI GTM ADVISOR · FLYRLINK PARTNER',
+  role: 'FOUNDER · FLYRLINK',
   quote:
-    'Flyrlink turned cold outreach chaos into warm intros in days. I helped 40+ founders go from pre-PMF to their first paying room - most of them in ',
-  accent: 'under two weeks.',
+    'I built Flyrlink because finding the right expert shouldn\'t take weeks of asking around. From a yoga trainer to a tax consultant, your next expert is now ',
+  accent: 'just minutes away.',
   link: 'https://gkotte.com',
   image: '/gk.jpeg',
 };
 
 const secondary = [
   {
-    name: 'Ananya Reddy',
-    role: 'STARTUP FOUNDER',
+    name: 'Anjali Reddy',
+    role: 'YOGA STUDENT · BENGALURU',
     quote:
-      'The AI matching was spot-on - connected me with a strategist who completely transformed my go-to-market. ',
-    accent: 'Serious game-changer.',
+      'Booked Priya expecting a generic class. Got a custom plan for my back pain that actually worked. Three weeks in and ',
+    accent: 'I can sleep again.',
     rating: 5,
   },
   {
-    name: 'Vikash Singh',
-    role: 'SOFTWARE ENGINEER',
+    name: 'Manju Iyer',
+    role: 'PARENT · CHENNAI',
     quote:
-      'Found a career coach in minutes. Booking was seamless and the session was ',
-    accent: 'incredibly valuable.',
+      'Booked a tutor for my son\'s board exam prep. He went from 60% to 89% in 3 months. ',
+    accent: 'Wish I\'d found Flyrlink sooner.',
     rating: 5,
   },
 ];
 
 const stats = [
-  { icon: Layers, value: 100, suffix: '+', label: 'Skills' },
-  { icon: Star, value: 12, suffix: '+', label: 'Categories' },
-  { icon: Brain, displayValue: 'AI-Powered', label: 'Matching' },
-  { icon: Lock, displayValue: 'Secure', label: 'Platform' },
-  { icon: ShieldCheck, displayValue: 'Verified', label: 'Experts' },
+  { icon: Layers, value: 89, suffix: '+', label: 'Services' },
+  { icon: Star, value: 12, suffix: '', label: 'Categories' },
+  { icon: Users, value: 500, suffix: '+', label: 'Verified Experts' },
+  { icon: Sparkles, value: 10, suffix: 'k+', label: 'Sessions' },
+  { icon: ShieldCheck, displayValue: '4.9★', label: 'Average Rating' },
 ];
 
 function StatItem({
@@ -122,7 +122,7 @@ export default function Testimonials() {
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-navy-900">
               Loved by{' '}
               <span className="font-serif italic font-medium text-brand">
-                the people who ship.
+                10,000+ clients.
               </span>
             </h2>
           </div>

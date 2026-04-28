@@ -104,8 +104,6 @@ export default async function BlogPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
                 FRESH READS
               </span>
-              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
-              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
             </div>
             <span>
               {blogPosts.length} {blogPosts.length === 1 ? 'ARTICLE' : 'ARTICLES'}

@@ -7,7 +7,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Briefcase,
-  Building2,
   Check,
   User,
 } from 'lucide-react';
@@ -30,61 +29,42 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: 'For Clients',
-    kicker: 'BROWSE & BOOK',
+    kicker: 'BOOK A SESSION',
     description:
-      'Browse and book verified experts with transparent, upfront pricing.',
+      'Find a coach, tutor, designer, or expert. Browse free, pay only for the session you book.',
     features: [
       'Free to sign up and browse',
-      'Pay per session - from INR 500',
-      'No subscriptions or hidden fees',
+      'Sessions from ₹499, set by each expert',
+      'No subscription, no hidden fees',
+      'Free chat before you book',
       'Secure payments · refund protection',
-      '1:1 sessions, events & more',
     ],
-    cta: 'Get Started Free',
+    cta: 'Find an expert',
     href: 'https://app.flyrlink.com/',
     icon: User,
     tone: 'light',
     price: 'Free',
-    priceSuffix: 'to browse',
+    priceSuffix: 'to sign up',
   },
   {
     name: 'For Experts',
-    kicker: 'GROW YOUR PRACTICE',
+    kicker: 'EARN FROM YOUR SKILL',
     description:
-      'Monetize your expertise with flexible pricing and powerful growth tools.',
+      'Turn what you know into income. Set your own price, get discovered, paid on time.',
     features: [
       'Free expert profile',
-      'Set your own session pricing',
+      'Set your own session price',
       'Keep the majority of earnings',
-      'Host events and group sessions',
-      'Analytics and growth tools included',
+      'Live calendar & in-app video',
+      'Real ratings, grow your reputation',
     ],
-    cta: 'Become an Expert',
+    cta: 'Become an expert',
     href: 'https://app.flyrlink.com/',
     icon: Briefcase,
     tone: 'featured',
     badge: 'MOST POPULAR',
     price: '0%',
-    priceSuffix: 'upfront · rev-share on sessions',
-  },
-  {
-    name: 'For Teams',
-    kicker: 'SCALE YOUR ORG',
-    description:
-      'Bring expert access to your whole team with centralized billing and admin controls.',
-    features: [
-      'Unlimited expert bookings',
-      'Centralized team billing',
-      'SSO + admin controls',
-      'Private expert bench',
-      'Dedicated success manager',
-    ],
-    cta: 'Contact Sales',
-    href: '/book-call',
-    icon: Building2,
-    tone: 'light',
-    price: 'Custom',
-    priceSuffix: 'tailored to your org',
+    priceSuffix: 'upfront · revenue-share per session',
   },
 ];
 
@@ -116,14 +96,14 @@ export default function PricingSection() {
           </div>
           <div className="md:text-right">
             <p className="max-w-md text-gray-600 md:ml-auto">
-              Experts set their own pricing. You only pay for the sessions you
+              Experts set their own price. You pay only for the session you
               book. No fine print, no surprises.
             </p>
             <Link
-              href="/book-call"
+              href="/contact"
               className="group mt-5 inline-flex items-center gap-2 rounded-full bg-navy-900 px-5 py-2.5 text-sm font-semibold text-white shadow-xl shadow-navy-900/20 transition-all duration-300 hover:bg-navy-800 hover:shadow-brand/20"
             >
-              Talk to sales
+              Have a question?
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-navy-900 transition-transform group-hover:translate-x-0.5">
                 <ArrowRight className="h-3 w-3" />
               </span>
@@ -142,7 +122,7 @@ export default function PricingSection() {
               <ArrowLeft className="h-4 w-4" />
             </button>
 
-            <div className="grid flex-1 gap-6 md:grid-cols-3 md:gap-6">
+            <div className="grid flex-1 gap-6 md:grid-cols-2 md:gap-6">
               {plans.map((plan, i) => (
                 <PlanCard
                   key={plan.name}
@@ -182,13 +162,13 @@ export default function PricingSection() {
         {/* Bottom note */}
         <div className="mt-14 text-center">
           <p className="mb-3 text-sm text-gray-500">
-            Need something custom or have questions?
+            Not sure where to start?
           </p>
           <Link
-            href="/book-call"
+            href="/contact"
             className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand decoration-brand/40 decoration-2 underline-offset-4 hover:underline"
           >
-            Book a call with the team
+            Chat with our team
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

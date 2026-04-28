@@ -87,8 +87,8 @@ export default function HowItWorks() {
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-gray-600 md:text-lg">
-            Whether you&apos;re seeking guidance or sharing your expertise,
-            getting started is simple - and the flow flexes for both sides.
+            Whether you&apos;re booking an expert or earning from your skill,
+            getting started takes minutes. Same flow, both sides.
           </p>
         </div>
 
@@ -249,7 +249,7 @@ export default function HowItWorks() {
                     <Sparkles className="h-4 w-4" />
                   </span>
                   <span className="text-[10px] font-semibold tracking-[0.28em] opacity-80">
-                    WORKSPACE
+                    MARKETPLACE
                   </span>
                 </div>
 
@@ -262,8 +262,8 @@ export default function HowItWorks() {
                   </div>
                   <div className="mt-3 text-xs leading-relaxed opacity-80">
                     {activeTab === 'clients'
-                      ? 'From need to outcome. Verified experts, matched by AI - bookable in minutes.'
-                      : 'Grow your practice. Get discovered, paid on time, and backed by a trust system that works.'}
+                      ? 'Find a coach, tutor, designer, or expert. Book in minutes with verified pros.'
+                      : 'Earn from your skill. Set your price, get discovered, paid on time after every session.'}
                   </div>
                 </div>
               </div>

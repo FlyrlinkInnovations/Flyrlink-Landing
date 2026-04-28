@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { API_CONFIG } from '@/config/constants';
 import { getLocalPosts } from '@/utils/localBlog';
+import { CATEGORIES, SERVICES } from '@/config/services';
 
 export const dynamic = 'force-static';
 
@@ -17,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/waiting-list`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/book-call`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/find-experts`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${baseUrl}/categories`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${baseUrl}/affiliate`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
@@ -51,5 +53,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...localBlogRoutes, ...blogRoutes];
+  // Category and service pages
+  const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
+    url: `${baseUrl}/categories/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  const serviceRoutes: MetadataRoute.Sitemap = SERVICES.map((s) => ({
+    url: `${baseUrl}/services/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...serviceRoutes,
+    ...localBlogRoutes,
+    ...blogRoutes,
+  ];
 }

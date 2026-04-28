@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import Image from 'next/image';
 import {
-  Brain,
-  CheckCircle,
-  ChevronDown,
-  Sparkles,
-  Zap,
+  ShieldCheck,
+  MessagesSquare,
+  Star,
+  Search,
+  CheckCircle2,
+  Calendar,
 } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -19,31 +20,50 @@ type Item = {
 
 const items: Item[] = [
   {
-    title: 'AI matching that reads between the lines',
+    title: 'Only verified pros, no gig roulette',
     description:
-      'Describe your need in plain language. Our models weigh skills, domain, style, budget and availability so the first intro already feels tailor-made.',
-    tags: ['Context-aware', 'Multi-signal ranking', 'One-tap match'],
-    icon: Brain,
+      'Every expert is ID-verified, background-checked, and rated by real clients. You see what they actually delivered, not just what they promised.',
+    tags: ['ID verified', 'Real reviews', 'Background checked'],
+    icon: ShieldCheck,
   },
   {
-    title: 'Connections that happen in minutes',
+    title: 'Smart match, not a search dump',
     description:
-      'No more waiting for callbacks. Real-time availability, instant booking and seamless chat - so the moment stays hot.',
-    tags: ['Live availability', 'Instant booking', 'In-app chat'],
-    icon: Zap,
+      'Skip scrolling through 200 profiles. Tell us what you need, and we surface 3 experts that fit your goals, budget, and timezone in seconds.',
+    tags: ['AI-matched', 'Budget-aware', 'Timezone-friendly'],
+    icon: Search,
   },
   {
-    title: 'Experts you can actually trust',
+    title: 'Chat, book, meet, all in one app',
     description:
-      'Every pro is vetted - KYC, reviews, outcome history. You see what they ship, not just what they say.',
-    tags: ['KYC verified', 'Outcome-rated', 'Transparent reviews'],
-    icon: CheckCircle,
+      'Message experts free before you book. Pay only when you confirm. Meet on secure in-app video. No WhatsApp chases, no surprise charges.',
+    tags: ['Free chat', 'Secure payments', 'In-app video'],
+    icon: MessagesSquare,
   },
 ];
 
+const featuredExpert = {
+  name: 'Priya Sharma',
+  role: 'Yoga & Wellness Trainer',
+  image: 'https://randomuser.me/api/portraits/women/68.jpg',
+  rating: 4.9,
+  reviews: 247,
+  sessions: 800,
+  price: 499,
+  reviewSnippets: [
+    {
+      name: 'Anjali R.',
+      text: 'Booked her on a whim. Best decision. Felt heard from minute one.',
+    },
+    {
+      name: 'Rohit K.',
+      text: 'Customised plan for my back pain. Three weeks in and I can sleep again.',
+    },
+  ],
+};
+
 export default function FeaturesSection() {
   const { ref, isVisible } = useScrollReveal();
-  const [open, setOpen] = useState(0);
 
   return (
     <section className="relative overflow-hidden bg-navy-950 py-28">
@@ -67,9 +87,8 @@ export default function FeaturesSection() {
             </span>
           </h2>
           <p className="mt-5 max-w-2xl text-base text-gray-400 md:text-lg">
-            We&apos;re redefining how people connect with experts - cutting-edge AI
-            paired with human expertise to deliver outcomes, not just
-            introductions.
+            Three things every Flyrlink session has in common, and why
+            thousands of clients keep coming back.
           </p>
         </div>
 
@@ -78,56 +97,28 @@ export default function FeaturesSection() {
           <div className="pointer-events-none absolute -right-24 -top-24 h-[380px] w-[380px] rounded-full bg-brand/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-24 h-[320px] w-[320px] rounded-full bg-brand/10 blur-3xl" />
 
-          <div className="relative grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
-            {/* Left accordion */}
-            <div className="space-y-0 divide-y divide-white/10">
-              {items.map((item, i) => {
-                const isOpen = open === i;
+          <div className="relative grid gap-10 md:grid-cols-[1.1fr_1fr] md:gap-14">
+            {/* Left: 3 reasons, all open */}
+            <div className="space-y-6">
+              {items.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className={i === 0 ? 'pt-0' : 'pt-6'}>
-                    <button
-                      onClick={() => setOpen(i)}
-                      className="group flex w-full items-center justify-between gap-4 pb-4 text-left"
-                      aria-expanded={isOpen}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span
-                          className={`flex h-8 w-8 items-center justify-center rounded-lg border transition-colors ${
-                            isOpen
-                              ? 'border-brand/30 bg-brand/15 text-brand-300'
-                              : 'border-white/10 bg-white/5 text-gray-400 group-hover:border-brand/20 group-hover:text-brand-300'
-                          }`}
-                        >
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <span
-                          className={`text-lg font-bold transition-colors md:text-xl ${
-                            isOpen
-                              ? 'text-white'
-                              : 'text-white/70 group-hover:text-white'
-                          }`}
-                        >
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors hover:border-brand/30 hover:bg-white/[0.05]"
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-brand/30 bg-brand/15 text-brand-300">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-bold text-white md:text-xl">
                           {item.title}
-                        </span>
-                      </div>
-                      <ChevronDown
-                        className={`h-4 w-4 flex-shrink-0 text-gray-500 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180 text-brand-300' : ''
-                        }`}
-                      />
-                    </button>
-
-                    <div
-                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                        isOpen ? 'grid-rows-[1fr] pb-5' : 'grid-rows-[0fr]'
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="max-w-md text-sm leading-relaxed text-gray-400 md:text-base">
+                        </h3>
+                        <p className="mt-2 max-w-md text-sm leading-relaxed text-gray-400 md:text-base">
                           {item.description}
                         </p>
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-3 flex flex-wrap gap-2">
                           {item.tags.map((t) => (
                             <span
                               key={t}
@@ -144,71 +135,102 @@ export default function FeaturesSection() {
               })}
             </div>
 
-            {/* Right: product mock */}
+            {/* Right: real expert profile preview */}
             <div className="relative">
-              <div className="relative mx-auto max-w-md overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-navy-800 to-navy-950 shadow-2xl shadow-black/40">
-                {/* Browser chrome */}
-                <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.02] px-4 py-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
-                  <span className="ml-3 text-xs font-medium text-gray-500">
-                    Match · New request
+              <div className="relative mx-auto max-w-sm overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-b from-navy-800 to-navy-950 shadow-2xl shadow-black/50">
+                {/* Cover */}
+                <div className="relative h-24 bg-gradient-to-br from-brand via-brand-600 to-navy-900">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-30" />
+                  <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur">
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+                    Available today
                   </span>
                 </div>
 
-                {/* Status row */}
-                <div className="flex items-center justify-between px-5 pt-5 pb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-700">
-                      <Sparkles className="h-4 w-4 text-white" />
-                    </span>
-                    <div>
-                      <div className="text-sm font-bold text-white">
-                        Match engine · On
-                      </div>
-                      <div className="text-[10px] text-gray-500">
-                        scanning 500+ verified experts
-                      </div>
+                {/* Profile */}
+                <div className="px-5 pb-5">
+                  <div className="-mt-10 flex items-end gap-4">
+                    <div className="relative">
+                      <Image
+                        src={featuredExpert.image}
+                        alt={featuredExpert.name}
+                        width={80}
+                        height={80}
+                        className="h-20 w-20 rounded-2xl object-cover ring-4 ring-navy-900"
+                      />
+                      <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand ring-2 ring-navy-900">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-white" />
+                      </span>
+                    </div>
+                    <div className="pb-1">
+                      <h3 className="text-base font-bold text-white">
+                        {featuredExpert.name}
+                      </h3>
+                      <p className="text-xs text-gray-400">
+                        {featuredExpert.role}
+                      </p>
                     </div>
                   </div>
-                  <span className="rounded-full border border-brand/30 bg-brand/15 px-2 py-0.5 text-[10px] font-bold text-brand-300">
-                    AI
-                  </span>
-                </div>
 
-                {/* Shimmer lines */}
-                <div className="space-y-2 px-5 py-4">
-                  <div className="h-2 w-full rounded-full bg-white/10" />
-                  <div className="h-2 w-[82%] rounded-full bg-brand/50" />
-                  <div className="h-2 w-[64%] rounded-full bg-white/10" />
-                  <div className="h-2 w-[90%] rounded-full bg-white/10" />
-                </div>
+                  {/* Stats row */}
+                  <div className="mt-4 flex items-center gap-3 text-xs">
+                    <span className="inline-flex items-center gap-1 text-white">
+                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                      <span className="font-bold">{featuredExpert.rating}</span>
+                      <span className="text-gray-400">
+                        ({featuredExpert.reviews})
+                      </span>
+                    </span>
+                    <span className="h-3 w-px bg-white/10" />
+                    <span className="text-gray-300">
+                      <span className="font-bold text-white">
+                        {featuredExpert.sessions}+
+                      </span>{' '}
+                      sessions
+                    </span>
+                    <span className="h-3 w-px bg-white/10" />
+                    <span className="inline-flex items-center gap-1 text-brand-300">
+                      <ShieldCheck className="h-3 w-3" />
+                      Verified
+                    </span>
+                  </div>
 
-                {/* Gradient CTA */}
-                <div className="px-5 pb-5 pt-2">
-                  <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand via-brand-600 to-brand-700 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/40 transition-all duration-300 hover:shadow-brand/60">
-                    <Zap className="h-4 w-4" />
-                    Match now
-                  </button>
-                </div>
-              </div>
+                  {/* Review snippets */}
+                  <div className="mt-5 space-y-2">
+                    {featuredExpert.reviewSnippets.map((review) => (
+                      <div
+                        key={review.name}
+                        className="rounded-xl border border-white/5 bg-white/[0.03] p-3"
+                      >
+                        <p className="text-xs leading-relaxed text-gray-300">
+                          &ldquo;{review.text}&rdquo;
+                        </p>
+                        <p className="mt-1.5 text-[10px] font-semibold text-gray-500">
+                          - {review.name}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
 
-              {/* Floating match score card */}
-              <div className="absolute -bottom-6 right-2 z-10 w-56 rounded-xl border border-white/10 bg-navy-900/95 p-3 shadow-xl backdrop-blur-sm md:-bottom-8 md:right-6">
-                <div className="flex items-start gap-2">
-                  <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-brand/15">
-                    <CheckCircle className="h-3 w-3 text-brand-300" />
-                  </span>
-                  <div className="flex-1">
-                    <p className="text-xs font-bold text-white">Match score</p>
-                    <p className="mt-0.5 text-[10px] leading-snug text-gray-400">
-                      Matches your criteria at{' '}
-                      <span className="font-semibold text-brand-300">96%</span>
-                    </p>
+                  {/* Price + Book */}
+                  <div className="mt-5 flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3">
+                    <div>
+                      <p className="text-[10px] text-gray-400">From</p>
+                      <p className="text-lg font-bold text-white leading-none">
+                        ₹{featuredExpert.price}
+                        <span className="ml-1 text-xs font-medium text-gray-400">
+                          /session
+                        </span>
+                      </p>
+                    </div>
+                    <button className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-brand-600">
+                      <Calendar className="h-3.5 w-3.5" />
+                      Book session
+                    </button>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

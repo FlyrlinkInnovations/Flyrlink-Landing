@@ -39,15 +39,12 @@ const faqCategories: FaqCategory[] = [
       {
         question: 'What is FLYRLINK, and how does it work?',
         answer:
-          'FLYRLINK is a professional networking and talent discovery platform where General Users, Experts, Startups, and Businesses can connect, collaborate, and grow. Experts can offer services, monetize content, and provide consultations, while startups and businesses can promote their services and gain expert support.',
+          'Flyrlink is a marketplace for finding verified experts: coaches, tutors, designers, trainers, consultants, and creators across 12 categories. Tell us what you need, chat free with matched experts, book a 1:1 session, and meet on secure in-app video.',
       },
       {
-        question: 'Who can use FLYRLINK? Is it for individuals, businesses, or both?',
+        question: 'Who can use FLYRLINK?',
         answer:
-          'FLYRLINK is designed for both individuals and businesses.\n\n' +
-          '• General Users can engage with expert content and seek professional guidance.\n' +
-          '• Experts & Freelancers can offer services, share knowledge, and monetize content.\n' +
-          '• Startups & Small Businesses can promote their services, connect with experts, and gain visibility.',
+          'Anyone looking to book an expert (clients), and anyone with a skill people pay for (experts). Whether you need a yoga trainer, a tax consultant, or a UGC creator, you can find one in minutes. Or list your own services and earn on the side.',
       },
       {
         question: 'Is FLYRLINK available globally, or is it restricted to certain regions?',
@@ -241,8 +238,6 @@ export default function FaqClient() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand animate-pulse" />
                 HELP CENTER
               </span>
-              <span className="hidden h-3 w-px bg-gray-200 md:inline-block" />
-              <span className="hidden md:inline">VOL 01 · FLYRLINK 2026</span>
             </div>
             <span>{totalQuestions} QUESTIONS</span>
           </div>

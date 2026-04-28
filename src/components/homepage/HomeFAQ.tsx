@@ -8,43 +8,43 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 const faqs = [
   {
     q: 'What is Flyrlink?',
-    a: 'Flyrlink is an AI-powered expert marketplace that connects you with verified professionals across 12+ categories including business, technology, health, legal, finance, and more. Book 1:1 sessions, attend live events, and get expert guidance all in one platform.',
+    a: 'Flyrlink is a marketplace for finding verified experts: coaches, tutors, designers, trainers, consultants, and creators across 12 categories. Chat free, book a 1:1 session, and meet on secure in-app video.',
   },
   {
-    q: 'How does AI matching work?',
-    a: 'Our AI analyzes your requirements, preferences, and context to recommend the most relevant experts. It considers expertise, ratings, availability, pricing, and past success rates to ensure the best match.',
+    q: 'How does the AI matching work?',
+    a: 'Tell us what you need in plain language. We surface 3 verified experts that fit your goal, budget, and timezone, so you skip scrolling through 200 profiles.',
   },
   {
     q: 'Is Flyrlink free to use?',
-    a: 'Signing up and browsing experts is completely free. You only pay when you book a session or event. Experts set their own pricing, with sessions starting from INR 500.',
+    a: 'Yes. Signing up, browsing experts, and chatting with them is completely free. You only pay when you book a session. Experts set their own price, starting from ₹499.',
   },
   {
     q: 'How are experts verified?',
-    a: 'Every expert goes through a verification process that includes identity verification, credential checks, and profile review. Our rating and review system further ensures quality.',
+    a: 'Every expert goes through ID verification, credential checks, and profile review. Real client ratings and reviews keep the bar high after that.',
   },
   {
     q: 'What categories of experts are available?',
-    a: 'We have 12+ categories: Business Intelligence, Career Intelligence, Learning Accelerator, Creative Solutions, Technology, Health & Wellness, Legal, Marketing, Finance, Lifestyle, Astrology, and Language.',
+    a: 'We have 12 categories with 89+ services: Education, Fitness, Sports, Tech & IT, Photography, Beauty, Fashion, Business, Entertainment, Digital Marketing, Writing & Translation, and Creators & Influencers.',
   },
   {
     q: 'How do payments work?',
-    a: 'Payments are processed securely through our platform. Clients pay upfront when booking, and experts receive their earnings after sessions are completed. We support multiple payment methods.',
+    a: 'You pay securely when you confirm a booking via UPI, card, or wallet. The expert is paid after the session is delivered. Refund protection is built in.',
   },
   {
     q: 'Can I become an expert on Flyrlink?',
-    a: 'Yes! If you have expertise in any of our categories, you can create a free expert profile, set your pricing and availability, and start earning by helping others.',
+    a: "Yes. If you've got a skill people pay for, set up a free profile, list your sessions, set your price, and start earning. We handle discovery, payments, and video calls.",
   },
   {
-    q: 'What is the affiliate program?',
-    a: "Our affiliate program lets you earn 5% commission on all transactions made by users you refer for 12 months. It's available to creators, coaches, freelancers, and community admins.",
+    q: 'How does the referral program work?',
+    a: "Share your personal Flyrlink referral link. Earn 5% commission on every transaction your referrals make for 12 months. No cap on referrals, no cap on earnings.",
   },
   {
-    q: 'How do live events work?',
-    a: 'Experts can host webinars, workshops, and group sessions. Users can browse upcoming events, register, and join live. Events can be online, in-person, or hybrid.',
+    q: 'How do live events and workshops work?',
+    a: 'Experts host workshops, classes, and Q&A sessions, from yoga bootcamps to study-abroad masterclasses. Browse upcoming events, register, and join live (online, in-person, or hybrid).',
   },
   {
     q: 'Is my data safe on Flyrlink?',
-    a: 'Yes. We use industry-standard encryption, secure payment processing, and AI-powered content moderation. Your data is protected under our privacy policy compliant with DPDP Act.',
+    a: 'Yes. Conversations are encrypted, payments are processed through trusted gateways, and we comply with India\'s DPDP Act. We never sell your data.',
   },
 ];
 

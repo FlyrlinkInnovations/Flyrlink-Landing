@@ -3,11 +3,11 @@ import CareersClient from './CareersClient';
 
 export const metadata: Metadata = {
   title: 'Careers at Flyrlink',
-  description: 'Join Flyrlink\'s team and help build the future of AI-powered expert networking. Explore open positions in Engineering, Design, Marketing, and more.',
-  keywords: 'careers, jobs, hiring, engineering, product design, marketing, customer success, flyrlink careers, professional networking jobs, remote work',
+  description: 'Join Flyrlink and help build the simplest way to find a verified expert. Open roles in Engineering, Design, Marketing, and more.',
+  keywords: 'careers, jobs, hiring, engineering, product design, marketing, customer success, flyrlink careers, marketplace jobs, remote work',
   openGraph: {
     title: 'Careers at Flyrlink',
-    description: 'Join our team and shape the future of professional networking with AI-powered matching and collaboration.',
+    description: 'Join Flyrlink and help build the simplest way to find a verified expert.',
     url: 'https://flyrlink.com/careers',
     type: 'website',
     images: [
@@ -34,7 +34,7 @@ export default function CareersPage() {
             name: 'Flyrlink',
             url: 'https://flyrlink.com',
             logo: 'https://flyrlink.com/logo.png',
-            description: 'AI-powered expert network platform connecting professionals with users for seamless service bookings and expertise sharing',
+            description: 'Marketplace to find and book verified experts across 12 categories. From yoga trainers to tax consultants, all in one app.',
             sameAs: [
               'https://www.linkedin.com/company/flyrlink',
               'https://twitter.com/flyrlink',

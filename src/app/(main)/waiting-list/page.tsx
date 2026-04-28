@@ -3,8 +3,8 @@ import { EnhancedWaitingListForm } from '@/components/EnhancedWaitingListForm';
 
 export const metadata: Metadata = {
   title: 'Join Waiting List',
-  description: 'Be among the first to experience Flyrlink. Join our waiting list for early access to connect with verified experts and get exclusive launch benefits.',
-  keywords: 'join waiting list, early access, flyrlink launch, exclusive benefits, expert platform waitlist',
+  description: 'Be among the first to book verified experts on Flyrlink. Join the waiting list for early access and launch perks.',
+  keywords: 'join waiting list, early access, flyrlink launch, book experts early',
 };
 
 export default function WaitingListPage() {
@@ -22,23 +22,23 @@ export default function WaitingListPage() {
           <div className="text-center mb-12">
             <span className="inline-flex items-center gap-2 text-brand text-xs font-semibold uppercase tracking-wider mb-8">
               <span className="w-6 h-px bg-brand/40" />
-              Join the Revolution
+              Early access
               <span className="w-6 h-px bg-brand/40" />
             </span>
 
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 tracking-tight">
               <span className="text-navy-900">
-                Be Among the First
+                Be among the first
               </span>
               <br />
               <span className="text-gradient">
-                to Experience Flyrlink
+                to book on Flyrlink.
               </span>
             </h1>
 
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-              Join thousands of early adopters who are revolutionizing how they connect with experts.
-              Get exclusive early access and special launch benefits.
+              Get early access to 500+ verified experts across 12 categories.
+              Free chat, instant booking, secure video sessions, all in one app.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -58,9 +58,9 @@ export default function WaitingListPage() {
           {/* Trust indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {[
-              { emoji: '🔒', title: '100% Secure', desc: 'Your data is protected with enterprise-grade security' },
-              { emoji: '⚡', title: 'Lightning Fast', desc: 'Get instant access when we launch' },
-              { emoji: '🎯', title: 'Personalized', desc: 'Tailored experience just for you' },
+              { emoji: '🔒', title: 'Secure', desc: 'Encrypted chats, secure payments, and refund protection.' },
+              { emoji: '⚡', title: 'First in line', desc: 'Get instant access when we open up bookings.' },
+              { emoji: '🎯', title: 'Right for you', desc: 'Get matched with experts who fit your goal and budget.' },
             ].map((item, i) => (
               <div key={i} className="p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-200/80 hover:bg-white/90 transition-all duration-300">
                 <div className="text-4xl mb-3">{item.emoji}</div>
