@@ -15,6 +15,14 @@ const POPULAR_CHIPS: { label: string; slug: string }[] = [
   { label: 'Product Photography', slug: 'product-photography' },
 ];
 
+const FEATURED_LOGOS = [
+  { name: 'Amazon',         src: '/logos/Amazon%20logo.jpg' },
+  { name: 'Microsoft',      src: '/logos/Microsoft%20logo.jpg' },
+  { name: 'Erba Solutions', src: '/logos/Erba%20Solutions.png' },
+  { name: 'Cloudwink Tech', src: '/logos/Cloudwink%20Tech.jpg' },
+  { name: 'Lumina',         src: '/logos/Lumina.jpg' },
+];
+
 const LIVE_EXPERTS = [
   { name: 'Priya Sharma',  role: 'Yoga Trainer',     image: 'https://randomuser.me/api/portraits/women/68.jpg', rating: 4.9, price: 499 },
   { name: 'Ravi Mehta',    role: 'Logo Designer',    image: 'https://randomuser.me/api/portraits/men/52.jpg',   rating: 4.8, price: 1499 },
@@ -167,17 +175,19 @@ export default function HeroSection() {
 
         {/* Trusted by */}
         <div className="mt-16 pt-8 border-t border-white/10">
-          <p className="text-center text-[11px] font-semibold tracking-[0.24em] text-gray-500 mb-6">
+          <p className="text-center text-[11px] font-semibold tracking-[0.24em] text-gray-500 mb-8">
             FEATURED IN
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 md:gap-x-20 gap-y-6">
-            {['Foundershub', 'LEORIX'].map((name) => (
-              <span
-                key={name}
-                className="font-serif italic text-2xl md:text-[28px] text-white/40 hover:text-brand-300 transition-colors duration-300 select-none"
-              >
-                {name}
-              </span>
+          <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-14 gap-y-6">
+            {FEATURED_LOGOS.map((logo) => (
+              <Image
+                key={logo.name}
+                src={logo.src}
+                alt={logo.name}
+                width={160}
+                height={56}
+                className="h-10 md:h-12 w-auto object-contain transition-opacity duration-300 hover:opacity-100 opacity-80"
+              />
             ))}
           </div>
         </div>

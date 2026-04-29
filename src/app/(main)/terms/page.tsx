@@ -1,332 +1,273 @@
-import { Shield } from 'lucide-react';
+import type { Metadata } from 'next';
+import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
-export const metadata = {
-  title: 'Terms & Conditions',
+export const metadata: Metadata = {
+  title: 'Terms and Conditions',
   description:
-    'Flyrlink Terms & Conditions - Read our terms of service governing the use of the Flyrlink platform, including user accounts, expert services, payments, and intellectual property.',
+    'Flyrlink Terms and Conditions governing access to and use of the Website, user accounts, services, payments, content, and dispute resolution.',
 };
 
-const TermsPage = () => {
+const blocks: LegalBlock[] = [
+  {
+    type: 'p',
+    text: 'Welcome to https://www.flyrlink.com/ ("Website"). This Website, including sub-domains, mobile applications and platforms, is owned, operated, and maintained by Flyrlink Innovations Private Limited, having its registered address at Unit 407, 4th Floor, Jain Sadguru Image Capital Park, Image Garden Road, Hyderabad - 500081, and incorporated under the Laws of India (hereinafter referred to as the "Company", "we", "us" or "our"). These Terms and Conditions govern your access to and use of the Website including any sub-domains, mobile applications, content, material, features, functionalities, products, services, User Accounts, transactions, communications, and any related services made available on or through the Website.',
+  },
+  {
+    type: 'p',
+    text: 'By accessing, registering and using this Website and any content, material, product, feature or services contained therein, you acknowledge that you have read, understood, and agree to be legally bound by these Terms and Conditions, along with our Privacy Policy, Payment Policy, Cookie Policy, Disclaimers and any other policies referenced herein. Where required, acceptance of these Terms shall be evidenced through electronic consent (including without limitation click-wrap acceptance during registration or transaction). These Terms and Conditions may include amendments, modifications, additions, or deletions (collectively referred to as the "Terms and Conditions" or "Terms") made by the Company from time to time at its sole discretion, and your continued access or usage of the Website shall be deemed your acceptance to said amendments or updates. If you do not understand or agree with these Terms and Conditions, you are advised not to access or use this Website and to discontinue further use immediately.',
+  },
+  {
+    type: 'p',
+    text: 'This Website is an online marketplace where Users purchase and sell products and services. Purchasers and Sellers must register for a User Account in order to transact on the Website. The Website enables Users to work together online to complete and pay for Services and Products. For avoidance of doubt, the Company and the Website are not parties to any contractual agreements between the Purchaser and the Seller, and merely act as a facilitator to connect the Parties. We do not provide employment to any User. The Company and the Website do not hire, terminate, pay, supervise, or otherwise act in any capacity as an employer to any Purchaser or Seller. The Purchaser and the Seller agree that nothing in this Agreement constitutes an employment, partnership, joint venture, or principal-agent relationship between them, between the Users and the Company.',
+  },
+  {
+    type: 'p',
+    text: 'For the purposes of these Terms and Conditions, the expressions "you", "your", "User", "experts", "client", and "visitor" shall refer to any individual accessing or using the Website and accepting these Terms and Conditions, whether as a registered Purchaser, Seller, or otherwise. Any reference to the above terminology in singular or plural form, or any pronoun such as he/she/they, shall be construed as interchangeable and referring to the same entity or individual, as the context requires.',
+  },
+
+  { type: 'h2', text: 'User Account' },
+  {
+    type: 'p',
+    text: 'The Website is accessible for browsing and limited access by all online visitors worldwide, subject to Applicable Laws. However, certain features on the Website which include conducting transactions (buy or sell services and products) are only available to Registered Users. A Registered User means a User with a User Account on the Website.',
+  },
+  {
+    type: 'p',
+    text: 'For conducting business on the Website, the User must create a User Account by providing complete and accurate information and documents as instructed by the Company. The Company, upon receipt of an application for User Account creation, at its sole discretion, may accept, reject or request more information from Users. The Company may conduct KYC verification of the User in the process of creating the User Account and at any time thereafter, and the User hereby consents to such verification. The Company reserves the right to reject the application and restrict, suspend, or permanently disable and blacklist the User if KYC or document verification fails, or the Company suspects fraudulent, unlawful, or suspicious activity.',
+  },
+  {
+    type: 'p',
+    text: 'The User shall refrain from creating multiple accounts. The Company strictly follows a "one User Account per User" policy. The User shall be responsible for maintaining confidentiality and security of login credentials related to the User Account on the Website and shall not share such credentials with any third party. You shall be responsible for all activities occurring or authorized to occur in your User Account. You shall promptly inform the Company in the event of any suspicion towards unauthorized access or activities into your account.',
+  },
+  {
+    type: 'p',
+    text: 'You shall not impersonate any person, entity or organization or use a false name while using the Website or creating any User Account. By registering yourself with the Website, you warrant and confirm to be of legal age and legal capacity to enter into binding contracts as per Applicable Laws.',
+  },
+
+  { type: 'h2', text: 'Code of Conduct' },
+  {
+    type: 'p',
+    text: 'The Company aims to create a secure and legitimate environment while appreciating fundamental values including without limitation integrity, honesty, truth, safety and security, diversity and inclusivity without any discrimination or harassment of any kind. Users are mandated to adhere to this code of conduct while communicating on this Website.',
+  },
+  { type: 'h3', text: "Dos and Don'ts" },
+  {
+    type: 'ul',
+    items: [
+      "Users shall not request, solicit, share, suggest, or exchange any personal communication or correspondence details of and from other Users including without limitation email addresses, phone numbers, social media accounts/handles, personal websites, business name or any other information for the purpose of communicating outside the Website.",
+      'Users shall not misuse, abuse, or exploit the chat systems or communication tools provided on the Website for any unlawful activity, fraudulent conduct, prohibited content, or activities that violate Applicable Laws, these Terms, or Public Policy.',
+      'Any information including Personal Information, that is necessary for order fulfillment shall be shared exclusively through the designated Order page or such other authorized interfaces provided on the Website.',
+      'All exchanges of data, documentation, consideration, and payments between Users shall be conducted exclusively through the Website\'s authorized systems, unless expressly permitted in writing by the Company.',
+      'Users shall not initiate false disputes, fraudulent chargebacks, collusive arrangements, artificial transactions or otherwise attempt to manipulate or abuse the Company\'s Payment Policy.',
+    ],
+  },
+
+  { type: 'h2', text: 'Prohibited Activities' },
+  {
+    type: 'p',
+    text: 'You shall not use the Website for any malicious, illegal, unethical or illegitimate activities that may harm any person, entity or organization. You shall not directly or indirectly use the Website for:',
+  },
+  {
+    type: 'ul',
+    items: [
+      'Carrying out any fraudulent transaction or activity on the Website.',
+      'Initiating or participating in false disputes, fraudulent chargebacks, collusive transactions, manipulation of escrow mechanisms, circumvention of the Company\'s Commission structure, or any conduct intended to abuse or bypass the Company\'s Payment Policy.',
+      'Abusing, harassing, threatening, defaming, demeaning or otherwise violating the legal rights of any other person or entity.',
+      'Engaging in any activity that interferes with or disrupts access to the Website or the materials therein.',
+      'Publishing or disseminating any information which is grossly harmful, harassing, blasphemous, defamatory, obscene, pornographic, libelous, invasive of another\'s privacy, hateful, racially or ethnically objectionable, or otherwise unlawful.',
+      'Infringing upon the Intellectual Property Rights or proprietary rights of the Company or a third party.',
+      'Using or launching any automated system including "robots", "spiders", "offline readers" or "crawlers" that accesses our products and services or the Website in a way that sends more requests than a human can reasonably produce.',
+      'Attempting to exploit, probe, test or breach the security of the Website, its servers, networks, escrow systems or payment infrastructure.',
+      'Creating multiple accounts on the Website. The Company strictly follows a "One User One Account" policy.',
+      'Buying, selling, mortgaging, renting, pledging or otherwise transferring your User Account to any third party.',
+      'Posting, manipulating, coercing, or attempting to influence ratings or reviews through false representations, incentives, threats, spam, or any unfair practice.',
+    ],
+  },
+
+  { type: 'h2', text: 'Sellers' },
+  { type: 'h3', text: 'Seller Profile' },
+  {
+    type: 'p',
+    text: 'In the profile section of a User Account, different types of profiles can be created including a Seller profile and a Purchaser profile. Within the Seller profile, the User may create or upload details of the Services or Products offered by it. These Products or Services shall be transacted on the Website via User Account on monetary considerations for which the pricing shall be fixed by the User. The Company does not fix or mandate pricing; however, the Company may, at its discretion, provide non-binding recommendations or visibility-based suggestions regarding pricing based on platform practices, demand trends, or compliance considerations.',
+  },
+  {
+    type: 'p',
+    text: 'The Seller, at the time of creating a Seller profile, shall provide the following information to the Company:',
+  },
+  {
+    type: 'ul',
+    items: [
+      'Contact details.',
+      'Tax related documents including PAN, GST and other applicable documents as required by the Company.',
+      'Representation and undertaking regarding compliance with Indian tax Laws.',
+      'Declaration and undertaking regarding legal capacity to contract and financial solvency under Applicable Laws.',
+      'Bank account details for payment processing.',
+    ],
+  },
+  { type: 'h3', text: 'Pricing for Products and Services' },
+  {
+    type: 'p',
+    text: 'Each Product and Service listed on the Seller profile shall be mapped to a clearly stated denominated price in Indian Rupees (INR). The Seller shall factor in applicable taxation and the Company\'s Commission structure into account while deciding the pricing for its products and services.',
+  },
+  {
+    type: 'p',
+    text: 'The Company may prescribe a minimum listing price or minimum hourly rate for Products or Services offered on the Website. Unless otherwise notified, the minimum price for any Product or Service shall be INR 1,000, and where services are offered on an hourly basis, the minimum hourly rate shall be INR 1,000. There shall be no upper limit or cap on pricing, subject to compliance with these Terms and Applicable Laws.',
+  },
+  { type: 'h3', text: 'Order Acceptance' },
+  {
+    type: 'p',
+    text: 'Upon receipt of an Order, the Seller may either accept or reject the Order through the Website. Where an Order is rejected, the Seller shall provide detailed reasoning. Upon acceptance by the Seller, the Order shall constitute a binding agreement between the Purchaser and the Seller, subject to these Terms and the Company\'s policies.',
+  },
+  { type: 'h3', text: 'Delivery' },
+  {
+    type: 'p',
+    text: 'The Seller may deliver Products or Services electronically, based on their nature or mutual agreement with the Purchaser on the Order Page. The Seller shall clearly specify the mode of delivery, applicable timelines, and delivery expectations as part of the Order details and shall be solely responsible for adherence thereto. Upon completion of delivery, the Seller must update the tracking details or delivery confirmation against the Order on the Website.',
+  },
+
+  { type: 'h2', text: 'Purchasers' },
+  { type: 'h3', text: 'Purchaser Profile' },
+  {
+    type: 'p',
+    text: 'The User Account may permit creation of different types of profiles including a Seller profile and a Purchaser profile. Within the Purchaser profile, the User may specify areas of interest to enable the Company to recommend Seller profiles. The Purchaser profile shall specify and maintain a valid payment method approved by the Company for the purpose of placing Orders against Seller listings on the Website.',
+  },
+  { type: 'h3', text: 'Placement of an Order' },
+  {
+    type: 'p',
+    text: 'Prior to Order placement, the Purchaser shall independently review and satisfy itself regarding the scope of Products or Services offered by the Seller, including applicable timelines, pricing, format and mode of delivery. Placement of an Order by the Purchaser shall constitute an offer to contract with the Seller. The Seller may accept or reject such Order at its discretion. An Order shall be deemed accepted only upon confirmation of acceptance by the Seller through the Order Page.',
+  },
+  {
+    type: 'p',
+    text: 'Upon Order fulfillment, the Seller shall deliver the Products or Services as per the Order placed and accepted. The Purchaser shall review the contents of the delivery within the agreed timeline and may either accept the delivery or reject the delivery with reasons and recommendations. If the Purchaser fails to respond within the prescribed review period, the delivery shall be deemed accepted. Rejections must be bona fide and limited to material deviations from the agreed scope.',
+  },
+
+  { type: 'h2', text: 'Events or Contests' },
+  {
+    type: 'p',
+    text: 'The Seller may promote or host contests, webinars, workshops or similar engagements ("Event") on the Website by providing an event brief and relevant details. A Purchaser may participate in such Event by paying the applicable booking amount through the Company\'s authorized payment mechanism. The Seller acknowledges that it is solely responsible for the planning, operation, management, promotion, safety, regulatory compliance, prize distribution (if applicable), tax compliance and lawful conduct of the Event. The Company acts solely as an intermediary platform and shall have no liability whatsoever for any loss, injury, damage, penalties, regulatory action, refund claims, misrepresentation, cancellation, delay or contravention of law arising in connection with such Event.',
+  },
+
+  { type: 'h2', text: 'Referral Policy' },
+  {
+    type: 'p',
+    text: 'Registered Users on this Website may refer new Users to the Website and earn referral benefits subject to the Terms herein. The referred user shall be a new user who has not previously registered on the Website, completes the registration on the Website using the referral code or link of the referring User, and completes account verification. The Company reserves the sole right to determine whether the referral qualifies and whether the same entitles the referring User to the benefits. Referral benefits shall not be transferable, are non-exchangeable, and expire within a period of 30 days. Users are solely responsible for determining and paying any taxes applicable to referral rewards received under this policy.',
+  },
+
+  { type: 'h2', text: 'Ownership and Limited License' },
+  {
+    type: 'p',
+    text: 'The content, layout, design, software, source code, database architecture, compilation, branding elements and other proprietary materials of this Website, individually or in combination, are proprietary to the Company or licensed to it. Any rights not expressly granted herein are reserved. All trademarks, service marks, logos, names, brands, graphics, pictures, designs, illustrations, drawings, and information of any nature and any kind are the Company\'s property through direct ownership or licensed to the Company.',
+  },
+  {
+    type: 'p',
+    text: 'Save and except for the foregoing as expressly permitted herein, the materials on the Website shall not be copied, used, distributed, modified, transmitted, displayed, performed or otherwise communicated, disseminated or reproduced for any purpose that is not approved in advance by the Company in writing.',
+  },
+
+  { type: 'h2', text: 'Content Guidelines' },
+  {
+    type: 'p',
+    text: 'These Content Guidelines apply to all Users accessing or using the Website. All Users shall strictly adhere to these Content Guidelines while posting, uploading, publishing, transmitting, displaying, or otherwise making available any content on the Website.',
+  },
+  { type: 'h3', text: 'Lawful and Accurate Content' },
+  {
+    type: 'p',
+    text: 'All User Content must be lawful, accurate, and created in good faith. Users shall ensure that descriptions of Products, Services, qualifications, experience, pricing representations, and performance claims are truthful and not misleading. Users shall not publish exaggerated, unverifiable, or deceptive claims relating to qualifications, certifications, affiliations, endorsements, or results.',
+  },
+  { type: 'h3', text: 'Professional and Commercial Integrity' },
+  {
+    type: 'p',
+    text: 'Users must maintain professional standards appropriate to a commercial marketplace platform in relation to the Content on the Website. Listings must clearly and accurately describe scope, deliverables, timelines, pricing and limitations where applicable.',
+  },
+  { type: 'h3', text: 'Regulatory Compliance' },
+  {
+    type: 'p',
+    text: 'User Content must comply with all Applicable Laws. Users shall ensure that any regulated service (including professional, financial, advisory, or technical services) is offered only where legally permitted and properly authorized.',
+  },
+
+  { type: 'h2', text: 'Interactive Services' },
+  {
+    type: 'p',
+    text: 'The Website contains many features which are interactive in nature including communication tools, feedback mechanisms, and other User engagement functionalities. The Website further contains an interactive bot, which is an AI backed interactive system designed to answer queries, facilitate navigation of the Website and understand your requirements. The Interactive Bot operates through automated systems and algorithmic processes. Responses generated by the Interactive Bot are provided for general informational and facilitative purposes only and shall not constitute professional, legal, financial, or technical advice.',
+  },
+
+  { type: 'h2', text: 'Dispute Resolution and Governing Law' },
+  {
+    type: 'p',
+    text: 'These Terms and policies governing access and usage of the Website and product and service orders and related transactions shall be expounded and construed in accordance with the Laws of India. Subject to the arbitration clause detailed hereinbelow, any dispute or issue arising out of or in connection with this usage and access or the Website or any transaction made pursuant thereto shall be submitted to the exclusive jurisdiction of the courts at Telangana, India. Any dispute or issue shall be resolved amicably in good faith through negotiations. In case the dispute is not resolved within a reasonable time, said dispute shall be referred to arbitration by a sole arbitrator, appointed by the Company. The arbitration proceedings shall be governed by the provisions of the Arbitration and Conciliation Act, 1996, conducted in the English language, with seat and venue at Telangana, India.',
+  },
+
+  { type: 'h2', text: 'Confidential Information' },
+  {
+    type: 'p',
+    text: 'You acknowledge that you may be provided with or have access to our confidential information including but not limited to website related plans, pricing structures, commission models, technical data, trade secrets, software, customer information, operational processes, and other proprietary materials ("Confidential Information"). You undertake not to use any such confidential information for your own purposes except as expressly permitted hereunder, without our prior written consent.',
+  },
+
+  { type: 'h2', text: 'Disclaimer of Warranties and Limitation of Liability' },
+  {
+    type: 'p',
+    text: 'You agree that your use of our Website, applications, products and services is at your sole risk and acknowledge that the information or content contained on our Website is provided on "as-is" and "as available" basis and we disclaim all warranties of any kind, whether implied or statutory, including the warranties of merchantability, fitness for a particular purpose, use, title, quiet enjoyment, accuracy, completeness, availability and non-infringement.',
+  },
+  {
+    type: 'p',
+    text: "Notwithstanding the other terms of this agreement: (a) the Company, its affiliates, its suppliers or its third party agents will not be liable to you or any third party for any loss of use, data, business opportunity, reputation or goodwill or lost profits or indirect, consequential, exemplary, incidental, special or punitive damages; and (b) our total cumulative liability in connection with our website, applications, products and services and any other information and content in respect thereof and otherwise in connection with this agreement will at all times be limited to the greater of the amount paid by you to the Company in the six (6) months preceding the claim or INR 1,000.",
+  },
+
+  { type: 'h2', text: 'Suspension and Termination of User Account' },
+  {
+    type: 'p',
+    text: 'The Company reserves the right, at its sole discretion, to suspend, restrict or terminate your User Account due to breach of these Terms, breach of Applicable Laws, illegal/unethical/immoral/fraudulent usage of the Website or its parts, failure of KYC verification, suspicious transaction patterns, misuse of the Payment Policy or due to consistently poor ratings and reviews. The Company shall not be liable for any consequences arising from such suspension or termination undertaken in good faith.',
+  },
+  {
+    type: 'p',
+    text: 'Users may seek to disable or deactivate their User Accounts at any time by selecting the relevant option from the account settings. Deactivation shall not affect any ongoing disputes, escrow holds, Cooling Periods, commissions deducted, or outstanding payment liabilities.',
+  },
+
+  { type: 'h2', text: 'Indemnification' },
+  {
+    type: 'p',
+    text: 'You shall indemnify, defend and hold us, our subsidiaries, affiliates, directors, officers, representatives, agents, suppliers, and employees harmless from and against any and all losses, damages, deficiencies, liabilities, claims, demands, actions, judgements or causes of action, assessments, interest, fines, penalties, diminution in value, costs, or expenses (including reasonable attorneys\' fees) arising out of or relating to: (a) breach or alleged breach of these Terms or any other Company policies; (b) any claim, dispute or demand arising out of or relating to the relationship, transaction or alleged transaction between the Seller and the Purchaser; (c) violation of any third party intellectual property rights, access rights, privacy rights, data protection rights or property rights; (d) breach or inaccuracy of any representation or warranty made under these Terms; or (e) your violation of any Applicable Laws or any right of any third party.',
+  },
+
+  { type: 'h2', text: 'Communication' },
+  {
+    type: 'p',
+    text: 'You consent to receive notices, disclosures, agreements, policies, updates and other information in matters related to or in connection with the Website, Products and Services therein by electronic communication. You may withdraw this consent at any time; however, if you do so, the Company, at its sole discretion, may suspend, restrict or close your User Account, particularly where electronic communication is necessary for compliance, transactional or security purposes.',
+  },
+
+  { type: 'h2', text: 'Severability' },
+  {
+    type: 'p',
+    text: 'If any provision of these Terms is found to be unenforceable, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under Applicable Laws and the remaining provisions will continue in full force and effect.',
+  },
+
+  { type: 'h2', text: 'Waiver and Assignment' },
+  {
+    type: 'p',
+    text: 'These Terms and the documents referred to herein or incorporated by reference constitute the final, complete, and exclusive agreement between the parties regarding the subject matter hereof and supersede all prior or contemporaneous agreements. You may not assign this Agreement without our prior written consent and any assignment in violation of the foregoing is null and void. We may freely assign under these Terms.',
+  },
+
+  { type: 'h2', text: 'Amendment of the Terms and Conditions' },
+  {
+    type: 'p',
+    text: 'We may, at our sole discretion, amend, modify or update these Terms and Conditions and policies and documents incorporated herein from time to time. If we make material changes to these terms and conditions, we will notify you by posting the change on our Website or sending you an e-mail at your primary email address. Changes will be effective upon the earlier of: (a) fifteen (15) calendar days following our dispatch of an e-mail notice to you; or (b) fifteen (15) calendar days following our posting of a notice on our Website. Your continued access to or use of our Website following the effective date of such changes shall constitute your acknowledgement and agreement to the revised Terms.',
+  },
+
+  { type: 'h2', text: 'Feedback' },
+  {
+    type: 'p',
+    text: 'If you have any queries about these Terms or wish to report any breach or violation, please contact us at support@flyrlink.com. Any feedback, suggestions, comments or recommendations submitted by you shall be deemed non-confidential and may be used by the Company without restriction or obligation to compensate you.',
+  },
+
+  { type: 'h2', text: 'Notice' },
+  {
+    type: 'p',
+    text: 'Any legal notice or communication required to be given under these Terms shall be served to the email address mapped to the User Account on the Website or through such other electronic mode as may be recorded in the User Account. Notice shall be deemed to have been given within 24 hours after email is sent, unless the Company receives notification that the email address is invalid or that delivery has permanently failed. It shall be the User\'s responsibility to ensure that the contact details provided in the User Account are accurate, complete and up to date.',
+  },
+];
+
+export default function TermsPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-1 bg-gray-50">
-        {/* Hero Section */}
-        <section className="bg-gray-50 py-16 md:py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-medium mb-6">
-                <Shield className="w-4 h-4 mr-2" />
-                Please Read Carefully
-              </div>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-navy-900 mb-4 leading-tight tracking-tight">
-                Terms &amp; Conditions
-              </h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Effective February 15th, 2026
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Content Section */}
-        <section className="py-12 md:py-16 bg-white">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="prose prose-gray max-w-none">
-
-              {/* Introduction */}
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Welcome to Flyrlink. These Terms &amp; Conditions ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and Flyrlink Innovations Pvt. Ltd. ("Flyrlink", "Company", "we", "us", or "our"), a company incorporated under the laws of India, governing your access to and use of the Flyrlink website at <a href="https://flyrlink.com" className="text-brand hover:underline">flyrlink.com</a>, the Flyrlink application at <a href="https://app.flyrlink.com" className="text-brand hover:underline">app.flyrlink.com</a>, and all related services, features, and content (collectively, the "Platform").
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                These Terms apply to all visitors, registered users, experts (sellers), and clients (purchasers) who access or use our Platform. By using the Platform, you confirm that you have read, understood, and agree to be bound by these Terms in their entirety. If you do not agree to these Terms, you must not access or use the Platform.
-              </p>
-
-              {/* 1. Acceptance of Terms */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">1. Acceptance of Terms</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                By accessing, browsing, or using the Flyrlink Platform in any manner — including creating an account, booking a session, hosting an event, or simply viewing content — you acknowledge that you have read these Terms and agree to be legally bound by them and by our Privacy Policy, which is incorporated herein by reference.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                These Terms constitute an electronic record within the meaning of the Information Technology Act, 2000 and are generated by a computer system without the need for any physical or digital signature. Flyrlink reserves the right to amend these Terms at any time. Material changes will be communicated via email or a prominent notice on the Platform. Your continued use of the Platform after such changes constitutes your acceptance of the updated Terms. It is your responsibility to review these Terms periodically.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                If you are using the Platform on behalf of a business or organization, you represent that you have the authority to bind that entity to these Terms, and references to "you" include that entity.
-              </p>
-
-              {/* 2. User Accounts */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">2. User Accounts</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">2.1 Registration</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                To access certain features of the Platform, you must register for an account. During registration, you agree to provide accurate, current, and complete information, including your legal name, a valid email address, phone number, and any other details required. You agree to keep your account information up to date at all times.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">2.2 Age Requirement</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You must be at least 18 years of age to create an account or use any services on the Platform. By registering, you represent and warrant that you are 18 years of age or older. If Flyrlink becomes aware that a User is under the age of 18, the account will be terminated immediately without notice.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">2.3 Account Security</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You are solely responsible for maintaining the confidentiality of your account credentials, including your password, and for all activities that occur under your account. You agree to notify Flyrlink immediately at <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a> if you suspect any unauthorized access to or use of your account. Flyrlink will not be liable for any loss or damage arising from your failure to protect your account credentials.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You may not share your account credentials with any third party or create multiple accounts for the same individual or entity. Flyrlink reserves the right to suspend or terminate accounts that it reasonably believes are being misused or accessed by unauthorized parties.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">2.4 Account Types</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                The Platform supports two primary account types: Expert Accounts (for professionals offering services) and Client Accounts (for individuals seeking services). Some users may operate in both capacities. Each account type is subject to the respective obligations set out in these Terms.
-              </p>
-
-              {/* 3. Code of Conduct */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">3. Code of Conduct</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">3.1 Acceptable Use</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                All users of the Flyrlink Platform must engage respectfully, professionally, and lawfully. You agree to use the Platform only for its intended purpose — connecting clients with experts, sharing professional knowledge, and facilitating legitimate service transactions.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">3.2 Prohibited Activities</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You agree that you will not, directly or indirectly:
-              </p>
-              <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
-                <li>Use the Platform for any unlawful purpose or in violation of any applicable local, state, national, or international law or regulation.</li>
-                <li>Post, transmit, or share content that is defamatory, obscene, pornographic, abusive, harassing, threatening, hateful, discriminatory, or otherwise objectionable.</li>
-                <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity.</li>
-                <li>Engage in fraudulent activities, including providing false information, creating fake reviews, or misrepresenting your qualifications or services.</li>
-                <li>Solicit or collect sensitive personal information from other users, including financial account details, government-issued identification numbers, or passwords.</li>
-                <li>Attempt to bypass any Platform security measures, exploit vulnerabilities, reverse engineer, decompile, or otherwise tamper with the Platform.</li>
-                <li>Use automated bots, scrapers, crawlers, or similar tools to extract data from the Platform without written permission.</li>
-                <li>Send unsolicited commercial communications (spam) to other users via the Platform's messaging system.</li>
-                <li>Circumvent the Platform by transacting with an expert or client discovered through Flyrlink outside of the Platform's payment system, thereby avoiding applicable fees.</li>
-                <li>Upload or transmit malware, viruses, or any other malicious code that may harm the Platform or its users.</li>
-                <li>Engage in any conduct that could damage, disable, overburden, or impair the Platform's infrastructure.</li>
-              </ul>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">3.3 Content Guidelines</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                All content posted or shared on the Platform — including profile descriptions, session materials, posts on the social feed, event listings, and reviews — must be accurate, professional, and relevant. Content must not infringe upon the intellectual property rights of any third party. Flyrlink reserves the right to remove any content that violates these guidelines and to suspend or terminate the accounts of users who repeatedly post non-compliant content. Users are solely responsible for the content they post and indemnify Flyrlink against any claims arising from such content.
-              </p>
-
-              {/* 4. Seller/Expert Terms */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">4. Seller / Expert Terms</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">4.1 Expert Obligations</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                By registering as an Expert on Flyrlink, you agree to provide services in a professional, timely, and lawful manner. Experts are independent service providers and are not employees, agents, or partners of Flyrlink. Flyrlink provides only the technology platform that facilitates connections between Experts and Clients.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">4.2 Profile Accuracy</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Experts must ensure that their profile is accurate and up to date at all times. This includes, without limitation, professional qualifications, areas of expertise, years of experience, educational background, certifications, and any other information that may influence a client's decision to book a session. Misrepresentation of qualifications or expertise is a material breach of these Terms and may result in immediate account suspension or termination.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">4.3 Service Delivery</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Experts must fulfill all confirmed bookings on time and as described. Repeated cancellations, no-shows, or failure to deliver the services as described may result in account suspension, removal from the Platform, and forfeiture of pending payments. Experts must maintain punctuality for all scheduled 1:1 sessions and events and must conduct sessions professionally using the Platform's tools or other agreed-upon communication methods.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">4.4 Quality Standards</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Experts are expected to maintain high quality standards in the services they offer. Flyrlink may periodically review expert performance metrics, including client ratings and reviews, response rates, and booking completion rates. Experts whose performance consistently falls below acceptable thresholds may be subject to warnings, temporary suspension, or permanent removal from the Platform. Flyrlink reserves the right to set and revise quality standards at its sole discretion.
-              </p>
-
-              {/* 5. Purchaser/Client Terms */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">5. Purchaser / Client Terms</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">5.1 Client Responsibilities</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                As a client, you are responsible for clearly communicating your requirements to the Expert before and during a session. You acknowledge that Experts on Flyrlink are independent professionals, and Flyrlink does not warrant that the advice or services provided by any Expert will meet your specific needs or expectations. You must conduct your own due diligence by reviewing an Expert's profile, qualifications, and client reviews before making a booking.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">5.2 Booking Policies</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                When you book a session or purchase a ticket for an event, you enter into a direct agreement with the Expert for the provision of the relevant service. Flyrlink facilitates this transaction but is not a party to the service agreement between the client and the Expert. You agree to attend booked sessions on time. Repeated no-shows or late arrivals may limit your ability to request refunds for future bookings.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">5.3 Cancellation &amp; Refund Policy</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Cancellations made by the Client more than 24 hours before a scheduled session are eligible for a full refund of the session fee. Cancellations made within 24 hours of a scheduled session may not be eligible for a refund at the Expert's discretion. If an Expert cancels a confirmed booking, the Client will receive a full refund of the session fee within 5–7 business days, processed to the original payment method.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Refunds for events are subject to the specific cancellation policy set by the Expert hosting the event. In all cases where a refund is processed by Flyrlink, platform processing fees may be non-refundable. Disputes regarding sessions or refunds must be raised with Flyrlink within 7 days of the session date by contacting <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a>. Flyrlink will review disputes in good faith but makes no guarantee of a specific outcome.
-              </p>
-
-              {/* 6. Products & Services */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">6. Products &amp; Services</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink is an AI-powered expert marketplace that provides a suite of interconnected services designed to facilitate professional knowledge-sharing and expert-client engagement. The Platform currently offers the following services:
-              </p>
-              <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
-                <li><strong>1:1 Sessions:</strong> Clients can browse expert profiles and book private, one-on-one consultations or advisory sessions. Sessions are scheduled and conducted through the Platform or via the Expert's designated communication channel as disclosed in their profile.</li>
-                <li><strong>Events:</strong> Experts can host virtual or in-person group events, workshops, webinars, and masterclasses. Clients can discover, register for, and attend these events through the Platform.</li>
-                <li><strong>Social Feed:</strong> A dynamic content feed where Experts can share articles, updates, insights, tips, and professional content with their followers. Clients can follow their preferred Experts, engage with content, and stay updated on new offerings.</li>
-                <li><strong>AI-Powered Expert Matching:</strong> Flyrlink's proprietary AI matching engine analyzes user preferences, requirements, and behavior to intelligently recommend the most relevant Experts for each Client's unique needs, reducing the time and effort required to find the right professional.</li>
-              </ul>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Flyrlink reserves the right to modify, suspend, or discontinue any service or feature at any time with or without notice. The Company may also introduce new services or features, which will be governed by these Terms unless separate terms are provided.
-              </p>
-
-              {/* 7. Pricing & Payments */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">7. Pricing &amp; Payments</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">7.1 Expert-Set Pricing</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Experts set their own pricing for 1:1 sessions and events. The minimum session fee on the Platform is INR 500 per session. Experts may set higher prices based on their expertise, experience, and the nature of the service offered. Flyrlink does not mandate specific pricing beyond the minimum threshold.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">7.2 Platform Fees</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink charges a platform service fee on each transaction. The applicable fee structure will be clearly disclosed to Experts during onboarding and may be updated from time to time. Flyrlink will provide advance notice of any changes to the fee structure. Platform fees are deducted from the Expert's earnings prior to payout and are non-negotiable unless otherwise agreed in writing.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">7.3 Payment Processing</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                All payments on the Platform are processed through Flyrlink's designated third-party payment gateway partners. By using the Platform, you consent to your payment information being processed by these third-party providers, subject to their respective terms and privacy policies. Flyrlink does not store full card details or other sensitive payment credentials on its own servers.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Expert payouts will be processed on a periodic basis as communicated within the Platform's payout settings. Flyrlink may withhold payouts pending the resolution of open disputes, suspected fraudulent activity, or to comply with applicable legal or regulatory requirements.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">7.4 Taxes</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Experts are solely responsible for determining and fulfilling their own tax obligations arising from income earned through the Platform, including but not limited to income tax, Goods and Services Tax (GST), and any other applicable levies under Indian law. Flyrlink may deduct applicable taxes at source (TDS) as required by law. Clients may be subject to GST on services purchased through the Platform, as applicable.
-              </p>
-
-              {/* 8. Events */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Events</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">8.1 Event Hosting</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Experts may create and host events on the Platform, including but not limited to webinars, workshops, masterclasses, Q&amp;A sessions, and panel discussions. Experts are solely responsible for the content, quality, and delivery of their events. All event listings must include accurate descriptions of the event format, agenda, expected duration, and any prerequisites for attendees.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">8.2 Event Attendance</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Clients who register for an event agree to attend in accordance with the terms set by the hosting Expert. Clients must conduct themselves respectfully during events. Flyrlink reserves the right to remove any attendee from an event who violates the Platform's Code of Conduct or disrupts the event experience for other participants.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">8.3 Event Cancellation</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                If an Expert cancels a confirmed event, all registered attendees will receive a full refund of their ticket purchase price within 5–7 business days. If an event is postponed, registered attendees may choose to retain their registration for the rescheduled date or request a full refund. Flyrlink encourages Experts to minimize event cancellations, as repeated cancellations may affect an Expert's standing on the Platform and lead to suspension of event-hosting privileges.
-              </p>
-
-              {/* 9. Intellectual Property & Licensing */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">9. Intellectual Property &amp; Licensing</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">9.1 Platform Intellectual Property</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                The Flyrlink Platform, including its design, user interface, code, software, algorithms (including the AI matching engine), branding, trademarks, logos, and all proprietary content created by Flyrlink, are the exclusive intellectual property of Flyrlink Innovations Pvt. Ltd. and are protected under applicable intellectual property laws. Nothing in these Terms shall be construed as transferring any ownership interest in Flyrlink's intellectual property to any user.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">9.2 Content Ownership</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Users retain ownership of the content they create and post on the Platform, including session materials, event content, social feed posts, and profile information. By posting content on the Platform, you grant Flyrlink a non-exclusive, royalty-free, worldwide, perpetual, and sublicensable license to use, reproduce, modify, adapt, publish, translate, distribute, and display such content for the purposes of operating, improving, and promoting the Platform.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">9.3 User-Generated Content License</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You represent and warrant that you have all necessary rights, licenses, and permissions to post the content you share on the Platform and that such content does not infringe upon the intellectual property rights, privacy rights, or any other legal rights of any third party. You agree to indemnify and hold Flyrlink harmless against any claims, damages, losses, or expenses (including legal fees) arising from your breach of this representation.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">9.4 Feedback</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                If you provide Flyrlink with any suggestions, feedback, or ideas regarding the Platform, you grant Flyrlink the right to use such feedback without any obligation to compensate you or maintain confidentiality. Flyrlink may use such feedback freely to improve its services.
-              </p>
-
-              {/* 10. Security & Privacy */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">10. Security &amp; Privacy</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">10.1 Data Protection</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink is committed to protecting your personal data in accordance with the Digital Personal Data Protection Act, 2023 (DPDP Act) and all other applicable data protection laws. The manner in which we collect, process, use, store, and disclose your personal data is set out in our Privacy Policy, available at <a href="https://flyrlink.com/privacy" className="text-brand hover:underline">flyrlink.com/privacy</a>. By using the Platform, you acknowledge that you have read and understood our Privacy Policy.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">10.2 Security Measures</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink employs industry-standard technical and organizational security measures, including encryption, firewalls, secure socket layer (SSL) technology, and access controls, to protect the Platform and user data from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is completely secure. You acknowledge that Flyrlink cannot guarantee absolute security and that you transmit data to the Platform at your own risk.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">10.3 User Security Responsibilities</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                You are responsible for maintaining the security of your device and account credentials. You must not share your login credentials with any third party and must enable all available security features, such as two-factor authentication, if offered. If you suspect that your account has been compromised, you must notify Flyrlink immediately at <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a> so that appropriate action can be taken.
-              </p>
-
-              {/* 11. Limitation of Liability */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">11. Limitation of Liability</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                To the fullest extent permitted by applicable law, Flyrlink Innovations Pvt. Ltd. and its directors, officers, employees, agents, affiliates, and licensors shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, including but not limited to loss of profits, loss of data, loss of goodwill, service interruption, or cost of substitute services, arising out of or in connection with your use of or inability to use the Platform, even if Flyrlink has been advised of the possibility of such damages.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink is a technology platform that connects Experts and Clients. Flyrlink does not endorse, warrant, or guarantee the quality, accuracy, safety, or legality of any services provided by Experts, and is not responsible for the outcome of any session, event, or interaction between an Expert and a Client. All decisions made based on expert advice obtained through the Platform are made at the sole risk and discretion of the user.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                The Platform may contain links to third-party websites or services. Flyrlink has no control over and assumes no responsibility for the content, privacy policies, or practices of any third-party websites or services. You access third-party links at your own risk.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                In any event, Flyrlink's total aggregate liability to you for any claim arising under or in connection with these Terms or your use of the Platform shall not exceed the total amount paid by you to Flyrlink in the 3-month period immediately preceding the event giving rise to the claim, or INR 5,000, whichever is lesser.
-              </p>
-
-              {/* 12. Termination */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">12. Termination</h2>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">12.1 Termination by User</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                You may terminate your account at any time by submitting a written request to <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a>. Upon termination, you will lose access to your account and all associated data. Any outstanding bookings or pending payments at the time of termination will be handled in accordance with the applicable cancellation and refund policies.
-              </p>
-
-              <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-3">12.2 Termination by Flyrlink</h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Flyrlink reserves the right to suspend, restrict, or terminate your account and access to the Platform at any time, with or without notice, if:
-              </p>
-              <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
-                <li>You violate or breach any provision of these Terms.</li>
-                <li>You engage in fraudulent, abusive, or unlawful conduct.</li>
-                <li>Your account remains inactive for an extended period.</li>
-                <li>You repeatedly fail to honor confirmed bookings.</li>
-                <li>Flyrlink is required to do so under applicable law or court order.</li>
-                <li>Your continued presence on the Platform poses a risk to other users or to Flyrlink's operations, reputation, or legal standing.</li>
-              </ul>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Upon termination of your account, all licenses granted to you under these Terms will immediately cease. Flyrlink's rights and any obligations of the parties that by their nature should survive termination — including those relating to intellectual property, indemnification, limitation of liability, and governing law — shall survive.
-              </p>
-
-              {/* 13. Governing Law */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">13. Governing Law &amp; Dispute Resolution</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles. Any disputes arising out of or in connection with these Terms, your use of the Platform, or any transaction facilitated through the Platform shall be subject to the exclusive jurisdiction of the competent courts located in Bangalore, Karnataka, India.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Before initiating any legal proceedings, users are encouraged to first attempt to resolve any dispute informally by contacting Flyrlink at <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a> and providing a written description of the dispute. Flyrlink will make reasonable efforts to resolve the dispute within 30 days of receiving the notice.
-              </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                If the dispute is not resolved informally within the specified period, either party may pursue remedies available under Indian law. The parties agree that any legal proceedings shall be conducted in the English language.
-              </p>
-
-              {/* 14. Contact */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">14. Contact Us</h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                If you have any questions, concerns, or feedback regarding these Terms &amp; Conditions, or if you wish to report a violation, please reach out to us through any of the following channels:
-              </p>
-              <div className="bg-gray-50 rounded-xl p-6 mb-6 border border-gray-100">
-                <p className="text-gray-700 mb-2"><strong>Company:</strong> Flyrlink Innovations Pvt. Ltd.</p>
-                <p className="text-gray-700 mb-2"><strong>Email:</strong> <a href="mailto:Contact@flyrlink.com" className="text-brand hover:underline">Contact@flyrlink.com</a></p>
-                <p className="text-gray-700 mb-2"><strong>Website:</strong> <a href="https://flyrlink.com" className="text-brand hover:underline">flyrlink.com</a></p>
-                <p className="text-gray-700 mb-2"><strong>Platform:</strong> <a href="https://app.flyrlink.com" className="text-brand hover:underline">app.flyrlink.com</a></p>
-                <p className="text-gray-700"><strong>Registered Office:</strong> Bangalore, Karnataka, India</p>
-              </div>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                We aim to respond to all inquiries within 5 business days. For urgent matters relating to account security or suspected fraud, please mark your email as "Urgent" and we will prioritize your request.
-              </p>
-
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
+    <LegalPage
+      title="Terms and Conditions"
+      effectiveDate="April 5, 2026"
+      blocks={blocks}
+    />
   );
-};
-
-export default TermsPage;
+}

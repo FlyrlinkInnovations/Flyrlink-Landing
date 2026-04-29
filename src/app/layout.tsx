@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import { Providers } from '@/components/providers';
 import './globals.css';
@@ -130,6 +131,11 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
         <Providers>{children}</Providers>
+        <Script
+          src="https://chat.postwyse.com/powerbot-widget.js"
+          strategy="lazyOnload"
+          data-agent-key="pb_b8128ba3e18f08e610b27de4800b9af35d493cbb74f4bff8"
+        />
       </body>
     </html>
   );
