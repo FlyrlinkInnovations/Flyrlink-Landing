@@ -10,10 +10,10 @@ import {
 } from 'lucide-react';
 
 const platformLinks = [
-  { label: 'Find Experts', href: 'https://app.flyrlink.com/', external: true },
-  { label: 'Become an Expert', href: 'https://app.flyrlink.com/', external: true },
+  { label: 'Browse Categories', href: '/categories' },
+  { label: 'Find Experts', href: '/find-experts' },
+  { label: 'Become an Expert', href: '/become-expert' },
   { label: 'Events', href: 'https://app.flyrlink.com/', external: true },
-  { label: 'Social Feed', href: 'https://app.flyrlink.com/', external: true },
 ];
 
 const companyLinks = [

@@ -104,12 +104,12 @@ export default function Navbar() {
 
           {/* Right-side actions */}
           <div className="flex items-center gap-1 ml-auto">
-            <a
-              href="https://app.flyrlink.com/"
+            <Link
+              href="/become-expert"
               className="hidden lg:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-navy-900 transition-colors"
             >
               Become an expert
-            </a>
+            </Link>
             <a
               href="https://app.flyrlink.com/login"
               className="hidden md:inline-flex px-3 py-2 text-sm font-medium text-gray-700 hover:text-navy-900 transition-colors"
@@ -166,13 +166,13 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://app.flyrlink.com/"
+              <Link
+                href="/become-expert"
                 onClick={close}
                 className="px-3 py-2.5 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50"
               >
                 Become an expert
-              </a>
+              </Link>
             </div>
 
             {/* Actions */}
