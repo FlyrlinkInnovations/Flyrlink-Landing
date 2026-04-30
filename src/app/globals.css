@@ -163,12 +163,12 @@
 
   /* Dot pattern backgrounds */
   .bg-dot-pattern {
-    background-image: radial-gradient(circle, rgba(30, 77, 232, 0.07) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(41, 171, 210, 0.07) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .bg-dot-pattern-light {
-    background-image: radial-gradient(circle, rgba(30, 77, 232, 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(41, 171, 210, 0.04) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -182,7 +182,7 @@
 
   /* Gradient text */
   .text-gradient {
-    background: linear-gradient(135deg, #1e4de8 0%, #6680ff 50%, #1e4de8 100%);
+    background: linear-gradient(135deg, #29abd2 0%, #6ec7dd 50%, #29abd2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -259,7 +259,7 @@
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-    color: #0f1d3d;
+    color: #0c2738;
     letter-spacing: -0.025em;
   }
 
@@ -269,7 +269,7 @@
     margin-top: 2.25rem;
     margin-bottom: 0.75rem;
     line-height: 1.3;
-    color: #0f1d3d;
+    color: #0c2738;
     letter-spacing: -0.02em;
   }
 
@@ -279,7 +279,7 @@
     margin-top: 2rem;
     margin-bottom: 0.5rem;
     line-height: 1.4;
-    color: #0f1d3d;
+    color: #0c2738;
   }
 
   .prose-blog p {
@@ -287,19 +287,19 @@
   }
 
   .prose-blog a {
-    color: #1e4de8;
+    color: #29abd2;
     text-decoration: underline;
     text-underline-offset: 2px;
-    text-decoration-color: rgba(30, 77, 232, 0.3);
+    text-decoration-color: rgba(41, 171, 210, 0.3);
     transition: text-decoration-color 0.2s;
   }
 
   .prose-blog a:hover {
-    text-decoration-color: #1e4de8;
+    text-decoration-color: #29abd2;
   }
 
   .prose-blog blockquote {
-    border-left: 4px solid #1e4de8;
+    border-left: 4px solid #29abd2;
     padding-left: 1.25rem;
     margin: 2rem 0;
     font-style: italic;
@@ -310,7 +310,7 @@
   }
 
   .prose-blog pre {
-    background: #0f1d3d;
+    background: #0c2738;
     color: #e5e7eb;
     border-radius: 0.75rem;
     padding: 1.25rem 1.5rem;
@@ -322,7 +322,7 @@
 
   .prose-blog code {
     background: #f3f4f6;
-    color: #1e4de8;
+    color: #29abd2;
     padding: 0.15rem 0.4rem;
     border-radius: 0.375rem;
     font-size: 0.875em;
@@ -352,11 +352,11 @@
   }
 
   .prose-blog ul li::marker {
-    color: #1e4de8;
+    color: #29abd2;
   }
 
   .prose-blog ol li::marker {
-    color: #1e4de8;
+    color: #29abd2;
     font-weight: 600;
   }
 
@@ -379,7 +379,7 @@
     text-align: left;
     padding: 0.75rem 1rem;
     border-bottom: 2px solid #e5e7eb;
-    color: #0f1d3d;
+    color: #0c2738;
   }
 
   .prose-blog td {
