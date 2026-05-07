@@ -202,7 +202,7 @@ function ExpertCard({ expert }: { expert: Expert }) {
   return (
     <a
       href="https://app.flyrlink.com/"
-      className="group relative block w-56 flex-shrink-0 overflow-hidden rounded-2xl shadow-md shadow-navy-950/5 ring-1 ring-gray-200/70 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand/15 hover:ring-brand/30"
+      className="group relative block overflow-hidden rounded-2xl shadow-md shadow-navy-950/5 ring-1 ring-gray-200/70 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand/15 hover:ring-brand/30"
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -210,7 +210,8 @@ function ExpertCard({ expert }: { expert: Expert }) {
           src={expert.image}
           alt={expert.name}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          decoding="async"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent" />
 
@@ -241,31 +242,7 @@ function ExpertCard({ expert }: { expert: Expert }) {
   );
 }
 
-function MarqueeRow({
-  experts,
-  direction,
-  duration,
-}: {
-  experts: Expert[];
-  direction: 'left' | 'right';
-  duration: number;
-}) {
-  const animationClass =
-    direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
-
-  return (
-    <div className="group relative overflow-hidden">
-      <div
-        className={`flex gap-5 ${animationClass} group-hover:[animation-play-state:paused]`}
-        style={{ animationDuration: `${duration}s`, width: 'max-content' }}
-      >
-        {[...experts, ...experts].map((expert, i) => (
-          <ExpertCard key={`${expert.name}-${i}`} expert={expert} />
-        ))}
-      </div>
-    </div>
-  );
-}
+const FEATURED: Expert[] = [...ROW_ONE.slice(0, 6), ...ROW_TWO.slice(0, 6)];
 
 export default function MeetOurExperts() {
   const { ref, isVisible } = useScrollReveal();
@@ -324,27 +301,27 @@ export default function MeetOurExperts() {
             </p>
           </div>
         </div>
-      </div>
 
-      {/* Marquee rows (full bleed) */}
-      <div className="space-y-5">
-        <MarqueeRow experts={ROW_ONE} direction="left" duration={60} />
-        <MarqueeRow experts={ROW_TWO} direction="right" duration={70} />
-      </div>
+        {/* Static expert grid */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-4 xl:grid-cols-6">
+          {FEATURED.map((expert) => (
+            <ExpertCard key={expert.name} expert={expert} />
+          ))}
+        </div>
 
-      {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-white to-transparent md:block" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-white to-transparent md:block" />
-
-      {/* CTA */}
-      <div className="relative mx-auto mt-14 max-w-7xl px-6 text-center md:mt-16">
-        <a
-          href="https://app.flyrlink.com/"
-          className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/30 transition-all duration-300 hover:bg-brand-600 hover:shadow-brand/50"
-        >
-          Browse all experts
-          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-        </a>
+        {/* CTA */}
+        <div className="mt-12 flex flex-col items-center gap-3 md:mt-14">
+          <a
+            href="https://app.flyrlink.com/"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/30 transition-all duration-300 hover:bg-brand-600 hover:shadow-brand/50"
+          >
+            Browse all experts
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <span className="text-xs text-gray-500">
+            500+ verified pros across 12 categories
+          </span>
+        </div>
       </div>
     </section>
   );
