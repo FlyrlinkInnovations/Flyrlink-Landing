@@ -22,6 +22,7 @@ const secondary = [
       'Booked Priya expecting a generic class. Got a custom plan for my back pain that actually worked. Three weeks in and ',
     accent: 'I can sleep again.',
     rating: 5,
+    image: '/Marketing%20content/Profiles/cheerful-woman-smiling-with-wavy-hair-on-blue-2026-01-09-09-53-59-utc.jpg',
   },
   {
     name: 'Manju Iyer',
@@ -30,6 +31,7 @@ const secondary = [
       'Booked a tutor for my son\'s board exam prep. He went from 60% to 89% in 3 months. ',
     accent: 'Wish I\'d found Flyrlink sooner.',
     rating: 5,
+    image: '/Marketing%20content/Profiles/professional-woman-smiling-portrait-in-business-at-2026-01-08-05-28-10-utc.jpg',
   },
 ];
 
@@ -188,9 +190,13 @@ export default function Testimonials() {
                 </span>
               </p>
               <div className="mt-5 flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-700 text-xs font-bold text-white">
-                  {t.name.charAt(0)}
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  loading="lazy"
+                  className="h-10 w-10 rounded-full object-cover ring-2 ring-brand/10"
+                />
                 <div>
                   <div className="text-sm font-semibold text-navy-900">
                     {t.name}

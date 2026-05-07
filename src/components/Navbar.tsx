@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import SearchAutocomplete from './SearchAutocomplete';
 
 const navLinks = [
-  { href: '/categories', label: 'Browse' },
-  { href: '/#how-it-works', label: 'How it works' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/categories', label: 'Browse experts' },
+  { href: '/list-your-business', label: 'List your business' },
 ];
 
 const drawerExtraLinks = [
@@ -57,23 +57,14 @@ export default function Navbar() {
             className="flex-shrink-0 flex items-center gap-2"
             aria-label="Flyrlink home"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand text-white">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-4 w-4"
-                aria-hidden
-              >
-                <path
-                  d="M4 17L10 11L14 15L20 9"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <circle cx="20" cy="9" r="1.5" fill="currentColor" />
-              </svg>
-            </span>
+            <Image
+              src="/Flyrlink logo.png"
+              alt="Flyrlink"
+              width={32}
+              height={32}
+              priority
+              className="h-8 w-8 object-contain"
+            />
             <span className="font-serif italic font-medium text-2xl leading-none text-navy-900">
               Flyrlink
             </span>

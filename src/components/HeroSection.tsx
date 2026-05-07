@@ -24,12 +24,12 @@ const FEATURED_LOGOS = [
 ];
 
 const LIVE_EXPERTS = [
-  { name: 'Priya Sharma',  role: 'Yoga Trainer',     image: 'https://randomuser.me/api/portraits/women/68.jpg', rating: 4.9, price: 499 },
-  { name: 'Ravi Mehta',    role: 'Logo Designer',    image: 'https://randomuser.me/api/portraits/men/52.jpg',   rating: 4.8, price: 1499 },
-  { name: 'Anjali Rao',    role: 'Math Tutor',       image: 'https://randomuser.me/api/portraits/women/47.jpg', rating: 5.0, price: 699 },
-  { name: 'Karan Singh',   role: 'UGC Creator',      image: 'https://randomuser.me/api/portraits/men/36.jpg',   rating: 4.9, price: 1999 },
-  { name: 'Neha Iyer',     role: 'Tax Consultant',   image: 'https://randomuser.me/api/portraits/women/72.jpg', rating: 4.9, price: 1299 },
-  { name: 'Aman Verma',    role: 'Fitness Coach',    image: 'https://randomuser.me/api/portraits/men/75.jpg',   rating: 4.8, price: 899 },
+  { name: 'Priya Sharma',  role: 'Yoga Trainer',     image: '/Marketing%20content/Profiles/smiling-woman-in-tank-top-with-prayer-pose-2026-01-09-10-22-23-utc.jpg',         rating: 4.9, price: 499 },
+  { name: 'Ravi Mehta',    role: 'Logo Designer',    image: '/Marketing%20content/Profiles/professional-headshot-of-a-man-in-a-suit-2026-01-07-07-10-42-utc.jpg',          rating: 4.8, price: 1499 },
+  { name: 'Anjali Rao',    role: 'Math Tutor',       image: '/Marketing%20content/Profiles/smiling-woman-with-long-brown-hair-and-glasses-2026-01-09-11-18-45-utc.jpg',    rating: 5.0, price: 699 },
+  { name: 'Karan Singh',   role: 'UGC Creator',      image: '/Marketing%20content/Profiles/smiling-young-man-in-suit-standing-outdoors-2026-03-25-04-44-11-utc.jpg',      rating: 4.9, price: 1999 },
+  { name: 'Neha Iyer',     role: 'Tax Consultant',   image: '/Marketing%20content/Profiles/confident-business-woman-poses-in-corporate-office-2026-01-09-10-52-25-utc.jpg', rating: 4.9, price: 1299 },
+  { name: 'Aman Verma',    role: 'Fitness Coach',    image: '/Marketing%20content/Profiles/the-look-of-a-successful-executive-portrait-of-a-2026-03-25-01-45-42-utc.jpg', rating: 4.8, price: 899 },
 ];
 
 export default function HeroSection() {

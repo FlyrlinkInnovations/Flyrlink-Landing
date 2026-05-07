@@ -7,7 +7,6 @@ import {
   Mail,
   MapPin,
   MessageSquare,
-  Phone,
   Sparkles,
   Star,
   Users,
@@ -17,7 +16,7 @@ import ContactForm from './ContactForm';
 export const metadata: Metadata = {
   title: 'Contact Us',
   description:
-    "Get in touch with Flyrlink. Reach out via email, phone, or our contact form. We're here to help connect you with expert professionals.",
+    "Get in touch with Flyrlink. Reach out via email or our contact form. We're here to help connect you with expert professionals.",
   keywords:
     'contact us, reach out, customer support, flyrlink contact, expert booking help',
 };
@@ -29,13 +28,6 @@ const contactMethods = [
     value: 'Contact@flyrlink.com',
     description: 'Drop us a line anytime. We read everything.',
     href: 'mailto:Contact@flyrlink.com',
-  },
-  {
-    icon: Phone,
-    tag: 'PHONE',
-    value: '+91 8125150893',
-    description: 'Mon to Fri, 9am - 6pm IST. No phone trees.',
-    href: 'tel:+918125150893',
   },
   {
     icon: MapPin,
@@ -78,7 +70,7 @@ const faqItems = [
   {
     question: 'How long does it take to get a response?',
     answer:
-      'We aim to reply within 24 hours, most within 4. For anything urgent, call us at +91 8125150893.',
+      'We aim to reply within 24 hours, most within 4. For anything urgent, email us at Contact@flyrlink.com.',
   },
   {
     question: 'Do I need a subscription?',
@@ -111,7 +103,6 @@ export default function ContactPage() {
             description:
               'Marketplace to find and book verified experts across 12 categories. From yoga trainers to tax consultants, all in one app.',
             url: 'https://flyrlink.com',
-            telephone: '+918125150893',
             email: 'Contact@flyrlink.com',
             address: {
               '@type': 'PostalAddress',
@@ -123,7 +114,6 @@ export default function ContactPage() {
             contactPoint: {
               '@type': 'ContactPoint',
               contactType: 'Customer Support',
-              telephone: '+918125150893',
               email: 'Contact@flyrlink.com',
             },
             sameAs: [
@@ -194,8 +184,8 @@ export default function ContactPage() {
 
       {/* --- CONTACT METHODS --- */}
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-5 md:grid-cols-3">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="grid gap-5 md:grid-cols-2">
             {contactMethods.map((m) => {
               const Icon = m.icon;
               return (

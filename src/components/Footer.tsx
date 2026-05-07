@@ -12,6 +12,7 @@ import {
 const platformLinks = [
   { label: 'Browse Categories', href: '/categories' },
   { label: 'Find Experts', href: '/find-experts' },
+  { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Become an Expert', href: '/become-expert' },
   { label: 'Events', href: 'https://app.flyrlink.com/', external: true },
 ];
@@ -138,7 +139,7 @@ export default function Footer() {
               <ContactRow icon={Mail}>Contact@flyrlink.com</ContactRow>
               <ContactRow icon={Mail}>support@flyrlink.com</ContactRow>
               <ContactRow icon={MapPin}>
-                Flyrlink Innovations Pvt. Ltd., Bangalore, Karnataka, India
+                Flyrlink Innovations Pvt. Ltd., Unit 407, Jain Sadguru Image Capital Park, Hyderabad, India
               </ContactRow>
             </div>
 

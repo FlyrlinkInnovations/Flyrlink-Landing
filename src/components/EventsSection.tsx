@@ -35,7 +35,7 @@ const events: EventItem[] = [
     watermark: 'well',
     tagline: 'A live workshop for people tired of diet fads, ',
     accent: 'habits that actually stick.',
-    image: 'https://randomuser.me/api/portraits/women/65.jpg',
+    image: '/Marketing%20content/Profiles/confident-woman-leader-posing-in-a-bright-office-2026-01-09-11-06-57-utc.jpg',
     stats: [
       { value: '15+', label: 'YRS EXP' },
       { value: '500+', label: 'CLIENTS' },
@@ -52,7 +52,7 @@ const events: EventItem[] = [
     watermark: 'study',
     tagline: 'A live Q&A for students applying overseas, ',
     accent: 'pick a country, plan your offer.',
-    image: 'https://randomuser.me/api/portraits/men/45.jpg',
+    image: '/Marketing%20content/Profiles/confident-businessman-posing-in-a-suit-and-tie-2026-01-09-11-00-44-utc.jpg',
     stats: [
       { value: '12+', label: 'YRS EXP' },
       { value: '800+', label: 'STUDENTS' },
@@ -64,12 +64,12 @@ const events: EventItem[] = [
   },
   {
     title: 'Photography Bootcamp',
-    host: 'Maya Chen',
+    host: 'Aryan Sengupta',
     hostRole: 'PRODUCT PHOTOGRAPHER · 10+ YEARS',
     watermark: 'photo',
     tagline: 'A hands-on workshop for hobbyists ready to ',
     accent: 'shoot like a pro.',
-    image: 'https://randomuser.me/api/portraits/women/33.jpg',
+    image: '/Marketing%20content/Profiles/photographer-holding-camera-in-a-modern-office-2026-03-25-00-15-50-utc.jpg',
     stats: [
       { value: '10+', label: 'YRS EXP' },
       { value: '300+', label: 'STUDENTS' },
