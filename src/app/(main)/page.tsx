@@ -1,4 +1,5 @@
 import HeroSection from '@/components/HeroSection';
+import DemoVideo from '@/components/homepage/DemoVideo';
 import AIExpertMatching from '@/components/homepage/AIExpertMatching';
 import FeaturesSection from '@/components/FeaturesSection';
 import CategoriesSection from '@/components/CategoriesSection';
@@ -17,6 +18,8 @@ export default function HomePage() {
     <>
       {/* DARK */}
       <HeroSection />
+      {/* WHITE with dots — promo video */}
+      <DemoVideo />
       {/* LIGHT with dots */}
       <AIExpertMatching />
       {/* DARK */}
