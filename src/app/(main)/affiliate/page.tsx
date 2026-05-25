@@ -3,7 +3,8 @@ import { Percent, CalendarDays, DollarSign, Eye, Star, Megaphone, Gift, Trending
 import AffiliateSignupForm from '@/components/AffiliateSignupForm';
 
 export const metadata: Metadata = {
-  title: 'Affiliate Program',
+  title: 'Affiliate Program: Earn 5% Commission',
+  alternates: { canonical: '/affiliate' },
   description: 'Join the Flyrlink Affiliate Program. Earn 5% commission on all transactions for 12 months. Promote Flyrlink and earn without limits.',
   keywords: 'flyrlink affiliate, affiliate program, earn commissions, referral program, partner program',
 };

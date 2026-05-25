@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { EnhancedWaitingListForm } from '@/components/EnhancedWaitingListForm';
 
 export const metadata: Metadata = {
-  title: 'Join Waiting List',
+  title: 'Join the Waiting List for Early Access',
+  alternates: { canonical: '/waiting-list' },
   description: 'Be among the first to book verified experts on Flyrlink. Join the waiting list for early access and launch perks.',
   keywords: 'join waiting list, early access, flyrlink launch, book experts early',
 };

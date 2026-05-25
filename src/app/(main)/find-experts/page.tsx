@@ -5,7 +5,8 @@ import { CATEGORIES, TOTAL_SERVICE_COUNT } from '@/config/services';
 import SearchAutocomplete from '@/components/SearchAutocomplete';
 
 export const metadata: Metadata = {
-  title: 'Find Experts',
+  title: 'Find an Expert Online: Browse Verified Pros',
+  alternates: { canonical: '/find-experts' },
   description: `Browse ${CATEGORIES.length} categories and ${TOTAL_SERVICE_COUNT}+ services on Flyrlink. From yoga trainers to tax consultants, find a verified expert in minutes.`,
 };
 

@@ -130,6 +130,19 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GQ6EZJZTNZ"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GQ6EZJZTNZ');
+          `}
+        </Script>
         <Providers>{children}</Providers>
         <Script
           src="https://chat.postwyse.com/powerbot-widget.js"

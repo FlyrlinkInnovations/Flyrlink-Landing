@@ -3,6 +3,7 @@ import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Disclaimers',
+  alternates: { canonical: '/disclaimers' },
   description:
     'Disclaimers covering general information, marketplace role, advisory and consulting, user-generated content, payments, technical operation, and more.',
 };

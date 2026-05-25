@@ -12,7 +12,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Flyrlink',
+  title: 'About Us: Find & Book Verified Experts',
+  alternates: { canonical: '/about' },
   description:
     "Flyrlink's mission is to make booking the right expert as easy as ordering a cab. From yoga trainers to tax consultants, find verified pros in minutes.",
   keywords:

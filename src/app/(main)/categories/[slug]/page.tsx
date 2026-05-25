@@ -30,8 +30,9 @@ export async function generateMetadata({
   const category = findCategory(slug);
   if (!category) return { title: 'Category not found' };
   return {
-    title: `${category.name} experts`,
+    title: `${category.name} Experts: Hire & Book Online`,
     description: `${category.shortDescription} Find ${category.services.length} services on Flyrlink with verified pros, real ratings, and secure booking.`,
+    alternates: { canonical: `/categories/${slug}` },
   };
 }
 

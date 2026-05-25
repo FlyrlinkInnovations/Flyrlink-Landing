@@ -3,6 +3,7 @@ import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Payment Policy',
+  alternates: { canonical: '/payment-policy' },
   description:
     'Flyrlink Payment Policy covering payment methods, fees, escrow, refunds, currency, taxes, and transaction terms for Purchasers and Sellers.',
 };
