@@ -14,7 +14,8 @@ import {
 import ContactForm from './ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Us: Help & Support',
+  alternates: { canonical: '/contact' },
   description:
     "Get in touch with Flyrlink. Reach out via email or our contact form. We're here to help connect you with expert professionals.",
   keywords:

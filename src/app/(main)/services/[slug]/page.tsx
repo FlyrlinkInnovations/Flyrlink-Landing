@@ -34,8 +34,9 @@ export async function generateMetadata({
   const service = findService(slug);
   if (!service) return { title: 'Service not found' };
   return {
-    title: `Hire a ${service.name}`,
+    title: `Hire a ${service.name} Online`,
     description: `${service.description} Real ratings, secure payments, free chat before you book.`,
+    alternates: { canonical: `/services/${slug}` },
   };
 }
 

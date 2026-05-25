@@ -3,6 +3,7 @@ import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions',
+  alternates: { canonical: '/terms' },
   description:
     'Flyrlink Terms and Conditions governing access to and use of the Website, user accounts, services, payments, content, and dispute resolution.',
 };

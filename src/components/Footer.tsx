@@ -8,6 +8,7 @@ import {
   Star,
   Users,
 } from 'lucide-react';
+import { CATEGORIES } from '@/config/services';
 
 const platformLinks = [
   { label: 'Browse Categories', href: '/categories' },
@@ -175,6 +176,27 @@ export default function Footer() {
             links={[...legalLinks, ...connectLinks]}
           />
         </div>
+
+        {/* Explore categories — internal links for crawlability */}
+        <nav
+          aria-label="Browse expert categories"
+          className="mt-14 border-t border-white/10 pt-10"
+        >
+          <h4 className="mb-5 text-[11px] font-semibold tracking-[0.28em] text-gray-500">
+            EXPLORE CATEGORIES
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/categories/${c.slug}`}
+                className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gray-400 transition-all hover:border-brand/40 hover:bg-brand/10 hover:text-white"
+              >
+                {c.name}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
         {/* Inline newsletter */}
         <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">

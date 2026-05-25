@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import CareersClient from './CareersClient';
 
 export const metadata: Metadata = {
-  title: 'Careers at Flyrlink',
+  title: 'Careers: Join the Flyrlink Team',
+  alternates: { canonical: '/careers' },
   description: 'Join Flyrlink and help build the simplest way to find a verified expert. Open roles in Engineering, Design, Marketing, and more.',
   keywords: 'careers, jobs, hiring, engineering, product design, marketing, customer success, flyrlink careers, marketplace jobs, remote work',
   openGraph: {

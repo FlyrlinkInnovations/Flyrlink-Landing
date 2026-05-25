@@ -15,7 +15,8 @@ import { getLocalPosts } from '@/utils/localBlog';
 import { API_CONFIG } from '@/config/constants';
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Blog: Expert Tips, Guides & Insights',
+  alternates: { canonical: '/blog' },
   description:
     'Discover industry insights, expert advice, and professional tips from verified consultants and thought leaders. Read the latest articles on business, technology, career growth, and more.',
   keywords:

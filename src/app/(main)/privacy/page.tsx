@@ -3,6 +3,7 @@ import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
+  alternates: { canonical: '/privacy' },
   description:
     "Flyrlink's Privacy Policy describing how we collect, process, use, store, and disclose Personal Data of Users in accordance with the DPDP Act, 2023.",
 };

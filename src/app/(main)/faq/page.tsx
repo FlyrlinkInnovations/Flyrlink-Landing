@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import FaqClient from './FaqClient';
 
 export const metadata: Metadata = {
-  title: 'FAQ',
+  title: 'FAQ: Booking, Pricing & Payments',
+  alternates: { canonical: '/faq' },
   description:
     'Common questions about Flyrlink: how to find an expert, pricing, payments, refunds, becoming an expert, and more.',
   keywords:

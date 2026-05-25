@@ -20,7 +20,8 @@ import {
 import { CATEGORIES, TOTAL_SERVICE_COUNT } from '@/config/services';
 
 export const metadata: Metadata = {
-  title: 'Become an Expert',
+  title: 'Become an Expert: Earn From Your Skills',
+  alternates: { canonical: '/become-expert' },
   description:
     'Earn from your skill on Flyrlink. Set your own price, build a verified profile, and get booked by clients across 12 categories. Free to join.',
 };

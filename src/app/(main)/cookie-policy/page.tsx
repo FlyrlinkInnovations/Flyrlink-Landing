@@ -3,6 +3,7 @@ import LegalPage, { type LegalBlock } from '@/components/LegalPage';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
+  alternates: { canonical: '/cookie-policy' },
   description:
     'How Flyrlink uses cookies, web beacons, and similar technologies on our Website and mobile application.',
 };

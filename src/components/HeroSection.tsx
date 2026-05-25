@@ -100,6 +100,23 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* Primary CTAs */}
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/find-experts"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-brand/25 transition-all duration-300 hover:bg-brand-600"
+          >
+            Find an Expert Now
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+          <Link
+            href="/become-expert"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white/90 backdrop-blur transition-all hover:border-white/40 hover:bg-white/10"
+          >
+            Become an Expert
+          </Link>
+        </div>
+
         {/* Trust row */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm">
           <div className="flex items-center gap-2 text-gray-300">

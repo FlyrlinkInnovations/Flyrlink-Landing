@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'List Your Business',
+  title: 'List Your Business: Reach B2B Clients',
+  alternates: { canonical: '/list-your-business' },
   description:
     'List your business on Flyrlink. Reach high-intent clients, host demos, hire interns, and scale faster with the trusted B2B marketplace.',
 };

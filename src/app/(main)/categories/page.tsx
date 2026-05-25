@@ -4,7 +4,8 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { CATEGORIES, TOTAL_SERVICE_COUNT } from '@/config/services';
 
 export const metadata: Metadata = {
-  title: 'Browse all categories',
+  title: 'All Expert Categories: Coaches, Tutors & Pros',
+  alternates: { canonical: '/categories' },
   description: `Browse ${CATEGORIES.length} categories and ${TOTAL_SERVICE_COUNT}+ services on Flyrlink. Find verified experts for fitness, education, business, tech, beauty, and more.`,
 };
 
