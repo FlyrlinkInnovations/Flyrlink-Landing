@@ -1,8 +1,8 @@
 // API Configuration
 export const API_CONFIG = {
-  BLOG_API_URL: process.env.NEXT_PUBLIC_BLOG_API_URL || 'https://api.leorix.com/api/blog/blogs/user_blogs/',
+  BLOG_API_URL: process.env.NEXT_PUBLIC_BLOG_API_URL || 'https://api.opswyse.com/api/blog/blogs/user_blogs/',
   BLOG_USER_ID: process.env.NEXT_PUBLIC_BLOG_USER_ID || '7e2e8b8dbcd98eac',
-  BLOG_BASE_URL: process.env.NEXT_PUBLIC_BLOG_BASE_URL || 'https://app.leorix.com/user/blogs/',
+  BLOG_BASE_URL: process.env.NEXT_PUBLIC_BLOG_BASE_URL || 'https://app.opswyse.com/user/blogs/',
   GOOGLE_SCRIPT_URL: process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL || '',
 } as const;
 

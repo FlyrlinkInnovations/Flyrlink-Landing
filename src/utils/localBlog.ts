@@ -22,6 +22,8 @@ export interface BlogPost {
   comment_count: number;
   created_at: string;
   user: BlogPostUser;
+  /** SEO keywords (from frontmatter on local posts). */
+  keywords?: string[];
   /** Marker set on locally-authored posts so the UI / metadata layer
       can identify them. */
   isLocal?: boolean;
@@ -44,7 +46,15 @@ type Frontmatter = {
   banner_image?: string;
   author?: string;
   published_at?: string | Date;
+  /** Comma-separated string or YAML list. */
+  keywords?: string | string[];
 };
+
+function parseKeywords(value: string | string[] | undefined): string[] {
+  if (!value) return [];
+  const list = Array.isArray(value) ? value : value.split(',');
+  return list.map((k) => String(k).trim()).filter(Boolean);
+}
 
 function toIsoDate(value: string | Date | undefined): string {
   if (!value) return new Date().toISOString();
@@ -91,6 +101,7 @@ export function getLocalPosts(): BlogPost[] {
       comment_count: 0,
       created_at,
       user: author,
+      keywords: parseKeywords(fm.keywords),
       isLocal: true,
     };
   });
