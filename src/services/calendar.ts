@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CALENDAR_API_BASE = 'https://api.leorix.com/api/v2/calendars';
+const CALENDAR_API_BASE = 'https://api.opswyse.com/api/v2/calendars';
 
 export interface TimeSlot {
   start: string;

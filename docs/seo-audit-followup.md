@@ -78,13 +78,14 @@ with `location: https://flyrlink.com/`.
 transcoded (e.g. H.264/H.265 ~1080p, target a few MB) before any autoplay or
 heavier promotion. Needs `ffmpeg`, which is not installed locally.
 
-### 4. leorix.com -> opswyse.com migration (heads-up, NOT changed)
-The blog API was on the broken `api.leorix.com` cert; only the blog URL was
-repointed to `api.opswyse.com`. The same `api.leorix.com` host is still used by
-the **waiting-list ingest** (`src/config.ts`) and the **booking calendar**
-(`src/services/calendar.ts`). If those features are broken in production it is
-almost certainly the same cert issue. Verify and, if so, repoint them to
-`opswyse.com` too (left untouched here since they were out of scope).
+### 4. leorix.com -> opswyse.com migration (DONE)
+All `api.leorix.com` references were repointed to `api.opswyse.com` after
+verifying each endpoint works on opswyse (leorix returns TLS error 000):
+- Blog API default (`src/config/constants.ts`) — opswyse returns all 12 posts.
+- Waiting-list ingest (`src/config.ts`) — opswyse ingest endpoint returns 200.
+- Booking calendar (`src/services/calendar.ts`) — opswyse availability endpoint
+  returns live slots (200).
+- `next.config.ts` remote image host and `.env.example` updated for consistency.
 
 ### 5. og-image.jpg
 `public/og-image.jpg` is only 504 bytes — likely a broken/placeholder OG image.
