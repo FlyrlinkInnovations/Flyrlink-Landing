@@ -30,6 +30,17 @@ still needs a human (hosting console access or third-party IDs).
   and **Become an Expert** (-> /become-expert). The hero already carries proof
   (real photos, sample prices, ratings, review count, verified messaging).
 
+### Blog (keywords + indexing)
+- Fixed the blog API default URL: it pointed at `api.leorix.com`, whose TLS cert
+  is for `api.opswyse.com` (handshake fails), so the build silently fetched zero
+  remote posts and **only the 2 local posts reached the sitemap**. Repointed the
+  default to `https://api.opswyse.com/...` (verified: returns all 12 posts).
+  After the fix the sitemap lists all **14** blog URLs (12 remote + 2 local).
+- Added SEO keywords to every post: local posts support a `keywords` frontmatter
+  field (comma list or YAML array); a brand keyword set is merged into all posts
+  so even remote posts (the API returns no keyword field) emit `<meta name="keywords">`.
+- Blog posts already had canonical, OpenGraph/Twitter, and BlogPosting JSON-LD.
+
 ## Needs a human
 
 ### 1. www -> non-www redirect (AWS Amplify) — HIGH PRIORITY
@@ -67,6 +78,15 @@ with `location: https://flyrlink.com/`.
 transcoded (e.g. H.264/H.265 ~1080p, target a few MB) before any autoplay or
 heavier promotion. Needs `ffmpeg`, which is not installed locally.
 
-### 4. og-image.jpg
+### 4. leorix.com -> opswyse.com migration (DONE)
+All `api.leorix.com` references were repointed to `api.opswyse.com` after
+verifying each endpoint works on opswyse (leorix returns TLS error 000):
+- Blog API default (`src/config/constants.ts`) — opswyse returns all 12 posts.
+- Waiting-list ingest (`src/config.ts`) — opswyse ingest endpoint returns 200.
+- Booking calendar (`src/services/calendar.ts`) — opswyse availability endpoint
+  returns live slots (200).
+- `next.config.ts` remote image host and `.env.example` updated for consistency.
+
+### 5. og-image.jpg
 `public/og-image.jpg` is only 504 bytes — likely a broken/placeholder OG image.
 Replace with a real 1200x630 share image.

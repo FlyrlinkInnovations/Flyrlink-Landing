@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'api.leorix.com',
+        hostname: 'api.opswyse.com',
       },
       {
         protocol: 'https',

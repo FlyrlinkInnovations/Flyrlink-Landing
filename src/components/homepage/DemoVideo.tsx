@@ -4,7 +4,8 @@ import { useRef, useState } from 'react';
 import { Play, Sparkles } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const VIDEO_SRC = '/Flyrlink%20Promo%20Video%20(1).mp4';
+const VIDEO_SRC =
+  'https://leorix-dev.s3.us-east-2.amazonaws.com/static+files/Flyrlink+Promo+Video+(1).mp4';
 
 export default function DemoVideo() {
   const { ref, isVisible } = useScrollReveal();

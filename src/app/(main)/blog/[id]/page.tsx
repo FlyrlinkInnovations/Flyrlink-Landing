@@ -30,7 +30,25 @@ interface BlogPost {
   comment_count: number;
   created_at: string;
   user: BlogPostUser;
+  keywords?: string[];
   isLocal?: boolean;
+}
+
+/** Brand keywords merged into every post so each one ships meta keywords,
+    even remote posts (the API returns no keyword field). */
+const BLOG_BASE_KEYWORDS = [
+  'Flyrlink',
+  'find an expert',
+  'book an expert',
+  'expert marketplace',
+  'online consultation',
+  'verified experts',
+  'AI expert matching',
+];
+
+function buildKeywords(post: BlogPost): string[] {
+  const explicit = (post.keywords ?? []).filter(Boolean);
+  return Array.from(new Set([...explicit, ...BLOG_BASE_KEYWORDS]));
 }
 
 interface BlogResponse {
@@ -112,6 +130,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    keywords: buildKeywords(post),
     openGraph: {
       title,
       description,
