@@ -128,6 +128,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* Postwyse visit analytics */}
+        <script
+          src="https://postwyse.com/api/analytics/script/33WVwrWxraXg"
+          defer
+        />
       </head>
       <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
         {/* Google Analytics 4 (gtag.js) */}
