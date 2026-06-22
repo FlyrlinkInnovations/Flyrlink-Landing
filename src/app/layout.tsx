@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans, Manrope } from 'next/font/google';
 import { Providers } from '@/components/providers';
 import './globals.css';
 
@@ -12,6 +12,11 @@ const inter = Inter({
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-jakarta',
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
 });
 
 export const metadata: Metadata = {
@@ -134,7 +139,7 @@ export default function RootLayout({
           defer
         />
       </head>
-      <body className={`${inter.variable} ${jakarta.variable} font-sans`}>
+      <body className={`${inter.variable} ${jakarta.variable} ${manrope.variable} font-sans`}>
         {/* Google Analytics 4 (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GQ6EZJZTNZ"

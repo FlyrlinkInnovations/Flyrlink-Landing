@@ -121,7 +121,7 @@ export default function AIExpertMatching() {
             <div className="mb-6 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
               HOW IT WORKS
             </div>
-            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-5xl lg:text-6xl">
+            <h2 className="font-heading text-4xl font-bold leading-[1.05] tracking-[-1.5px] text-navy-900 md:text-5xl lg:text-6xl">
               Find your expert
               <span className="mt-1 block font-serif italic font-medium text-brand">
                 in 5 simple steps.

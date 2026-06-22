@@ -1,18 +1,14 @@
 import type { Metadata } from 'next';
 import HeroSection from '@/components/HeroSection';
+import VerifiedProsBand from '@/components/homepage/VerifiedProsBand';
 import DemoVideo from '@/components/homepage/DemoVideo';
+import PopularServices from '@/components/homepage/PopularServices';
 import AIExpertMatching from '@/components/homepage/AIExpertMatching';
-import FeaturesSection from '@/components/FeaturesSection';
-import CategoriesSection from '@/components/CategoriesSection';
-import MeetOurExperts from '@/components/homepage/MeetOurExperts';
-import HowItWorks from '@/components/homepage/HowItWorks';
-import PlatformFeatures from '@/components/homepage/PlatformFeatures';
-import EventsSection from '@/components/EventsSection';
-import LiveMoments from '@/components/homepage/LiveMoments';
+import FreelancerBenefits from '@/components/homepage/FreelancerBenefits';
+import FiveStepsDifferent from '@/components/homepage/FiveStepsDifferent';
 import Testimonials from '@/components/homepage/Testimonials';
-import PricingSection from '@/components/homepage/PricingSection';
 import AffiliateHighlights from '@/components/homepage/AffiliateHighlights';
-import HomeFAQ from '@/components/homepage/HomeFAQ';
+import PricingSection from '@/components/homepage/PricingSection';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -21,34 +17,27 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* DARK */}
+      {/* 1 — Hero (light split) */}
       <HeroSection />
-      {/* WHITE with dots — promo video */}
+      {/* 2 — Blue "500+ verified pros, one tap away" band */}
+      <VerifiedProsBand />
+      {/* 3 — Flyrlink in 20 seconds (left text / right video) */}
       <DemoVideo />
-      {/* LIGHT with dots */}
+      {/* 4 — Popular services (horizontal scroll) */}
+      <PopularServices />
+      {/* 5 — Find your expert in 5 simple steps */}
       <AIExpertMatching />
-      {/* DARK */}
-      <FeaturesSection />
-      {/* WHITE with dots */}
-      <CategoriesSection />
-      {/* WHITE */}
-      <MeetOurExperts />
-      {/* WHITE */}
-      <HowItWorks />
-      {/* DARK */}
-      <PlatformFeatures />
-      {/* WHITE */}
-      <EventsSection />
-      {/* GRAY-50 */}
-      <LiveMoments />
-      {/* WHITE */}
+      {/* 6 — Make it all happen with freelancers */}
+      <FreelancerBenefits />
+      {/* 7 — Five steps. Done differently. */}
+      <FiveStepsDifferent />
+      {/* 8 — Testimonials: Loved by 10,000+ clients */}
       <Testimonials />
-      {/* GRAY-50 */}
-      <PricingSection />
-      {/* GRAY-50 */}
+      {/* 9 — Affiliate: Bring your audience. Earn for a year. */}
       <AffiliateHighlights />
-      {/* WHITE */}
-      <HomeFAQ />
+      {/* 10 — Simple, transparent pricing */}
+      <PricingSection />
+      {/* 11 — Footer is provided by the (main) layout */}
     </>
   );
 }

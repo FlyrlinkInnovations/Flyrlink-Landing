@@ -4,34 +4,42 @@ import { Star, Sparkles, ShieldCheck, Layers, Users } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useCountUp } from '@/hooks/useCountUp';
 
-const featured = {
-  name: 'Girish Kotte',
-  role: 'FOUNDER · FLYRLINK',
-  quote:
-    'I built Flyrlink because finding the right expert shouldn\'t take weeks of asking around. From a yoga trainer to a tax consultant, your next expert is now ',
-  accent: 'just minutes away.',
-  link: 'https://gkotte.com',
-  image: '/gk.jpeg',
-};
-
-const secondary = [
+const testimonials = [
   {
     name: 'Anjali Reddy',
     role: 'YOGA STUDENT · BENGALURU',
     quote:
       'Booked Priya expecting a generic class. Got a custom plan for my back pain that actually worked. Three weeks in and ',
     accent: 'I can sleep again.',
-    rating: 5,
-    image: '/Marketing%20content/Profiles/cheerful-woman-smiling-with-wavy-hair-on-blue-2026-01-09-09-53-59-utc.jpg',
+    image:
+      '/Marketing%20content/Profiles/cheerful-woman-smiling-with-wavy-hair-on-blue-2026-01-09-09-53-59-utc.jpg',
   },
   {
     name: 'Manju Iyer',
     role: 'PARENT · CHENNAI',
     quote:
-      'Booked a tutor for my son\'s board exam prep. He went from 60% to 89% in 3 months. ',
-    accent: 'Wish I\'d found Flyrlink sooner.',
-    rating: 5,
-    image: '/Marketing%20content/Profiles/professional-woman-smiling-portrait-in-business-at-2026-01-08-05-28-10-utc.jpg',
+      "Booked a tutor for my son's board exam prep. He went from 60% to 89% in 3 months. ",
+    accent: "Wish I'd found Flyrlink sooner.",
+    image:
+      '/Marketing%20content/Profiles/professional-woman-smiling-portrait-in-business-at-2026-01-08-05-28-10-utc.jpg',
+  },
+  {
+    name: 'Rahul Verma',
+    role: 'STARTUP FOUNDER · MUMBAI',
+    quote:
+      'Found a brand designer in a day. Clear pricing, real reviews, no agency runaround. ',
+    accent: 'Shipped our rebrand in two weeks.',
+    image:
+      '/Marketing%20content/Profiles/professional-headshot-of-a-man-in-a-suit-2026-01-07-07-10-42-utc.jpg',
+  },
+  {
+    name: 'Sneha Nair',
+    role: 'SMALL BUSINESS · KOCHI',
+    quote:
+      'My GST filing used to be a nightmare. Booked a verified consultant and it was sorted in one call. ',
+    accent: 'Now I actually understand my taxes.',
+    image:
+      '/Marketing%20content/Profiles/confident-business-woman-poses-in-corporate-office-2026-01-09-10-52-25-utc.jpg',
   },
 ];
 
@@ -54,12 +62,12 @@ function StatItem({
   const count = useCountUp(stat.value || 0, 2000, isVisible);
 
   return (
-    <div className="text-center px-6">
-      <Icon className="w-7 h-7 text-brand-300 mx-auto mb-3" />
-      <p className="text-2xl md:text-3xl font-bold text-white mb-1">
+    <div className="px-6 text-center">
+      <Icon className="mx-auto mb-3 h-7 w-7 text-brand-300" />
+      <p className="mb-1 text-2xl font-bold text-white md:text-3xl">
         {stat.displayValue || `${count}${stat.suffix}`}
       </p>
-      <p className="text-gray-400 text-sm">{stat.label}</p>
+      <p className="text-sm text-gray-400">{stat.label}</p>
     </div>
   );
 }
@@ -68,20 +76,17 @@ export default function Testimonials() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section className="py-28 bg-white">
+    <section className="bg-white py-28">
       <div
         ref={ref}
-        className={`max-w-7xl mx-auto px-6 reveal ${isVisible ? 'revealed' : ''}`}
+        className={`mx-auto max-w-7xl px-6 reveal ${isVisible ? 'revealed' : ''}`}
       >
         {/* Top bar */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 fill-amber-400 text-amber-400"
-                />
+                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
               ))}
             </div>
             <span className="text-sm font-semibold text-navy-900">4.9</span>
@@ -108,66 +113,18 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Headline with ghost watermark */}
-        <div className="relative">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-8 right-0 select-none font-serif italic font-medium leading-none text-brand-50 md:text-[12rem]"
-            style={{ fontSize: 'clamp(96px, 14vw, 180px)' }}
-          >
-            loved
-          </span>
-          <div className="relative">
-            <div className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
-              TESTIMONIALS
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-navy-900">
-              Loved by{' '}
-              <span className="font-serif italic font-medium text-brand">
-                10,000+ clients.
-              </span>
-            </h2>
-          </div>
+        {/* Heading */}
+        <div className="mb-2 text-[11px] font-semibold tracking-[0.28em] text-gray-400">
+          TESTIMONIALS
         </div>
+        <h2 className="font-heading text-4xl font-bold leading-[1.05] tracking-[-1.5px] text-navy-900 md:text-5xl lg:text-6xl">
+          Loved by{' '}
+          <span className="font-normal">10,000+ clients.</span>
+        </h2>
 
-        {/* Featured pull-quote */}
-        <div className="relative mx-auto mt-14 max-w-3xl text-center">
-          <div className="mb-2 font-serif text-6xl leading-none text-brand/20 md:text-7xl">
-            &ldquo;
-          </div>
-          <p className="text-2xl font-medium leading-snug text-navy-900 md:text-3xl">
-            {featured.quote}
-            <span className="font-serif italic font-medium text-brand">
-              {featured.accent}
-            </span>
-          </p>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={featured.image}
-              alt={featured.name}
-              loading="lazy"
-              className="h-10 w-10 rounded-full object-cover shadow-md"
-            />
-            <div className="text-left">
-              <a
-                href={featured.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-navy-900 hover:text-brand"
-              >
-                {featured.name}
-              </a>
-              <div className="text-[10px] font-semibold tracking-[0.22em] text-gray-400">
-                {featured.role}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Secondary quotes */}
-        <div className="mt-16 grid gap-10 border-t border-gray-100 pt-10 md:grid-cols-2 md:gap-16">
-          {secondary.map((t) => (
+        {/* 2x2 testimonial grid */}
+        <div className="mt-12 grid gap-x-16 gap-y-12 border-t border-gray-100 pt-12 md:grid-cols-2">
+          {testimonials.map((t) => (
             <div key={t.name} className="relative">
               <span
                 aria-hidden
@@ -176,11 +133,8 @@ export default function Testimonials() {
                 &rdquo;
               </span>
               <div className="mb-3 flex items-center gap-0.5">
-                {[...Array(t.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
-                  />
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
               <p className="text-base leading-relaxed text-navy-900 md:text-lg">
@@ -198,9 +152,7 @@ export default function Testimonials() {
                   className="h-10 w-10 rounded-full object-cover ring-2 ring-brand/10"
                 />
                 <div>
-                  <div className="text-sm font-semibold text-navy-900">
-                    {t.name}
-                  </div>
+                  <div className="text-sm font-semibold text-navy-900">{t.name}</div>
                   <div className="text-[10px] font-semibold tracking-[0.22em] text-gray-400">
                     {t.role}
                   </div>
@@ -211,8 +163,8 @@ export default function Testimonials() {
         </div>
 
         {/* Stats Bar */}
-        <div className="mt-20 bg-navy-900 rounded-2xl p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-white/10">
+        <div className="mt-20 rounded-2xl bg-navy-900 p-8 md:p-12">
+          <div className="grid grid-cols-2 divide-x divide-white/10 md:grid-cols-5">
             {stats.map((stat, index) => (
               <StatItem key={index} stat={stat} isVisible={isVisible} />
             ))}
