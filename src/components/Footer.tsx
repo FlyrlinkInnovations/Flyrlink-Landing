@@ -8,11 +8,11 @@ import {
   Star,
   Users,
 } from 'lucide-react';
-import { CATEGORIES } from '@/config/services';
 
 const platformLinks = [
   { label: 'Browse Categories', href: '/categories' },
   { label: 'Find Experts', href: '/find-experts' },
+  { label: 'Compare', href: '/compare' },
   { label: 'How It Works', href: '/#how-it-works' },
   { label: 'Become an Expert', href: '/become-expert' },
   { label: 'Events', href: 'https://app.flyrlink.com/', external: true },
@@ -78,48 +78,6 @@ export default function Footer() {
         flyrlink
       </span>
 
-      {/* CTA block */}
-      <div className="relative border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-          <div className="grid items-end gap-8 md:grid-cols-[1.5fr_1fr]">
-            <div>
-              <div className="mb-4 text-[11px] font-semibold tracking-[0.28em] text-brand-300">
-                READY TO BEGIN
-              </div>
-              <h3 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-white md:text-4xl lg:text-5xl">
-                Your next expert is{' '}
-                <span className="font-serif italic font-medium text-brand-300">
-                  one click away.
-                </span>
-              </h3>
-              <p className="mt-5 max-w-lg text-gray-400">
-                Join thousands of clients finding the right expert in minutes,
-                not weeks. From yoga trainers to tax consultants.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
-              <a
-                href="https://app.flyrlink.com/"
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-navy-950 shadow-xl transition-all duration-300 hover:bg-gray-100 hover:shadow-brand/30"
-              >
-                Get Started Free
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy-950 text-white transition-transform group-hover:translate-x-0.5">
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </a>
-              <Link
-                href="/book-call"
-                className="group inline-flex items-center justify-center gap-1.5 px-5 py-3 text-sm font-semibold text-white/90 hover:text-white transition-colors"
-              >
-                Book a call
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main footer grid */}
       <div className="relative mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-12">
@@ -176,27 +134,6 @@ export default function Footer() {
             links={[...legalLinks, ...connectLinks]}
           />
         </div>
-
-        {/* Explore categories — internal links for crawlability */}
-        <nav
-          aria-label="Browse expert categories"
-          className="mt-14 border-t border-white/10 pt-10"
-        >
-          <h4 className="mb-5 text-[11px] font-semibold tracking-[0.28em] text-gray-500">
-            EXPLORE CATEGORIES
-          </h4>
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/categories/${c.slug}`}
-                className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-gray-400 transition-all hover:border-brand/40 hover:bg-brand/10 hover:text-white"
-              >
-                {c.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
 
         {/* Inline newsletter */}
         <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-10 md:flex-row md:items-center md:justify-between">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { Play, Sparkles } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const VIDEO_SRC =
@@ -22,7 +22,7 @@ export default function DemoVideo() {
   };
 
   return (
-    <section className="relative bg-white py-24 md:py-28">
+    <section className="relative bg-white py-24 lg:py-28">
       {/* subtle dot grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -35,33 +35,23 @@ export default function DemoVideo() {
 
       <div
         ref={ref}
-        className={`relative mx-auto max-w-6xl px-6 reveal ${
+        className={`relative mx-auto flex max-w-[1200px] flex-col items-start gap-12 px-6 reveal lg:flex-row lg:items-center lg:gap-16 ${
           isVisible ? 'revealed' : ''
         }`}
       >
-        {/* Header */}
-        <div className="mb-10 text-center md:mb-14">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/5 px-3 py-1 text-[11px] font-semibold tracking-[0.24em] text-brand">
-            <Sparkles className="h-3 w-3" />
-            SEE IT IN ACTION
-          </div>
-          <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-navy-900 md:text-5xl lg:text-6xl">
-            Flyrlink in{' '}
-            <span className="font-serif italic font-medium text-brand">
-              20 seconds.
-            </span>
+        {/* Left — text */}
+        <div className="w-full lg:max-w-[340px] lg:flex-shrink-0">
+          <h2 className="font-heading text-4xl font-bold leading-[1.05] tracking-[-1.5px] text-navy-900 lg:text-6xl">
+            Flyrlink in 20 seconds.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-gray-600 md:text-lg">
+          <p className="mt-4 text-base leading-7 text-[#4A5565] lg:text-lg">
             Watch how clients find verified experts and book real 1:1 sessions,
             end to end.
           </p>
         </div>
 
-        {/* Video card */}
-        <div className="relative mx-auto max-w-5xl">
-          {/* glow */}
-          <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand/25 via-brand-300/15 to-transparent blur-3xl" />
-
+        {/* Right — video card */}
+        <div className="relative w-full lg:flex-1">
           <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-navy-950 shadow-2xl shadow-navy-900/20 ring-1 ring-black/5">
             <div className="relative aspect-video w-full">
               <video
@@ -71,9 +61,6 @@ export default function DemoVideo() {
                 playsInline
                 controls={hasStarted}
                 className="absolute inset-0 h-full w-full object-cover"
-                onPause={() => {
-                  // keep controls visible once started
-                }}
               />
 
               {!hasStarted && (
