@@ -1,15 +1,47 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import {
-  UserPlus, ClipboardList, Rocket, Search, Star, BadgeCheck,
-  ChevronDown, ArrowRight, type LucideIcon,
+  Search, Star, BadgeCheck, ChevronDown, ArrowRight, Check, Hexagon,
 } from 'lucide-react';
 
-const STEPS: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: UserPlus, title: 'Create Your Free Account', desc: 'Sign up in minutes and set up your business profile — no upfront cost.' },
-  { icon: ClipboardList, title: 'Submit Your Business Details', desc: 'Add your services, pricing, and portfolio so clients know what you offer.' },
-  { icon: Rocket, title: 'Get Approved & Go Live', desc: 'Our team verifies your listing and you go live to clients across India.' },
+const STEPS = [
+  { n: 1, title: 'Create Your Free Account', desc: 'Sign up and set up your business profile in minutes.' },
+  { n: 2, title: 'Add Services & Pricing', desc: 'List what you offer and set your own rates.' },
+  { n: 3, title: 'Get Verified & Go Live', desc: 'We verify your listing and you start getting booked.', green: true },
+];
+
+const INCLUDED = [
+  'Free profile & listing',
+  'Verified business badge',
+  'Direct client bookings',
+  'Secure, fast payouts',
+];
+
+const TRUST_STATS = [
+  { value: '500+', label: 'Businesses listed' },
+  { value: '12', label: 'Categories' },
+  { value: '4.9★', label: 'Avg rating' },
+  { value: '10k+', label: 'Bookings' },
+];
+
+const WHY = [
+  {
+    title: 'Get Discovered',
+    desc: 'Reach clients actively searching for your services across India.',
+    image: '/Marketing%20content/Group/confident-woman-sitting-in-office-with-coworkers-2026-03-25-06-43-08-utc.jpg',
+  },
+  {
+    title: 'Verified & Trusted',
+    desc: 'Earn a verified badge and real client reviews that build trust.',
+    image: '/Marketing%20content/Group/four-people-working-together-on-laptops-2026-01-07-23-37-33-utc.jpg',
+  },
+  {
+    title: 'Grow Faster',
+    desc: 'Secure payments, instant bookings, and tools to scale your business.',
+    image: '/Marketing%20content/Group/architect-cafe-casual-brainstorming-meeting-concep-2026-01-07-23-27-47-utc.jpg',
+  },
 ];
 
 const MAIN_CATEGORIES = [
@@ -65,50 +97,155 @@ export default function ListYourBusiness() {
 
   return (
     <main className="bg-white">
-      {/* Hero + steps */}
-      <section className="bg-gray-50 px-6 pb-16 pt-28">
-        <div className="mx-auto max-w-5xl text-center">
-          <h1 className="font-heading text-3xl font-bold tracking-[-0.5px] text-navy-900 md:text-4xl lg:text-5xl">
-            Start Listing Your Business Today
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 md:text-lg">
-            List your business and connect with clients looking for trusted
-            experts. Get discovered, get booked, and grow — all in one place.
-          </p>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {STEPS.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <div key={s.title} className="rounded-2xl border border-gray-200 bg-white p-6 text-left">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="text-[11px] font-bold tracking-[0.2em] text-gray-400">
-                      STEP {i + 1}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 text-base font-bold text-navy-900">{s.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-gray-600">{s.desc}</p>
-                </div>
-              );
-            })}
+      {/* Hero — Find your perfect service provider */}
+      <section
+        className="relative overflow-hidden px-6 pb-16 pt-28"
+        style={{ backgroundImage: 'linear-gradient(160deg, #2A81D2 0%, #1d6ec0 60%, #0C2738 130%)' }}
+      >
+        <div className="absolute inset-0 bg-grid-pattern opacity-25" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-[-1px] text-white md:text-5xl">
+              Find Your Perfect Service Provider
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl text-base text-white/85 md:text-lg">
+              List your business, get verified, and connect with clients looking
+              for trusted experts across India.
+            </p>
           </div>
 
-          <a
-            href="https://app.flyrlink.com/"
-            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/30 transition-colors hover:bg-brand-600"
-          >
-            Add Your Business — Free
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
+          <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
+            {/* Left: vertical stepper + CTA + checklist */}
+            <div>
+              <ol className="relative ml-5 space-y-8 border-l border-white/20 pl-8">
+                {STEPS.map((s) => (
+                  <li key={s.n} className="relative">
+                    <span
+                      className={`absolute -left-[2.85rem] flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white ring-4 ring-[#1d6ec0] ${
+                        s.green ? 'bg-green-500' : 'bg-white/20'
+                      }`}
+                    >
+                      {s.n}
+                    </span>
+                    <h3 className="text-base font-bold text-white">{s.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-white/75">{s.desc}</p>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="ml-5 mt-10 pl-8">
+                <a
+                  href="https://app.flyrlink.com/"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5"
+                >
+                  Add Your Business — Free
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+                <p className="mt-3 text-xs text-white/75">
+                  No upfront cost. Only pay a small fee when you earn from a booking.
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2.5">
+                  {INCLUDED.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-white/90">
+                      <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-500/90 text-white">
+                        <Check className="h-3 w-3" strokeWidth={3} />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right: hero image */}
+            <div className="relative">
+              <div className="overflow-hidden rounded-3xl shadow-2xl ring-1 ring-white/20">
+                <Image
+                  src="/landing/Aside.png"
+                  alt="Service providers collaborating on Flyrlink"
+                  width={614}
+                  height={430}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Filter panel */}
-      <section className="px-6 pt-12">
-        <div className="mx-auto max-w-6xl rounded-2xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
+      {/* Trust band */}
+      <section className="bg-[#2A81D2] px-6 py-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-6">
+          <div className="flex items-center gap-3 text-white">
+            <span className="relative flex h-9 w-9 items-center justify-center">
+              <Hexagon className="absolute h-9 w-9 fill-white/15 text-white/40" />
+              <Check className="relative h-4 w-4 text-white" strokeWidth={3} />
+            </span>
+            <span className="text-sm font-semibold md:text-base">
+              Trusted by businesses joining Flyrlink across India
+            </span>
+          </div>
+          <div className="grid w-full grid-cols-2 gap-6 sm:grid-cols-4">
+            {TRUST_STATS.map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="font-display text-2xl font-bold text-white md:text-3xl">{s.value}</div>
+                <div className="mt-1 text-xs font-medium text-white/80">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why choose Flyrlink */}
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="text-center">
+            <h2 className="font-heading text-3xl font-bold tracking-[-0.5px] text-navy-900 md:text-4xl">
+              Why Choose Flyrlink?
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-base text-gray-600">
+              The easiest way to get discovered, win trust, and grow your client
+              base.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {WHY.map((w) => (
+              <div key={w.title} className="group relative h-64 overflow-hidden rounded-2xl">
+                <Image
+                  src={w.image}
+                  alt={w.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C2738]/90 via-[#0C2738]/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="text-lg font-bold text-white">{w.title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-white/85">{w.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Start listing — heading + filter + listings */}
+      <section className="bg-gray-50 px-6 pb-16 pt-16">
+        <div className="mx-auto max-w-6xl text-center">
+          <h2 className="font-heading text-3xl font-bold tracking-[-0.5px] text-navy-900 md:text-4xl">
+            Start Listing Your Business Today
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-base text-gray-600">
+            List your business and connect with clients looking for trusted
+            experts. Get discovered, get booked, and grow.
+          </p>
+        </div>
+
+        {/* Filter panel */}
+        <div className="mx-auto mt-10 max-w-6xl rounded-2xl border border-gray-200 bg-white p-5 shadow-sm md:p-6">
           <div className="flex gap-2">
             <div className="relative flex-1">
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
@@ -124,14 +261,12 @@ export default function ListYourBusiness() {
             </button>
           </div>
 
-          {/* Main category */}
           <FilterRow label="Main Category">
             {MAIN_CATEGORIES.map((c) => (
               <Checkbox key={c} checked={cats.includes(c)} onChange={() => toggle(cats, c, setCats)} label={c} />
             ))}
           </FilterRow>
 
-          {/* Tags */}
           <FilterRow label="Tags">
             <div className="relative">
               <select
@@ -147,18 +282,15 @@ export default function ListYourBusiness() {
             </div>
           </FilterRow>
 
-          {/* Availability */}
           <FilterRow label="Availability">
             {AVAILABILITY.map((a) => (
               <Checkbox key={a} checked={avail.includes(a)} onChange={() => toggle(avail, a, setAvail)} label={a} />
             ))}
           </FilterRow>
         </div>
-      </section>
 
-      {/* Listings */}
-      <section className="px-6 py-12">
-        <div className="mx-auto max-w-6xl">
+        {/* Listings */}
+        <div className="mx-auto mt-10 max-w-6xl">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {results.map((b) => (
               <article key={b.name} className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/10">

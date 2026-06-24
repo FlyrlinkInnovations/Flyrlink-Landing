@@ -3,86 +3,12 @@
 import {
   ArrowRight,
   Check,
-  Sparkles,
-  Search,
   CalendarDays,
-  MessagesSquare,
-  Video,
-  Star,
   ShieldCheck,
   Zap,
 } from 'lucide-react';
+import Image from 'next/image';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-
-type StackCard = {
-  key: string;
-  label: string;
-  icon: React.ComponentType<{ className?: string }>;
-  bg: string;
-  text: string;
-  border: string;
-  left: string;
-  rotate: string;
-  z: number;
-};
-
-const backCards: StackCard[] = [
-  {
-    key: 'search',
-    label: '01 · SEARCH',
-    icon: Search,
-    bg: 'bg-white',
-    text: 'text-brand-700',
-    border: 'border-brand-100',
-    left: '0%',
-    rotate: '-8deg',
-    z: 10,
-  },
-  {
-    key: 'chat',
-    label: '02 · CHAT',
-    icon: MessagesSquare,
-    bg: 'bg-brand-50',
-    text: 'text-brand-700',
-    border: 'border-brand-100',
-    left: '8%',
-    rotate: '-5deg',
-    z: 20,
-  },
-  {
-    key: 'book',
-    label: '03 · BOOK',
-    icon: CalendarDays,
-    bg: 'bg-brand-100',
-    text: 'text-brand-800',
-    border: 'border-brand-200',
-    left: '16%',
-    rotate: '-3deg',
-    z: 30,
-  },
-  {
-    key: 'meet',
-    label: '04 · MEET',
-    icon: Video,
-    bg: 'bg-brand-400',
-    text: 'text-white',
-    border: 'border-brand-300',
-    left: '24%',
-    rotate: '-1deg',
-    z: 40,
-  },
-  {
-    key: 'review',
-    label: '05 · REVIEW',
-    icon: Star,
-    bg: 'bg-brand-600',
-    text: 'text-white',
-    border: 'border-brand-500',
-    left: '32%',
-    rotate: '1deg',
-    z: 50,
-  },
-];
 
 const aiFeatures = [
   {
@@ -166,57 +92,13 @@ export default function AIExpertMatching() {
           <div className="relative">
             <div className="pointer-events-none absolute inset-0 rounded-[3rem] bg-gradient-to-br from-brand-200/40 via-brand-100/30 to-transparent blur-3xl" />
 
-            <div className="relative mx-auto h-[460px] w-full max-w-xl">
-              {backCards.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <div
-                    key={card.key}
-                    className={`absolute top-4 bottom-4 flex w-[48%] flex-col rounded-3xl border ${card.border} ${card.bg} p-5 shadow-xl shadow-brand-900/10`}
-                    style={{
-                      left: card.left,
-                      transform: `rotate(${card.rotate})`,
-                      zIndex: card.z,
-                    }}
-                  >
-                    <Icon className={`h-4 w-4 ${card.text}`} />
-                    <div
-                      className={`mt-auto text-[10px] font-semibold tracking-[0.22em] ${card.text} opacity-90`}
-                    >
-                      {card.label}
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Featured front card */}
-              <div
-                className="absolute -right-2 top-0 bottom-0 flex w-[58%] flex-col justify-between overflow-hidden rounded-3xl border border-white/30 bg-gradient-to-br from-brand via-brand-600 to-navy-900 p-7 text-white shadow-2xl shadow-brand/30"
-                style={{ transform: 'rotate(3deg)', zIndex: 60 }}
-              >
-                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-                <div className="pointer-events-none absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-brand-300/20 blur-2xl" />
-
-                <div className="relative flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/15 backdrop-blur-sm">
-                    <Sparkles className="h-4 w-4" />
-                  </span>
-                  <span className="text-[10px] font-semibold tracking-[0.28em] opacity-80">
-                    MARKETPLACE
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <div className="font-serif italic font-medium leading-none text-5xl md:text-6xl">
-                    Flyrlink
-                  </div>
-                  <div className="mt-3 text-xs leading-relaxed opacity-80">
-                    One place to find, book, and meet 500+ verified experts,
-                    from yoga trainers to tax consultants.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Image
+              src="/landing/Container2.png"
+              alt="How Flyrlink works — find, book, and meet 500+ verified experts"
+              width={712}
+              height={584}
+              className="relative mx-auto h-auto w-full max-w-xl"
+            />
           </div>
         </div>
 
