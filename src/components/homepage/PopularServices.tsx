@@ -1,11 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
 import Link from 'next/link';
 import {
   Code2, Activity, Video, Banknote, BookOpen, Dumbbell,
   Clapperboard, Mic, Megaphone, Bot, PenTool, Globe,
-  ChevronRight, type LucideIcon,
+  type LucideIcon,
 } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -28,11 +27,6 @@ const SERVICES: Service[] = [
 
 export default function PopularServices() {
   const { ref, isVisible } = useScrollReveal();
-  const scrollerRef = useRef<HTMLDivElement | null>(null);
-
-  const scrollBy = (dir: 1 | -1) => {
-    scrollerRef.current?.scrollBy({ left: dir * 480, behavior: 'smooth' });
-  };
 
   return (
     <section className="bg-[#F2F7FF] py-10 lg:py-12">
@@ -46,17 +40,17 @@ export default function PopularServices() {
           </h2>
         </div>
 
-        <div className="relative mt-6">
-          <div
-            ref={scrollerRef}
-            className="flex gap-2 overflow-x-auto scroll-smooth px-6 pb-3 lg:px-[60px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {SERVICES.map((s) => {
+        {/* Auto-scrolling marquee — pauses on hover */}
+        <div className="marquee-pause relative mt-6 overflow-hidden py-3">
+          <div className="animate-marquee-left flex w-max gap-2">
+            {[...SERVICES, ...SERVICES].map((s, i) => {
               const Icon = s.icon;
               return (
                 <Link
-                  key={s.title}
+                  key={`${s.title}-${i}`}
                   href={`/services/${s.slug}`}
+                  aria-hidden={i >= SERVICES.length}
+                  tabIndex={i >= SERVICES.length ? -1 : undefined}
                   className="group flex h-[266px] w-[200px] flex-shrink-0 flex-col items-center rounded-2xl px-2 pb-2 pt-6 shadow-[0px_3px_10px_rgba(0,0,0,0.13)] transition-transform hover:-translate-y-1"
                   style={{ backgroundColor: s.bg }}
                 >
@@ -71,23 +65,9 @@ export default function PopularServices() {
             })}
           </div>
 
-          {/* scroll buttons */}
-          <button
-            type="button"
-            onClick={() => scrollBy(-1)}
-            aria-label="Scroll left"
-            className="absolute left-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#62646A] shadow-[0px_1px_5px_rgba(0,0,0,0.12)] transition-colors hover:bg-gray-50 lg:flex"
-          >
-            <ChevronRight className="h-4 w-4 rotate-180" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollBy(1)}
-            aria-label="Scroll right"
-            className="absolute right-3 top-1/2 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#62646A] shadow-[0px_1px_5px_rgba(0,0,0,0.12)] transition-colors hover:bg-gray-50 lg:flex"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
+          {/* edge fades */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#F2F7FF] to-transparent lg:w-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#F2F7FF] to-transparent lg:w-20" />
         </div>
       </div>
     </section>

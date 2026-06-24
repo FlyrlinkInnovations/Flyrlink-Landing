@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Palette, Briefcase, Star } from 'lucide-react';
+import { Search, Palette, Briefcase } from 'lucide-react';
 
 const POPULAR_LINKS: { label: string; slug: string }[] = [
   { label: 'Yoga Teacher',   slug: 'yoga-trainer' },
@@ -12,32 +12,6 @@ const POPULAR_LINKS: { label: string; slug: string }[] = [
   { label: 'UGC Creator',    slug: 'ugc-creators' },
   { label: 'Logo',           slug: 'logo-design' },
   { label: 'Tax Consultant', slug: 'tax-consulting' },
-];
-
-const FEATURED_LOGOS = [
-  { name: 'Amazon',         src: '/logos/Amazon%20logo.jpg' },
-  { name: 'Microsoft',      src: '/logos/Microsoft%20logo.jpg' },
-  { name: 'Erba Solutions', src: '/logos/Erba%20Solutions.png' },
-  { name: 'Cloudwink Tech', src: '/logos/Cloudwink%20Tech.jpg' },
-  { name: 'Lumina',         src: '/logos/Lumina.jpg' },
-  { name: 'Microsoft',      src: '/logos/Microsoft%20logo.jpg' },
-  { name: 'Amazon',         src: '/logos/Amazon%20logo.jpg' },
-  { name: 'Cloudwink Tech', src: '/logos/Cloudwink%20Tech.jpg' },
-];
-
-const FLOATING = [
-  {
-    name: 'Priya Sharma',
-    role: 'Yoga Trainer',
-    image: '/Marketing%20content/Profiles/smiling-woman-in-tank-top-with-prayer-pose-2026-01-09-10-22-23-utc.jpg',
-    pos: 'left-4 bottom-4',
-  },
-  {
-    name: 'Ravi Mehta',
-    role: 'Logo Designer',
-    image: '/Marketing%20content/Profiles/professional-headshot-of-a-man-in-a-suit-2026-01-07-07-10-42-utc.jpg',
-    pos: 'right-4 bottom-4',
-  },
 ];
 
 export default function HeroSection() {
@@ -125,36 +99,13 @@ export default function HeroSection() {
           <div className="w-full lg:w-[614px] lg:flex-shrink-0">
             <div className="relative aspect-[614/430] w-full overflow-hidden rounded-3xl bg-[#F3F3F6]">
               <Image
-                src="/Marketing%20content/Group/loving-couple-enjoying-coffee-and-using-laptop-out-2026-01-07-23-01-26-utc.jpg"
+                src="/landing/Aside.png"
                 alt="Clients booking verified experts on Flyrlink"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 614px"
                 className="object-cover"
               />
-
-              {/* Floating expert chips */}
-              {FLOATING.map((p) => (
-                <div
-                  key={p.name}
-                  className={`absolute ${p.pos} flex items-center gap-2 rounded-full bg-white/95 py-1 pl-1 pr-4 shadow-[0px_3px_6px_rgba(0,0,0,0.14)] backdrop-blur`}
-                >
-                  <Image
-                    src={p.image}
-                    alt={p.name}
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 rounded-full object-cover"
-                  />
-                  <div className="leading-tight">
-                    <p className="text-xs font-semibold text-[#0D0C22]">{p.name}</p>
-                    <p className="flex items-center gap-1 text-[10px] text-gray-500">
-                      <Star className="h-2.5 w-2.5 fill-[#FFBA00] text-[#FFBA00]" />
-                      {p.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -162,17 +113,14 @@ export default function HeroSection() {
         {/* Featured in */}
         <div className="mt-16 lg:mt-[86px]">
           <p className="text-[13px] font-bold text-[#354146]">Featured in</p>
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-6">
-            {FEATURED_LOGOS.map((logo, i) => (
-              <Image
-                key={`${logo.name}-${i}`}
-                src={logo.src}
-                alt={logo.name}
-                width={160}
-                height={68}
-                className="h-11 w-auto object-contain opacity-80 transition-opacity hover:opacity-100"
-              />
-            ))}
+          <div className="mt-4">
+            <Image
+              src="/landing/Container.png"
+              alt="Featured in Amazon, Microsoft, Google, Cloudwink Technologies, Facebook, Lumina Steck"
+              width={1296}
+              height={69}
+              className="h-auto w-full object-contain opacity-80"
+            />
           </div>
         </div>
       </div>

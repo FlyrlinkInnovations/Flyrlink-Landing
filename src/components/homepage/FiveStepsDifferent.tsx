@@ -14,12 +14,20 @@ export default function FiveStepsDifferent() {
           'linear-gradient(89.81deg, #2A81D2 30.34%, rgba(94, 214, 250, 0.35) 99.84%)',
       }}
     >
-      {/* faded backdrop image */}
+      {/* backdrop process image — anchored right, blue fills the left */}
       <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-15 mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 bg-no-repeat bg-right"
+        style={{
+          backgroundImage: 'url(/landing/section1.png)',
+          backgroundSize: 'auto 100%',
+        }}
+      />
+      {/* left gradient: hides the seam + keeps the heading legible */}
+      <div
+        className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            'url(/Marketing%20content/Group/four-people-working-together-on-laptops-2026-01-07-23-37-33-utc.jpg)',
+            'linear-gradient(to right, #2A81D2 0%, rgba(42,129,210,0.9) 22%, rgba(42,129,210,0) 54%)',
         }}
       />
 

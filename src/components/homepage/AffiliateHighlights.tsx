@@ -26,7 +26,7 @@ export default function AffiliateHighlights() {
       className="relative overflow-hidden px-6 py-20 lg:px-20"
       style={{
         backgroundImage:
-          'linear-gradient(0deg, rgba(10,113,208,0.6), rgba(10,113,208,0.6)), url(/Marketing%20content/Group/architect-cafe-casual-brainstorming-meeting-concep-2026-01-07-23-27-47-utc.jpg)',
+          'linear-gradient(0deg, rgba(10,113,208,0.55), rgba(10,113,208,0.55)), url("/landing/Section (2).png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

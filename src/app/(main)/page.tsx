@@ -9,6 +9,7 @@ import FiveStepsDifferent from '@/components/homepage/FiveStepsDifferent';
 import Testimonials from '@/components/homepage/Testimonials';
 import AffiliateHighlights from '@/components/homepage/AffiliateHighlights';
 import PricingSection from '@/components/homepage/PricingSection';
+import FinalCTA from '@/components/homepage/FinalCTA';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -37,7 +38,9 @@ export default function HomePage() {
       <AffiliateHighlights />
       {/* 10 — Simple, transparent pricing */}
       <PricingSection />
-      {/* 11 — Footer is provided by the (main) layout */}
+      {/* 11 — Pre-footer CTA banner */}
+      <FinalCTA />
+      {/* 12 — Footer is provided by the (main) layout */}
     </>
   );
 }

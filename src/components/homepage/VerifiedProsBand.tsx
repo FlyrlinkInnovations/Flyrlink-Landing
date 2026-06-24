@@ -14,8 +14,11 @@ export default function VerifiedProsBand() {
 
   return (
     <section className="relative overflow-hidden bg-[#2A81D2] px-6 py-16 lg:px-20 lg:py-20">
-      {/* glow */}
-      <div className="pointer-events-none absolute bottom-[-160px] left-0 h-[400px] w-[400px] rounded-full bg-[#29ABD2]/10 blur-[60px]" />
+      {/* flowing wave ribbon background */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: 'url("/landing/Section (3).png")' }}
+      />
 
       <div
         ref={ref}
@@ -54,7 +57,7 @@ export default function VerifiedProsBand() {
         <div className="flex flex-col items-center gap-3">
           <a
             href="https://app.flyrlink.com/"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#29ABD2] px-6 py-3 text-sm font-semibold text-[#0C2738] shadow-lg shadow-[#29ABD2]/30 ring-1 ring-white/40 transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0C2738] shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5"
           >
             Browse all experts
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
