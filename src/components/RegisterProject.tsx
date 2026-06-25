@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import {
   Zap, ShieldCheck, Award, MessageSquare, Wallet, LineChart,
   ChevronDown, Check, type LucideIcon,
@@ -65,9 +66,15 @@ export default function RegisterProject() {
         <div className="mx-auto max-w-3xl">
           <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
             {/* Banner */}
-            <div className="relative h-40 overflow-hidden bg-gradient-to-br from-navy-900 via-[#123a63] to-brand-700">
-              <div className="absolute inset-0 bg-grid-pattern opacity-40" />
-              <div className="absolute right-6 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-brand/30 blur-2xl" />
+            <div className="relative aspect-[1104/564] w-full overflow-hidden bg-navy-900">
+              <Image
+                src="/landing/Project%20registration.png"
+                alt="Register your project on Flyrlink"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
             </div>
 
             <div className="p-6 md:p-8">
