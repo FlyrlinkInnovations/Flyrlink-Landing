@@ -1,7 +1,8 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { Search, Star, MapPin, BadgeCheck, ArrowRight, TrendingUp } from 'lucide-react';
+import { Search, Star, MapPin, BadgeCheck, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 type Expert = {
   initials: string;
@@ -217,20 +218,14 @@ export default function BrowseExperts() {
               </a>
             </div>
 
-            {/* Bar chart graphic */}
-            <div className="relative flex h-32 items-end gap-2 pr-8">
-              {[40, 58, 74, 92].map((h, i) => (
-                <div
-                  key={i}
-                  className="w-9 rounded-t-md bg-gradient-to-t from-green-600 to-green-400 shadow-lg"
-                  style={{ height: `${h}%` }}
-                />
-              ))}
-              <TrendingUp
-                className="absolute -right-1 top-0 h-10 w-10 text-green-300"
-                strokeWidth={2.5}
-              />
-            </div>
+            {/* Growth chart graphic */}
+            <Image
+              src="/landing/image 2.png"
+              alt="Earnings growth on Flyrlink"
+              width={345}
+              height={308}
+              className="h-32 w-auto flex-shrink-0 drop-shadow-lg md:h-40"
+            />
           </div>
         </div>
       </div>

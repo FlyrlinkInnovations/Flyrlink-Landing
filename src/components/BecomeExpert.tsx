@@ -101,7 +101,7 @@ export default function BecomeExpert() {
           </div>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-gray-100">
             <Image
-              src="/Marketing%20content/Group/architect-cafe-casual-brainstorming-meeting-concep-2026-01-07-23-27-47-utc.jpg"
+              src="/landing/Professional%20working.png"
               alt="Experts collaborating on Flyrlink"
               fill
               sizes="(max-width: 1024px) 100vw, 500px"
