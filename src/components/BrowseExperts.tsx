@@ -15,6 +15,7 @@ type Expert = {
   category: string;
   bookings: number;
   gradient: string;
+  image: string;
 };
 
 const EXPERTS: Expert[] = [
@@ -22,31 +23,37 @@ const EXPERTS: Expert[] = [
     initials: 'MK', name: 'Meera Krishnan', role: 'Math & Science Tutor', rating: 5.0,
     tags: ['Boards', 'JEE', 'Class 9-12'], location: 'Chennai', price: 800,
     category: 'Tutoring', bookings: 320, gradient: 'from-sky-400 to-blue-600',
+    image: '/Marketing%20content/Profiles/professional-woman-smiling-portrait-in-business-at-2026-01-08-05-28-10-utc.jpg',
   },
   {
     initials: 'PS', name: 'Priya Sharma', role: 'Yoga & Mobility Coach', rating: 4.9,
     tags: ['Backpain', 'Beginners', 'Hatha'], location: 'Bengaluru', price: 1200,
     category: 'Wellness', bookings: 540, gradient: 'from-cyan-400 to-blue-500',
+    image: '/Marketing%20content/Profiles/smiling-woman-in-tank-top-with-prayer-pose-2026-01-09-10-22-23-utc.jpg',
   },
   {
     initials: 'SI', name: 'Sneha Iyer', role: 'Content & Video Editor', rating: 4.9,
     tags: ['Reels', 'YouTube', 'Premiere'], location: 'Kochi', price: 1500,
     category: 'Creative', bookings: 410, gradient: 'from-sky-400 to-indigo-500',
+    image: '/Marketing%20content/Profiles/cheerful-woman-smiling-with-wavy-hair-on-blue-2026-01-09-09-53-59-utc.jpg',
   },
   {
     initials: 'AN', name: 'Arjun Nair', role: 'Brand & Product Designer', rating: 4.8,
     tags: ['Branding', 'Figma', 'UI/UX'], location: 'Pune', price: 2500,
     category: 'Design', bookings: 280, gradient: 'from-blue-400 to-blue-700',
+    image: '/Marketing%20content/Profiles/smiling-young-man-in-suit-standing-outdoors-2026-03-25-04-44-11-utc.jpg',
   },
   {
     initials: 'VR', name: 'Vikram Rao', role: 'Career & Interview Coach', rating: 4.8,
     tags: ['FAANG', 'Resume', 'Mock'], location: 'Hyderabad', price: 1800,
     category: 'Coaching', bookings: 360, gradient: 'from-sky-500 to-blue-600',
+    image: '/Marketing%20content/Profiles/professional-headshot-of-a-man-in-a-suit-2026-01-07-07-10-42-utc.jpg',
   },
   {
     initials: 'RD', name: 'Rahul Desai', role: 'Startup & Finance Advisor', rating: 4.7,
     tags: ['Fundraising', 'Tax', 'Modeling'], location: 'Mumbai', price: 3500,
     category: 'Finance', bookings: 190, gradient: 'from-blue-500 to-indigo-700',
+    image: '/Marketing%20content/Profiles/confident-businessman-posing-in-a-suit-and-tie-2026-01-09-11-00-44-utc.jpg',
   },
 ];
 
@@ -139,9 +146,10 @@ export default function BrowseExperts() {
         {/* Expert grid */}
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {experts.map((e) => (
-            <article
+            <a
               key={e.name}
-              className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/10"
+              href="https://app.flyrlink.com/"
+              className="group block overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-brand/10"
             >
               {/* Banner */}
               <div className={`relative h-20 bg-gradient-to-br ${e.gradient}`}>
@@ -149,8 +157,14 @@ export default function BrowseExperts() {
                   <BadgeCheck className="h-3 w-3 text-brand" />
                   Verified
                 </span>
-                <div className="absolute -bottom-6 left-4 flex h-14 w-14 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-brand-300 to-brand-600 text-sm font-bold text-white shadow-md">
-                  {e.initials}
+                <div className="absolute -bottom-6 left-4 h-14 w-14 overflow-hidden rounded-full border-4 border-white bg-gray-100 shadow-md">
+                  <Image
+                    src={e.image}
+                    alt={e.name}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
 
@@ -187,7 +201,7 @@ export default function BrowseExperts() {
                   </span>
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
 

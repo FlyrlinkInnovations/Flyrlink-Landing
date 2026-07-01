@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -36,8 +37,6 @@ const legalLinks = [
 
 const connectLinks = [
   { label: 'FAQ', href: '/faq' },
-  { label: 'Book a Call', href: '/book-call' },
-  { label: 'Join Waiting List', href: '/waiting-list' },
 ];
 
 const socials = [
@@ -83,11 +82,16 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="inline-block font-serif text-4xl font-medium italic text-white"
-            >
-              Flyrlink
+            <Link href="/" aria-label="Flyrlink home" className="inline-flex">
+              <span className="inline-flex overflow-hidden rounded-lg bg-white px-3 py-2">
+                <Image
+                  src="/landing/FlyrlinkLogo.svg"
+                  alt="Flyrlink"
+                  width={466}
+                  height={147}
+                  className="h-9 w-auto object-contain"
+                />
+              </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-gray-400">
               Find a coach, tutor, designer, or expert. Book in minutes.

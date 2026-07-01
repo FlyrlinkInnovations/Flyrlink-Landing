@@ -54,6 +54,7 @@ export default function BecomeExpert() {
     e.preventDefault();
     if (!form.agree) return;
     setSubmitted(true);
+    window.location.href = 'https://app.flyrlink.com/';
   };
 
   return (

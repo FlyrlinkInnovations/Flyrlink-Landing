@@ -14,6 +14,16 @@ const POPULAR_LINKS: { label: string; slug: string }[] = [
   { label: 'Tax Consultant', slug: 'tax-consulting' },
 ];
 
+const FEATURED_LOGOS = [
+  '/featured/a.png',
+  '/featured/f.png',
+  '/featured/g.png',
+  '/featured/m.png',
+  '/featured/w.png',
+  '/featured/ct.png',
+  '/featured/lv.png',
+];
+
 export default function HeroSection() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
@@ -97,30 +107,46 @@ export default function HeroSection() {
 
           {/* Right column — image card */}
           <div className="w-full lg:w-[614px] lg:flex-shrink-0">
-            <div className="relative aspect-[614/430] w-full overflow-hidden rounded-3xl bg-[#F3F3F6]">
+            <a
+              href="https://app.flyrlink.com/"
+              aria-label="Sign up for Flyrlink"
+              className="group relative block aspect-[614/430] w-full overflow-hidden rounded-3xl bg-[#F3F3F6] shadow-sm transition-all hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            >
               <Image
                 src="/landing/Aside.png"
                 alt="Clients booking verified experts on Flyrlink"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 614px"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
-            </div>
+            </a>
           </div>
         </div>
 
         {/* Featured in */}
         <div className="mt-16 lg:mt-[86px]">
           <p className="text-[13px] font-bold text-[#354146]">Featured in</p>
-          <div className="mt-4">
-            <Image
-              src="/landing/Container.png"
-              alt="Featured in Amazon, Microsoft, Google, Cloudwink Technologies, Facebook, Lumina Steck"
-              width={1296}
-              height={69}
-              className="h-auto w-full object-contain opacity-80"
-            />
+          <div className="marquee-pause relative mt-5 overflow-hidden">
+            <div
+              className="animate-marquee-left flex w-max items-center gap-14"
+              style={{ animationDuration: '28s' }}
+            >
+              {[...FEATURED_LOGOS, ...FEATURED_LOGOS].map((src, i) => (
+                <Image
+                  key={`${src}-${i}`}
+                  src={src}
+                  alt="Featured brand"
+                  width={160}
+                  height={48}
+                  aria-hidden={i >= FEATURED_LOGOS.length}
+                  className="h-9 w-auto flex-shrink-0 object-contain"
+                />
+              ))}
+            </div>
+            {/* edge fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent" />
           </div>
         </div>
       </div>

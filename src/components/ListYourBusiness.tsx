@@ -136,7 +136,12 @@ export default function ListYourBusiness() {
               <button
                 key={t}
                 type="button"
-                onClick={() => setActiveTab(i)}
+                onClick={() => {
+                  setActiveTab(i);
+                  if (i > 0) {
+                    document.getElementById('search-filters')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
                 className={`rounded-lg text-sm font-semibold transition-colors ${
                   activeTab === i
                     ? 'bg-[#2A6CC9] px-5 py-2.5 text-white shadow-sm'
@@ -377,7 +382,7 @@ export default function ListYourBusiness() {
       </section>
 
       {/* Section 6 — Search & filters */}
-      <section className="bg-white px-6 py-12">
+      <section id="search-filters" className="scroll-mt-24 bg-white px-6 py-12">
         <div className="mx-auto max-w-6xl">
           {/* search row */}
           <div className="flex gap-3">

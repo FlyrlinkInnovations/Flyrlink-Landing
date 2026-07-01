@@ -12,7 +12,7 @@ const leftLinks = [
 ];
 
 const centerLinks = [
-  { href: '/about', label: 'Why Flyrlink' },
+  { href: '/compare', label: 'Why Flyrlink' },
   { href: '/register-project', label: 'Register your Projects' },
   { href: '/become-expert', label: 'Become an expert' },
 ];
@@ -61,16 +61,13 @@ export default function Navbar() {
             aria-label="Flyrlink home"
           >
             <Image
-              src="/Flyrlink logo.png"
+              src="/landing/FlyrlinkLogo.svg"
               alt="Flyrlink"
-              width={32}
-              height={32}
+              width={466}
+              height={147}
               priority
-              className="h-8 w-8 object-contain"
+              className="h-10 w-auto object-contain"
             />
-            <span className="font-serif text-2xl font-medium italic leading-none text-navy-900">
-              Flyrlink
-            </span>
           </Link>
 
           {/* Left links */}
