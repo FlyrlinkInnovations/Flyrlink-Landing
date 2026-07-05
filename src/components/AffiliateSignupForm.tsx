@@ -38,8 +38,35 @@ export default function AffiliateSignupForm() {
 
     setIsLoading(true);
     try {
-      // Simulate submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const contentTypeLabels: Record<string, string> = {
+        video: 'Video Content',
+        blog: 'Blog/Articles',
+        social: 'Social Media',
+        email: 'Email Marketing',
+        community: 'Community/Forum',
+        other: 'Other',
+      };
+
+      const res = await fetch('/api/affiliate', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          'Full Name': formData.name,
+          Email: formData.email,
+          'Phone Number': formData.phone,
+          Country: formData.country,
+          'Target Audience': formData.targetAudience,
+          'Flyrlink Profile URL': formData.profileUrl,
+          'Content Type': contentTypeLabels[formData.contentType] ?? formData.contentType,
+          'Social Media / Website URLs': formData.socialUrls,
+          'How will you promote Flyrlink?': formData.platforms,
+          'Agreed To Terms': formData.agreeTerms,
+          'Confirmed No Misleading Ads': formData.agreeNoMisleading,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
       setIsSubmitted(true);
       toast({ title: 'Application Submitted!', description: 'We will review your application and get back to you within 48 hours.' });
     } catch {

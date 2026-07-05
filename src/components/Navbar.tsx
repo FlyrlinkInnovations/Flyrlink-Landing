@@ -61,10 +61,10 @@ export default function Navbar() {
             aria-label="Flyrlink home"
           >
             <Image
-              src="/landing/FlyrlinkLogo.svg"
+              src="/flyrlink-logo.png"
               alt="Flyrlink"
-              width={466}
-              height={147}
+              width={134}
+              height={40}
               priority
               className="h-10 w-auto object-contain"
             />
