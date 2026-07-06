@@ -8,7 +8,7 @@ import {
 
 type Status = 'yes' | 'partial' | 'no';
 type Cell = { status: Status; note: string };
-type Row = { feature: string; flyrlink: Cell; market: Cell; freelance: Cell };
+type Row = { feature: string; flyrlink: Cell; freelancer: Cell; truelancer: Cell; upwork: Cell };
 type Group = { key: string; label: string; rows: Row[] };
 
 const yes = (note: string): Cell => ({ status: 'yes', note });
@@ -17,56 +17,54 @@ const no = (note: string): Cell => ({ status: 'no', note });
 
 const GROUPS: Group[] = [
   {
-    key: 'booking', label: 'Core Booking',
+    key: 'model', label: 'Core Model',
     rows: [
-      { feature: 'Platform Type', flyrlink: yes('Expert network'), market: partial('Gig listings'), freelance: partial('Project bids') },
-      { feature: 'Primary Use Case', flyrlink: yes('1:1 sessions'), market: partial('Service gigs'), freelance: partial('Long projects') },
-      { feature: 'Session Formats', flyrlink: yes('Calls, chat, events'), market: partial('Limited'), freelance: no('Async only') },
+      { feature: 'Platform Type', flyrlink: yes('AI Expert Marketplace'), freelancer: partial('Bidding Model'), truelancer: partial('Freelance Market'), upwork: partial('Gig Store') },
+      { feature: 'Primary Use Case', flyrlink: yes('1:1 Expert Sessions'), freelancer: yes('Project Work'), truelancer: yes('Long-term Contracts'), upwork: yes('Quick Gigs') },
+      { feature: 'Session Formats', flyrlink: yes('Multiple Formats'), freelancer: no('Project Only'), truelancer: no('Project Only'), upwork: no('Gig Only') },
     ],
   },
   {
     key: 'ai', label: 'AI & Matching',
     rows: [
-      { feature: 'AI Matching', flyrlink: yes('Smart 3-expert match'), market: no('Manual search'), freelance: no('Manual search') },
-      { feature: 'Personalized Picks', flyrlink: yes('Goal & budget aware'), market: partial('Basic filters'), freelance: no('None') },
-      { feature: 'Timezone Aware', flyrlink: yes('Built in'), market: no('No'), freelance: no('No') },
+      { feature: 'AI Matching', flyrlink: yes('Advanced Matching'), freelancer: no('Manual Search'), truelancer: partial('Basic Algorithm'), upwork: partial('Category Browsing') },
+      { feature: 'Time to Match', flyrlink: yes('Minutes'), freelancer: partial('Hours to Days'), truelancer: partial('Hours to Days'), upwork: partial('Self-service') },
     ],
   },
   {
-    key: 'trust', label: 'Discovery & Trust',
+    key: 'trust', label: 'Verification & Trust',
     rows: [
-      { feature: 'Expert Verification', flyrlink: yes('ID + background'), market: partial('Self-reported'), freelance: partial('Optional') },
-      { feature: 'Rating System', flyrlink: yes('Verified reviews'), market: yes('Reviews'), freelance: yes('Reviews') },
-      { feature: 'Real, Vetted Pros', flyrlink: yes('Every expert'), market: partial('Mixed'), freelance: partial('Mixed') },
+      { feature: 'Expert Verification', flyrlink: yes('Thorough Vetting'), freelancer: partial('Basic ID Check'), truelancer: partial('Profile-based'), upwork: no('Self-reported') },
+      { feature: 'Rating System', flyrlink: yes('Real-session Ratings'), freelancer: yes('Project Ratings'), truelancer: yes('Contract Ratings'), upwork: yes('Gig Ratings') },
     ],
   },
   {
-    key: 'variety', label: 'Session Variety',
+    key: 'diversity', label: 'Service Diversity',
     rows: [
-      { feature: '1:1 Sessions', flyrlink: yes('Core feature'), market: partial('Some'), freelance: no('Rare') },
-      { feature: 'Live Events & Workshops', flyrlink: yes('Supported'), market: no('No'), freelance: no('No') },
+      { feature: 'Categories Covered', flyrlink: yes('12+ Categories'), freelancer: yes('Tech & Design'), truelancer: yes('Tech & Finance'), upwork: yes('Creative & Tech') },
+      { feature: 'Wellness Experts', flyrlink: yes('Available'), freelancer: no('Not Available'), truelancer: no('Not Available'), upwork: no('Not Available') },
     ],
   },
   {
     key: 'flexibility', label: 'Booking Flexibility',
     rows: [
-      { feature: 'Instant Booking', flyrlink: yes('Live availability'), market: partial('Request-based'), freelance: no('Quote first') },
-      { feature: 'Free Reschedule', flyrlink: yes('Flexible'), market: partial('Varies'), freelance: partial('Varies') },
+      { feature: 'Booking Options', flyrlink: yes('Full Flexibility'), freelancer: no('Project Only'), truelancer: no('Project Only'), upwork: no('Pre-set Gigs') },
+      { feature: 'Instant Booking', flyrlink: yes('Real-time Booking'), freelancer: no('Bid & Wait'), truelancer: no('Bid & Wait'), upwork: partial('Buy Instantly') },
     ],
   },
   {
-    key: 'fees', label: 'Fees & Clarity',
+    key: 'fees', label: 'Fees & Costs',
     rows: [
-      { feature: 'Commission Model', flyrlink: yes('Low, transparent'), market: no('High'), freelance: no('High + fees') },
-      { feature: 'Hidden Fees', flyrlink: yes('None'), market: no('Common'), freelance: no('Common') },
+      { feature: 'Commission Model', flyrlink: yes('Expert-friendly'), freelancer: partial('~3% Employer Fee'), truelancer: partial('8-20% Commission'), upwork: no('20% Commission') },
+      { feature: 'Hidden Fees', flyrlink: yes('Minimal & Clear'), freelancer: partial('Payment Fees'), truelancer: partial('Payment Fees'), upwork: partial('Processing Fees') },
     ],
   },
   {
-    key: 'experience', label: 'Client Experience',
+    key: 'experience', label: 'Expert Experience',
     rows: [
-      { feature: 'Direct Chat', flyrlink: yes('Free before booking'), market: partial('After purchase'), freelance: yes('Yes') },
-      { feature: 'In-app Video', flyrlink: yes('Secure calls'), market: no('No'), freelance: no('External') },
-      { feature: 'Support', flyrlink: yes('24/7'), market: partial('Limited'), freelance: partial('Limited') },
+      { feature: 'Monetization', flyrlink: yes('Multiple Streams'), freelancer: no('Projects Only'), truelancer: no('Projects Only'), upwork: no('Gig Packages') },
+      { feature: 'Community & Networking', flyrlink: yes('Built-in Community'), freelancer: partial('Forums Only'), truelancer: no('No Community'), upwork: no('No Community') },
+      { feature: 'Mobile App', flyrlink: yes('Full-featured'), freelancer: yes('Available'), truelancer: yes('Available'), upwork: yes('Available') },
     ],
   },
 ];
@@ -147,13 +145,14 @@ export default function ComparePage() {
       {/* Comparison table */}
       <section className="px-6 py-10">
         <div className="mx-auto max-w-6xl overflow-x-auto">
-          <div className="min-w-[640px] overflow-hidden rounded-2xl border border-gray-200">
+          <div className="min-w-[720px] overflow-hidden rounded-2xl border border-gray-200">
             {/* Header */}
-            <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr] border-b border-gray-200 bg-white">
+            <div className="grid grid-cols-[1.6fr_1fr_1fr_1fr_1fr] border-b border-gray-200 bg-white">
               <div className="px-4 py-4" />
               <div className="bg-brand px-3 py-4 text-center text-sm font-bold text-white">Flyrlink</div>
-              <div className="px-3 py-4 text-center text-sm font-semibold text-gray-500">Other Marketplaces</div>
-              <div className="px-3 py-4 text-center text-sm font-semibold text-gray-500">Freelance Sites</div>
+              <div className="px-3 py-4 text-center text-sm font-semibold text-gray-500">Freelancer</div>
+              <div className="px-3 py-4 text-center text-sm font-semibold text-gray-500">Truelancer</div>
+              <div className="px-3 py-4 text-center text-sm font-semibold text-gray-500">Upwork</div>
             </div>
 
             {groups.map((g) => (
@@ -164,14 +163,15 @@ export default function ComparePage() {
                 {g.rows.map((r, i) => (
                   <div
                     key={r.feature}
-                    className={`grid grid-cols-[1.6fr_1fr_1fr_1fr] items-center ${
+                    className={`grid grid-cols-[1.6fr_1fr_1fr_1fr_1fr] items-center ${
                       i % 2 ? 'bg-gray-50/40' : 'bg-white'
                     }`}
                   >
                     <div className="px-4 py-3 text-sm font-medium text-navy-900">{r.feature}</div>
                     <CompareCell cell={r.flyrlink} highlight />
-                    <CompareCell cell={r.market} />
-                    <CompareCell cell={r.freelance} />
+                    <CompareCell cell={r.freelancer} />
+                    <CompareCell cell={r.truelancer} />
+                    <CompareCell cell={r.upwork} />
                   </div>
                 ))}
               </div>
