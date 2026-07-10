@@ -154,6 +154,37 @@ export default function RootLayout({
           `}
         </Script>
         <Providers>{children}</Providers>
+        {/* Force Flyrlink logo on PowerBot launcher (closed shadow DOM — patch init config) */}
+        <Script id="powerbot-flyrlink-logo" strategy="afterInteractive">
+          {`
+            (function () {
+              var logoUrl = window.location.origin + '/apple-touch-icon.png';
+              var originalFetch = window.fetch.bind(window);
+              window.fetch = function (input, init) {
+                return originalFetch(input, init).then(function (res) {
+                  var url = typeof input === 'string' ? input : (input && input.url) || '';
+                  if (url.indexOf('/api/widget/init') === -1) return res;
+                  return res
+                    .clone()
+                    .json()
+                    .then(function (body) {
+                      if (body && body.data) {
+                        body.data.avatarUrl = logoUrl;
+                      }
+                      return new Response(JSON.stringify(body), {
+                        status: res.status,
+                        statusText: res.statusText,
+                        headers: { 'Content-Type': 'application/json' },
+                      });
+                    })
+                    .catch(function () {
+                      return res;
+                    });
+                });
+              };
+            })();
+          `}
+        </Script>
         <Script
           src="https://chat.postwyse.com/powerbot-widget.js"
           strategy="lazyOnload"
