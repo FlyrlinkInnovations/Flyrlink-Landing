@@ -77,11 +77,6 @@ export default function DemoVideo() {
                       strokeWidth={1.5}
                     />
                   </span>
-
-                  <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur md:bottom-6 md:left-6">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-300 animate-pulse" />
-                    Product demo · ~20s
-                  </span>
                 </button>
               )}
             </div>
