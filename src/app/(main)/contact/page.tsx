@@ -33,7 +33,7 @@ const contactMethods = [
   {
     icon: MapPin,
     tag: 'VISIT',
-    value: 'Hyderabad, India',
+    value: 'Hyderabad - 500081, India',
     description: 'Unit 407, Jain Sadguru Image Capital Park',
     href: '#',
   },

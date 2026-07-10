@@ -107,7 +107,7 @@ export default function Footer() {
               <ContactRow icon={Mail}>Contact@flyrlink.com</ContactRow>
               <ContactRow icon={Mail}>support@flyrlink.com</ContactRow>
               <ContactRow icon={MapPin}>
-                Flyrlink Innovations Pvt. Ltd., Unit 407, Jain Sadguru Image Capital Park, Hyderabad, India
+                Flyrlink Innovations Pvt. Ltd., Unit 407, Jain Sadguru Image Capital Park, Hyderabad - 500081, India
               </ContactRow>
             </div>
 
